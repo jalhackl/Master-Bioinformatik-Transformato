@@ -1,0 +1,20 @@
+\babel@toc {british}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Thermodynamic cycle; red arrows indicate transitions between two states (unbound - bound) of each ligand, blue arrows indicate 'alchemical' transformations (Ligand A - Ligand B)}}{4}{figure.2.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces left: molecule 1; middle: common core; right: molecule 2; the first and the last two rows show the same molecules, in the upper row without, in the lower with hydrogens, in case of the lower molecule combination the common core changes when hydrogens are added to the Rdkit-molecule representation }}{14}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces First and second column: Common core of two molecules (cholesterol and cortisol) without strict fusion; third and fourth column: Common core of two molecules with strict fusion }}{15}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparison of different graph traversal algorithms; left: depth first search; middle: breadth first search; right: Dijkstra algorithm, the edges connecting blue colored nodes have increased weights leading to a mutation route differing from BFS; the final processing of the nodes happens in reversed order}}{16}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces left: dfs-algorithm; right: bfs-algorithm; common core in dark; dfs starts at carbon 22 and thus ring breakage gives rise to one long chain which is processed subsequently, whereas bfs starts at carbon 22 and the two emerging chains are processed in a symmetric fashion }}{19}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Example for the differences between iter- and iter\_change-algorithm; left: iter; right: iter-change; iter-change processes all atoms within a chain or a ring at once (if possible) before switching to other parts of the molecule}}{19}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces left: dfs-algorithm; right: bfs-algorithm; common core in dark; the red arrow indicates the undesired processing of the ring atoms}}{20}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces left: dfs-algorithm; right: bfs-algorithm; common core in dark; the red arrow and circle indicates the undesired processing of the ring atoms}}{21}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces left: dfs-algorithm; right: bfs-algorithm; common core in dark; the red arrow indicates the undesired processing of the ring atoms}}{21}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces left: dfs-algorithm; right: bfs-algorithm; common core in dark; the red arrow indicates the undesired processing of the ring atoms}}{22}{figure.4.9}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces left: dfs-algorithm; right: bfs-algorithm; common core in dark}}{22}{figure.4.10}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Visualization of the mutation route using py3dmol; upper row: rdkit-representations of both molecules and the common core; lower row: py3Dmol visualizations; left and right: molecules; middle: common core of both molecules}}{24}{figure.5.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

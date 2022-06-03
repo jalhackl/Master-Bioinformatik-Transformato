@@ -1,0 +1,144 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{JBBTR88}
+
+\bibitem[ADP08]{AricA.Hagberg.2008}
+{Aric A. Hagberg}, {Daniel A. Schult}, and {Pieter J. Swart}.
+\newblock Exploring network structure, dynamics, and function using networkx.
+\newblock In {Ga{\"e}l Varoquaux}, {Travis Vaught}, and {Jarrod Millman},
+  editors, {\em Proceedings of the 7th Python in Science Conference}, pages
+  11--15, Pasadena, CA USA, 2008.
+
+\bibitem[BB11a]{Boresch.2011}
+Stefan Boresch and Stefan Bruckner.
+\newblock Avoiding the van der waals endpoint problem using serial atomic
+  insertion.
+\newblock {\em Journal of computational chemistry}, 32(11):2449--2458, 2011.
+
+\bibitem[BB11b]{Bruckner.2011}
+Stefan Bruckner and Stefan Boresch.
+\newblock Efficiency of alchemical free energy simulations. i. a practical
+  comparison of the exponential formula, thermodynamic integration, and
+  bennett's acceptance ratio method.
+\newblock {\em Journal of computational chemistry}, 32(7):1303--1319, 2011.
+
+\bibitem[BB11c]{Bruckner.2011b}
+Stefan Bruckner and Stefan Boresch.
+\newblock Efficiency of alchemical free energy simulations. ii. improvements
+  for thermodynamic integration.
+\newblock {\em Journal of computational chemistry}, 32(7):1320--1333, 2011.
+
+\bibitem[Ben76]{Bennett.1976}
+Charles~H. Bennett.
+\newblock Efficient estimation of free energy differences from monte carlo
+  data.
+\newblock {\em Journal of Computational Physics}, (22):245--268, 1976.
+
+\bibitem[Bra21]{Braunsfeld.}
+Benedict Braunsfeld.
+\newblock {\em Implementation and Testing of CHARMM as Backend to the Free
+  Energy package Transformato}.
+\newblock Master's thesis, {University of Vienna}, Vienna, 2021.
+
+\bibitem[BTLK03]{Boresch.2003}
+Stefan Boresch, Franz Tettinger, Martin Leitgeb, and Martin Karplus.
+\newblock Absolute binding free energies: A quantitative approach for their
+  calculation.
+\newblock {\em The Journal of Physical Chemistry B}, 107(35):9535--9551, 2003.
+
+\bibitem[BW17]{Boresch.2017}
+Stefan Boresch and H.~Lee Woodcock.
+\newblock Convergence of single-step free energy perturbation.
+\newblock {\em Molecular Physics}, 115(9-12):1200--1213, 2017.
+
+\bibitem[CAS17]{Cournia.2017}
+Zoe Cournia, Bryce Allen, and Woody Sherman.
+\newblock Relative binding free energy calculations in drug discovery: Recent
+  advances and practical considerations.
+\newblock {\em Journal of chemical information and modeling},
+  57(12):2911--2937, 2017.
+
+\bibitem[dRBO13]{Ruiter.2013}
+Anita de~Ruiter, Stefan Boresch, and Chris Oostenbrink.
+\newblock Comparison of thermodynamic integration and bennett acceptance ratio
+  for calculating relative protein-ligand binding free energies.
+\newblock {\em Journal of computational chemistry}, 34(12):1024--1034, 2013.
+
+\bibitem[EE12]{Even.2012}
+Shimon Even and Guy Even.
+\newblock {\em Graph algorithms}.
+\newblock {Cambridge University Press}, Cambridge, second edition edition,
+  2012.
+
+\bibitem[FWB21]{Fleck.2021}
+Markus Fleck, Marcus Wieder, and Stefan Boresch.
+\newblock Dummy atoms in alchemical free energy calculations.
+\newblock {\em Journal of chemical theory and computation}, 17(7):4403--4419,
+  2021.
+
+\bibitem[GMP{\etalchar{+}}15]{Gapsys.2015}
+Vytautas Gapsys, Servaas Michielssens, Jan~Henning Peters, Bert~L. de~Groot,
+  and Hadas Leonov.
+\newblock Calculation of binding free energies.
+\newblock {\em Methods in molecular biology (Clifton, N.J.)}, 1215:173--209,
+  2015.
+
+\bibitem[JBBTR88]{Jorgensen.1988}
+William~L. Jorgensen, J.~Kathleen Buckner, Stephane Boudon, and Julian
+  Tirado-Rives.
+\newblock Efficient computation of absolute free energies of binding by
+  computer simulations. application to the methane dimer in water.
+\newblock {\em The Journal of Chemical Physics}, 89(6):3742--3746, 1988.
+
+\bibitem[JKII08]{Jo.2008}
+Sunhwan Jo, Taehoon Kim, Vidyashankara~G. Iyer, and Wonpil Im.
+\newblock Charmm-gui: a web-based graphical user interface for charmm.
+\newblock {\em Journal of computational chemistry}, 29(11):1859--1865, 2008.
+
+\bibitem[KALL21]{King.2021}
+Edward King, Erick Aitchison, Han Li, and Ray Luo.
+\newblock Recent developments in free energy calculations for drug discovery.
+\newblock {\em Frontiers in molecular biosciences}, 8:712085, 2021.
+
+\bibitem[keya]{key-2}
+https://github.com/wiederm/transformato.
+
+\bibitem[keyb]{key-4}
+https://pypi.org/project/py3dmol.
+
+\bibitem[keyc]{key-3}
+Rdkit: Open-source cheminformatics; http://www.rdkit.org.
+
+\bibitem[Kol93]{Kollman.}
+Peter Kollman.
+\newblock Free energy calculations: Applications to chemical and biochemical
+  phenomena.
+\newblock {\em Chem. Rev.}, (93):2395--2417, 1993.
+
+\bibitem[LWM15]{Liu.2015}
+Shuai Liu, Lingle Wang, and David~L. Mobley.
+\newblock Is ring breaking feasible in relative binding free energy
+  calculations?
+\newblock {\em Journal of chemical information and modeling}, 55(4):727--735,
+  2015.
+
+\bibitem[MAM{\etalchar{+}}20]{Mey.2020}
+Antonia S. J.~S. Mey, Bryce Allen, Hannah E.~Bruce Macdonald, John~D. Chodera,
+  Maximilian Kuhn, Julien Michel, David~L. Mobley, Levi~N. Naden, Samarjeet
+  Prasad, Andrea Rizzi, Jenke Scheen, Michael~R. Shirts, Gary Tresadern, and
+  Huafeng Xu.
+\newblock Best practices for alchemical free energy calculations.
+\newblock {\em Living Journal of Computational Molecular Science}, 2(1), 2020.
+
+\bibitem[SBHP03]{Shirts.2003}
+Michael~R. Shirts, Eric Bair, Giles Hooker, and Vijay~S. Pande.
+\newblock Equilibrium free energies from nonequilibrium measurements using
+  maximum-likelihood methods.
+\newblock {\em Physical review letters}, 91(14):140601, 2003.
+
+\bibitem[SM13]{Shirts.2013}
+Michael~R. Shirts and David~L. Mobley.
+\newblock An introduction to best practices in free energy calculations.
+\newblock {\em Methods in molecular biology (Clifton, N.J.)}, 924:271--311,
+  2013.
+
+\end{thebibliography}

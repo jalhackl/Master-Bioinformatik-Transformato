@@ -1,0 +1,71 @@
+\chapter{Transformato }
+
+Transformato uses a common core scaffold which contains the atoms
+present in both molecules (i.e., a one-to-one-correspondence between
+atoms of both molecules which in the test cases shown below is always
+based on atom identity). Both initial states of the alchemical transformations
+initialized by Transformato do not contain any dummy atoms, but consist
+solely of the physical atoms of the respective molecules. However,
+dummy atoms are generated via two separate alchemical paths leading
+to the common core. Starting from the initial states, physical atoms
+are successively turned into dummy atoms until the common core structure
+is attained. 
+
+In each transformation step one physical atom (or, if phase space
+overlap is sufficient, a batch of adjacent atoms) is changed into
+a dummy atom (until the common core is attained).
+
+The common core architecture circumvents some of the potential problems
+associated with the single and double topology approaches for dummy
+atoms. The physical endstates of the molecules are mutated until the
+common core structure is attained. This implies that both final states
+do not contain any dummy atoms (these states are identical to the
+physical molecules of interest). Therefore, it is ambiguous if the
+alchemical transformations implemented in Transformato rather belong
+to the single or the dual topology paradigm: As in the latter, different
+dummy atoms are generated for each molecules along the path to the
+common core, but - in contrast to the common dual topology approach
+- the final states are free of any dummy atoms. 
+
+The 'removal' of atoms, i.e. the mutation into dummy atoms, is performed
+according to the serial atom insertion described above, hence Transformato
+does not rely on the usage of softcore potentials. The computation
+of the resulting energy differences is based on Bennett's acceptance
+ratio described above.
+
+Therefore, setting up the mutation path between two molecules across
+the connecting common core and going along by means of serial atom
+insertion, the Transformato workflow is independent of the underlying
+molecular dynamics package and the availability of explicit free energy
+calculation code. In principle, Transformato can work on top of every
+molecular dynamics simulation package.
+
+Input can be created via CHARMM-GUI\cite{Jo.2008}\cite{Braunsfeld.}.
+
+\section{Common core approach}
+
+The main condition for the common core of two molecules is the existence
+of a one to one correspondence of atoms, i.e. the existence of a graph
+isomorphism. The Transformato workflow imposes some further conditions
+on the properties of the common core:
+
+So the junction between common core and dummy region has to be unique;
+one dummy region is only allowed to be connected via one bond to the
+common core. In particular, the maximum common substructure must not
+encompass partial rings (which would imply that dummy regions are
+connected via multiple bonds).
+
+During the mutation process, the atoms are turned off gradually: In
+a first step, all hydrogen atoms outside the common core are excluded.
+The electrostatic interactions of dummy atoms are turned off. In a
+next step, the van-der-Waals-interactions are processed (in one step
+per atom in line with serial atomic insertion). 
+
+Before the common core construction is carried out, hydrogens are
+removed from the molecule representation. This is an important step
+because the presence of hydrogen atoms can lead to a different common
+core (which is created, using default settings, by maximizing the
+number of corresponding atoms) and subsequently a flawed mutation
+route. For the workflow of Transformato, inclusion of hydrogens in
+the mutation algorithms would be detrimental because these atoms are
+already turned off beforehand.
