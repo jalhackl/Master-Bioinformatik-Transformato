@@ -2,24 +2,24 @@
 
 \section{Basics}
 
-In the last years, accuracy and feasibility of free energy calculations
-improved significantly \cite{King.2021}. Main reasons are developments
+In the last years, the accuracy and feasibility of free energy calculations
+improved significantly \cite{King.2021}. The main reasons are developments
 in the accuracy of force fields\cite{Cournia.2017}, the increase
-in computational resources and in particular the usage of graphics
+in computational resources and, in particular, the usage of graphics
 processing units to cope with the high computational demands. By now,
-most MD software packages, like AMBER, CHARMM or GROMACS, offer functions
+most MD software packages, like AMBER\cite{DavidA.Case.2005}, CHARMM\cite{Brooks.2009} or GROMACS\cite{Abraham.2015}, offer functions
 for alchemical free energy calculations which facilitates the set-up
-of the necessary simulations. 
+of such simulations. 
 
 Possible applications can be found in rational drug design and drug
-discovery; e.g. in lead optimization, the binding free energy differences
+discovery; e.g. during lead optimization, the binding free energy differences
 between compounds are of interest.\cite{Cournia.2017}As free energy
 provides information about the thermodynamic favorability of a specific
 process, it can help to find ligands that bind to a biomolecule of
 interest.
 
 One can distinguish between absolute and relative free energy calculations:
-Absolute energy differences are, for instance, solvation or binding
+Absolute free energy differences are, for instance, solvation or binding
 free energy differences of one compound (these results can be compared
 with the free energy of an unrelated compound)\cite{Boresch.2003}\cite{Jorgensen.1988},
 whereas the latter approach computes the free energy difference between,
@@ -32,14 +32,14 @@ and to select specific ligands, drugs etc. for optimizing binding
 affinity. Knowledge of binding affinities can be harnessed for tasks
 like protein engineering \cite{King.2021}.
 
-Relative free energy calculations harness the concept of the thermodynamic
+Relative free energy calculations harness the concept of a thermodynamic
 cycle \cite{Kollman.}(fig. 2.1): The horizontal arrows indicate the
-path from the unbound to the bound state of one of the two ligands,
+path from the unbound to the bound state of each of the two ligands,
 the vertical arrows indicate the transformation from one molecule
-to the other one. According to the thermodynamic cycle, both paths
+to the other one. According to the 2nd law of thermodynamics, both paths
 in the figure from the unbound state of ligand A to the bound state
 of ligand B must exhibit the same free energy difference. These paths
-are closed, i.e. the energy difference has to be 0, hence 
+are closed and so the energy difference has to be zero, i.e., 
 \[
 \Delta G_{A}+\Delta G_{2}=\Delta G_{1}+\Delta G_{B}.
 \]
@@ -47,19 +47,17 @@ are closed, i.e. the energy difference has to be 0, hence
 \[
 \Delta\Delta G=\Delta G_{2}-\Delta G_{1}=\Delta G_{B}-\Delta G_{A}
 \]
-\cite{Cournia.2017}. To obtain knowledge about $\Delta G_{B}-\Delta G_{A}$,
+\cite{Cournia.2017}. To obtain knowledge about $\Delta\Delta G=\Delta G_{B}-\Delta G_{A}$,
 the evaluation of the alchemical transformations $\Delta G_{1}$and
-$\Delta G_{2}$ is hence sufficient. (In practice, the determination
+$\Delta G_{2}$ suffices. (In practice, the determination
 of $\Delta G_{A}$ or $\Delta G_{B}$ usually would require an experimental
-set-up, thus the alchemical calculation could substitute this step
+set-up, thus the alchemical calculation can substitute this step
 or at least indicate if, e.g., a certain ligand is a promising candidate.)
 
-The vertical part of the depicted thermodynamic cycle is easier (or
-the evaluation of the vertical legs needs experimental determination)
+The vertical part of the depicted thermodynamic cycle is easier 
 to compute because the change between both states is much smaller
-(depending on the molecules of interest, only some atoms have to be
-annihilated or created) and thus, in general, fewer intermediate steps
-are necessary; however it involves 'alchemical' transformations, i.e.
+(depending on the molecules of interest, only some atoms change and hence less annihilation or creation steps are ) and thus, in general, fewer intermediate steps
+are necessary; however it involves 'alchemical' transformations, i.e.,
 non-physical intermediates have to be used. 
 \begin{figure}
 \includegraphics[scale=0.8]{cycle1}\caption{Thermodynamic cycle; red arrows indicate transitions between two states
@@ -68,30 +66,28 @@ transformations (Ligand A - Ligand B)}
 
 \end{figure}
 
-In general, the free energy is given by $F=-k_{B}T\ln Q$, where Q
-denotes the partition function. Hence the free energy difference between
+In general, the free energy is given by $F=-k_{B}T\ln Q$, where Q denotes the partition function $Q=\int dr\exp\left(-\beta U\right)$
+with $\beta=\frac{1}{k_{B}T}$. Hence the free energy difference between
 states i and j can be described as:
 
 \[
 \bigtriangleup F_{ij}=-\frac{1}{\beta}\ln\frac{Z_{j}}{Z_{i}}
-\]
-, where Z denotes the partition function $Z=\int dr\exp\left(-\beta U\right)$
-with $\beta=\frac{1}{k_{B}T}$\cite{Shirts.2013}. 
+\] \cite{Shirts.2013}. 
 
 To compute the free energy differences between two states, various
 methods exist. Usually, it is not possible to simply compute the difference
 between the two endstates; hence intermediate states have to be taken
 into account. The difference between the final states can be expressed
-as sum of the difference between these intermediate states: $\Delta F=F_{1}-F_{0}=\sum_{n}\Delta F_{n}$
+as the sum of the difference between these intermediate states: $\Delta F=F_{1}-F_{0}=\sum_{n}\Delta F_{n}$
 \cite{Mey.2020}.
 
 \section{Methods for evaluating free energy differences}
 
 Various approaches for calculating free energy differences exist,
-e.g. thermodynamic integration. Alternative methods are implementation
-using the Zwanzig formula or Bennett's acceptance ratio (which is
+e.g. thermodynamic integration and perturbation. Implementations of the latter approach use
+the Zwanzig formula or Bennett's acceptance ratio method (which is
 used in the Transformato package described below). In the following,
-these three basic approaches will be shortly described. (For a more
+these three approaches will be briefly outlined. (For a more
 comprehensive comparison and estimation of performance differences
 see \cite{Bruckner.2011} and \cite{Ruiter.2013}).
 
@@ -105,9 +101,9 @@ and $\lambda=1$ represent the physical, initial / final states of
 the system. Scaling between those two values, i.e. $0>\lambda<1$,
 gives rise to the unphysical, 'alchemical' intermediate states.
 
-Taking the derivative of the free energy, one gets $\frac{dF}{d\lambda}=\frac{d}{d\lambda}\int e^{-\beta U}=\left\langle \frac{dU\left(r,\lambda\right)}{d\lambda}\right\rangle _{\lambda}$\cite{Shirts.2013}.
-The free energy difference is then given by the integral between both
-final states 
+Taking the derivative of the free energy, one gets $\frac{dF}{d\lambda}=\frac{d}{d\lambda}\int e^{-\beta U dr}=\left\langle \frac{dU\left(r,\lambda\right)}{d\lambda}\right\rangle _{\lambda}$\cite{Shirts.2013}, 
+, where the angular brackets indicate the ensemble average .
+The free energy difference is then given as the integral from $\lambda=0$ to $\lambda=1$:
 \[
 \Delta F=\intop_{\lambda=0}^{\lambda=1}\frac{dF\left(\lambda\right)}{d\lambda}d\lambda.
 \]
@@ -125,12 +121,11 @@ schemes, e.g. trapezoidal rule and Simpson's rule, see \cite{Bruckner.2011b}).
 
 Free energy perturbation relies on the Zwanzig relation (or exponential
 formula). For each configuration of state A the energy difference
-between this state and the corresponding state B is calculated. The
-free energy difference is then given by 
+between this state and the corresponding state B is calculated. So the
+free energy difference is given by 
 \[
 \Delta F_{A\rightarrow B}=F_{B}-F_{A}=-\frac{1}{\beta}\ln\frac{Q_{B}}{Q_{A}}=-k_{b}T\ln\left\langle \exp\left(\frac{-\Delta U_{A\rightarrow B}}{k_{B}T}\right)\right\rangle _{A}
-\]
-, where the angular brackets indicate the ensemble average \cite{Gapsys.2015}. 
+\]\cite{Gapsys.2015}. 
 
 Several variants of the formula exist: For instance, one can either
 calculate forward or backward perturbations (either $\Delta F\left(A\rightarrow B\right)$or
@@ -138,7 +133,7 @@ $-\Delta F\left(B\rightarrow A\right)$ is computed), or, as it is
 usually the case, use double-wide sampling where energy differences
 from both directions are processed \cite{Bruckner.2011}.
 
-As for thermodynamic integration, usually it will be necessary to
+As for thermodynamic integration, usually it is necessary to
 introduce intermediate states. The free energy between the final states
 0 and 1 is calculated as sum of the differences between all adjacent
 intermediate states; in the case of n states: $\Delta F_{0\rightarrow1}=\sum_{i=0}^{n-1}\left(F\left(i+1\right)-F\left(i\right)\right)$.
@@ -151,22 +146,22 @@ if one knows that the difference between the samples is very small\cite{Shirts.2
 
 \subsection{Bennett Acceptance Ratio (BAR)}
 
-A different approach for computing the free energy difference between
+An extension of perturbation for computing the free energy difference between
 two states is the usage of Bennett's Acceptance Ratio\cite{Bennett.1976}. 
 
-Extension of the denominator and numerator of the ratio of the canonical
+Expansion of the denominator and numerator of the ratio of the canonical
 partition functions of both states yields: 
 \[
 \frac{Q_{0}}{Q_{1}}=\frac{Q_{0}\int W\exp\left(-U_{0}-U_{1}\right)dq^{N}}{Q_{1}\int W\exp\left(-U_{0}-U_{1}\right)dq^{N}}=\frac{\left\langle W\exp\left(-U_{0}\right)\right\rangle _{1}}{\left\langle W\exp\left(-U_{1}\right)\right\rangle _{0}}
 \]
 
-, where W denotes a (for now arbitrary) weighting function. Assuming
+where W denotes a (for now arbitrary) weighting function. Assuming
 a Gaussian distribution of the estimation error in the limit of large
 samples, the optimal W can be determined as $W\left(q_{1}...q_{n}\right)=c\left(\frac{Q_{0}}{n_{0}}\exp\left(-U_{1}\right)+\frac{Q_{1}}{n_{1}}\exp\left(-U_{0}\right)\right)^{-1}$\cite{Bennett.1976}. 
 
-For using Bennett's acceptance ratio method, two simulations have
+To use Bennett's acceptance ratio method, two simulations have
 to be carried out. One starts at $\lambda=0$, the other one at $\lambda=1$.
-Forward and backward simulation are processed totally equivalently. 
+Forward and backward simulation are processed simultaneously. 
 
 For two $\lambda$-states, the free energy difference can be expressed
 \[
@@ -185,8 +180,8 @@ $N_{j}$ and $N_{i}$denote the number of sampled configurations from
 state j and i, respectively.
 
 BAR gives a minimal variance free energy estimate. There is also an
-alternative approach yielding the formula. It can be shown that the
-Bennett acceptance ratio method works as a maximum likelihood argument.
+alternative derivation for the formula. It can be shown that the
+Bennett acceptance ratio method works as a maximum likelihood estimator.
 Using BAR, one obtains the asymptotically unbiased (i.e. for an infinite
 number of measurements it yields an unbiased estimation) estimation
 with lowest variance\cite{Shirts.2003}. 
@@ -197,7 +192,7 @@ be expressed implicitly as:$\frac{\partial\ln L\left(\Delta F\right)}{\partial\D
 
 Also BAR depends on the overlap between the states, however it is
 more robust and reliable in cases of rather poor overlap \cite{Ruiter.2013}
-(especially when compared to FEP). (If BAR outperforms thermodynamic
+(especially when compared to FEP). (Whether BAR outperforms thermodynamic
 integration crucially depends on the smoothness of the integrand.
 For more pronounced changes in molecular properties between the computed
 states, BAR seems to be superior\cite{Shirts.2013}.)
@@ -210,13 +205,13 @@ there are only two states corresponding, e.g. to an atom present in
 one of the two molecules but not in the other one. If the two molecules
 have greater differences, for each atom which has to be transformed
 into a dummy atom this annihilation process has to be carried out.)
-The van der Waals endpoint problem (or even 'catastrophe') describes
+The term 'van der Waals endpoint problem' (or even 'catastrophe') denotes
 several problems which can occur when a particle is removed (i.e.
 turned into a dummy atom by turning off the intermolecular interactions).
 \cite{Boresch.2011}
 
-The occurence of this problem can be easily illustrated for the case
-of a scaling of the coupling parameter describing a linear pathway,
+The occurrence of this problem can be easily illustrated for the case
+of a linear dependence of the coupling parameter,
 i.e.
 
 \[
@@ -246,13 +241,13 @@ If thermodynamic integration is used, a related problem occurs because
 $\left\langle \frac{\partial U}{\partial\lambda}\right\rangle _{\lambda}$can
 become singular. This is obvious for the example using a linear pathway:
 $\frac{\partial U\left(\lambda\right)}{\partial\lambda}=\sum_{1\leq i\leq N-1}u_{i,N}$.
-As for the problem leading to division by zero, the fact that the
+As for the problem leading to a division by zero, the fact that one of the
 still interacting particles can be located at exactly the same place
 in the simulation box as the dummy atom causes this quantity to change
 in an unpredictable way and, in the worst case, become singular \cite{Boresch.2011}.
 
-The common way to avoid such problems is the usage of soft-core potentials.
-An additional term is added to the Lennard-Jones potential so that
+The common way to avoid such problems is the usage of soft-core potentials \cite{Steinbrecher.2011}.
+An additional term is added to the particle-particle distance in the Lennard-Jones potential so that
 no division by 0 occurs and the corresponding derivative does not
 become singular. The usual Lennard-Jones potential is replaced by
 a slightly modified potential which ensures that at $r=0,\lambda>\text{0}$
@@ -270,7 +265,7 @@ supported.
 \section{Dummy atoms, Single/Dual topology}
 
 Usually, the number of atoms of both molecules of interest, i.e. the
-two final states of the alchemical free energy calculation, is not
+two end states of an alchemical free energy calculation, is not
 the same. However, the atom number has to stay constant (as the simulation
 takes place in the canonical ensemble). Because of that constraint,
 so-called dummy atoms are necessary. \cite{Fleck.2021} These dummy
@@ -279,7 +274,7 @@ have to be connected via bonded interactions to the rest of the molecule
 they belong to so that they do not get detached and float through
 the simulation box.
 
-There are two main approaches for adding dummy atoms to the system: 
+There are two main approaches for setting up alchemical mutations, both involving dummy atoms: 
 
 In single topology, during the mutation process physical atoms are
 transformed into dummy atoms which belong only to the start state.
@@ -294,40 +289,38 @@ of atoms which have no direct correspondence in the other molecule.
 Usually, in total even more dummy atoms are present in the system
 as in single topology. \cite{Fleck.2021}
 
-The implementation of these dummy atoms, however, is not without pitfalls.
-Using single topology errors caused by kept bonded interactions can
-emerge. The order in which interactions are turned off has to be constrained
+The implementation of such dummy atoms, however, is not without pitfalls.
+Using single topology, errors can arise if too many bonded interactions are kept. The order in which interactions are turned off has to be constrained
 by specific rules to ensure that the contributions exactly cancel
 out each other and attention has to be paid under which conditions
 dummy atom contributions cancel out exactly. \cite{Fleck.2021}
 
 \section{Serial atom insertion}
 
-Alternatively to modifications of the coupling parameter, one can
+As an alternative to modifying the coupling parameter, one can
 try to create new states by turning off atoms in one step without
 intermediate values. In \cite{Boresch.2011}, this approach is called
 Serial atom insertion. Atoms are turned off serially (one after one
-or in batches). There is no gradual damping of the interactions; the
+or in small batches). There is no gradual damping of the interactions; the
 LJ-interactions of a molecule are either present ( $\lambda=1$) or
 turned off ( $\lambda=0$).
 
 A sufficient overlap of neighboring states in phase space is crucial
 for any alchemical free energy calculation. So the question arises
-if turning off of one atom in one step is in agreement with this necessary
-condition. The feasibility of this approach relies on Bennett's acceptance
-ratio which is proven to can work with neighboring states created
+if turning off of one atom in one step is in agreement with this prerequisite. The feasibility of this approach relies on Bennett's acceptance
+ratio which was shown to work with neighboring states created
 by serial atomic insertion \cite{Boresch.2011}.
 
-In particular, serial atom insertion has the advantage that it works
+In particular, Serial atom insertion has the advantage that it works
 even for MD algorithms which lack explicit support for free energy
 simulations and soft-core potentials are not needed (because the coupling
 parameter takes only the values 0 and 1). The free energy differences
 between states can be assembled from 'normal' simulations.
 
-It seems that most severe restriction due to the van der Waals Endpoint
-problem is the instability of the integrator near $0$. As such states
+The most severe restriction due to the van der Waals Endpoint
+problem is the instability of the integrator near the endstate where an atom has almost vanished (i.e.,  $\lambda=0$ or  $\lambda=1$). As such states
 are not used in Serial atom insertion, this problem is automatically
-circumenvented.
+avoided.
 
 The feasibility of this approach depends on the sufficient overlap
 between the states. Using BAR, no intermediate steps are necessary

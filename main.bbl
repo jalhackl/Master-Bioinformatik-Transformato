@@ -8,6 +8,13 @@
   editors, {\em Proceedings of the 7th Python in Science Conference}, pages
   11--15, Pasadena, CA USA, 2008.
 
+\bibitem[AMS{\etalchar{+}}15]{Abraham.2015}
+Mark~James Abraham, Teemu Murtola, Roland Schulz, Szil{\'a}rd P{\'a}ll,
+  Jeremy~C. Smith, Berk Hess, and Erik Lindahl.
+\newblock Gromacs: High performance molecular simulations through multi-level
+  parallelism from laptops to supercomputers.
+\newblock {\em SoftwareX}, 1-2:19--25, 2015.
+
 \bibitem[BB11a]{Boresch.2011}
 Stefan Boresch and Stefan Bruckner.
 \newblock Avoiding the van der waals endpoint problem using serial atomic
@@ -26,6 +33,16 @@ Stefan Bruckner and Stefan Boresch.
 \newblock Efficiency of alchemical free energy simulations. ii. improvements
   for thermodynamic integration.
 \newblock {\em Journal of computational chemistry}, 32(7):1320--1333, 2011.
+
+\bibitem[BBM{\etalchar{+}}09]{Brooks.2009}
+B.~R. Brooks, C.~L. Brooks, A.~D. Mackerell, L.~Nilsson, R.~J. Petrella,
+  B.~Roux, Y.~Won, G.~Archontis, C.~Bartels, S.~Boresch, A.~Caflisch, L.~Caves,
+  Q.~Cui, A.~R. Dinner, M.~Feig, S.~Fischer, J.~Gao, M.~Hodoscek, W.~Im,
+  K.~Kuczera, T.~Lazaridis, J.~Ma, V.~Ovchinnikov, E.~Paci, R.~W. Pastor, C.~B.
+  Post, J.~Z. Pu, M.~Schaefer, B.~Tidor, R.~M. Venable, H.~L. Woodcock, X.~Wu,
+  W.~Yang, D.~M. York, and M.~Karplus.
+\newblock Charmm: the biomolecular simulation program.
+\newblock {\em Journal of computational chemistry}, 30(10):1545--1614, 2009.
 
 \bibitem[Ben76]{Bennett.1976}
 Charles~H. Bennett.
@@ -62,6 +79,13 @@ Anita de~Ruiter, Stefan Boresch, and Chris Oostenbrink.
 \newblock Comparison of thermodynamic integration and bennett acceptance ratio
   for calculating relative protein-ligand binding free energies.
 \newblock {\em Journal of computational chemistry}, 34(12):1024--1034, 2013.
+
+\bibitem[DTT{\etalchar{+}}05]{DavidA.Case.2005}
+{David A. Case}, {Thomas E. Cheatham}, {Tom Darden}, {Holger Gohlke}, {Ray
+  Luo}, {Kenneth M. Merz}, {Alexey Onufriev}, {Carlos Simmerling}, {Bing Wang},
+  and {Robert J. Woods}.
+\newblock The amber biomolecular simulation programs.
+\newblock {\em Journal of computational chemistry}, 26(16):1668--1688, 2005.
 
 \bibitem[EE12]{Even.2012}
 Shimon Even and Guy Even.
@@ -129,16 +153,34 @@ Antonia S. J.~S. Mey, Bryce Allen, Hannah E.~Bruce Macdonald, John~D. Chodera,
 \newblock Best practices for alchemical free energy calculations.
 \newblock {\em Living Journal of Computational Molecular Science}, 2(1), 2020.
 
+\bibitem[New10]{Newman.2010}
+Mark E.~J. Newman.
+\newblock {\em Networks: An introduction}.
+\newblock {Oxford University Press}, Oxford, 2010.
+
 \bibitem[SBHP03]{Shirts.2003}
 Michael~R. Shirts, Eric Bair, Giles Hooker, and Vijay~S. Pande.
 \newblock Equilibrium free energies from nonequilibrium measurements using
   maximum-likelihood methods.
 \newblock {\em Physical review letters}, 91(14):140601, 2003.
 
+\bibitem[SJC11]{Steinbrecher.2011}
+Thomas Steinbrecher, InSuk Joung, and David~A. Case.
+\newblock Soft-core potentials in thermodynamic integration: comparing one- and
+  two-step transformations.
+\newblock {\em Journal of computational chemistry}, 32(15):3253--3263, 2011.
+
 \bibitem[SM13]{Shirts.2013}
 Michael~R. Shirts and David~L. Mobley.
 \newblock An introduction to best practices in free energy calculations.
 \newblock {\em Methods in molecular biology (Clifton, N.J.)}, 924:271--311,
   2013.
+
+\bibitem[WFBB22]{Wieder.2022}
+Marcus Wieder, Markus Fleck, Benedict Braunsfeld, and Stefan Boresch.
+\newblock Alchemical free energy simulations without speed limits. a generic
+  framework to calculate free energy differences independent of the underlying
+  molecular dynamics program.
+\newblock {\em Journal of computational chemistry}, 43(17):1151--1160, 2022.
 
 \end{thebibliography}

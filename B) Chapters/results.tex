@@ -1,6 +1,6 @@
 \chapter{Results}
 
-A set of ligands from PDBbind has been downloaded and used for testing
+A set of twenty ligands from the PDBbind-CN database has been downloaded and used for testing
 purposes (common core construction as well as mutation routes). It
 should be noted, however, that the common core of pairs of these ligands
 in some cases violate the rules of Transformato concerning a valid
@@ -27,9 +27,125 @@ shows two molecules and their shared common core.
 \begin{figure}
 \includegraphics{trafo_py3d_1verkleinert}
 
-\caption{Visualization of the mutation route using py3dmol; upper row: rdkit-representations
-of both molecules and the common core; lower row: py3Dmol visualizations;
+\caption{Visualization of the mutation route using Py3dmol; upper row: Rdkit-representations
+of both molecules and the common core; lower row: Py3Dmol visualizations;
 left and right: molecules; middle: common core of both molecules}
 
 \end{figure}
+
+
+\section{Scoring schemes}
+
+Several scoring schemes have been implemented to assess and compare
+the mutation routes proposed by the new algorithms.
+
+1) Betweenness centrality: Betweenness centrality measures the number
+of shortest paths going through a specific node\cite{Newman.2010}. More central atoms
+will have a higher centrality coefficient, whereas atoms remote from
+the common core will have a lower (e.g., the last atom of a chain
+has a coefficient of 0 because no path between two other atoms visits
+the representing node). After each step, the node is removed from
+the graph.
+
+For avoiding undesired mutations, the maximum betweenness centrality
+of all mutation steps is more decisive; hence the average of the mean
+as well as the maximum betweenness centrality of all removed nodes
+is shown below.
+
+\begin{figure}
+	
+	\includegraphics[scale=0.8]{betweenness_mean_all}\includegraphics[scale=0.8]{betweenness_max_all}\caption{Betweenness centrality}
+	
+\end{figure}
+
+2) Closeness centrality: Closeness centrality of a specific node is
+given by the inverted distances between this node and all other nodes
+of the graph\cite{Newman.2010}. Atoms more distant from the common core have a lower
+closeness centrality.
+
+For using this centrality measure as scoring function for the mutation
+algorithms, the dummy region with the greatest number of atoms (simply
+because this is probably the most \textquoteleft interesting\textquoteright{}
+one, it would also be possible to take the average of all dummy regions
+etc.) is selected. The closeness centrality of each removed node for
+the full graph (i.e. all atoms, including already removed ones) is
+computed. A 'good' mutation route should show an increase in closeness
+centrality because at the beginning the atoms with a high distance
+from the other atoms (and hence the common core atoms) are removed.
+To evaluate this relation, linear regression of the computed centrality
+values is performed. A higher slope indicates a 'better' mutation
+route. Furthermore, correlation coefficients (Spearman, Kendall's
+Tau) have been computed. Again, a higher correlation shows that the
+closeness centrality of the atoms removed is increasing. Correlation
+coefficients as well as regression coefficients are reported in the
+tables below.
+
+\begin{figure}
+	
+	\includegraphics{closeness_slope_all}
+	
+	\includegraphics{closeness_spearman}
+	
+	\includegraphics{closeness_kendall}\caption{Closeness centrality}
+	
+\end{figure}
+
+
+3) ring-related scores: As stated above, the processing of ring structures
+is of crucial importance and pronounced differences between DFS and
+BFS occur. Four properties were calculated: The mean asymmetry at
+ring opening was measured: After the first atom of a ring structure
+is removed, usually two chains emerge. The length difference (i.e.
+the difference in atom number) of these two chains was measured. If
+both chains are equally long, the asymmetry is 0. 
+
+The 'asymmetry during ring disassemby'-score does not only evaluate
+the first atom removed from a ring, but checks at each mutation step
+involving a ring atom if asymmetric chains emerge.
+
+The 'mean number of open rings' indicates how many ring structures
+are opened on average and the 'mean processing time of rings' determines
+how many mutation steps it takes to completely process a ring (until
+only one atom of the former ring structure is present).
+
+It should be noted that even using the new algorithms it is possible
+that a \textquoteleft broken\textquoteright{} ring stays for a while
+in the system because atoms from other areas of the dummy region (e.g.,
+a longer chain) are processed meanwhile. However, in contrast to DFS,
+it should not happen that a ring near to the common core is opened
+initially and hence the mean and maximum time should be significantly
+shorter. 
+
+In general, calculation of the scoring functions for the selection of ligands from the PDBbind data set (statistics are presented in table 1) match the expectations. 
+
+
+\begin{table}
+	
+	\begin{tabular}{|>{\centering}p{2.5cm}|>{\centering}p{2.5cm}|>{\centering}p{2.5cm}|>{\centering}p{2.5cm}|>{\centering}p{2.5cm}|}
+		\hline 
+		number of processed routes & dummy atoms (mean) & atoms/dummy region (mean) & number of cycles (mean) & polycyclic {[}\%{]}\tabularnewline
+		\hline 
+		378 & 26.97 & 16.30 & 1.66 & 30.16\tabularnewline
+		\hline 
+	
+	\end{tabular}\caption{statistics of PDBbind selection; number of processed routes: total number of computed routes for a specific combination of two molecules; dummy atoms (mean): average number of total dummy atoms in the computed mutation routes; atoms/dummy region (mean): number of total dummy atoms divided by the number of dummy regions; number of cycles (mean): average number of cycles in all mutation routes; polycyclic: percentage of mutation routes which involve polycyclic structures, i.e. there are atoms present that participate in multiple cycles }
+\end{table}
+
+
+
+
+\begin{figure}
+	
+	\includegraphics[scale=0.8]{mean_ass_beginn_bfs}\includegraphics[scale=0.8]{mean_ass_total_onlyiter}
+	
+	\includegraphics[scale=0.8]{mean_open_rings_all}\includegraphics[scale=0.8]{mean_processing_all}
+	
+	\caption{Ring-related scores}
+	
+\end{figure}
+
+In the plots presenting the scoring-functions, all molecule combinations
+from the PDBbind data set are used. It could be insightful to use
+only a subset (e.g. only molecules with dummy regions involving multiple
+ring structures ore a minimum number of dummy atoms) or to try even a larger selection from the PDBbind database.
 

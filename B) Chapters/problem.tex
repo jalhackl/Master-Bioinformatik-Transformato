@@ -10,11 +10,11 @@ workflow.
 In a first step, the reliability of the current Transformato workflow
 had to be assessed, for instance the quality of the proposed common
 cores. Different settings for the construction of the maximum common
-substructure have been compared. 
+substructure were compared. 
 
-The order of the transformation steps has been optimized, especially
+The order of the transformation steps was optimized, especially
 for the case of more complex mutation routes which occur for connected
-dummy regions involving ring structures, multiple chains or various
+dummy regions involving ring structures, multiple chains or different
 atom types. 
 
 Particularly intricate problems occur for ring structures. There are
@@ -30,33 +30,30 @@ detached from the main part encompassing the common core, i.e. no
 disconnected components emerge under any circumstances.
 
 Using a graph representation of the involved molecules, the construction
-of the intermediates between the final states has been optimized.
+of the intermediates between the final states was optimized.
 New algorithms have been written in Python and subsequently integrated
 into the existing Transformato package. Finally, the effect of different
-algorithms on the efficiency of the free energy calculations had to
-be validated by means of molecular dynamics simulations. 
+algorithms on the efficiency of the free energy calculations was validated by means of molecular dynamics simulations. 
 
-To obtain a reliable test set of molecules, sdf-files of ligands have
-been downloaded from PDB-BIND. These test molecules should cover a
+To obtain a reliable test set of molecules, sdf-files of ligands were downloaded from the PDBbind-CN database. These test molecules should cover a
 broad range in size, complexity and potentially intricate compounds,
 like polycyclic structures and highly branched chains.
 
 \subsection{Used algorithms and software packages}
 
 The Transformato package is written in Python. Therefore, Python packages
-have also been used for molecule processing and graph representations.
+also were used for molecule processing and graph representations.
 The creation of molecule objects and the determination of the maximum
-common substructure is done via rdkit\cite{key-3}. NetworkX\cite{AricA.Hagberg.2008}
-provides functions for graph visualization and analysis. It is easily
-possible to convert molecules created using rdkit into networkx graph-objects
-and hence utilize the functions of networkx for the molecules and
+common substructure is done via Rdkit\cite{key-3}. NetworkX\cite{AricA.Hagberg.2008}
+provides functions for graph visualization and analysis. It is easy to convert molecules created using Rdkit into NetworkX graph-objects
+and hence utilize the functions of NetworkX for the molecules and
 common cores constructed. Particularly, graph traversal algorithms
 like breadth-first and depth-first search can be easily implemented
 (see below).
 
 \section{Assessment of common core settings}
 
-Rdkit allows the search of a maximal common substructure (which can
+Rdkit allows the search for a maximal common substructure (which can
 serve as common core for Transformato) via the \texttt{rdFMCS.FindMCS}-function.
 Per default, the objective is to maximize the number of atoms, albeit
 different settings, like maximize the number of bonds or ignoring
@@ -64,11 +61,11 @@ or equalizing specific atom types are available. At the moment, for
 Transformato maximization of atoms and atom identity is used. If the
 data comprises hydrogens, these are excluded before the common core
 is calculated. As stated above, the presence of hydrogens can influence
-the maximum common substructure heavily (fig. 4.1).
+the maximum common substructure heavily (fig. 4.1) because the number of atoms is modified and this quantity is maximized for the maximal common substructure.
 
 \begin{figure}
 
-\includegraphics[scale=0.3]{hydrogens_plus_minus}\caption{left: molecule 1; middle: common core; right: molecule 2; the first
+\includegraphics[scale=0.3]{hydrogens_plus_minus}\caption{These examples demonstrate that the addition of hydrogens can influence the construction of the common core; left: molecule 1; middle: common core; right: molecule 2; in the representations of the full molecule, the common cores are marked in red; the first
 and the last two rows show the same molecules, in the upper row without,
 in the lower with hydrogens, in case of the lower molecule combination
 the common core changes when hydrogens are added to the Rdkit-molecule
@@ -78,15 +75,15 @@ representation }
 
 Settings concerning the allowed involvement of ring structures in
 the common core are of crucial importance. Firstly, these parameters
-can influence the common core construction drastically and, secondly,
-can even be decisive if the generated common core is valid for the
+can influence the common core construction drastically and, secondly, they
+can even be decisive whether the generated common core is valid for the
 Transformato workflow.
 
-Important ring-related settings are ringMatchesRingOnly, completeRingsOnly
-and the ringCompare-parameter. 
+Important ring-related settings are \texttt{ringMatchesRingOnly}, \texttt{completeRingsOnly}
+and the \texttt{ringCompare-parameter}. 
 
-To obtain valid common cores for the processing of Transformato, ringMatchesRingOnly
-and completeRingsOnly must be set to True: The former argument indicates
+To obtain valid common cores for the processing of Transformato, \texttt{ringMatchesRingOnly}
+and \texttt{completeRingsOnly} must be set to True: The former argument indicates
 that ring atoms of one molecule are only matched against ring atoms
 of the other molecule, the latter ensures that no partial rings are
 involved in the common core. Especially the latter constraint is a
@@ -94,42 +91,38 @@ necessary condition for a valid common core. (Otherwise, if partial
 rings take part of the common core, dummy regions will be inevitably
 connected to the common core via multiple bonds.)
 
-The ringCompare-parameter parameter accepts the StrictRingFusion-argument.
+The \texttt{ringCompare}-parameter parameter accepts the \texttt{StrictRingFusion}-argument.
 It imposes that in case of multiple rings aromaticity is properly
 taken into account. Fig. 4.2 illustrates the effect of the parameters
 on the common core of two cyclic example molecules. However, enforcing
-of StrictRingFusion can still lead to maximum common substructures
+of \texttt{StrictRingFusion} can still lead to maximum common substructures
 which are not valid Transformato common cores because a dummy region
 is connected via multiple ring atoms of the same ring with the common
-core.
-
-(It seems to be advisable to warn the user in this case that the common
+core. It seems to be advisable to warn the user in this case that the common
 core does not fit the expectations of the Transformato workflow. Alternatively,
 one could check after the creation if the common core is valid. If
 it is not, one could for instance search for a new common core encompassing fewer
-atoms until a valid common core is found. 
-Alternatively, one could prohibit the involvement of ring atoms for this particular
-molecule combination.
-Probably the most efficient solution would be to remove the rings which contain atoms which participate in the partial ring causing the invalid common core from the representation used for creating the maximum common substructure and afterwards start a new search for a valid common core.
-(Of course,
+atoms until a valid common core is found. A further option would be to prohibit the involvement of ring atoms for this particular molecule combination.
+Probably the most efficient solution would be to remove the rings that contain atoms which participate in the partial ring causing the invalid common core from the representation used for creating the maximum common substructure and afterwards start a new search for a valid common core.
+Of course,
 in the worst scenario, i.e. if both molecules only consist of ring-participating
-atoms, no valid common core is conceivable.)
+atoms, no valid common core is conceivable.
 At the moment, the mutation algorithms presented below can deal with such invalid common cores. A helper function arbitrarily chooses one of the connections between common core and dummy region and the other ones are ignored for the mutation path.
 
 
 \begin{figure}
 \includegraphics[scale=0.4]{sterols_wo_strictfusion}\includegraphics[scale=0.4]{sterols_w_strictfusion}
 
-\caption{First and second column: Common core of two molecules (cholesterol
+\caption{'Strict fusion' can affect the construction of the common core drastically; first and second column: Common core of two molecules (cholesterol
 and cortisol) without strict fusion; third and fourth column: Common
-core of two molecules with strict fusion }
+core of two molecules with strict fusion; in the images of the full molecule graph common cores are marked in red }
 
 \end{figure}
 
 
 \section{Graph algorithms}
 
-Using Networkx and Rdkit, the molecules and their common core are
+Using NetworkX and Rdkit, the molecules and their common core are
 represented as graphs (in which nodes indicate atoms and edges bonds
 between them). The selection of the optimal mutation route can be
 understood as a graph traversal problem in which the constraints mentioned
@@ -149,7 +142,7 @@ Shortest paths to all nodes of the dummy region are determined.
 
 \begin{figure}
 
-\includegraphics[scale=0.45]{dfs_bfs_dijkstra_comp1}\caption{Comparison of different graph traversal algorithms; left: depth first
+\includegraphics[scale=0.45]{dfs_bfs_dijkstra_comp1}\caption{Comparison of different graph traversal algorithms; green nodes represent the root atom, blue atoms (in the figure shown right) have increased weights; left: depth first
 search; middle: breadth first search; right: Dijkstra algorithm, the
 edges connecting blue colored nodes have increased weights leading
 to a mutation route differing from BFS; the final processing of the
@@ -159,7 +152,7 @@ nodes happens in reversed order}
 
 As the longest shortest path pertains to the node which has the greatest
 distance from the root (i.e. the atom with greatest distance from
-the common core), the list of mutations orders has to be reversed.
+the common core), the last element of the list returned by the search algorithm indicates the atoam which has to be removed first; hence, the list of mutations orders finally has to be reversed.
 
 If weighted graphs are used, the Dijkstra algorithm can be applied.
 It finds the shortest path between two nodes or between a root node
@@ -167,25 +160,24 @@ and all other nodes of the weighted graph (the weights indicate the
 edge length from one node to the other one) . For unweighted graphs
 (or, equivalently, graphs with uniform weights), the Dijkstra algorithm
 reduces to BFS. Fig. 4.3 shows the different routes for modified weights.
-(In the test cases presented below, graphs with uniformly weights
-are initialized.)
+(In the test cases presented below, all graphs are initialized with uniformly weights.)
 
 \section{Added functionality}
 
 \subsection{Functions}
 
 To use the newly implemented mutation algorithms, initially the graph
-is endowed with weights stored in a dictionary. The simulations shown
-below use uniform weights, however it is possible to modify them to
-enforce a certain mutation route (e.g. accelerating or postponing
-the exclusion of specific heteroatoms). 
+is given with weights stored in a dictionary. The simulations shown
+below use uniform weights, however it is possible to modify these to
+enforce a specific mutation route (e.g., accelerating or postponing
+the exclusion of heteroatoms). 
 
 The Dijkstra algorithm is implemented via the \texttt{single\_source\_dijkstra}-function
-of networkx.
+of NetworkX.
 
 The core functionality is given by the mutation processing functions.
-At the moment, three such functions are implemented, additional to
-the simple DFS-approach which leads to undesired outcomes. These functions
+At the moment, three such functions are implemented, in addition to
+the simple DFS-approach, which leads to undesired outcomes. These functions
 can be further modified by passing arguments which activate some helper
 functions (see below).
 
@@ -203,8 +195,7 @@ applied iteratively, i.e. after each removal of an atom
 works iteratively, i.e. after each removal of an atom, algorithm is
 chosen depending on current state
 
-\texttt{\_calculate\_order\_of\_LJ\_mutations }has already been implemented
-in Transformato, but computes defective mutation routes and hence
+\texttt{\_calculate\_order\_of\_LJ\_mutations }was already present in Transformato, but computes defective mutation routes and hence
 should only be used for test purposes. The other three algorithms
 are new and, in any case, resolve most of the problems of the earlier
 algorithm (especially isolated removal of ring atoms).
@@ -227,10 +218,10 @@ node. It is currently used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new
 \texttt{change\_route\_cycles}(route, cycledict, degreedict, weightdict,
 G): this function is used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new}
 and sorts nodes according to degree, cycle participation and information
-of nodes to be removed immediately before. The preliminary mutation
-path is sorted using cycle and degree dictionary if nodes have same
+about the nodes which have been removed immediately before. The preliminary mutation
+path is sorted using cycle and degree dictionary. If nodes have same
 weight (i.e. distance from root), the node participating in more cycles
-is removed later if nodes have same weight (i.e. distance from root)
+is removed later if nodes have same the weight (i.e. distance from root)
 and same cycle participation number, the node which has more neighbours
 already removed is removed earlier
 
@@ -261,33 +252,31 @@ would be exactly the same.
 
 In each algorithm, all nodes of the graph (i.e. atoms) are usually
 initialized with the same weight (e.g. 5). Alternatively, the user
-could also pass a individual dictionary with different weights for
+could also pass an individual dictionary with different weights for
 each atom type.
 
 The BFS- / Dijkstra-algorithm starting from the node connecting common
-core and dummy region is applied via the networkx-function \texttt{single\_source\_dijkstra}
+core and dummy region is applied via the NetworkX-function \texttt{single\_source\_dijkstra}
 which determines the path length of all dummy nodes to the root.
 
 The main difference between these algorithms is that in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter}
 and \texttt{...\_iter\_change} the graph traversal part performed
-using the Dijkstra algorithm is applied after each exclusion step
-(i.e. $n!$ atoms are visited instead of $n$; even for large molecules
-the additional computational cost is negligible, even in comparison
-to the computational time the creation of the common core needs).
-This has the advantage that after each mutation step weights can be
-updated or even the search algorithm modified. 
+using the Dijkstra algorithm is applied after each exclusion step; i.e. $n!$ atoms are visited instead of $n$; even for large molecules the additional computational cost is negligible, in particular in comparison
+to the computational time needed for the search of the common core.
+The advantage of the iterated version is that after each mutation step weights can be
+updated or even the search algorithm can be modified. 
 
-The latter option allows for different mutation strategies depending
-on the current state. This is demonstrated in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change}.
+This feature allows for different mutation strategies depending
+on the current state. Such an approach is demonstrated in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change}.
 In contrast to the other algorithms, the algorithm processes information
 if the last removed node was part of a chain or a cycle. Depending
 on the state, the chain or cycle is processed fully before the algorithm
-moves on to other parts of the molecule. Fig. 4.5 demonstrates the difference between both iter-algorithms.
+moves on to other parts of the molecule. Fig. 4.5 demonstrates the difference between the two versions of the iterated algorithm.
 Whereas in the non-iterated algorithm the found mutation route has to be reversed (since the atom node with the highest distance from the root is the first which has to be turned off), in the iterated versions at each iteration the node with the highest distance is added to an array which determines the final mutation route.
 
-The computed mutation routes can be visualized directly via rdkit.
+The computed mutation routes can be visualized directly via Rdkit. 
 The route is represented by a colour gradient used for the atoms involved
-in the mutation process (\texttt{\_show\_common\_core\_gradient}). 
+in the mutation process (\texttt{\_show\_common\_core\_gradient}). By default, the color spectrum ranges from red to green; the first atom to be removed is colored red, the last green.
 
 Furthermore, an animated 3D-visualization of the mutation process
 is implemented using py3Dmol (\texttt{animated\_visualization\_3d\_v2})\cite{key-4}. 
@@ -295,9 +284,9 @@ is implemented using py3Dmol (\texttt{animated\_visualization\_3d\_v2})\cite{key
 \begin{figure}
 \includegraphics[scale=0.4]{simple_ring_exampledfs.png}
 
-\caption{left: dfs-algorithm; right: bfs-algorithm; common core in dark; dfs
+\caption{comparison of typical DFS- and BFS-mutation route for a single ring structure; left: DFS-algorithm; right: BFS-algorithm; in all depictions of mutation routes the common core is shown in dark, the color gradient starts at red indicating the atom first to be removed and ends at green; DFS
 starts at carbon 22 and thus ring breakage gives rise to one long
-chain which is processed subsequently, whereas bfs starts at carbon
+chain which is processed subsequently, whereas BFS starts at carbon
 22 and the two emerging chains are processed in a symmetric fashion
 }
 
@@ -307,14 +296,15 @@ chain which is processed subsequently, whereas bfs starts at carbon
 \subsection{Examples for processing molecules}
 
 \begin{figure}
-\includegraphics[scale=0.3]{iter_iter_change_1a5g_1}
+\includegraphics[scale=0.4]{iter_iter_change_1a5g_1}
 
-\includegraphics[scale=0.3]{iter_iter_change_1a5g_2}\caption{Example for the differences between iter- and iter\_change-algorithm;
+\includegraphics[scale=0.4]{iter_iter_change_1a5g_2}\caption{Example for the differences between iter- and iter\_change-algorithm;
 left: iter; right: iter-change; iter-change processes all atoms within
 a chain or a ring at once (if possible) before switching to other
 parts of the molecule}
 \end{figure}
 
+In the current version of Transformato, one suboptimal route finding algorithm using DFS and several versions based on BFS are implemented.
 For single rings, BFS (Dijkstra) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root (fig 4.4).
 In more complex molecules, the systematic exploration of chains in
 depth first search inevitably leads to big local gaps in processing
@@ -330,9 +320,9 @@ In this case, BFS automatically produces the desired result.
 Similarly, in fig. 4.7 one atom of the ring (marked by the red circle)
 is omitted in the first exploration using DFS.
 
-As fig. 4.8 shows, also the processing of substituents is affected.
+More complex ring structures exacerbate the problems. Fig. 4.8 shows that also the processing of substituents is affected.
 
-Multiple rings pose special problems for the mutation algorithms because
+Multiple rings pose special difficulties for the mutation algorithms because
 the processing of one of the rings can easily led to gaps in the adjacent
 ones. Fig. 4.9 and 4.10 show that using DFS aggravated problems occur.
 As in the case of one ring, the exploration route implies that one
@@ -343,33 +333,33 @@ and teared apart (fig. 4.9). Alternatively, one half of each of the
 rings is turned off first (fig. 4.10). 
 
 \begin{figure}
-\includegraphics[scale=0.4]{simple_ring_exampledfs2}\caption{left: dfs-algorithm; right: bfs-algorithm; common core in dark; the
+\includegraphics[scale=0.4]{simple_ring_exampledfs2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow indicates the undesired processing of the ring atoms}
 
 \end{figure}
 
 \begin{figure}
-\includegraphics[scale=0.4]{simple_ring_exampledfs3}\caption{left: dfs-algorithm; right: bfs-algorithm; common core in dark; the
+\includegraphics[scale=0.4]{simple_ring_exampledfs3}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow and circle indicates the undesired processing of the ring
 atoms}
 
 \end{figure}
 \begin{figure}
 
-\includegraphics[scale=0.4]{simple_ring_exampledfs4}\caption{left: dfs-algorithm; right: bfs-algorithm; common core in dark; the
+\includegraphics[scale=0.4]{simple_ring_exampledfs4}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow indicates the undesired processing of the ring atoms}
 
 \end{figure}
 
 \begin{figure}
 
-\includegraphics[scale=0.4]{2ring_example}\caption{left: dfs-algorithm; right: bfs-algorithm; common core in dark; the
+\includegraphics[scale=0.45]{2ring_example}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow indicates the undesired processing of the ring atoms}
 
 \end{figure}
 
 \begin{figure}
 
-\includegraphics[scale=0.4]{2ring_example2}\caption{left: dfs-algorithm; right: bfs-algorithm; common core in dark}
+\includegraphics[scale=0.45]{2ring_example2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark}
 
 \end{figure}
