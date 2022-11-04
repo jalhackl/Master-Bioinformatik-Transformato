@@ -150,7 +150,7 @@ ring structures ore a minimum number of dummy atoms) or to try even a larger sel
 For selected pairs of small molecules, the relative solvation free energy differences have been determined using Transformato. 
 An overview of the molecules and the corresponding mutation routes can be found in the appendix.
 
- {\color{red} (Vergleiche conclusion: Bis jetzt gab es 3 Versuche! Der erste mit größeren Molekuelen scheiterte - vielleicht auch, weil hier aufgrund der Wasserstoffproblematik teils falsche common cores berechnet wurden, vielleicht aber auch, weil die Molekuele einfach zu groß waren. Der zweite Versuch wurde fuer die 5 Molekuele in fig 5.5 angestellt, die Resultate sind aber nicht ganz vertrauenswuerdig. In einem 3. Versuch wurden zwei der Molekuele, naemlich Toluen und 2-Naphthol nochmals berechet, auch hier ist aber nicht ganz klar, ob alles passt...)}
+ {\color{red} (Vergleiche conclusion: Bis jetzt gab es 3 Versuche! Der erste mit größeren Molekuelen scheiterte - vielleicht auch, weil hier aufgrund der Wasserstoffproblematik teils falsche common cores berechnet wurden, vielleicht aber auch, weil die Molekuele einfach zu groß waren. Der zweite Versuch wurde fuer die 5 Molekuele in fig 5.5 angestellt, die Resultate sind aber nicht ganz vertrauenswuerdig. 3 Ergebnisse können nicht passen, da ein falscher common core verwundert wurde, weil die Wasserstoffe noch nicht richtig prozessiert wurden, also noch nicht vor common core-Generation und Mutationsfindung entfernt wurden (siehe 'processing of hydrogen atoms')! In einem 3. Versuch wurden zwei der Molekuele, naemlich Toluen und 2-Naphthol nochmals berechet, auch hier ist aber nicht ganz klar, ob alles passt...)}
  
 Two such example pairs are toluene$\rightarrow$methanol and 2-naphthol$\rightarrow$methanol. In both cases, the corresponding common cores solely consist of one heavy atom, carbon or oxygen, respectively.
 
@@ -184,7 +184,7 @@ Since the mutation route is fundamentally different depending on the algorithm (
 	\includegraphics[scale=0.8]{molecules_v1_failed_barchart}
 		
 	
-	{differences between old and new algorithm for selected molecules / 1. VERSUCH, DIESE RESULTATE SIND VERMUTLICH FEHLERHAFT}
+	{differences between old and new algorithm for selected molecules / 1. VERSUCH, DIESE RESULTATE SIND VERMUTLICH FEHLERHAFT; AUF JEDEN FALL IST BEI PROPYLPHENOL, ETHYLCYCLOHEXAN und DIMETHYLINDENOL DER FALSCHE CCORE VERWENDET WORDEN (aufgrund nicht entfernter Wasserstoffatome!)}
 	
 	\includegraphics[scale=0.8]{2molecules_v2_barchart}
 	
