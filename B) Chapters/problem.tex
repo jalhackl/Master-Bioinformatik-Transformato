@@ -17,10 +17,7 @@ for the case of more complex mutation routes which occur for connected
 dummy regions involving ring structures, multiple chains or different
 atom types. 
 
-Particularly intricate problems occur for ring structures. There are
-some especially sensitive cases, e.g. ring breakage poses especially
-difficult problems because it can lead to fast changes in free energy
-and cause significant estimation error \cite{Liu.2015}. Neither should
+Particularly intricate problems occur for ring structures. In contrast to a chain, which usually has only one possible mutation order without leading to disconnected components, multiple possible orders exist. (Because of this fact, the evaluation of the mutation algorithms in the following sections will focus on such transformations.) Neither should
 the mutation of atoms generate vacancies in the inner part of the
 molecule nor should opened rings remain longer than necessary and
 a sufficiently systematic and - especially concerning rings - symmetric
@@ -96,8 +93,8 @@ It imposes that in case of multiple rings aromaticity is properly
 taken into account. Fig. 4.2 illustrates the effect of the parameters
 on the common core of two cyclic example molecules. However, enforcing
 of \texttt{StrictRingFusion} can still lead to maximum common substructures
-which are not valid Transformato common cores because a dummy region
-is connected via multiple ring atoms of the same ring with the common
+that are not valid Transformato common cores in case of a dummy region
+which is connected via multiple ring atoms of the same ring with the common
 core. It seems to be advisable to warn the user in this case that the common
 core does not fit the expectations of the Transformato workflow. Alternatively,
 one could check after the creation if the common core is valid. If
@@ -157,7 +154,7 @@ the common core), the last element of the list returned by the search algorithm 
 If weighted graphs are used, the Dijkstra algorithm can be applied.
 It finds the shortest path between two nodes or between a root node
 and all other nodes of the weighted graph (the weights indicate the
-edge length from one node to the other one) . For unweighted graphs
+edge length from one node to the other one). For unweighted graphs
 (or, equivalently, graphs with uniform weights), the Dijkstra algorithm
 reduces to BFS. Fig. 4.3 shows the different routes for modified weights.
 (In the test cases presented below, all graphs are initialized with uniformly weights.)
@@ -177,7 +174,7 @@ of NetworkX.
 
 The core functionality is given by the mutation processing functions.
 At the moment, three such functions are implemented, in addition to
-the simple DFS-approach, which leads to undesired outcomes. These functions
+the simple DFS-approach, which leads to undesired outcomes, in particular because often heavy atoms in neighborhood to the common core atoms are processed at the first steps of the graph algorithm as well as rings are opened early, but finally processed at a later stage (in a rather 'asymmetric' manner). These functions
 can be further modified by passing arguments which activate some helper
 functions (see below).
 
@@ -227,8 +224,8 @@ already removed is removed earlier
 
 \texttt{cycle\_checks\_nx}(G): This function modifies the weight of
 the graph, nodes participating in many cycles get lower weight. It
-is currently used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter}
-and \texttt{...\_new\_iter\_change.} It returns a nx-graph-object
+is currently used in 
+\texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter} and \texttt{...\_new\_iter\_change.} It returns a nx-graph-object
 with updated weights (according to cycle participation of the atom).
 
 \texttt{order\_checks\_nx}(G, removearray, G\_total): This function
@@ -293,6 +290,20 @@ chain which is processed subsequently, whereas BFS starts at carbon
 \end{figure}
 
 
+\subsection{Processing of hydrogen atoms}
+
+
+As fig. 4.1 indicates, the presence of hydrogens can influence the common core generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e. non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). Hence it is crucial to determine the common core for molecule representations without hydrogens. Since hydrogen atoms are turned off in an extra step en bloc during the Transformato workflow, the mutation route algorithm should not take hydrogens into account nor must the common core be generated for a molecule representation containing hydrogens.
+Nonetheless, it is necessary that the molecule representations processed in Tranformato contain all hydrogens in explicit form because the indices of these atoms in the underlying data structures are used in some steps, e.g. for scaling the van-der-Waals interactions of the hydrogen atoms to zero.
+This problem was solved by removing and adding hydrogens appropriately.
+In a first step, the Transformato function determining the common core (\texttt{\_find\_mcs} in mutate.py) had to be modified. To obtain the desired common core but retain the Transformato workflow, the following scheme was implemented:
+A deep copy of both molecules is created. The hydrogens of these copies are removed and afterwards their common core is computed. For both molecules, the indices of the atoms corresponding to the common core are determined. Finally, it is checked for each common core atom of both molecules whether hydrogen atoms are in its neighbourhood. If such hydrogens are found, their indices are added to the lists of common core atoms. These lists of atoms including hydrogens are stored for both molecules and the function returns the maximum common substructure (determined for the molecules without hydrogens).
+Thus the procedure yields the necessary output for further processing in Transformato: The molecule representations and lists of common core atoms for both of the molecules include hydrogens, but the maximum common substructure giving rise to the common core is computed only for the heavy atoms.
+Similarly, the functions for computing the mutation routes had to be adapted for input molecules containing hydrogens. By default, a helper function removes the hydrogens from the graph representation as well as the corresponding indices from the list with the atoms of the dummy regions before the mutation algorithms are applied. 
+
+
+
+
 \subsection{Examples for processing molecules}
 
 \begin{figure}
@@ -353,13 +364,13 @@ red arrow indicates the undesired processing of the ring atoms}
 
 \begin{figure}
 
-\includegraphics[scale=0.45]{2ring_example}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
+\includegraphics[scale=0.4]{2ring_example}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow indicates the undesired processing of the ring atoms}
 
 \end{figure}
 
 \begin{figure}
 
-\includegraphics[scale=0.45]{2ring_example2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark}
+\includegraphics[scale=0.4]{2ring_example2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark}
 
 \end{figure}

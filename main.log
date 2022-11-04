@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.7.2)  5 JUL 2022 07:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.7.2)  4 NOV 2022 21:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -453,14 +453,45 @@ Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \backup@length=\skip67
 \ar@cellbox=\box48
 )
+(d:/texlive/2020/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count292
+\float@exts=\toks23
+\float@box=\box49
+\@float@everytoks=\toks24
+\@floatcapt=\box50
+)
+(d:/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip68
+\subfigcapskip=\skip69
+\subfigcaptopadj=\dimen152
+\subfigbottomskip=\skip70
+\subfigcapmargin=\dimen153
+\subfiglabelskip=\skip71
+\c@subfigure=\count293
+\c@lofdepth=\count294
+\c@subtable=\count295
+\c@lotdepth=\count296
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(d:/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip72
+\subfig@bottom=\skip73
+)
+(d:/texlive/2020/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
 (d:/texlive/2020/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count292
-\algocf@hangindent=\skip68
+\c@AlgoLine=\count297
+\algocf@hangindent=\skip74
 
 (d:/texlive/2020/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count293
+\c@checkoddpage=\count298
 LaTeX Info: Redefining \checkoddpage on input line 45.
 )
 (d:/texlive/2020/texmf-dist/tex/latex/tools/xspace.sty
@@ -469,41 +500,41 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 (d:/texlive/2020/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-\skiptotal=\skip69
-\skiplinenumber=\skip70
-\skiprule=\skip71
-\skiphlne=\skip72
-\skiptext=\skip73
-\skiplength=\skip74
-\algomargin=\skip75
-\skipalgocfslide=\skip76
-\algowidth=\dimen152
-\inoutsize=\dimen153
-\inoutindent=\dimen154
-\interspacetitleruled=\dimen155
-\interspacealgoruled=\dimen156
-\interspacetitleboxruled=\dimen157
-\algocf@ruledwidth=\skip77
-\algocf@inoutbox=\box49
-\algocf@inputbox=\box50
-\AlCapSkip=\skip78
-\AlCapHSkip=\skip79
-\algoskipindent=\skip80
-\algocf@nlbox=\box51
-\algocf@hangingbox=\box52
-\algocf@untilbox=\box53
-\algocf@skipuntil=\skip81
-\algocf@capbox=\box54
-\algocf@lcaptionbox=\skip82
-\algoheightruledefault=\skip83
-\algoheightrule=\skip84
-\algotitleheightruledefault=\skip85
-\algotitleheightrule=\skip86
-\c@algocfline=\count294
-\c@algocfproc=\count295
-\c@algocf=\count296
-\algocf@algoframe=\box55
-\algocf@algobox=\box56
+\skiptotal=\skip75
+\skiplinenumber=\skip76
+\skiprule=\skip77
+\skiphlne=\skip78
+\skiptext=\skip79
+\skiplength=\skip80
+\algomargin=\skip81
+\skipalgocfslide=\skip82
+\algowidth=\dimen154
+\inoutsize=\dimen155
+\inoutindent=\dimen156
+\interspacetitleruled=\dimen157
+\interspacealgoruled=\dimen158
+\interspacetitleboxruled=\dimen159
+\algocf@ruledwidth=\skip83
+\algocf@inoutbox=\box51
+\algocf@inputbox=\box52
+\AlCapSkip=\skip84
+\AlCapHSkip=\skip85
+\algoskipindent=\skip86
+\algocf@nlbox=\box53
+\algocf@hangingbox=\box54
+\algocf@untilbox=\box55
+\algocf@skipuntil=\skip87
+\algocf@capbox=\box56
+\algocf@lcaptionbox=\skip88
+\algoheightruledefault=\skip89
+\algoheightrule=\skip90
+\algotitleheightruledefault=\skip91
+\algotitleheightrule=\skip92
+\c@algocfline=\count299
+\c@algocfproc=\count300
+\c@algocf=\count301
+\algocf@algoframe=\box57
+\algocf@algobox=\box58
 )
 (d:/texlive/2020/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 Package: glossaries 2020/03/19 v4.46 (NLCT)
@@ -513,10 +544,10 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 (d:/texlive/2020/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (d:/texlive/2020/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks23
-\XKV@tempa@toks=\toks24
+\XKV@toks=\toks25
+\XKV@tempa@toks=\toks26
 )
-\XKV@depth=\count297
+\XKV@depth=\count302
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (d:/texlive/2020/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
@@ -524,10 +555,10 @@ Package: mfirstuc 2017/11/14 v2.06 (NLCT)
 
 (d:/texlive/2020/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count298
+\etb@tempcnta=\count303
 )
-\@glsmfirst=\toks25
-\@glsmrest=\toks26
+\@glsmfirst=\toks27
+\@glsmrest=\toks28
 )
 (d:/texlive/2020/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2019/09/14 v1.00 Text only upper/lower case changing (DPC)
@@ -540,7 +571,7 @@ Package: datatool-base 2019/09/27 v2.32 (NLCT)
 
 (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
-\@mathmargin=\skip87
+\@mathmargin=\skip93
 
 For additional information on amsmath, use the `?' option.
 (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -548,57 +579,57 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks27
-\ex@=\dimen158
+\@emptytoks=\toks29
+\ex@=\dimen160
 ))
 (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen159
+\pmbraise@=\dimen161
 )
 (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count299
+\inf@bad=\count304
 LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count300
-\leftroot@=\count301
+\uproot@=\count305
+\leftroot@=\count306
 LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count302
-\DOTSCASE@=\count303
+\classnum@=\count307
+\DOTSCASE@=\count308
 LaTeX Info: Redefining \ldots on input line 486.
 LaTeX Info: Redefining \dots on input line 489.
 LaTeX Info: Redefining \cdots on input line 610.
-\Mathstrutbox@=\box57
-\strutbox@=\box58
-\big@size=\dimen160
+\Mathstrutbox@=\box59
+\strutbox@=\box60
+\big@size=\dimen162
 LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count304
-\c@MaxMatrixCols=\count305
+\macc@depth=\count309
+\c@MaxMatrixCols=\count310
 \dotsspace@=\muskip17
-\c@parentequation=\count306
-\dspbrk@lvl=\count307
-\tag@help=\toks28
-\row@=\count308
-\column@=\count309
-\maxfields@=\count310
-\andhelp@=\toks29
-\eqnshift@=\dimen161
-\alignsep@=\dimen162
-\tagshift@=\dimen163
-\tagwidth@=\dimen164
-\totwidth@=\dimen165
-\lineht@=\dimen166
-\@envbody=\toks30
-\multlinegap=\skip88
-\multlinetaggap=\skip89
-\mathdisplay@stack=\toks31
+\c@parentequation=\count311
+\dspbrk@lvl=\count312
+\tag@help=\toks30
+\row@=\count313
+\column@=\count314
+\maxfields@=\count315
+\andhelp@=\toks31
+\eqnshift@=\dimen163
+\alignsep@=\dimen164
+\tagshift@=\dimen165
+\tagwidth@=\dimen166
+\totwidth@=\dimen167
+\lineht@=\dimen168
+\@envbody=\toks32
+\multlinegap=\skip94
+\multlinetaggap=\skip95
+\mathdisplay@stack=\toks33
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
 (d:/texlive/2020/texmf-dist/tex/latex/substr/substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
-\c@su@anzahl=\count311
+\c@su@anzahl=\count316
 )
 (d:/texlive/2020/texmf-dist/tex/latex/datatool/datatool-fp.sty
 Package: datatool-fp 2019/09/27 v2.32 (NLCT)
@@ -609,19 +640,19 @@ Package: fp 1995/04/02
 `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
 (d:/texlive/2020/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count312
+\actioncount=\count317
 )
 (d:/texlive/2020/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count313
-\FP@xia=\count314
-\FP@xib=\count315
-\FP@xfa=\count316
-\FP@xfb=\count317
-\FP@rega=\count318
-\FP@regb=\count319
-\FP@regs=\count320
-\FP@times=\count321
+\FP@xs=\count318
+\FP@xia=\count319
+\FP@xib=\count320
+\FP@xfa=\count321
+\FP@xfb=\count322
+\FP@rega=\count323
+\FP@regb=\count324
+\FP@regs=\count325
+\FP@times=\count326
 )
 (d:/texlive/2020/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
@@ -640,7 +671,7 @@ Package: fp-pas 1994/08/29
 )
 (d:/texlive/2020/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count322
+\FPseed=\count327
 )
 (d:/texlive/2020/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
@@ -651,125 +682,137 @@ Package: fp-upn 1996/10/21
 (d:/texlive/2020/texmf-dist/tex/latex/fp/fp-eval.sty
 Package: fp-eval 1995/04/03
 )))
-\@dtl@toks=\toks32
-\@dtl@tmpcount=\count323
-\dtl@tmplength=\skip90
-\dtl@sortresult=\count324
-\@dtl@numgrpsepcount=\count325
-\@dtl@datatype=\count326
-\dtl@codeA=\count327
-\dtl@codeB=\count328
-\@dtl@foreach@level=\count329
+\@dtl@toks=\toks34
+\@dtl@tmpcount=\count328
+\dtl@tmplength=\skip96
+\dtl@sortresult=\count329
+\@dtl@numgrpsepcount=\count330
+\@dtl@datatype=\count331
+\dtl@codeA=\count332
+\dtl@codeB=\count333
+\@dtl@foreach@level=\count334
 )
 (d:/texlive/2020/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-307
 .sty
 Package: glossaries-compatible-307 2020/03/19 v4.46 (NLCT)
 )
-\gls@level=\count330
-\@gls@tmpb=\toks33
-\gls@tmplen=\skip91
-\glskeylisttok=\toks34
-\glslabeltok=\toks35
-\glsshorttok=\toks36
-\glslongtok=\toks37
+\gls@level=\count335
+\@gls@tmpb=\toks35
+\gls@tmplen=\skip97
+\glskeylisttok=\toks36
+\glslabeltok=\toks37
+\glsshorttok=\toks38
+\glslongtok=\toks39
 
 (d:/texlive/2020/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty
 Package: glossary-hypernav 2020/03/19 v4.46 (NLCT)
 )
 (d:/texlive/2020/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 Package: glossary-list 2020/03/19 v4.46 (NLCT)
-\glslistdottedwidth=\skip92
+\glslistdottedwidth=\skip98
 )
 (d:/texlive/2020/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
 Package: glossary-long 2020/03/19 v4.46 (NLCT)
 
 (d:/texlive/2020/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
-\LTleft=\skip93
-\LTright=\skip94
-\LTpre=\skip95
-\LTpost=\skip96
-\LTchunksize=\count331
-\LTcapwidth=\dimen167
-\LT@head=\box59
-\LT@firsthead=\box60
-\LT@foot=\box61
-\LT@lastfoot=\box62
-\LT@cols=\count332
-\LT@rows=\count333
-\c@LT@tables=\count334
-\c@LT@chunks=\count335
-\LT@p@ftn=\toks38
+\LTleft=\skip99
+\LTright=\skip100
+\LTpre=\skip101
+\LTpost=\skip102
+\LTchunksize=\count336
+\LTcapwidth=\dimen169
+\LT@head=\box61
+\LT@firsthead=\box62
+\LT@foot=\box63
+\LT@lastfoot=\box64
+\LT@cols=\count337
+\LT@rows=\count338
+\c@LT@tables=\count339
+\c@LT@chunks=\count340
+\LT@p@ftn=\toks40
 )
 Class scrbook Info: longtable captions redefined on input line 43.
-\glsdescwidth=\skip97
-\glspagelistwidth=\skip98
+\glsdescwidth=\skip103
+\glspagelistwidth=\skip104
 )
 (d:/texlive/2020/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
 Package: glossary-super 2020/03/19 v4.46 (NLCT)
 
 (d:/texlive/2020/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2020/02/02 v4.1g the supertabular environment
-\c@tracingst=\count336
-\ST@wd=\dimen168
-\ST@rightskip=\skip99
-\ST@leftskip=\skip100
-\ST@parfillskip=\skip101
-\ST@pageleft=\dimen169
-\ST@headht=\dimen170
-\ST@tailht=\dimen171
-\ST@pagesofar=\dimen172
-\ST@pboxht=\dimen173
-\ST@lineht=\dimen174
-\ST@prevht=\dimen175
-\ST@toadd=\dimen176
-\ST@dimen=\dimen177
-\ST@pbox=\box63
+\c@tracingst=\count341
+\ST@wd=\dimen170
+\ST@rightskip=\skip105
+\ST@leftskip=\skip106
+\ST@parfillskip=\skip107
+\ST@pageleft=\dimen171
+\ST@headht=\dimen172
+\ST@tailht=\dimen173
+\ST@pagesofar=\dimen174
+\ST@pboxht=\dimen175
+\ST@lineht=\dimen176
+\ST@prevht=\dimen177
+\ST@toadd=\dimen178
+\ST@dimen=\dimen179
+\ST@pbox=\box65
 ))
 (d:/texlive/2020/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
 Package: glossary-tree 2020/03/19 v4.46 (NLCT)
-\glstreeindent=\skip102
+\glstreeindent=\skip108
 ))
 (d:/texlive/2020/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count337
-\lst@gtempboxa=\box64
-\lst@token=\toks39
-\lst@length=\count338
-\lst@currlwidth=\dimen178
-\lst@column=\count339
-\lst@pos=\count340
-\lst@lostspace=\dimen179
-\lst@width=\dimen180
-\lst@newlines=\count341
-\lst@lineno=\count342
-\lst@maxwidth=\dimen181
+\lst@mode=\count342
+\lst@gtempboxa=\box66
+\lst@token=\toks41
+\lst@length=\count343
+\lst@currlwidth=\dimen180
+\lst@column=\count344
+\lst@pos=\count345
+\lst@lostspace=\dimen181
+\lst@width=\dimen182
+\lst@newlines=\count346
+\lst@lineno=\count347
+\lst@maxwidth=\dimen183
 
 (d:/texlive/2020/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count343
-\lst@skipnumbers=\count344
-\lst@framebox=\box65
+\c@lstnumber=\count348
+\lst@skipnumbers=\count349
+\lst@framebox=\box67
 )
 (d:/texlive/2020/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
-(d:/texlive/2020/texmf-dist/tex/latex/fixme/fixme.sty
+(d:/texlive/2020/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
+
+
+Package hyphenat Warning: *******************************
+(hyphenat)                * You have used the htt option.
+(hyphenat)                * You are likely to get many Font Warning messages.
+(hyphenat)                * These can usually be ignored.
+(hyphenat)                *******************************.
+
+\langwohyphens=\language86
+LaTeX Info: Redefining \_ on input line 43.
+) (d:/texlive/2020/texmf-dist/tex/latex/fixme/fixme.sty
 Package: fixme 2019/01/03 v4.5 Collaborative annotations for LaTeX2e
 
 (d:/texlive/2020/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks40
-\verbatim@line=\toks41
+\every@verbatim=\toks42
+\verbatim@line=\toks43
 \verbatim@in@stream=\read3
 )
 \lox@file=\read4
-\c@fixmecount=\count345
-\c@fxnotecount=\count346
-\c@fxwarningcount=\count347
-\c@fxerrorcount=\count348
-\c@fxfatalcount=\count349
+\c@fixmecount=\count350
+\c@fxnotecount=\count351
+\c@fxwarningcount=\count352
+\c@fxerrorcount=\count353
+\c@fxfatalcount=\count354
 Package tocbasic Info: babel extension for `lox' omitted
 (tocbasic)             because of missing \bbl@set@language on input line 711.
 
@@ -802,14 +845,14 @@ Package: babel 2020/06/10 3.45 The Babel package
 
 (d:/texlive/2020/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2020/06/10 3.45 Babel common definitions
-\babel@savecnt=\count350
-\U@D=\dimen182
-\l@babelnohyphens=\language86
+\babel@savecnt=\count355
+\U@D=\dimen184
+\l@babelnohyphens=\language87
 
 (d:/texlive/2020/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read5
 )
-\bbl@dirlevel=\count351
+\bbl@dirlevel=\count356
 
 (d:/texlive/2020/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2018/12/08 v2.11 German support for babel (post-1996 orthogra
@@ -834,10 +877,35 @@ Package babel Info: \l@newzealand = using hyphenrules for ukenglish
 )))
 (d:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count352
-\l__pdf_internal_box=\box66
+\l__kernel_color_stack_int=\count357
+\l__pdf_internal_box=\box68
 )
-(./main.aux)
+(./main.aux
+
+LaTeX Warning: Label `fig:v_naphthol_old11' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:v_naphthol_old11' multiply defined.
+
+
+LaTeX Warning: Label `fig:v_naphthol_new12' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:v_naphthol_new12' multiply defined.
+
+
+LaTeX Warning: Label `fig:w_naphthol_old13' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:w_naphthol_old13' multiply defined.
+
+
+LaTeX Warning: Label `fig:w_napthol_new14' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:w_napthol_new14' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
@@ -864,17 +932,17 @@ Package scrbase Info: activating british \listtablename on input line 19.
  ABD: EveryShipout initializing macros
 (d:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count353
-\scratchdimen=\dimen183
-\scratchbox=\box67
-\nofMPsegments=\count354
-\nofMParguments=\count355
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count356
-\MPscratchDim=\dimen184
-\MPnumerator=\count357
-\makeMPintoPDFobject=\count358
-\everyMPtoPDFconversion=\toks43
+\scratchcounter=\count358
+\scratchdimen=\dimen185
+\scratchbox=\box69
+\nofMPsegments=\count359
+\nofMParguments=\count360
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count361
+\MPscratchDim=\dimen186
+\MPnumerator=\count362
+\makeMPintoPDFobject=\count363
+\everyMPtoPDFconversion=\toks45
 ) (d:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 
@@ -892,7 +960,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box68
+\AtBeginShipoutBox=\box70
 Package hyperref Info: Link coloring OFF on input line 19.
 
 (d:/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -904,7 +972,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (d:/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count359
+\c@section@level=\count364
 )
 LaTeX Info: Redefining \ref on input line 19.
 LaTeX Info: Redefining \pageref on input line 19.
@@ -931,7 +999,7 @@ File: bkm-pdftex.def 2019/12/03 v1.28 bookmark driver for pdfTeX (HO)
 Package auxhook Info: \AddLineBeginMainAux comes a little late,
 (auxhook)             because the main .aux file is already opened on input lin
 e 168.
-\BKM@id=\count360
+\BKM@id=\count365
 ))
 LaTeX Info: Redefining \microtypecontext on input line 19.
 Package microtype Info: Generating PDF output.
@@ -983,7 +1051,145 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count361
+\c@lstlisting=\count366
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+9.
+(d:/texlive/2020/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/m/scsl' undefined
+(Font)              using `T1/cmtt/m/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/b/n' undefined
+(Font)              using `T1/cmtt/m/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/b/it' undefined
+(Font)              using `T1/cmtt/b/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/b/sl' undefined
+(Font)              using `T1/cmtt/b/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/b/scit' undefined
+(Font)              using `T1/cmtt/b/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/b/sc' undefined
+(Font)              using `T1/cmtt/b/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/bx/sc' undefined
+(Font)              using `T1/cmtt/b/sc' instead on input line 19.
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/it' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/it' tried instead on input line 19.
+
+LaTeX Font Warning: Font shape `T1/cmtt/bx/sl' undefined
+(Font)              using `T1/cmtt/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/bx/scit' undefined
+(Font)              using `T1/cmtt/bx/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/bx/sc' undefined
+(Font)              using `T1/cmtt/bx/n' instead on input line 19.
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 19.
+
+LaTeX Font Warning: Font shape `T1/cmtt/sbx/sc' undefined
+(Font)              using `T1/cmtt/sb/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/sb/n' undefined
+(Font)              using `T1/cmtt/m/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/sb/it' undefined
+(Font)              using `T1/cmtt/sb/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/sb/sl' undefined
+(Font)              using `T1/cmtt/sb/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/sb/scit' undefined
+(Font)              using `T1/cmtt/sb/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/sb/sc' undefined
+(Font)              using `T1/cmtt/sb/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/sbc/sc' undefined
+(Font)              using `T1/cmtt/c/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/c/n' undefined
+(Font)              using `T1/cmtt/m/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/c/it' undefined
+(Font)              using `T1/cmtt/c/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/c/sl' undefined
+(Font)              using `T1/cmtt/c/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/c/scit' undefined
+(Font)              using `T1/cmtt/c/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/c/sc' undefined
+(Font)              using `T1/cmtt/c/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/lc/sc' undefined
+(Font)              using `T1/cmtt/l/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/l/n' undefined
+(Font)              using `T1/cmtt/m/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/l/it' undefined
+(Font)              using `T1/cmtt/l/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/l/sl' undefined
+(Font)              using `T1/cmtt/l/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/l/scit' undefined
+(Font)              using `T1/cmtt/l/sc' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/l/sc' undefined
+(Font)              using `T1/cmtt/l/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/m/ui' undefined
+(Font)              using `T1/cmtt/m/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/bx/ui' undefined
+(Font)              using `T1/cmtt/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/m/In' undefined
+(Font)              using `T1/cmtt/m/n' instead on input line 19.
+
 (./A) Front Matter/titlepage.tex
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
@@ -1070,10 +1276,7 @@ Package tocbasic Info: character protrusion at toc deactivated on input line 37
  [1
 
 
-] [2
-
-
-]
+] [2]
 (./B) Chapters/introduction.tex
 chapter 1.
 
@@ -1102,6 +1305,8 @@ l.1 \chapter
 
 
 
+
+
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
  been already used, duplicate ignored
 <to be read again> 
@@ -1113,13 +1318,19 @@ l.1 \chapter
 ]
 chapter 2.
 [3]
-<cycle1.png, id=122, 309.3156pt x 243.309pt>
+<cycle1.png, id=137, 309.3156pt x 243.309pt>
 File: cycle1.png Graphic file (type png)
 <use cycle1.png>
 Package pdftex.def Info: cycle1.png  used on input line 63.
 (pdftex.def)             Requested size: 247.4528pt x 194.64746pt.
- [4 <./cycle1.png>] [5] [6] [7] [8]) (./B) Chapters/transformato.tex
-[9] [10
+ [4pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.93 
+      <./cycle1.png>] [5] [6] [7] [8]) (./B) Chapters/transformato.tex [9]
+[10
 
 
 ]
@@ -1130,257 +1341,1047 @@ chapter 4.
 
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-7.
- (d:/texlive/2020/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-<hydrogens_plus_minus.png, id=225, 1090.401pt x 565.896pt>
+<hydrogens_plus_minus.png, id=239, 1090.401pt x 565.896pt>
 File: hydrogens_plus_minus.png Graphic file (type png)
 <use hydrogens_plus_minus.png>
-Package pdftex.def Info: hydrogens_plus_minus.png  used on input line 68.
+Package pdftex.def Info: hydrogens_plus_minus.png  used on input line 65.
 (pdftex.def)             Requested size: 327.12282pt x 169.7701pt.
-
-Overfull \hbox (0.46619pt too wide) in paragraph at lines 85--93
-[]\T1/cmr/m/n/10.95 (-20) To ob-tain valid com-mon cores for the pro-cessing of
- Trans-form-ato, \T1/cmtt/m/n/10.95 ringMatchesRingOnly
- []
-
-[14 <./hydrogens_plus_minus.png>]
-<sterols_wo_strictfusion.png, id=234, 452.892pt x 186.588pt>
+ [14]
+<sterols_wo_strictfusion.png, id=246, 452.892pt x 186.588pt>
 File: sterols_wo_strictfusion.png Graphic file (type png)
 <use sterols_wo_strictfusion.png>
-Package pdftex.def Info: sterols_wo_strictfusion.png  used on input line 114.
+Package pdftex.def Info: sterols_wo_strictfusion.png  used on input line 111.
 (pdftex.def)             Requested size: 181.15358pt x 74.63387pt.
-<sterols_w_strictfusion.png, id=235, 450.045pt x 207.612pt>
+<sterols_w_strictfusion.png, id=247, 450.045pt x 207.612pt>
 File: sterols_w_strictfusion.png Graphic file (type png)
 <use sterols_w_strictfusion.png>
-Package pdftex.def Info: sterols_w_strictfusion.png  used on input line 114.
+Package pdftex.def Info: sterols_w_strictfusion.png  used on input line 111.
 (pdftex.def)             Requested size: 180.0148pt x 83.04332pt.
+ [15pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+1}) has been already used, duplicate ignored
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [15 <./sterols_wo_strictfusion.png> <./sterols_w_strictfusion.png>]
-<dfs_bfs_dijkstra_comp1.png, id=245, 990.099pt x 237.5274pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.120 \section
+              {Graph algorithms} <./hydrogens_plus_minus.png>]
+<dfs_bfs_dijkstra_comp1.png, id=256, 990.099pt x 237.5274pt>
 File: dfs_bfs_dijkstra_comp1.png Graphic file (type png)
 <use dfs_bfs_dijkstra_comp1.png>
-Package pdftex.def Info: dfs_bfs_dijkstra_comp1.png  used on input line 145.
+Package pdftex.def Info: dfs_bfs_dijkstra_comp1.png  used on input line 142.
 (pdftex.def)             Requested size: 445.54044pt x 106.88634pt.
 
-Overfull \hbox (27.28671pt too wide) in paragraph at lines 145--149
-[][] 
+Overfull \hbox (27.28671pt too wide) in paragraph at lines 142--146
+[][][] 
  []
 
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2
+}) has been already used, duplicate ignored
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.162 \section
+              {Added functionality} <./sterols_wo_strictfusion.png> <./sterols_
+w_strictfusion.png>] [17pdfTeX warning (ext4): destination with the same identi
+fier (name{figure.4.3}) has been already used, duplicate ignored
 
- [16 <./dfs_bfs_dijkstra_comp1.png>]
-Overfull \hbox (2.84674pt too wide) in paragraph at lines 211--217
-[]\T1/cmtt/m/n/10.95 cycle_checks(G)\T1/cmr/m/n/10.95 (-20) : this func-tion ch
-ecks which atoms par-ti-cip-ate in how many cycles/rings
- []
-
-
-Overfull \hbox (78.83798pt too wide) in paragraph at lines 228--233
-\T1/cmr/m/n/10.95 (-20) ing in many cycles get lower weight. It is cur-rently u
-sed in \T1/cmtt/m/n/10.95 _calculate_order_of_LJ_mutations_new_iter
- []
-
-[17]
-Overfull \hbox (78.10254pt too wide) in paragraph at lines 262--268
-[]\T1/cmr/m/n/10.95 (-20) The main dif-fer-ence between these al-gorithms is th
-at in \T1/cmtt/m/n/10.95 _calculate_order_of_LJ_mutations_new_iter
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.200 H
+       elper functions like cycle\_checks carry out tasks to ensure the <./dfs_
+bfs_dijkstra_comp1.png>]
+Overfull \hbox (2.84674pt too wide) in paragraph at lines 208--214
+[]\T1/cmtt/l/it/10.95 cycle_-checks(G)\T1/cmr/m/n/10.95 (-20) : this func-tion 
+checks which atoms par-ti-cip-ate in how many cycles/rings
  []
 
 [18]
-<simple_ring_exampledfs.png, id=262, 1065.9825pt x 476.53032pt>
+<simple_ring_exampledfs.png, id=276, 1065.9825pt x 476.53032pt>
 File: simple_ring_exampledfs.png Graphic file (type png)
 <use simple_ring_exampledfs.png>
-Package pdftex.def Info: simple_ring_exampledfs.png  used on input line 285.
+Package pdftex.def Info: simple_ring_exampledfs.png  used on input line 282.
 (pdftex.def)             Requested size: 426.38545pt x 190.60875pt.
 
-Overfull \hbox (8.13173pt too wide) in paragraph at lines 285--286
+Overfull \hbox (8.13173pt too wide) in paragraph at lines 282--283
 [][] 
  []
 
-<iter_iter_change_1a5g_1.png, id=263, 881.694pt x 323.025pt>
+[19] [20pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.4.4}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.303 
+       <./simple_ring_exampledfs.png>]
+<iter_iter_change_1a5g_1.png, id=288, 881.694pt x 323.025pt>
 File: iter_iter_change_1a5g_1.png Graphic file (type png)
 <use iter_iter_change_1a5g_1.png>
-Package pdftex.def Info: iter_iter_change_1a5g_1.png  used on input line 299.
+Package pdftex.def Info: iter_iter_change_1a5g_1.png  used on input line 310.
 (pdftex.def)             Requested size: 352.67136pt x 129.20769pt.
-<iter_iter_change_1a5g_2.png, id=264, 881.475pt x 325.215pt>
+<iter_iter_change_1a5g_2.png, id=289, 881.475pt x 325.215pt>
 File: iter_iter_change_1a5g_2.png Graphic file (type png)
 <use iter_iter_change_1a5g_2.png>
-Package pdftex.def Info: iter_iter_change_1a5g_2.png  used on input line 301.
+Package pdftex.def Info: iter_iter_change_1a5g_2.png  used on input line 312.
 (pdftex.def)             Requested size: 352.58376pt x 130.0837pt.
-[19 <./simple_ring_exampledfs.png>] [20 <./iter_iter_change_1a5g_1.png> <./iter
-_iter_change_1a5g_2.png>]
-<simple_ring_exampledfs2.png, id=279, 1200.73593pt x 392.96812pt>
+ [21pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+5}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.330 
+       <./iter_iter_change_1a5g_1.png> <./iter_iter_change_1a5g_2.png>]
+<simple_ring_exampledfs2.png, id=298, 1200.73593pt x 392.96812pt>
 File: simple_ring_exampledfs2.png Graphic file (type png)
 <use simple_ring_exampledfs2.png>
-Package pdftex.def Info: simple_ring_exampledfs2.png  used on input line 336.
+Package pdftex.def Info: simple_ring_exampledfs2.png  used on input line 347.
 (pdftex.def)             Requested size: 480.28586pt x 157.18445pt.
 
-Overfull \hbox (62.03214pt too wide) in paragraph at lines 336--337
-[][] 
+Overfull \hbox (62.03214pt too wide) in paragraph at lines 347--348
+[][][] 
  []
 
-<simple_ring_exampledfs3.png, id=280, 1200.73593pt x 519.44063pt>
+<simple_ring_exampledfs3.png, id=299, 1200.73593pt x 519.44063pt>
 File: simple_ring_exampledfs3.png Graphic file (type png)
 <use simple_ring_exampledfs3.png>
-Package pdftex.def Info: simple_ring_exampledfs3.png  used on input line 342.
+Package pdftex.def Info: simple_ring_exampledfs3.png  used on input line 353.
 (pdftex.def)             Requested size: 480.28586pt x 207.77257pt.
 
-Overfull \hbox (62.03214pt too wide) in paragraph at lines 342--344
-[][] 
+Overfull \hbox (62.03214pt too wide) in paragraph at lines 353--355
+[][][] 
  []
 
-<simple_ring_exampledfs4.png, id=281, 1140.51094pt x 480.29437pt>
+<simple_ring_exampledfs4.png, id=300, 1140.51094pt x 480.29437pt>
 File: simple_ring_exampledfs4.png Graphic file (type png)
 <use simple_ring_exampledfs4.png>
-Package pdftex.def Info: simple_ring_exampledfs4.png  used on input line 349.
+Package pdftex.def Info: simple_ring_exampledfs4.png  used on input line 360.
 (pdftex.def)             Requested size: 456.19629pt x 192.11433pt.
 
-Overfull \hbox (37.94257pt too wide) in paragraph at lines 349--350
-[][] 
+Overfull \hbox (37.94257pt too wide) in paragraph at lines 360--361
+[][][] 
  []
 
-<2ring_example.png, id=282, 1134.48843pt x 413.29407pt>
+<2ring_example.png, id=301, 1134.48843pt x 413.29407pt>
 File: 2ring_example.png Graphic file (type png)
 <use 2ring_example.png>
-Package pdftex.def Info: 2ring_example.png  used on input line 356.
-(pdftex.def)             Requested size: 510.51508pt x 185.9806pt.
+Package pdftex.def Info: 2ring_example.png  used on input line 367.
+(pdftex.def)             Requested size: 453.78734pt x 165.31468pt.
 
-Overfull \hbox (92.26135pt too wide) in paragraph at lines 356--357
-[][] 
+Overfull \hbox (35.53362pt too wide) in paragraph at lines 367--368
+[][][] 
  []
 
-<2ring_example2.png, id=283, 1148.79187pt x 346.29375pt>
+<2ring_example2.png, id=302, 1148.79187pt x 346.29375pt>
 File: 2ring_example2.png Graphic file (type png)
 <use 2ring_example2.png>
-Package pdftex.def Info: 2ring_example2.png  used on input line 363.
-(pdftex.def)             Requested size: 516.95157pt x 155.83073pt.
+Package pdftex.def Info: 2ring_example2.png  used on input line 374.
+(pdftex.def)             Requested size: 459.5086pt x 138.51503pt.
 
-Overfull \hbox (98.69785pt too wide) in paragraph at lines 363--363
-[][] 
+Overfull \hbox (41.25488pt too wide) in paragraph at lines 374--374
+[][][] 
  []
 
-) (./B) Chapters/results.tex [21 <./simple_ring_exampledfs2.png>] [22 <./simple
-_ring_exampledfs3.png> <./simple_ring_exampledfs4.png>] [23 <./2ring_example.pn
-g> <./2ring_example2.png>] [24
+) (./B) Chapters/results.tex [22pdfTeX warning (ext4): destination with the sam
+e identifier (name{figure.4.6}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Results} <./simple_ring_exampledfs2.png>] [23pdfTeX warning (ext4)
+: destination with the same identifier (name{figure.4.7}) has been already used
+, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Results}pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.4.8}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Results} <./simple_ring_exampledfs3.png> <./simple_ring_exampledfs
+4.png>] [24pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.4.9}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Results}pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.4.10}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Results} <./2ring_example.png> <./2ring_example2.png>]
+chapter 5.
+<trafo_py3d_1verkleinert.png, id=325, 409.53pt x 152.4897pt>
+File: trafo_py3d_1verkleinert.png Graphic file (type png)
+<use trafo_py3d_1verkleinert.png>
+Package pdftex.def Info: trafo_py3d_1verkleinert.png  used on input line 27.
+(pdftex.def)             Requested size: 409.52899pt x 152.48932pt.
+[25
 
 
 ]
-chapter 5.
-<trafo_py3d_1verkleinert.png, id=311, 409.53pt x 152.4897pt>
-File: trafo_py3d_1verkleinert.png Graphic file (type png)
-<use trafo_py3d_1verkleinert.png>
-Package pdftex.def Info: trafo_py3d_1verkleinert.png  used on input line 28.
-(pdftex.def)             Requested size: 409.52899pt x 152.48932pt.
-<betweenness_mean_all.png, id=313, 294.34969pt x 201.00093pt>
+<betweenness_mean_all.png, id=331, 294.34969pt x 201.00093pt>
 File: betweenness_mean_all.png Graphic file (type png)
 <use betweenness_mean_all.png>
-Package pdftex.def Info: betweenness_mean_all.png  used on input line 57.
+Package pdftex.def Info: betweenness_mean_all.png  used on input line 54.
 (pdftex.def)             Requested size: 235.48006pt x 160.80095pt.
-<betweenness_max_all.png, id=314, 289.08pt x 201.00093pt>
+<betweenness_max_all.png, id=332, 289.08pt x 201.00093pt>
 File: betweenness_max_all.png Graphic file (type png)
 <use betweenness_max_all.png>
-Package pdftex.def Info: betweenness_max_all.png  used on input line 57.
+Package pdftex.def Info: betweenness_max_all.png  used on input line 54.
 (pdftex.def)             Requested size: 231.2643pt x 160.80095pt.
 
-Overfull \hbox (48.49063pt too wide) in paragraph at lines 57--57
-[][][] 
+Overfull \hbox (48.49063pt too wide) in paragraph at lines 54--54
+[][][][] 
  []
 
-[25] [26 <./trafo_py3d_1verkleinert.png> <./betweenness_mean_all.png (PNG copy)
-> <./betweenness_max_all.png (PNG copy)>]
-<closeness_slope_all.png, id=328, 299.61937pt x 199.49532pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [26pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+1}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.57 
+      <./trafo_py3d_1verkleinert.png>]
+<closeness_slope_all.png, id=341, 299.61937pt x 199.49532pt>
 File: closeness_slope_all.png Graphic file (type png)
 <use closeness_slope_all.png>
-Package pdftex.def Info: closeness_slope_all.png  used on input line 85.
+Package pdftex.def Info: closeness_slope_all.png  used on input line 81.
 (pdftex.def)             Requested size: 299.61864pt x 199.49481pt.
-<closeness_spearman.png, id=329, 284.56313pt x 199.49532pt>
+<closeness_spearman.png, id=342, 284.56313pt x 199.49532pt>
 File: closeness_spearman.png Graphic file (type png)
 <use closeness_spearman.png>
-Package pdftex.def Info: closeness_spearman.png  used on input line 87.
+Package pdftex.def Info: closeness_spearman.png  used on input line 83.
 (pdftex.def)             Requested size: 284.56242pt x 199.49481pt.
-<closeness_kendall.png, id=330, 292.09125pt x 201.75375pt>
+<closeness_kendall.png, id=343, 292.09125pt x 201.75375pt>
 File: closeness_kendall.png Graphic file (type png)
 <use closeness_kendall.png>
-Package pdftex.def Info: closeness_kendall.png  used on input line 89.
+Package pdftex.def Info: closeness_kendall.png  used on input line 85.
 (pdftex.def)             Requested size: 292.09052pt x 201.75325pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: Float too large for page by 38.89264pt on input line 91.
+ [27pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+2}) has been already used, duplicate ignored
 
-<mean_ass_beginn_bfs.png, id=331, 283.81032pt x 201.75375pt>
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.88 
+      <./betweenness_mean_all.png (PNG copy)> <./betweenness_max_all.png (PNG c
+opy)>]
+Overfull \vbox (38.89264pt too high) has occurred while \output is active []
+
+
+[28pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.88 
+      <./closeness_slope_all.png (PNG copy)> <./closeness_spearman.png (PNG cop
+y)> <./closeness_kendall.png (PNG copy)>]
+<mean_ass_beginn_bfs.png, id=355, 283.81032pt x 201.75375pt>
 File: mean_ass_beginn_bfs.png Graphic file (type png)
 <use mean_ass_beginn_bfs.png>
-Package pdftex.def Info: mean_ass_beginn_bfs.png  used on input line 139.
+Package pdftex.def Info: mean_ass_beginn_bfs.png  used on input line 135.
 (pdftex.def)             Requested size: 227.04855pt x 161.40321pt.
-<mean_ass_total_onlyiter.png, id=332, 292.09125pt x 199.49532pt>
+<mean_ass_total_onlyiter.png, id=356, 292.09125pt x 199.49532pt>
 File: mean_ass_total_onlyiter.png Graphic file (type png)
 <use mean_ass_total_onlyiter.png>
-Package pdftex.def Info: mean_ass_total_onlyiter.png  used on input line 139.
+Package pdftex.def Info: mean_ass_total_onlyiter.png  used on input line 135.
 (pdftex.def)             Requested size: 233.6733pt x 159.59645pt.
 
-Overfull \hbox (42.46812pt too wide) in paragraph at lines 139--140
+Overfull \hbox (42.46812pt too wide) in paragraph at lines 135--136
 [][][] 
  []
 
-<mean_open_rings_all.png, id=333, 292.09125pt x 199.49532pt>
+<mean_open_rings_all.png, id=357, 292.09125pt x 199.49532pt>
 File: mean_open_rings_all.png Graphic file (type png)
 <use mean_open_rings_all.png>
-Package pdftex.def Info: mean_open_rings_all.png  used on input line 141.
+Package pdftex.def Info: mean_open_rings_all.png  used on input line 137.
 (pdftex.def)             Requested size: 233.6733pt x 159.59645pt.
-<mean_processing_all.png, id=334, 296.60812pt x 199.49532pt>
+<mean_processing_all.png, id=358, 296.60812pt x 199.49532pt>
 File: mean_processing_all.png Graphic file (type png)
 <use mean_processing_all.png>
-Package pdftex.def Info: mean_processing_all.png  used on input line 141.
+Package pdftex.def Info: mean_processing_all.png  used on input line 137.
 (pdftex.def)             Requested size: 237.2868pt x 159.59645pt.
 
-Overfull \hbox (52.70638pt too wide) in paragraph at lines 141--142
+Overfull \hbox (52.70638pt too wide) in paragraph at lines 137--138
 [][][] 
  []
 
-) (./B) Chapters/conclusion.tex [27] [28 <./closeness_slope_all.png (PNG copy)>
- <./closeness_spearman.png (PNG copy)> <./closeness_kendall.png (PNG copy)>]
-[29 <./mean_ass_beginn_bfs.png (PNG copy)> <./mean_ass_total_onlyiter.png (PNG 
-copy)> <./mean_open_rings_all.png (PNG copy)> <./mean_processing_all.png (PNG c
-opy)>] [30
+[29pdfTeX warning (ext4): destination with the same identifier (name{table.5.1}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.148 \section
+              {Results for selected molecule pairs}] [30pdfTeX warning (ext4): 
+destination with the same identifier (name{figure.5.4}) has been already used, 
+duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.148 \section
+              {Results for selected molecule pairs} <./mean_ass_beginn_bfs.png 
+(PNG copy)> <./mean_ass_total_onlyiter.png (PNG copy)> <./mean_open_rings_all.p
+ng (PNG copy)> <./mean_processing_all.png (PNG copy)>]
+<molecules_v1_failed_barchart.png, id=369, 455.739pt x 276.597pt>
+File: molecules_v1_failed_barchart.png Graphic file (type png)
+<use molecules_v1_failed_barchart.png>
+Package pdftex.def Info: molecules_v1_failed_barchart.png  used on input line 1
+84.
+(pdftex.def)             Requested size: 364.59167pt x 221.2779pt.
+<2molecules_v2_barchart.png, id=370, 518.811pt x 314.922pt>
+File: 2molecules_v2_barchart.png Graphic file (type png)
+<use 2molecules_v2_barchart.png>
+Package pdftex.def Info: 2molecules_v2_barchart.png  used on input line 189.
+(pdftex.def)             Requested size: 415.04936pt x 251.93793pt.
+
+Underfull \vbox (badness 4467) has occurred while \output is active []
+
+ [31pdfTeX warning (ext4): destination with the same identifier (name{table.5.2
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.195 
+      ]
+<overlap_vacuum_naphthol_old.png, id=376, 578.16pt x 578.16pt>
+File: overlap_vacuum_naphthol_old.png Graphic file (type png)
+<use overlap_vacuum_naphthol_old.png>
+Package pdftex.def Info: overlap_vacuum_naphthol_old.png  used on input line 20
+2.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+<overlap_vacuum_naphthol_new.png, id=377, 578.16pt x 578.16pt>
+File: overlap_vacuum_naphthol_new.png Graphic file (type png)
+<use overlap_vacuum_naphthol_new.png>
+Package pdftex.def Info: overlap_vacuum_naphthol_new.png  used on input line 20
+6.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+<overlap_waterbox_naphthol_old.png, id=378, 578.16pt x 578.16pt>
+File: overlap_waterbox_naphthol_old.png Graphic file (type png)
+<use overlap_waterbox_naphthol_old.png>
+Package pdftex.def Info: overlap_waterbox_naphthol_old.png  used on input line 
+211.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+<overlap_waterbox_naphthol_new.png, id=379, 578.16pt x 578.16pt>
+File: overlap_waterbox_naphthol_new.png Graphic file (type png)
+<use overlap_waterbox_naphthol_new.png>
+Package pdftex.def Info: overlap_waterbox_naphthol_new.png  used on input line 
+215.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<states_vacuum_naphthol_old.png, id=380, 578.16pt x 578.16pt>
+File: states_vacuum_naphthol_old.png Graphic file (type png)
+<use states_vacuum_naphthol_old.png>
+Package pdftex.def Info: states_vacuum_naphthol_old.png  used on input line 225
+.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+<states_vacuum_naphthol_new.png, id=381, 578.16pt x 578.16pt>
+File: states_vacuum_naphthol_new.png Graphic file (type png)
+<use states_vacuum_naphthol_new.png>
+Package pdftex.def Info: states_vacuum_naphthol_new.png  used on input line 229
+.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+<states_waterbox_naphthol_old.png, id=382, 578.16pt x 578.16pt>
+File: states_waterbox_naphthol_old.png Graphic file (type png)
+<use states_waterbox_naphthol_old.png>
+Package pdftex.def Info: states_waterbox_naphthol_old.png  used on input line 2
+33.
+(pdftex.def)             Requested size: 179.84602pt x 179.84528pt.
+<states_waterbox_naphthol_new.png, id=383, 578.16pt x 578.16pt>
+File: states_waterbox_naphthol_new.png Graphic file (type png)
+<use states_waterbox_naphthol_new.png>
+Package pdftex.def Info: states_waterbox_naphthol_new.png  used on input line 2
+37.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<overlap_vacuum_toluene_old.png, id=384, 578.16pt x 578.16pt>
+File: overlap_vacuum_toluene_old.png Graphic file (type png)
+<use overlap_vacuum_toluene_old.png>
+Package pdftex.def Info: overlap_vacuum_toluene_old.png  used on input line 247
+.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+<overlap_vacuum_toluene_new.png, id=385, 578.16pt x 578.16pt>
+File: overlap_vacuum_toluene_new.png Graphic file (type png)
+<use overlap_vacuum_toluene_new.png>
+Package pdftex.def Info: overlap_vacuum_toluene_new.png  used on input line 251
+.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+<overlap_waterbox_toluene_old.png, id=386, 578.16pt x 578.16pt>
+File: overlap_waterbox_toluene_old.png Graphic file (type png)
+<use overlap_waterbox_toluene_old.png>
+Package pdftex.def Info: overlap_waterbox_toluene_old.png  used on input line 2
+56.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+<overlap_waterbox_toluene_new.png, id=387, 578.16pt x 578.16pt>
+File: overlap_waterbox_toluene_new.png Graphic file (type png)
+<use overlap_waterbox_toluene_new.png>
+Package pdftex.def Info: overlap_waterbox_toluene_new.png  used on input line 2
+60.
+(pdftex.def)             Requested size: 167.29893pt x 167.29158pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./B) Chapters/conclusion.tex [32pdfTeX warning (ext4): destination with the 
+same identifier (name{figure.5.5}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Conclusion} <./molecules_v1_failed_barchart.png> <./2molecules_v2_
+barchart.png>] [33pdfTeX warning (ext4): destination with the same identifier (
+name{figure.5.6}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Conclusion} <./overlap_vacuum_naphthol_old.png> <./overlap_vacuum_
+naphthol_new.png> <./overlap_waterbox_naphthol_old.png> <./overlap_waterbox_nap
+hthol_new.png>] [34pdfTeX warning (ext4): destination with the same identifier 
+(name{figure.5.7}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Conclusion} <./states_vacuum_naphthol_old.png> <./states_vacuum_na
+phthol_new.png> <./states_waterbox_naphthol_old.png> <./states_waterbox_naphtho
+l_new.png>] [35pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.5.8}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Conclusion} <./overlap_vacuum_toluene_old.png> <./overlap_vacuum_t
+oluene_new.png> <./overlap_waterbox_toluene_old.png> <./overlap_waterbox_toluen
+e_new.png>] [36
 
 
 ]
 chapter 6.
-) [31] [32
+[37]) (./B) Chapters/appendix.tex [38]
+chapter 7.
+<routes_first_set_failed.png, id=451, 911.697pt x 580.35pt>
+File: routes_first_set_failed.png Graphic file (type png)
+<use routes_first_set_failed.png>
+Package pdftex.def Info: routes_first_set_failed.png  used on input line 7.
+(pdftex.def)             Requested size: 455.8474pt x 290.17429pt.
+
+Overfull \hbox (37.59367pt too wide) in paragraph at lines 7--7
+[][][] 
+ []
+
+<toluene_set2.png, id=452, 455.301pt x 323.025pt>
+File: toluene_set2.png Graphic file (type png)
+<use toluene_set2.png>
+Package pdftex.def Info: toluene_set2.png  used on input line 15.
+(pdftex.def)             Requested size: 341.4749pt x 242.26813pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [39
 
 
-]
-Package tocbasic Info: character protrusion at lof deactivated on input line 70
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7.1}) 
+has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.18 
+      <./routes_first_set_failed.png>]
+<2naphthol_set2.png, id=460, 462.966pt x 290.175pt>
+File: 2naphthol_set2.png Graphic file (type png)
+<use 2naphthol_set2.png>
+Package pdftex.def Info: 2naphthol_set2.png  used on input line 22.
+(pdftex.def)             Requested size: 347.22365pt x 217.6307pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [40pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+2}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.25 
+      <./toluene_set2.png>]
+<6propylphenol_set2.png, id=467, 483.552pt x 243.528pt>
+File: 6propylphenol_set2.png Graphic file (type png)
+<use 6propylphenol_set2.png>
+Package pdftex.def Info: 6propylphenol_set2.png  used on input line 28.
+(pdftex.def)             Requested size: 362.6631pt x 182.64554pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [41pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+3}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.31 
+      <./2naphthol_set2.png>]
+<ethylcyclohexane_set2.png, id=474, 538.74pt x 317.331pt>
+File: ethylcyclohexane_set2.png Graphic file (type png)
+<use ethylcyclohexane_set2.png>
+Package pdftex.def Info: ethylcyclohexane_set2.png  used on input line 34.
+(pdftex.def)             Requested size: 404.054pt x 237.99765pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [42pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+4}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.37 
+      <./6propylphenol_set2.png>]
+<dimethylindenol_set2.png, id=481, 550.128pt x 393.981pt>
+File: dimethylindenol_set2.png Graphic file (type png)
+<use dimethylindenol_set2.png>
+Package pdftex.def Info: dimethylindenol_set2.png  used on input line 40.
+(pdftex.def)             Requested size: 412.59499pt x 295.48502pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [43pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+5}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.43 
+      <./ethylcyclohexane_set2.png>]
+<paper_routes1.png, id=488, 614.076pt x 638.385pt>
+File: paper_routes1.png Graphic file (type png)
+<use paper_routes1.png>
+Package pdftex.def Info: paper_routes1.png  used on input line 48.
+(pdftex.def)             Requested size: 399.14467pt x 414.94533pt.
+ [44pdfTeX warning (ext4): destination with the same identifier (name{figure.7.
+6}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.70 \section
+             {Results for individual runs} <./dimethylindenol_set2.png>]
+<naphthol_runs_old/vac_naphthol_overlap_old1.png, id=495, 764.8575pt x 794.97pt
+>
+File: naphthol_runs_old/vac_naphthol_overlap_old1.png Graphic file (type png)
+<use naphthol_runs_old/vac_naphthol_overlap_old1.png>
+Package pdftex.def Info: naphthol_runs_old/vac_naphthol_overlap_old1.png  used 
+on input line 77.
+(pdftex.def)             Requested size: 167.29893pt x 173.88713pt.
+<naphthol_runs_old/vac_naphthol_overlap_old2.png, id=496, 764.8575pt x 794.97pt
+>
+File: naphthol_runs_old/vac_naphthol_overlap_old2.png Graphic file (type png)
+<use naphthol_runs_old/vac_naphthol_overlap_old2.png>
+Package pdftex.def Info: naphthol_runs_old/vac_naphthol_overlap_old2.png  used 
+on input line 81.
+(pdftex.def)             Requested size: 167.29893pt x 173.88713pt.
+<naphthol_runs_old/vac_naphthol_overlap_old3.png, id=497, 764.8575pt x 794.97pt
+>
+File: naphthol_runs_old/vac_naphthol_overlap_old3.png Graphic file (type png)
+<use naphthol_runs_old/vac_naphthol_overlap_old3.png>
+Package pdftex.def Info: naphthol_runs_old/vac_naphthol_overlap_old3.png  used 
+on input line 86.
+(pdftex.def)             Requested size: 167.29893pt x 173.88713pt.
+<naphthol_runs_old/vac_naphthol_overlap_old4.png, id=498, 764.8575pt x 794.97pt
+>
+File: naphthol_runs_old/vac_naphthol_overlap_old4.png Graphic file (type png)
+<use naphthol_runs_old/vac_naphthol_overlap_old4.png>
+Package pdftex.def Info: naphthol_runs_old/vac_naphthol_overlap_old4.png  used 
+on input line 90.
+(pdftex.def)             Requested size: 167.29893pt x 173.88713pt.
+<naphthol_runs_new/vac_naphthol_overlap_new1.png, id=499, 764.8575pt x 794.97pt
+>
+File: naphthol_runs_new/vac_naphthol_overlap_new1.png Graphic file (type png)
+<use naphthol_runs_new/vac_naphthol_overlap_new1.png>
+Package pdftex.def Info: naphthol_runs_new/vac_naphthol_overlap_new1.png  used 
+on input line 101.
+(pdftex.def)             Requested size: 167.29893pt x 173.88713pt.
+<naphthol_runs_new/vac_naphthol_overlap_new2.png, id=500, 764.8575pt x 794.97pt
+>
+File: naphthol_runs_new/vac_naphthol_overlap_new2.png Graphic file (type png)
+<use naphthol_runs_new/vac_naphthol_overlap_new2.png>
+Package pdftex.def Info: naphthol_runs_new/vac_naphthol_overlap_new2.png  used 
+on input line 105.
+(pdftex.def)             Requested size: 167.29893pt x 173.88713pt.
+<naphthol_runs_new/vac_naphthol_overlap_new3.png, id=501, 764.8575pt x 794.97pt
+>
+File: naphthol_runs_new/vac_naphthol_overlap_new3.png Graphic file (type png)
+<use naphthol_runs_new/vac_naphthol_overlap_new3.png>
+Package pdftex.def Info: naphthol_runs_new/vac_naphthol_overlap_new3.png  used 
+on input line 110.
+(pdftex.def)             Requested size: 167.29893pt x 173.88713pt.
+<naphthol_runs_new/vac_naphthol_overlap_new4.png, id=502, 764.8575pt x 794.97pt
+>
+File: naphthol_runs_new/vac_naphthol_overlap_new4.png Graphic file (type png)
+<use naphthol_runs_new/vac_naphthol_overlap_new4.png>
+Package pdftex.def Info: naphthol_runs_new/vac_naphthol_overlap_new4.png  used 
+on input line 114.
+(pdftex.def)             Requested size: 167.29893pt x 173.88713pt.
+<naphthol_runs_old/vac_naphthol_states_old1.png, id=503, 378.41376pt x 248.93pt
+>
+File: naphthol_runs_old/vac_naphthol_states_old1.png Graphic file (type png)
+<use naphthol_runs_old/vac_naphthol_states_old1.png>
+Package pdftex.def Info: naphthol_runs_old/vac_naphthol_states_old1.png  used o
+n input line 125.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_old/vac_naphthol_states_old2.png, id=504, 378.41376pt x 248.93pt
+>
+File: naphthol_runs_old/vac_naphthol_states_old2.png Graphic file (type png)
+<use naphthol_runs_old/vac_naphthol_states_old2.png>
+Package pdftex.def Info: naphthol_runs_old/vac_naphthol_states_old2.png  used o
+n input line 129.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_old/vac_naphthol_states_old3.png, id=505, 378.41376pt x 248.93pt
+>
+File: naphthol_runs_old/vac_naphthol_states_old3.png Graphic file (type png)
+<use naphthol_runs_old/vac_naphthol_states_old3.png>
+Package pdftex.def Info: naphthol_runs_old/vac_naphthol_states_old3.png  used o
+n input line 134.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_old/vac_naphthol_states_old4.png, id=506, 378.41376pt x 248.93pt
+>
+File: naphthol_runs_old/vac_naphthol_states_old4.png Graphic file (type png)
+<use naphthol_runs_old/vac_naphthol_states_old4.png>
+Package pdftex.def Info: naphthol_runs_old/vac_naphthol_states_old4.png  used o
+n input line 138.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_new/vac_naphthol_states_new1.png, id=507, 378.41376pt x 248.93pt
+>
+File: naphthol_runs_new/vac_naphthol_states_new1.png Graphic file (type png)
+<use naphthol_runs_new/vac_naphthol_states_new1.png>
+Package pdftex.def Info: naphthol_runs_new/vac_naphthol_states_new1.png  used o
+n input line 150.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_new/vac_naphthol_states_new2.png, id=508, 378.41376pt x 248.93pt
+>
+File: naphthol_runs_new/vac_naphthol_states_new2.png Graphic file (type png)
+<use naphthol_runs_new/vac_naphthol_states_new2.png>
+Package pdftex.def Info: naphthol_runs_new/vac_naphthol_states_new2.png  used o
+n input line 154.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_new/vac_naphthol_states_new3.png, id=509, 378.41376pt x 248.93pt
+>
+File: naphthol_runs_new/vac_naphthol_states_new3.png Graphic file (type png)
+<use naphthol_runs_new/vac_naphthol_states_new3.png>
+Package pdftex.def Info: naphthol_runs_new/vac_naphthol_states_new3.png  used o
+n input line 159.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_new/vac_naphthol_states_new4.png, id=510, 378.41376pt x 248.93pt
+>
+File: naphthol_runs_new/vac_naphthol_states_new4.png Graphic file (type png)
+<use naphthol_runs_new/vac_naphthol_states_new4.png>
+Package pdftex.def Info: naphthol_runs_new/vac_naphthol_states_new4.png  used o
+n input line 163.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_old/waterbox_naphthol_overlap_old1.png, id=511, 758.835pt x 794.
+97pt>
+File: naphthol_runs_old/waterbox_naphthol_overlap_old1.png Graphic file (type p
+ng)
+<use naphthol_runs_old/waterbox_naphthol_overlap_old1.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_naphthol_overlap_old1.png  
+used on input line 180.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_old/waterbox_naphthol_overlap_old2.png, id=512, 758.835pt x 794.
+97pt>
+File: naphthol_runs_old/waterbox_naphthol_overlap_old2.png Graphic file (type p
+ng)
+<use naphthol_runs_old/waterbox_naphthol_overlap_old2.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_naphthol_overlap_old2.png  
+used on input line 184.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_old/waterbox_naphthol_overlap_old3.png, id=513, 758.835pt x 794.
+97pt>
+File: naphthol_runs_old/waterbox_naphthol_overlap_old3.png Graphic file (type p
+ng)
+<use naphthol_runs_old/waterbox_naphthol_overlap_old3.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_naphthol_overlap_old3.png  
+used on input line 189.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_old/waterbox_naphthol_overlap_old4.png, id=514, 758.835pt x 794.
+97pt>
+File: naphthol_runs_old/waterbox_naphthol_overlap_old4.png Graphic file (type p
+ng)
+<use naphthol_runs_old/waterbox_naphthol_overlap_old4.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_naphthol_overlap_old4.png  
+used on input line 193.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_new/waterbox_naphthol_overlap_new1.png, id=515, 758.835pt x 794.
+97pt>
+File: naphthol_runs_new/waterbox_naphthol_overlap_new1.png Graphic file (type p
+ng)
+<use naphthol_runs_new/waterbox_naphthol_overlap_new1.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_naphthol_overlap_new1.png  
+used on input line 204.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_new/waterbox_naphthol_overlap_new2.png, id=516, 758.835pt x 797.
+98125pt>
+File: naphthol_runs_new/waterbox_naphthol_overlap_new2.png Graphic file (type p
+ng)
+<use naphthol_runs_new/waterbox_naphthol_overlap_new2.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_naphthol_overlap_new2.png  
+used on input line 208.
+(pdftex.def)             Requested size: 167.29893pt x 175.92169pt.
+<naphthol_runs_new/waterbox_naphthol_overlap_new3.png, id=517, 758.835pt x 794.
+97pt>
+File: naphthol_runs_new/waterbox_naphthol_overlap_new3.png Graphic file (type p
+ng)
+<use naphthol_runs_new/waterbox_naphthol_overlap_new3.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_naphthol_overlap_new3.png  
+used on input line 213.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_new/waterbox_naphthol_overlap_new4.png, id=518, 758.835pt x 796.
+9775pt>
+File: naphthol_runs_new/waterbox_naphthol_overlap_new4.png Graphic file (type p
+ng)
+<use naphthol_runs_new/waterbox_naphthol_overlap_new4.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_naphthol_overlap_new4.png  
+used on input line 217.
+(pdftex.def)             Requested size: 167.29893pt x 175.70041pt.
+<naphthol_runs_old/waterbox_naphthol_states_old1.png, id=519, 378.41376pt x 248
+.93pt>
+File: naphthol_runs_old/waterbox_naphthol_states_old1.png Graphic file (type pn
+g)
+<use naphthol_runs_old/waterbox_naphthol_states_old1.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_naphthol_states_old1.png  u
+sed on input line 229.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_old/waterbox_naphthol_states_old2.png, id=520, 378.41376pt x 248
+.93pt>
+File: naphthol_runs_old/waterbox_naphthol_states_old2.png Graphic file (type pn
+g)
+<use naphthol_runs_old/waterbox_naphthol_states_old2.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_naphthol_states_old2.png  u
+sed on input line 233.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_old/waterbox_naphthol_states_old3.png, id=521, 378.41376pt x 248
+.93pt>
+File: naphthol_runs_old/waterbox_naphthol_states_old3.png Graphic file (type pn
+g)
+<use naphthol_runs_old/waterbox_naphthol_states_old3.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_naphthol_states_old3.png  u
+sed on input line 238.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_old/waterbox_naphthol_states_old4.png, id=522, 378.41376pt x 248
+.93pt>
+File: naphthol_runs_old/waterbox_naphthol_states_old4.png Graphic file (type pn
+g)
+<use naphthol_runs_old/waterbox_naphthol_states_old4.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_naphthol_states_old4.png  u
+sed on input line 242.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_new/waterbox_naphthol_states_new1.png, id=523, 378.41376pt x 248
+.93pt>
+File: naphthol_runs_new/waterbox_naphthol_states_new1.png Graphic file (type pn
+g)
+<use naphthol_runs_new/waterbox_naphthol_states_new1.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_naphthol_states_new1.png  u
+sed on input line 253.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_new/waterbox_naphthol_states_new2.png, id=524, 378.41376pt x 248
+.93pt>
+File: naphthol_runs_new/waterbox_naphthol_states_new2.png Graphic file (type pn
+g)
+<use naphthol_runs_new/waterbox_naphthol_states_new2.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_naphthol_states_new2.png  u
+sed on input line 257.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_new/waterbox_naphthol_states_new3.png, id=525, 378.41376pt x 248
+.93pt>
+File: naphthol_runs_new/waterbox_naphthol_states_new3.png Graphic file (type pn
+g)
+<use naphthol_runs_new/waterbox_naphthol_states_new3.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_naphthol_states_new3.png  u
+sed on input line 262.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_new/waterbox_naphthol_states_new4.png, id=526, 378.41376pt x 248
+.93pt>
+File: naphthol_runs_new/waterbox_naphthol_states_new4.png Graphic file (type pn
+g)
+<use naphthol_runs_new/waterbox_naphthol_states_new4.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_naphthol_states_new4.png  u
+sed on input line 266.
+(pdftex.def)             Requested size: 167.29893pt x 110.0537pt.
+<naphthol_runs_old/vac_meth_overlap_old1.png, id=527, 771.88374pt x 794.97pt>
+File: naphthol_runs_old/vac_meth_overlap_old1.png Graphic file (type png)
+<use naphthol_runs_old/vac_meth_overlap_old1.png>
+Package pdftex.def Info: naphthol_runs_old/vac_meth_overlap_old1.png  used on i
+nput line 277.
+(pdftex.def)             Requested size: 167.29893pt x 172.29807pt.
+<naphthol_runs_old/vac_meth_overlap_old2.png, id=528, 771.88374pt x 794.97pt>
+File: naphthol_runs_old/vac_meth_overlap_old2.png Graphic file (type png)
+<use naphthol_runs_old/vac_meth_overlap_old2.png>
+Package pdftex.def Info: naphthol_runs_old/vac_meth_overlap_old2.png  used on i
+nput line 281.
+(pdftex.def)             Requested size: 167.29893pt x 172.29807pt.
+<naphthol_runs_old/vac_meth_overlap_old3.png, id=529, 771.88374pt x 794.97pt>
+File: naphthol_runs_old/vac_meth_overlap_old3.png Graphic file (type png)
+<use naphthol_runs_old/vac_meth_overlap_old3.png>
+Package pdftex.def Info: naphthol_runs_old/vac_meth_overlap_old3.png  used on i
+nput line 286.
+(pdftex.def)             Requested size: 167.29893pt x 172.29807pt.
+<naphthol_runs_old/vac_meth_overlap_old4.png, id=530, 771.88374pt x 794.97pt>
+File: naphthol_runs_old/vac_meth_overlap_old4.png Graphic file (type png)
+<use naphthol_runs_old/vac_meth_overlap_old4.png>
+Package pdftex.def Info: naphthol_runs_old/vac_meth_overlap_old4.png  used on i
+nput line 290.
+(pdftex.def)             Requested size: 167.29893pt x 172.29807pt.
+<naphthol_runs_new/vac_meth_overlap_new1.png, id=531, 771.88374pt x 794.97pt>
+File: naphthol_runs_new/vac_meth_overlap_new1.png Graphic file (type png)
+<use naphthol_runs_new/vac_meth_overlap_new1.png>
+Package pdftex.def Info: naphthol_runs_new/vac_meth_overlap_new1.png  used on i
+nput line 300.
+(pdftex.def)             Requested size: 167.29893pt x 172.29807pt.
+<naphthol_runs_new/vac_meth_overlap_new2.png, id=532, 771.88374pt x 794.97pt>
+File: naphthol_runs_new/vac_meth_overlap_new2.png Graphic file (type png)
+<use naphthol_runs_new/vac_meth_overlap_new2.png>
+Package pdftex.def Info: naphthol_runs_new/vac_meth_overlap_new2.png  used on i
+nput line 304.
+(pdftex.def)             Requested size: 167.29893pt x 172.29807pt.
+<naphthol_runs_new/vac_meth_overlap_new3.png, id=533, 771.88374pt x 794.97pt>
+File: naphthol_runs_new/vac_meth_overlap_new3.png Graphic file (type png)
+<use naphthol_runs_new/vac_meth_overlap_new3.png>
+Package pdftex.def Info: naphthol_runs_new/vac_meth_overlap_new3.png  used on i
+nput line 309.
+(pdftex.def)             Requested size: 167.29893pt x 172.29807pt.
+<naphthol_runs_new/vac_meth_overlap_new4.png, id=534, 771.88374pt x 794.97pt>
+File: naphthol_runs_new/vac_meth_overlap_new4.png Graphic file (type png)
+<use naphthol_runs_new/vac_meth_overlap_new4.png>
+Package pdftex.def Info: naphthol_runs_new/vac_meth_overlap_new4.png  used on i
+nput line 313.
+(pdftex.def)             Requested size: 167.29893pt x 172.29807pt.
+<naphthol_runs_old/waterbox_meth_overlap_old1.png, id=535, 758.835pt x 794.97pt
+>
+File: naphthol_runs_old/waterbox_meth_overlap_old1.png Graphic file (type png)
+<use naphthol_runs_old/waterbox_meth_overlap_old1.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_meth_overlap_old1.png  used
+ on input line 327.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_old/waterbox_meth_overlap_old2.png, id=536, 758.835pt x 794.97pt
+>
+File: naphthol_runs_old/waterbox_meth_overlap_old2.png Graphic file (type png)
+<use naphthol_runs_old/waterbox_meth_overlap_old2.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_meth_overlap_old2.png  used
+ on input line 331.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_old/waterbox_meth_overlap_old3.png, id=537, 758.835pt x 794.97pt
+>
+File: naphthol_runs_old/waterbox_meth_overlap_old3.png Graphic file (type png)
+<use naphthol_runs_old/waterbox_meth_overlap_old3.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_meth_overlap_old3.png  used
+ on input line 336.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_old/waterbox_meth_overlap_old4.png, id=538, 758.835pt x 794.97pt
+>
+File: naphthol_runs_old/waterbox_meth_overlap_old4.png Graphic file (type png)
+<use naphthol_runs_old/waterbox_meth_overlap_old4.png>
+Package pdftex.def Info: naphthol_runs_old/waterbox_meth_overlap_old4.png  used
+ on input line 340.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_new/waterbox_meth_overlap_new1.png, id=539, 758.835pt x 794.97pt
+>
+File: naphthol_runs_new/waterbox_meth_overlap_new1.png Graphic file (type png)
+<use naphthol_runs_new/waterbox_meth_overlap_new1.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_meth_overlap_new1.png  used
+ on input line 350.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_new/waterbox_meth_overlap_new2.png, id=540, 758.835pt x 794.97pt
+>
+File: naphthol_runs_new/waterbox_meth_overlap_new2.png Graphic file (type png)
+<use naphthol_runs_new/waterbox_meth_overlap_new2.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_meth_overlap_new2.png  used
+ on input line 354.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_new/waterbox_meth_overlap_new3.png, id=541, 758.835pt x 794.97pt
+>
+File: naphthol_runs_new/waterbox_meth_overlap_new3.png Graphic file (type png)
+<use naphthol_runs_new/waterbox_meth_overlap_new3.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_meth_overlap_new3.png  used
+ on input line 359.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<naphthol_runs_new/waterbox_meth_overlap_new4.png, id=542, 758.835pt x 794.97pt
+>
+File: naphthol_runs_new/waterbox_meth_overlap_new4.png Graphic file (type png)
+<use naphthol_runs_new/waterbox_meth_overlap_new4.png>
+Package pdftex.def Info: naphthol_runs_new/waterbox_meth_overlap_new4.png  used
+ on input line 363.
+(pdftex.def)             Requested size: 167.29893pt x 175.25784pt.
+<old_new_runs_states.png, id=543, 441.504pt x 629.844pt>
+File: old_new_runs_states.png Graphic file (type png)
+<use old_new_runs_states.png>
+Package pdftex.def Info: old_new_runs_states.png  used on input line 372.
+(pdftex.def)             Requested size: 376.4258pt x 537.00372pt.
+)
+[45pdfTeX warning (ext4): destination with the same identifier (name{figure.7.7
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./paper_routes1.png>] [46pdfTeX warning (ext4): destin
+ation with the same identifier (name{figure.7.8}) has been already used, duplic
+ate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_old/vac_naphthol_overlap_old1.png> <./
+naphthol_runs_old/vac_naphthol_overlap_old2.png> <./naphthol_runs_old/vac_napht
+hol_overlap_old3.png> <./naphthol_runs_old/vac_naphthol_overlap_old4.png>]
+[47pdfTeX warning (ext4): destination with the same identifier (name{figure.7.9
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_new/vac_naphthol_overlap_new1.png> <./
+naphthol_runs_new/vac_naphthol_overlap_new2.png> <./naphthol_runs_new/vac_napht
+hol_overlap_new3.png> <./naphthol_runs_new/vac_naphthol_overlap_new4.png>]
+[48pdfTeX warning (ext4): destination with the same identifier (name{figure.7.1
+0}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_old/vac_naphthol_states_old1.png> <./n
+aphthol_runs_old/vac_naphthol_states_old2.png> <./naphthol_runs_old/vac_naphtho
+l_states_old3.png> <./naphthol_runs_old/vac_naphthol_states_old4.png>] [49pdfTe
+X warning (ext4): destination with the same identifier (name{figure.7.11}) has 
+been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_new/vac_naphthol_states_new1.png> <./n
+aphthol_runs_new/vac_naphthol_states_new2.png> <./naphthol_runs_new/vac_naphtho
+l_states_new3.png> <./naphthol_runs_new/vac_naphthol_states_new4.png>] [50pdfTe
+X warning (ext4): destination with the same identifier (name{figure.7.12}) has 
+been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_old/waterbox_naphthol_overlap_old1.png
+> <./naphthol_runs_old/waterbox_naphthol_overlap_old2.png> <./naphthol_runs_old
+/waterbox_naphthol_overlap_old3.png> <./naphthol_runs_old/waterbox_naphthol_ove
+rlap_old4.png>] [51pdfTeX warning (ext4): destination with the same identifier 
+(name{figure.7.13}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_new/waterbox_naphthol_overlap_new1.png
+> <./naphthol_runs_new/waterbox_naphthol_overlap_new2.png> <./naphthol_runs_new
+/waterbox_naphthol_overlap_new3.png> <./naphthol_runs_new/waterbox_naphthol_ove
+rlap_new4.png>] [52pdfTeX warning (ext4): destination with the same identifier 
+(name{figure.7.14}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_old/waterbox_naphthol_states_old1.png>
+ <./naphthol_runs_old/waterbox_naphthol_states_old2.png> <./naphthol_runs_old/w
+aterbox_naphthol_states_old3.png> <./naphthol_runs_old/waterbox_naphthol_states
+_old4.png>] [53pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.7.15}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_new/waterbox_naphthol_states_new1.png>
+ <./naphthol_runs_new/waterbox_naphthol_states_new2.png> <./naphthol_runs_new/w
+aterbox_naphthol_states_new3.png> <./naphthol_runs_new/waterbox_naphthol_states
+_new4.png>] [54pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.7.16}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_old/vac_meth_overlap_old1.png> <./naph
+thol_runs_old/vac_meth_overlap_old2.png> <./naphthol_runs_old/vac_meth_overlap_
+old3.png> <./naphthol_runs_old/vac_meth_overlap_old4.png>] [55pdfTeX warning (e
+xt4): destination with the same identifier (name{figure.7.17}) has been already
+ used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_new/vac_meth_overlap_new1.png> <./naph
+thol_runs_new/vac_meth_overlap_new2.png> <./naphthol_runs_new/vac_meth_overlap_
+new3.png> <./naphthol_runs_new/vac_meth_overlap_new4.png>] [56pdfTeX warning (e
+xt4): destination with the same identifier (name{figure.7.18}) has been already
+ used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_old/waterbox_meth_overlap_old1.png> <.
+/naphthol_runs_old/waterbox_meth_overlap_old2.png> <./naphthol_runs_old/waterbo
+x_meth_overlap_old3.png> <./naphthol_runs_old/waterbox_meth_overlap_old4.png>]
+[57pdfTeX warning (ext4): destination with the same identifier (name{figure.7.1
+9}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./naphthol_runs_new/waterbox_meth_overlap_new1.png> <.
+/naphthol_runs_new/waterbox_meth_overlap_new2.png> <./naphthol_runs_new/waterbo
+x_meth_overlap_new3.png> <./naphthol_runs_new/waterbox_meth_overlap_new4.png>]
+[58pdfTeX warning (ext4): destination with the same identifier (name{figure.7.2
+0}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.72     \listoffigures
+                        <./old_new_runs_states.png>]
+Package tocbasic Info: character protrusion at lof deactivated on input line 72
 .
  (./main.lof
 Underfull \vbox (badness 2990) has occurred while \output is active []
 
- [33]
+ [59
+
+
+]
 Overfull \hbox (3.21579pt too wide) in paragraph at lines 18--18
  \T1/cmr/m/n/10.95 (-20) representations of both mo-lecules and the com-mon cor
 e; lower row: Py3Dmol 
+ []
+
+
+Overfull \hbox (10.98969pt too wide) in paragraph at lines 40--40
+ [][] [][]\T1/cmr/m/n/10.95 (-20) left: DFS-algorithm; middle: BFS-iter-algorit
+hm; right: BFS-iter+-algorithm; 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [60]
+Overfull \hbox (10.98969pt too wide) in paragraph at lines 46--46
+ [][] [][]\T1/cmr/m/n/10.95 (-20) left: DFS-algorithm; middle: BFS-iter-algorit
+hm; right: BFS-iter+-algorithm; 
  []
 
 )
 \tf@lof=\write9
 \openout9 = `main.lof'.
 
- (./main.bbl [34]
+ (./main.bbl [61] [62
+
+
+]
 chapter without number
-[35
-
-
-] [36])
+[63] [64])
 No file main.acr.
 No file main.gls.
 
@@ -1390,24 +2391,31 @@ FiXme Summary: Number of notes: 0,
 (FiXme)        Number of fatal errors: 0,
 (FiXme)        Total: 0.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 90.
-[37]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 90.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 92.
+[65]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 92.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 90.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 90.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 92.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 92.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 90.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
  ) 
 Here is how much of TeX's memory you used:
- 26578 strings out of 480471
- 417069 string characters out of 5903301
- 894104 words of memory out of 5000000
- 41900 multiletter control sequences out of 15000+600000
- 570788 words of font info for 116 fonts, out of 8000000 for 9000
+ 27708 strings out of 480471
+ 449478 string characters out of 5903301
+ 912974 words of memory out of 5000000
+ 42831 multiletter control sequences out of 15000+600000
+ 572620 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,10n,76p,10100b,2353s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,11n,76p,10100b,2353s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/texl
 ive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/texlive/2020/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2020/texmf-dist/fonts/type1/
@@ -1418,18 +2426,18 @@ cmmi8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 /2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2020/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2020/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/p
-ublic/cm-super/sfrm1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-s
-uper/sfsl1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsx1
-095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><d
-:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><d:/texlive/
-2020/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb><d:/texlive/2020/texmf
--dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/texlive/2020/texmf-dist/font
-s/type1/public/cm-super/sftt1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/ur
-w/helvetic/uhvb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr
-8a.pfb>
-Output written on main.pdf (41 pages, 8979101 bytes).
+ublic/cm-super/sfrm0900.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-s
+uper/sfrm1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsl1
+095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><d
+:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><d:/texlive/
+2020/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><d:/texlive/2020/texmf
+-dist/fonts/type1/public/cm-super/sfsx2074.pfb><d:/texlive/2020/texmf-dist/font
+s/type1/public/cm-super/sfti1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/pu
+blic/cm-super/sftt1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic
+/uhvb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on main.pdf (69 pages, 23402671 bytes).
 PDF statistics:
- 615 PDF objects out of 1000 (max. 8388607)
- 112 named destinations out of 1000 (max. 500000)
- 18253 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 1090 PDF objects out of 1200 (max. 8388607)
+ 233 named destinations out of 1000 (max. 500000)
+ 22243 words of extra memory for PDF output out of 24883 (max. 10000000)
 

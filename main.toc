@@ -8,7 +8,7 @@
 \contentsline {subsection}{\numberline {2.2.3}Bennett Acceptance Ratio (BAR)}{6}{subsection.2.2.3}%
 \contentsline {section}{\numberline {2.3}Soft-core potentials}{7}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Dummy atoms, Single/Dual topology}{8}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Serial atom insertion}{8}{section.2.5}%
+\contentsline {section}{\numberline {2.5}Serial atom insertion}{9}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Transformato}{11}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Common core approach}{11}{section.3.1}%
 \contentsline {chapter}{\numberline {4}Problem description}{13}{chapter.4}%
@@ -17,10 +17,17 @@
 \contentsline {section}{\numberline {4.2}Graph algorithms}{16}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Added functionality}{17}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Functions}{17}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Examples for processing molecules}{19}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.2}Processing of hydrogen atoms}{19}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Examples for processing molecules}{21}{subsection.4.3.3}%
 \contentsline {chapter}{\numberline {5}Results}{25}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Visualizations}{25}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Scoring schemes}{25}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusion}{31}{chapter.6}%
-\contentsline {chapter}{\nonumberline List of Figures}{33}{chapter*.2}%
-\contentsline {chapter}{\nonumberline Bibliography}{35}{chapter*.3}%
+\contentsline {section}{\numberline {5.2}Scoring schemes}{26}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Results for selected molecule pairs}{31}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Conclusion}{37}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Appendix}{39}{chapter.7}%
+\contentsline {section}{\numberline {7.1}First set of molecules (set-up failed)}{39}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Second set of molecules}{40}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Routes for molecules from Transformato paper}{44}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Results for individual runs}{45}{section.7.4}%
+\contentsline {chapter}{\nonumberline List of Figures}{59}{chapter*.2}%
+\contentsline {chapter}{\nonumberline Bibliography}{63}{chapter*.3}%

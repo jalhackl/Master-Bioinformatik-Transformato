@@ -53,7 +53,8 @@ The junction between common core and dummy region has to be unique;
 only one dummy region is only allowed to be connected via one bond to the
 common core. In particular, the maximum common substructure must not
 encompass partial rings (which would imply that dummy regions are
-connected via multiple bonds).
+connected via multiple bonds). (In general, such transformations can pose intricate problems, because ring breakage can lead to fast changes in free energy
+and cause significant estimation error \cite{Liu.2015}. )
 
 During the mutation process, the atoms are turned off gradually: In
 a first step, all hydrogen atoms outside the common core are excluded.

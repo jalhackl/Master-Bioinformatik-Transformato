@@ -138,6 +138,14 @@ Peter Kollman.
   phenomena.
 \newblock {\em Chem. Rev.}, (93):2395--2417, 1993.
 
+\bibitem[LBD{\etalchar{+}}18]{Loeffler.2018}
+Hannes~H. Loeffler, Stefano Bosisio, Guilherme {Duarte Ramos Matos}, Donghyuk
+  Suh, Benoit Roux, David~L. Mobley, and Julien Michel.
+\newblock Reproducibility of free energy calculations across different
+  molecular simulation software packages.
+\newblock {\em Journal of chemical theory and computation}, 14(11):5567--5582,
+  2018.
+
 \bibitem[LWM15]{Liu.2015}
 Shuai Liu, Lingle Wang, and David~L. Mobley.
 \newblock Is ring breaking feasible in relative binding free energy

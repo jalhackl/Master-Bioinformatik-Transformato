@@ -17,45 +17,45 @@ Warning--empty author in key-3
 Warning--empty journal in key-3
 Warning--empty year in key-3
 Warning--there's a number but no volume in Kollman.
-You've used 30 entries,
+You've used 31 entries,
             2543 wiz_defined-function locations,
-            763 strings with 10590 characters,
-and the built_in function-call counts, 14245 in all, are:
-= -- 1379
-> -- 901
+            769 strings with 10880 characters,
+and the built_in function-call counts, 14839 in all, are:
+= -- 1435
+> -- 946
 < -- 5
-+ -- 336
-- -- 330
-* -- 1260
-:= -- 2405
-add.period$ -- 84
-call.type$ -- 30
-change.case$ -- 248
-chr.to.int$ -- 26
-cite$ -- 47
-duplicate$ -- 430
-empty$ -- 877
-format.name$ -- 356
-if$ -- 2753
++ -- 353
+- -- 347
+* -- 1318
+:= -- 2508
+add.period$ -- 87
+call.type$ -- 31
+change.case$ -- 259
+chr.to.int$ -- 27
+cite$ -- 48
+duplicate$ -- 444
+empty$ -- 909
+format.name$ -- 373
+if$ -- 2865
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 31
-newline$ -- 148
-num.names$ -- 83
-pop$ -- 207
+missing$ -- 32
+newline$ -- 153
+num.names$ -- 86
+pop$ -- 215
 preamble$ -- 1
-purify$ -- 279
+purify$ -- 291
 quote$ -- 0
-skip$ -- 342
+skip$ -- 353
 stack$ -- 0
-substring$ -- 859
-swap$ -- 34
+substring$ -- 897
+swap$ -- 35
 text.length$ -- 5
 text.prefix$ -- 4
 top$ -- 0
-type$ -- 232
+type$ -- 240
 warning$ -- 14
-while$ -- 123
-width$ -- 33
-write$ -- 378
+while$ -- 128
+width$ -- 34
+write$ -- 391
 (There were 14 warnings)
