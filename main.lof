@@ -5,15 +5,16 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces These examples demonstrate that the addition of hydrogens can influence the construction of the common core; left: molecule 1; middle: common core; right: molecule 2; in the representations of the full molecule, the common cores are marked in red; the first and the last two rows show the same molecules, in the upper row without, in the lower with hydrogens, in case of the lower molecule combination the common core changes when hydrogens are added to the Rdkit-molecule representation }}{15}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 'Strict fusion' can affect the construction of the common core drastically; first and second column: Common core of two molecules (cholesterol and cortisol) without strict fusion; third and fourth column: Common core of two molecules with strict fusion; in the images of the full molecule graph common cores are marked in red }}{16}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparison of different graph traversal algorithms; green nodes represent the root atom, blue atoms (in the figure shown right) have increased weights; left: depth first search; middle: breadth first search; right: Dijkstra algorithm, the edges connecting blue colored nodes have increased weights leading to a mutation route differing from BFS; the final processing of the nodes happens in reversed order}}{17}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces comparison of typical DFS- and BFS-mutation route for a single ring structure; left: DFS-algorithm; right: BFS-algorithm; in all depictions of mutation routes the common core is shown in dark, the color gradient starts at red indicating the atom first to be removed and ends at green; DFS starts at carbon 22 and thus ring breakage gives rise to one long chain which is processed subsequently, whereas BFS starts at carbon 22 and the two emerging chains are processed in a symmetric fashion }}{20}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Example for the differences between iter- and iter\_change-algorithm; left: iter; right: iter-change; iter-change processes all atoms within a chain or a ring at once (if possible) before switching to other parts of the molecule}}{21}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark; the red arrow indicates the undesired processing of the ring atoms}}{22}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark; the red arrow and circle indicates the undesired processing of the ring atoms}}{23}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark; the red arrow indicates the undesired processing of the ring atoms}}{23}{figure.4.8}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 'Strict fusion' can affect the construction of the common core drastically; first and second column: Common core of two molecules (cholesterol and cortisol) without strict fusion; third and fourth column: Common core of two molecules with strict fusion; in the images of the full molecule graph common cores are marked in red. In this case, none of the settings yield a valid common core, the iterative approach would be necessary to obtain one }}{16}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces common cores of cholesterol (left) and 1-pyrenepropanoic acid (right); upper row: CompleteRingsOnly = False; middle row: CompleteRingsOnly = True; lower row: iterative approach to obtain a valid Transformato common core}}{17}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Comparison of different graph traversal algorithms; green nodes represent the root atom, blue atoms (in the figure shown right) have increased weights; left: depth first search; middle: breadth first search; right: Dijkstra algorithm, the edges connecting blue colored nodes have increased weights leading to a mutation route differing from BFS; the final processing of the nodes happens in reversed order}}{18}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces comparison of typical DFS- and BFS-mutation route for a single ring structure; left: DFS-algorithm; right: BFS-algorithm; in all depictions of mutation routes the common core is shown in dark, the color gradient starts at red indicating the atom first to be removed and ends at green; DFS starts at carbon 22 and thus ring breakage gives rise to one long chain which is processed subsequently, whereas BFS starts at carbon 22 and the two emerging chains are processed in a symmetric fashion }}{21}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Example for the differences between iter- and iter\_change-algorithm; left: iter; right: iter-change; iter-change processes all atoms within a chain or a ring at once (if possible) before switching to other parts of the molecule}}{22}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark; the red arrow indicates the undesired processing of the ring atoms}}{23}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark; the red arrow and circle indicates the undesired processing of the ring atoms}}{23}{figure.4.8}%
 \contentsline {figure}{\numberline {4.9}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark; the red arrow indicates the undesired processing of the ring atoms}}{24}{figure.4.9}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark}}{24}{figure.4.10}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark; the red arrow indicates the undesired processing of the ring atoms}}{24}{figure.4.10}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark}}{24}{figure.4.11}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Visualization of the mutation route using Py3dmol; upper row: Rdkit-representations of both molecules and the common core; lower row: Py3Dmol visualizations; left and right: molecules; middle: common core of both molecules}}{26}{figure.5.1}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Betweenness centrality}}{27}{figure.5.2}%
@@ -43,66 +44,67 @@
 \contentsline {figure}{\numberline {7.4}{\ignorespaces mutation route for 6-propylphenol for 6-propylphenol->methanol; first row: correct common core and mutation route, hydrogens excluded; middle row: hydrogens included; right: hydrogens included, but removed before drawing; left: DFS-algorithm; middle: BFS-algorithm; right: BFS-iter-algorithm; common core in dark, for these small molecules the differences between the new mutation algorithms (i.e. middle and right) are negligible}}{42}{figure.7.4}%
 \contentsline {figure}{\numberline {7.5}{\ignorespaces mutation route for ethylcyclohexane for ethylcyclohexane->methanol; first row: correct common core and mutation route, hydrogens excluded; middle row: hydrogens included; right: hydrogens included, but removed before drawing; left: DFS-algorithm; middle: BFS-algorithm; right: BFS-iter-algorithm; common core in dark, for these small molecules the differences between the new mutation algorithms (i.e. middle and right) are negligible}}{43}{figure.7.5}%
 \contentsline {figure}{\numberline {7.6}{\ignorespaces mutation route for dimethyl-inden-ol for dimethyl-inden-ol->methanol; first row: correct common core and mutation route, hydrogens excluded; middle row: hydrogens included; right: hydrogens included, but removed before drawing; left: DFS-algorithm; middle: BFS-algorithm; right: BFS-iter-algorithm; common core in dark, for these small molecules the differences between the new mutation algorithms (i.e. middle and right) are negligible}}{44}{figure.7.6}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces left: DFS-algorithm; middle: BFS-iter-algorithm; right: BFS-iter+-algorithm; common core in dark}}{45}{figure.7.7}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Overlap plots for Naphthol/Vacuum, old algorithm}}{46}{figure.7.8}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{46}{figure.7.8}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{46}{figure.7.8}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{46}{figure.7.8}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{46}{figure.7.8}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Overlap plots for Naphthol/Vacuum, new algorithm}}{47}{figure.7.9}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces left: DFS-algorithm; right: BFS--algorithm; common core in dark; from top to bottom row: mutation routes for toluene/methane, 2-methylfuran/methane, 2-methylindole/methane}}{45}{figure.7.7}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces left: DFS-algorithm; right: BFS-algorithm; common core in dark; mutation routes for 2-cyclopentylindole/7-cyclopentylindole}}{46}{figure.7.8}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Overlap plots for Naphthol/Vacuum, old algorithm}}{47}{figure.7.9}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{47}{figure.7.9}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{47}{figure.7.9}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{47}{figure.7.9}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{47}{figure.7.9}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Lambda states for Naphthol/Vacuum, old algorithm}}{48}{figure.7.10}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Overlap plots for Naphthol/Vacuum, new algorithm}}{48}{figure.7.10}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{48}{figure.7.10}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{48}{figure.7.10}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{48}{figure.7.10}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{48}{figure.7.10}%
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Lambda states for Naphthol/Vacuum, new algorithm}}{49}{figure.7.11}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Lambda states for Naphthol/Vacuum, old algorithm}}{49}{figure.7.11}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{49}{figure.7.11}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{49}{figure.7.11}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{49}{figure.7.11}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{49}{figure.7.11}%
-\contentsline {figure}{\numberline {7.12}{\ignorespaces Overlap plots for Naphthol/Waterbox, old algorithm}}{50}{figure.7.12}%
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Lambda states for Naphthol/Vacuum, new algorithm}}{50}{figure.7.12}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{50}{figure.7.12}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{50}{figure.7.12}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{50}{figure.7.12}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{50}{figure.7.12}%
-\contentsline {figure}{\numberline {7.13}{\ignorespaces Overlap plots for Naphthol/Waterbox, new algorithm}}{51}{figure.7.13}%
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Overlap plots for Naphthol/Waterbox, old algorithm}}{51}{figure.7.13}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{51}{figure.7.13}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{51}{figure.7.13}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{51}{figure.7.13}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{51}{figure.7.13}%
-\contentsline {figure}{\numberline {7.14}{\ignorespaces Lambda states for Naphthol/Waterbox, old algorithm}}{52}{figure.7.14}%
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Overlap plots for Naphthol/Waterbox, new algorithm}}{52}{figure.7.14}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{52}{figure.7.14}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{52}{figure.7.14}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{52}{figure.7.14}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{52}{figure.7.14}%
-\contentsline {figure}{\numberline {7.15}{\ignorespaces Lambda states for Naphthol/Waterbox, new algorithm}}{53}{figure.7.15}%
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Lambda states for Naphthol/Waterbox, old algorithm}}{53}{figure.7.15}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{53}{figure.7.15}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{53}{figure.7.15}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{53}{figure.7.15}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{53}{figure.7.15}%
-\contentsline {figure}{\numberline {7.16}{\ignorespaces Overlap plots for Methanol/Vacuum (from transformation 2-naphthol->methanol), old algorithm (As only one heavy atom is involved, the mutation algorithm obviously plays no role.)}}{54}{figure.7.16}%
+\contentsline {figure}{\numberline {7.16}{\ignorespaces Lambda states for Naphthol/Waterbox, new algorithm}}{54}{figure.7.16}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{54}{figure.7.16}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{54}{figure.7.16}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{54}{figure.7.16}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{54}{figure.7.16}%
-\contentsline {figure}{\numberline {7.17}{\ignorespaces Overlap plots for Methanol/Vacuum (from transformation 2-naphthol->methanol), new algorithm (As only one heavy atom is involved, the mutation algorithm obviously plays no role.)}}{55}{figure.7.17}%
+\contentsline {figure}{\numberline {7.17}{\ignorespaces Overlap plots for Methanol/Vacuum (from transformation 2-naphthol->methanol), old algorithm (As only one heavy atom is involved, the mutation algorithm obviously plays no role.)}}{55}{figure.7.17}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{55}{figure.7.17}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{55}{figure.7.17}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{55}{figure.7.17}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{55}{figure.7.17}%
-\contentsline {figure}{\numberline {7.18}{\ignorespaces Overlap plots for Methanol/Waterbox (from transformation 2-naphthol->methanol), old algorithm (As only one heavy atom is involved, the mutation algorithm obviously plays no role.)}}{56}{figure.7.18}%
+\contentsline {figure}{\numberline {7.18}{\ignorespaces Overlap plots for Methanol/Vacuum (from transformation 2-naphthol->methanol), new algorithm (As only one heavy atom is involved, the mutation algorithm obviously plays no role.)}}{56}{figure.7.18}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{56}{figure.7.18}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{56}{figure.7.18}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{56}{figure.7.18}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{56}{figure.7.18}%
-\contentsline {figure}{\numberline {7.19}{\ignorespaces Overlap plots for Methanol/Waterbox (from transformation 2-naphthol->methanol), new algorithm (As only one heavy atom is involved, the mutation algorithm obviously plays no role.)}}{57}{figure.7.19}%
+\contentsline {figure}{\numberline {7.19}{\ignorespaces Overlap plots for Methanol/Waterbox (from transformation 2-naphthol->methanol), old algorithm (As only one heavy atom is involved, the mutation algorithm obviously plays no role.)}}{57}{figure.7.19}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{57}{figure.7.19}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{57}{figure.7.19}%
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{57}{figure.7.19}%
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{57}{figure.7.19}%
-\contentsline {figure}{\numberline {7.20}{\ignorespaces comparison of the lambda states of the first simulation (possibly wrong results) and 4 runs of second simulation for toluene->methanol}}{58}{figure.7.20}%
+\contentsline {figure}{\numberline {7.20}{\ignorespaces Overlap plots for Methanol/Waterbox (from transformation 2-naphthol->methanol), new algorithm (As only one heavy atom is involved, the mutation algorithm obviously plays no role.)}}{58}{figure.7.20}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Run 1}}}{58}{figure.7.20}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Run 2}}}{58}{figure.7.20}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Run 3}}}{58}{figure.7.20}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Run 4}}}{58}{figure.7.20}%
+\contentsline {figure}{\numberline {7.21}{\ignorespaces comparison of the lambda states of the first simulation (possibly wrong results) and 4 runs of second simulation for toluene->methanol}}{59}{figure.7.21}%
 \addvspace {10\p@ }

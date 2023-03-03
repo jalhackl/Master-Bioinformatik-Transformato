@@ -62,7 +62,7 @@ the maximum common substructure heavily (fig. 4.1) because the number of atoms i
 
 \begin{figure}
 
-\includegraphics[scale=0.3]{hydrogens_plus_minus}\caption{These examples demonstrate that the addition of hydrogens can influence the construction of the common core; left: molecule 1; middle: common core; right: molecule 2; in the representations of the full molecule, the common cores are marked in red; the first
+\includegraphics[scale=0.35]{hydrogens_plus_minus}\caption{These examples demonstrate that the addition of hydrogens can influence the construction of the common core; left: molecule 1; middle: common core; right: molecule 2; in the representations of the full molecule, the common cores are marked in red; the first
 and the last two rows show the same molecules, in the upper row without,
 in the lower with hydrogens, in case of the lower molecule combination
 the common core changes when hydrogens are added to the Rdkit-molecule
@@ -75,11 +75,11 @@ the common core are of crucial importance. Firstly, these parameters
 can influence the common core construction drastically and, secondly, they
 can even be decisive whether the generated common core is valid for the
 Transformato workflow.
-
+Especially for the generation of common cores for polycyclic molecules, e.g. sterols, these parameters are of utmost importance.  
 Important ring-related settings are \texttt{ringMatchesRingOnly}, \texttt{completeRingsOnly}
 and the \texttt{ringCompare-parameter}. 
 
-To obtain valid common cores for the processing of Transformato, \texttt{ringMatchesRingOnly}
+To obtain valid common cores of molecules involving cyclic structures for the processing of Transformato, \texttt{ringMatchesRingOnly}
 and \texttt{completeRingsOnly} must be set to True: The former argument indicates
 that ring atoms of one molecule are only matched against ring atoms
 of the other molecule, the latter ensures that no partial rings are
@@ -95,16 +95,21 @@ on the common core of two cyclic example molecules. However, enforcing
 of \texttt{StrictRingFusion} can still lead to maximum common substructures
 that are not valid Transformato common cores in case of a dummy region
 which is connected via multiple ring atoms of the same ring with the common
-core. It seems to be advisable to warn the user in this case that the common
-core does not fit the expectations of the Transformato workflow. Alternatively,
-one could check after the creation if the common core is valid. If
+core. 
+When an invalid common core is generated, it seems to be advisable to warn the user in this case that the common core does not fit the expectations of the Transformato workflow. 
+The mutation algorithms presented below can deal with such invalid common cores. A helper function arbitrarily chooses one of the connections between common core and dummy region and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current Transformato workflow is not adapted to deal with such common cores in a proper way. Therefore it makes only sense for test purposes and is not a reasonable input for the regular workflow.
+Alternatively, one could check after the creation if the common core is valid. If
 it is not, one could for instance search for a new common core encompassing fewer
-atoms until a valid common core is found. A further option would be to prohibit the involvement of ring atoms for this particular molecule combination.
-Probably the most efficient solution would be to remove the rings that contain atoms which participate in the partial ring causing the invalid common core from the representation used for creating the maximum common substructure and afterwards start a new search for a valid common core.
-Of course,
-in the worst scenario, i.e. if both molecules only consist of ring-participating
-atoms, no valid common core is conceivable.
-At the moment, the mutation algorithms presented below can deal with such invalid common cores. A helper function arbitrarily chooses one of the connections between common core and dummy region and the other ones are ignored for the mutation path.
+atoms until a valid common core is found (see below). A further option would be to prohibit the involvement of ring atoms for this particular molecule combination.
+
+These problems occur because the requirements for a valid Transformato common core are more strict than the constraints imposed by rdkit  (even when all ring-related parameters are applied, i.e. \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For Transformato, is not only indispensable that the common core solely comprises complete rings, but also the molecule fragment consisting of the non-common core atoms (which implies that there is a unique connection between dummy region and common core).
+An efficient and straightforward solution for this problem, which always yields the best - i.e. largest - valid common core if one exists, has been implemented:
+The basic observation is that if common core atoms within a cyclic region give rise to a invalid common core, it is impossible that any atoms within this region could participate in a valid one (if this would be the case, the whole cyclic region would be already in the generated common core).
+After generating a common core with standard parameters, it is checked if the additional requirements concerning the ring structure hold, i.e. if the non-common core atoms (as well as the common core atoms) of both molecules do not participate in a partial cycle.
+(Alternatively, one could check if a path between the non-common core atoms adjacent to the common core, i.e. the X-atoms, exists. If this is the case, the common core obviously is not valid, since no unique atom which connects common core and a specific dummy region is present.)
+
+
+
 
 
 \begin{figure}
@@ -112,9 +117,24 @@ At the moment, the mutation algorithms presented below can deal with such invali
 
 \caption{'Strict fusion' can affect the construction of the common core drastically; first and second column: Common core of two molecules (cholesterol
 and cortisol) without strict fusion; third and fourth column: Common
-core of two molecules with strict fusion; in the images of the full molecule graph common cores are marked in red }
+core of two molecules with strict fusion; in the images of the full molecule graph common cores are marked in red. In this case, none of the settings yield a valid common core, the iterative approach would be necessary to obtain one }
 
 \end{figure}
+
+
+
+
+\begin{figure}
+	\includegraphics[scale=0.6]{cholesterol_pryenepropanoic_acid.png}
+	
+	\caption{common cores of cholesterol (left) and 1-pyrenepropanoic acid (right); upper row: CompleteRingsOnly = False; middle row: CompleteRingsOnly = True; lower row: iterative approach to obtain a valid Transformato common core}
+	\label{fig:pyrene}
+\end{figure}
+
+If this is not the case, the rings that contain atoms which participate in the partial ring causing the invalid common core are removed from the representation used for creating the maximum common substructure and afterwards a new search for a valid common core is started. This procedure is repeated iteratively until a valid common core is found.
+Of course, in the worst scenario, i.e. if both (non-identical) molecules only consist of ring-participating atoms, no valid common core is conceivable (and, given the total size of the molecules, the valid size can be very small). In general, if at least one of the molecules solely consists of a polycyclic compound without any functional groups etc., and the other one does not have exactly the same compound, no valid common core can exist. 
+An – maybe rather contrived – example for such a pair of molecules and the construction of valid common core via the iterative approach is given in Fig. ~\ref{fig:pyrene}. One sees that even the usage of the ring-related parameters of Rdkit doesn't yield a valid common core, whereas the iterative approach gives the desired result.
+
 
 
 \section{Graph algorithms}
@@ -178,7 +198,7 @@ the simple DFS-approach, which leads to undesired outcomes, in particular becaus
 can be further modified by passing arguments which activate some helper
 functions (see below).
 
-The four main functions are: 
+The four main functions for computing mutation routes are: 
 
 \texttt{\_calculate\_order\_of\_LJ\_mutations:} naive DFS 
 
@@ -189,8 +209,7 @@ applied once for route
 applied iteratively, i.e. after each removal of an atom 
 
 \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change:}
-works iteratively, i.e. after each removal of an atom, algorithm is
-chosen depending on current state
+works iteratively, i.e. after each removal of an atom, the algorithm/routine for the next step is chosen depending on current state
 
 \texttt{\_calculate\_order\_of\_LJ\_mutations }was already present in Transformato, but computes defective mutation routes and hence
 should only be used for test purposes. The other three algorithms
@@ -279,7 +298,7 @@ Furthermore, an animated 3D-visualization of the mutation process
 is implemented using py3Dmol (\texttt{animated\_visualization\_3d\_v2})\cite{key-4}. 
 
 \begin{figure}
-\includegraphics[scale=0.4]{simple_ring_exampledfs.png}
+\includegraphics[scale=1.4]{simple_ring_exampledfs.png}
 
 \caption{comparison of typical DFS- and BFS-mutation route for a single ring structure; left: DFS-algorithm; right: BFS-algorithm; in all depictions of mutation routes the common core is shown in dark, the color gradient starts at red indicating the atom first to be removed and ends at green; DFS
 starts at carbon 22 and thus ring breakage gives rise to one long
@@ -307,9 +326,9 @@ Similarly, the functions for computing the mutation routes had to be adapted for
 \subsection{Examples for processing molecules}
 
 \begin{figure}
-\includegraphics[scale=0.4]{iter_iter_change_1a5g_1}
+\includegraphics[scale=0.5]{iter_iter_change_1a5g_1}
 
-\includegraphics[scale=0.4]{iter_iter_change_1a5g_2}\caption{Example for the differences between iter- and iter\_change-algorithm;
+\caption{Example for the differences between iter- and iter\_change-algorithm;
 left: iter; right: iter-change; iter-change processes all atoms within
 a chain or a ring at once (if possible) before switching to other
 parts of the molecule}
@@ -344,33 +363,33 @@ and teared apart (fig. 4.9). Alternatively, one half of each of the
 rings is turned off first (fig. 4.10). 
 
 \begin{figure}
-\includegraphics[scale=0.4]{simple_ring_exampledfs2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
+\includegraphics[scale=1.5]{simple_ring_exampledfs2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow indicates the undesired processing of the ring atoms}
 
 \end{figure}
 
 \begin{figure}
-\includegraphics[scale=0.4]{simple_ring_exampledfs3}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
+\includegraphics[scale=1.3]{simple_ring_exampledfs3}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow and circle indicates the undesired processing of the ring
 atoms}
 
 \end{figure}
 \begin{figure}
 
-\includegraphics[scale=0.4]{simple_ring_exampledfs4}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
+\includegraphics[scale=0.5]{simple_ring_exampledfs4}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow indicates the undesired processing of the ring atoms}
 
 \end{figure}
 
 \begin{figure}
 
-\includegraphics[scale=0.4]{2ring_example}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
+\includegraphics[scale=0.5]{2ring_example}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
 red arrow indicates the undesired processing of the ring atoms}
 
 \end{figure}
 
 \begin{figure}
 
-\includegraphics[scale=0.4]{2ring_example2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark}
+\includegraphics[scale=0.5]{2ring_example2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark}
 
 \end{figure}
