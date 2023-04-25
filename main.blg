@@ -14,45 +14,45 @@ Warning--empty year in key-3
 Warning--empty author in key-4
 Warning--empty journal in key-4
 Warning--empty year in key-4
-You've used 31 entries,
+You've used 33 entries,
             1791 wiz_defined-function locations,
-            657 strings with 9960 characters,
-and the built_in function-call counts, 8107 in all, are:
-= -- 678
-> -- 474
+            669 strings with 10317 characters,
+and the built_in function-call counts, 8551 in all, are:
+= -- 716
+> -- 493
 < -- 1
-+ -- 170
-- -- 139
-* -- 714
-:= -- 1328
-add.period$ -- 87
-call.type$ -- 31
-change.case$ -- 30
++ -- 177
+- -- 144
+* -- 748
+:= -- 1401
+add.period$ -- 93
+call.type$ -- 33
+change.case$ -- 32
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 285
-empty$ -- 717
-format.name$ -- 139
-if$ -- 1699
+cite$ -- 44
+duplicate$ -- 303
+empty$ -- 762
+format.name$ -- 144
+if$ -- 1796
 int.to.chr$ -- 0
-int.to.str$ -- 31
-missing$ -- 32
-newline$ -- 152
-num.names$ -- 30
-pop$ -- 66
+int.to.str$ -- 33
+missing$ -- 34
+newline$ -- 162
+num.names$ -- 32
+pop$ -- 68
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 102
+skip$ -- 109
 stack$ -- 0
-substring$ -- 675
-swap$ -- 35
+substring$ -- 711
+swap$ -- 37
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 11
-while$ -- 76
-width$ -- 33
-write$ -- 328
+while$ -- 80
+width$ -- 35
+write$ -- 350
 (There were 11 warnings)

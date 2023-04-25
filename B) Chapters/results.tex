@@ -128,8 +128,6 @@ In general, calculation of the scoring functions for the selection of ligands fr
 \end{table}
 
 
-
-
 \begin{figure}
 	
 	\includegraphics[scale=0.8]{mean_ass_beginn_bfs}\includegraphics[scale=0.8]{mean_ass_total_onlyiter}
@@ -147,21 +145,27 @@ ring structures ore a minimum number of dummy atoms) or to try even a larger sel
 
 \section{Results for selected molecule pairs}
 
-For selected pairs of small molecules, the relative solvation free energy differences have been determined using Transformato. 
-An overview of the molecules and the corresponding mutation routes can be found in the appendix.
-
- {\color{red} (Vergleiche conclusion: Bis jetzt gab es 3 Versuche! Der erste mit größeren Molekuelen scheiterte - vielleicht auch, weil hier aufgrund der Wasserstoffproblematik teils falsche common cores berechnet wurden, vielleicht aber auch, weil die Molekuele einfach zu groß waren. Der zweite Versuch wurde fuer die 5 Molekuele in fig 5.5 angestellt, die Resultate sind aber nicht ganz vertrauenswuerdig. 3 Ergebnisse können nicht passen, da ein falscher common core verwundert wurde, weil die Wasserstoffe noch nicht richtig prozessiert wurden, also noch nicht vor common core-Generation und Mutationsfindung entfernt wurden (siehe 'processing of hydrogen atoms')! In einem 3. Versuch wurden zwei der Molekuele, naemlich Toluen und 2-Naphthol nochmals berechet, auch hier ist aber nicht ganz klar, ob alles passt...)}
- 
-Two such example pairs are toluene$\rightarrow$methanol and 2-naphthol$\rightarrow$methanol. In both cases, the corresponding common cores solely consist of one heavy atom, carbon or oxygen, respectively.
-
-Calculation of the free energy difference indicates that for toluene$ 	\rightarrow $methanol the differences between the algorithms are negligible, but for 2-naphthol$ 	\rightarrow $methanol they are at least more pronounced (fig. 5.5 and table 5.2). 
-Overlap plots for these mutations can be found in fig. 5.7,8 and 10. showing the differences between old and new mutation algorithms. Fig 5.9 also shows the evolution of the free energy estimate across the lambda states for 2-naphthol (vacuum and waterbox for old and new mutation algorithm).
-
-The overlap plots for Naphthol$\rightarrow$Methanol exhibit a different pattern depending on the mutation route, but only for the simulation in vacuum, not for the waterbox, whereas for Toluene-Methanol hardly any difference is visible. (There are two adjacent states in the middle of the heavy atom transformation for naphthol/waterbox with a comparatively high overlap. Correspondingly, the plotting of the lambda states shows to steps in the middle of the simulation with almost no free energy change.)
-
-Since the mutation route is fundamentally different depending on the algorithm (see fig. 7.2; the old algorithm starts next to the atom of the phenyl group that is connected to the methyl substituent - which serves as common core - and processes the rest of the atoms in a chain-like manner, whereas the new one starts at the atom with maximum distance from the substituent and proceeds in a symmetric way until the common core is attained), the result for toluene is highly astonishing. For the double ring structure of 2-naphthol stronger deviations occur; thus it would be insightful to determine which structural properties are of importance. 
+For a selection of small molecules taken from \cite{Loeffler.2018, Wieder.2022}, the relative solvation free energy differences have been determined using Transformato with the old mutation route algorithms and the new ones. These molecules are toluene, 2-methylfuran and 2-methylindole.
+Furthermore, the mutation between 2-cyclopentyl-indole and 7-cyclopentyl-indole (2-/7-CPI) has been computed. In this case, only the free energy differences for the new algorithms have been determined, but there are previous results relying on the old algorithms which can be used for comparison. In this case, the old common core generation (which searched for the common core with hydrogens without the improvements reported in 'Processing of hydrogen atoms') generated a smaller common core. Thus it can be assumed that for this example differences should be especially pronounced.
+Although these molecules are rather small and simple, they encompass some of the most interesting features like rings. For instance, the mutation route for toluene is fundamentally different depending on the algorithm: the old algorithm starts next to the atom of the phenyl group that is connected to the methyl substituent - which serves as common core - and processes the rest of the atoms in a chain-like manner, whereas the new one starts at the atom with maximum distance from the substituent and proceeds in a symmetric way until the common core is attained
+An overview of the molecules and the corresponding mutation routes is shown in fig. \ref{fig:all_paper_molecules}  \ref{fig:cpi_paper_molecule}.
+The simulation results are averaged over four runs (except 2-CPI/7-CPI, for which only three runs were performed). 
+For all these examples, the standard deviation is smaller using the new route finding algorithm and adapted settings for the generation of the common core (fig. \ref{fig:boxplot_small}).
 
 
+\begin{figure}
+	
+	\includegraphics[scale=0.65]{results_3pairs1}
+	\caption{comparison of results for 2-methylindole, toluene and 2-methylfuran}
+	\label{fig:boxplot_small}
+\end{figure}
+
+
+For the 2-/7-CPI-transformation, a relative free energy difference of -1.55 $ \pm $ 0.1 kcal/mol is computed using the common core and the route proposed by the new algorithms. In \cite{Fleck.2021}, for this transformation -1.43 $ \pm $ 0.3 kcal/mol was determined with the smaller cyclopentane-X common core. It can be assumed that the differences between old and new mutation route are even more pronounced, because in \cite{Fleck.2021} the calculations were repeated five times and averaged in contrast to only three replicates for the run with the new mutation route. 
+Of course, a direct comparison with the same number of replicates would be advantageous to quantify the improvement, but in any case the change in standard deviation is remarkable.
+Calculation of the absolute free energy differences of both molecules yield -1.58 $ \pm $ 0.3. This indicates that the new route not only provides a smaller error, but also leads to a more accurate result.
+However, probably the greatest advantage is that the mutation route for the new, bigger common core needs less states (only five in contrast to nine heavy atoms have to be mutated). 
+Fig. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylindole_overlaps} show overlap plots and the change of free energy difference of one run between the states for toluene -> methane and overlap plots for 2-methyl-1H-indole. In the case of 2-methyl-1H-indole (the mutation involves processing of a double ring),  significant differences for the water box between old and new algorithm are discernible.
 
 \begin{table}
 	
@@ -169,96 +173,137 @@ Since the mutation route is fundamentally different depending on the algorithm (
 		\hline 
 		mutation partners & old algorithm (DFS) & new algorithm (BFS) \tabularnewline
 		\hline 
-		toluene/methanol & -4.97 $ \pm $ 0.05 & -4.73 $ \pm $ 0.06 \tabularnewline
+		toluene/methane & 2.02 $ \pm $ 0.21 & 2.05 $ \pm $ 0.04 \tabularnewline
 		\hline 
-		2-naphthol/methanol & 1.04 $ \pm $ 0.05 & 0.85 $ \pm $ 0.22 \tabularnewline
+		2-methylfuran/methane & 1.47 $ \pm $ 0.24 & 1.60 $ \pm $ 0.16 \tabularnewline
+		\hline 	
+		2-methyl-1H-indole/methane & 7.85 $ \pm $ 0.23 & 8.20 $ \pm $ 0.13 \tabularnewline
 		\hline 	
 		
-	\end{tabular}\caption{results for the mutation pairs methanol and toluene / naphthol }
+	\end{tabular}\caption{results for a selection of mutation partners }
 \end{table}
 
 
 
-\begin{figure}[H]
+
+\begin{figure}[h]
+	\centering
+	\subfigure[toluene/vacuum old]{%
+		\includegraphics[width=0.5\textwidth]{overlap_vacuum_toluene_old_v2}%
+		\label{fig:v_toluene_old}%
+	}\hfil
+	\subfigure[toluene/vacuum new]{%
+		\includegraphics[width=0.5\textwidth]{overlap_vacuum_toluene_new_v2}%
+		\label{fig:v_toluene_new}%
+	}
 	
-	\includegraphics[scale=0.8]{molecules_v1_failed_barchart}
-		
+	\subfigure[toluene/waterbox old]{%
+		\includegraphics[width=0.5\textwidth]{overlap_waterbox_toluene_old_v2}%
+		\label{fig:w_toluene_old}%
+	}\hfil
+	\subfigure[toluene/waterbox new]{%
+		\includegraphics[width=0.5\textwidth]{overlap_waterbox_toluene_new_v2}%
+		\label{fig:w_toluene_new}%
+	}
 	
-	{differences between old and new algorithm for selected molecules / 1. VERSUCH, DIESE RESULTATE SIND VERMUTLICH FEHLERHAFT; AUF JEDEN FALL IST BEI PROPYLPHENOL, ETHYLCYCLOHEXAN und DIMETHYLINDENOL DER FALSCHE CCORE VERWENDET WORDEN (aufgrund nicht entfernter Wasserstoffatome!)}
-	
-	\includegraphics[scale=0.8]{2molecules_v2_barchart}
-	
-	
-	\caption{differences between old and new algorithm for selected molecules / 2. VERSUCH, muss ebenfalls nochmals ueberprueft werden}
-	
+	\caption{Overlap plots for toluene -> methane: upper row: vacuum, lower row: waterbox; left: old mutation algorithm, right: new mutation algorithm}
+	\label{fig:toluene_overlaps}
 \end{figure}
 
 
-\begin{figure}[h] 
+\begin{figure}[h]
 	\centering
-	\subfigure[naphthol/vacuum old]{%
-		\includegraphics[width=0.4\textwidth]{overlap_vacuum_naphthol_old}%
-		\label{fig:v_naphthol_old}%
+	\subfigure[toluene/vacuum old]{%
+		\includegraphics[width=0.55\textwidth]{states_toluene_vacuum_old_v2.png}%
+		\label{fig:v_toluene_old_state}%
 	}\hfil
-	\subfigure[naphthol/vacuum new]{%
-		\includegraphics[width=0.4\textwidth]{overlap_vacuum_naphthol_new}%
-		\label{fig:v_naphthol_new}%
+	\subfigure[toluene/vacuum new]{%
+		\includegraphics[width=0.55\textwidth]{states_toluene_vacuum_new_v2.png}%
+		\label{fig:v_toluene_new_state}%
 	}
 	
-	\subfigure[naphthol/waterbox old]{%
-		\includegraphics[width=0.4\textwidth]{overlap_waterbox_naphthol_old}%
-		\label{fig:w_naphthol_old}%
+	\subfigure[toluene/waterbox old]{%
+		\includegraphics[width=0.55\textwidth]{states_toluene_water_old_v2.png}%
+		\label{fig:w_toluene_old_state}%
 	}\hfil
-	\subfigure[naphthol/waterbox new]{%
-		\includegraphics[width=0.4\textwidth]{overlap_waterbox_naphthol_new}%
-		\label{fig:w_napthol_new}%
+	\subfigure[toluene/waterbox new]{%
+		\includegraphics[width=0.55\textwidth]{states_toluene_water_new_v2.png}%
+		\label{fig:w_toluene_new_state}%
 	}
 	
-	\caption{Overlap plots for naphthol: upper row: vacuum, lower row: waterbox; left: old mutation algorithm, right: new mutation algorithm}
-\end{figure}
-
-\begin{figure}[h] 
-	\centering
-	\subfigure[naphthol/vacuum old]{%
-		\includegraphics[width=0.4\textwidth]{states_vacuum_naphthol_old}%
-		\label{fig:v_naphthol_oldstates}%
-	}\hfil
-	\subfigure[naphthol/vacuum new]{%
-		\includegraphics[width=0.4\textwidth]{states_vacuum_naphthol_new}%
-		\label{fig:v_naphthol_newstates}%
-	}
-	\subfigure[naphthol/waterbox old]{%
-		\includegraphics[width=0.43\textwidth]{states_waterbox_naphthol_old}%
-		\label{fig:w_naphthol_oldstates}%
-	}\hfil
-	\subfigure[naphthol/waterbox new]{%
-		\includegraphics[width=0.4\textwidth]{states_waterbox_naphthol_new}%
-		\label{fig:w_napthol_newstates}%
-	}
-	
-	\caption{Free energy states at different lambda states for naphthol: upper row: vacuum, lower row: waterbox; left: old mutation algorithm, right: new mutation algorithm}
+	\caption{free energy differences per state for toluene -> methane}
+	\label{fig:toluene_states}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\subfigure[toluene/vacuum old]{%
-		\includegraphics[width=0.4\textwidth]{overlap_vacuum_toluene_old}%
-		\label{fig:v_toluene_old}%
+		\includegraphics[width=0.5\textwidth]{overlap_vacuum_methylindole_old_v2}%
+		\label{fig:v_methylindole_old}%
 	}\hfil
 	\subfigure[toluene/vacuum new]{%
-		\includegraphics[width=0.4\textwidth]{overlap_vacuum_toluene_new}%
-		\label{fig:v_toluene_new}%
+		\includegraphics[width=0.5\textwidth]{overlap_vacuum_methylindole_new_v2}%
+		\label{fig:v_methylindole_new}%
 	}
 	
 	\subfigure[toluene/waterbox old]{%
-		\includegraphics[width=0.4\textwidth]{overlap_waterbox_toluene_old}%
-		\label{fig:w_toluene_old}%
+		\includegraphics[width=0.5\textwidth]{overlap_waterbox_methylindole_old_v2}%
+		\label{fig:w_methylindole_old}%
 	}\hfil
 	\subfigure[toluene/waterbox new]{%
-		\includegraphics[width=0.4\textwidth]{overlap_waterbox_toluene_new}%
-		\label{fig:w_toluene_new}%
+		\includegraphics[width=0.5\textwidth]{overlap_waterbox_methylindole_new_v2}%
+		\label{fig:w_methylindole_new}%
 	}
 	
-	\caption{Overlap plots for toluene: upper row: vacuum, lower row: waterbox; left: old mutation algorithm, right: new mutation algorithm}
+	\caption{Overlap plots for 2-methyl-1H-indole -> methane: upper row: vacuum, lower row: waterbox; left: old mutation algorithm, right: new mutation algorithm}
+	\label{fig:methylindole_overlaps}
 \end{figure}
 
+
+\section{Routes for molecules from Transformato paper}
+
+\begin{figure}[!htb]
+	
+	\includegraphics[scale=0.75]{paper_routes1a}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; from top to bottom row: mutation routes for toluene/methane, 2-methylfuran/methane, 2-methylindole/methane}
+	\label{fig:all_paper_molecules}
+\end{figure}
+
+
+\begin{figure}[!htb]
+	
+	\includegraphics[scale=0.55]{paper_routes1b}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; mutation routes for 2-cyclopentylindole/7-cyclopentylindole}
+	\label{fig:cpi_paper_molecule}
+\end{figure}
+
+
+A further path for detecting differences between the outcome of the mutation algorithms is to compare runs of different sampling length. 
+The results of the MD runs set up with Transformato can be evaluated using the functions of the MBAR class of pymbar \cite{Shirts.2008}. Python scripts have been written to evaluate the computed free energy differences for different simulation lengths. There are two crucial parameters: the reduced potential energy of a uncorrelated configuration n at a specific state k (\texttt{u\_kn}) and the number of uncorrelated snapshots n (\texttt{N\_k}). By removing the same number of configurations at each state k and adjusting (\texttt{N\_k}) accordingly, shorter simulations have been 'generated'.
+In \ref{fig:neopentan}, \ref{fig:neopentan} and \ref{fig:neopentan}, a comparison between old and new route for molecule pairs consisting of toluene, 2-methylfuran, 2-methyl-1H-indole and methane is presented. The mean of the calculated free energy differences as well as the standard deviation is shown. In \ref{fig:cpi_short}, free energy differences for the 2-CPI-mutations at the two conditions (waterbox and vacuum) are visualized. 
+As expected, for longer simulation lengths standard deviation decreases, very short simulation lengths (i.e. a very small number of configuration snapshots as in put for the MBAR computations using pymbar) give rise to unreliable results. However, looking at the evolution of the free energy difference mean value and standard deviation, it is difficult to confirm the superiority of one of the mutation routes for these three transformations or to indicate a sufficient minimum simulation length.
+
+
+
+\begin{figure}[!htb]
+	
+	\includegraphics[scale=0.9]{toluene_short}\caption{toluene -> methane; left: waterbox; right: vacuum; mutation routes for toluene/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full length simulation (i.e. the last value is zero)}
+		\label{fig:toluene_short}
+\end{figure}
+
+\begin{figure}[!htb]
+	
+	\includegraphics[scale=0.9]{methylfuran_short}\caption{2-methylfuran/methane; left: waterbox; right: vacuum;  mutation routes for 2-methylfuran/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full length simulation (i.e. the last value is zero)}
+	\label{fig:methylfuran_short}
+\end{figure}
+
+
+\begin{figure}[!htb]
+	
+	\includegraphics[scale=0.9]{methylindole_short}\caption{2-methylindole/methane; left: waterbox; right: vacuum; mutation routes for 2-methylindole/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full length simulation (i.e. the last value is zero)}
+	\label{fig:methylindole_short}
+\end{figure}
+
+\begin{figure}[!htb]
+	
+	\includegraphics[scale=0.9]{cpi_short}\caption{left: 2-CPI -> ccore for 2-/7-CPI; left: 7-CPI -> ccore for 2-/7-CPI; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full length simulation (i.e. the last value is zero)}
+	\label{fig:cpi_short}
+\end{figure}

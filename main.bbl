@@ -6,6 +6,12 @@ Markus Fleck, Marcus Wieder, and Stefan Boresch.
 \newblock {\em Journal of chemical theory and computation}, 17(7):4403--4419,
   2021.
 
+\bibitem{Karwounopoulos.2022}
+Johannes Karwounopoulos, Marcus Wieder, and Stefan Boresch.
+\newblock Relative binding free energy calculations with transformato: A
+  molecular dynamics engine-independent tool.
+\newblock {\em Frontiers in molecular biosciences}, 9:954638, 2022.
+
 \bibitem{key-2}
 https://github.com/wiederm/transformato.
 
@@ -189,5 +195,11 @@ Hannes~H. Loeffler, Stefano Bosisio, Guilherme {Duarte Ramos Matos}, Donghyuk
   molecular simulation software packages.
 \newblock {\em Journal of chemical theory and computation}, 14(11):5567--5582,
   2018.
+
+\bibitem{Shirts.2008}
+Michael~R. Shirts and John~D. Chodera.
+\newblock Statistically optimal analysis of samples from multiple equilibrium
+  states.
+\newblock {\em The Journal of Chemical Physics}, 129(12):124105, 2008.
 
 \end{thebibliography}

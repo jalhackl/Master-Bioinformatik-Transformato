@@ -60,15 +60,6 @@ data comprises hydrogens, these are excluded before the common core
 is calculated. As stated above, the presence of hydrogens can influence
 the maximum common substructure heavily (fig. 4.1) because the number of atoms is modified and this quantity is maximized for the maximal common substructure.
 
-\begin{figure}
-
-\includegraphics[scale=0.35]{hydrogens_plus_minus}\caption{These examples demonstrate that the addition of hydrogens can influence the construction of the common core; left: molecule 1; middle: common core; right: molecule 2; in the representations of the full molecule, the common cores are marked in red; the first
-and the last two rows show the same molecules, in the upper row without,
-in the lower with hydrogens, in case of the lower molecule combination
-the common core changes when hydrogens are added to the Rdkit-molecule
-representation }
-
-\end{figure}
 
 Settings concerning the allowed involvement of ring structures in
 the common core are of crucial importance. Firstly, these parameters
@@ -113,7 +104,7 @@ After generating a common core with standard parameters, it is checked if the ad
 
 
 \begin{figure}
-\includegraphics[scale=0.4]{sterols_wo_strictfusion}\includegraphics[scale=0.4]{sterols_w_strictfusion}
+\includegraphics[scale=0.45]{sterols_wo_strictfusion}\includegraphics[scale=0.4]{sterols_w_strictfusion}
 
 \caption{'Strict fusion' can affect the construction of the common core drastically; first and second column: Common core of two molecules (cholesterol
 and cortisol) without strict fusion; third and fourth column: Common
@@ -181,7 +172,7 @@ reduces to BFS. Fig. 4.3 shows the different routes for modified weights.
 
 \section{Added functionality}
 
-\subsection{Functions}
+\subsection{Functions for creating mutation paths}
 
 To use the newly implemented mutation algorithms, initially the graph
 is given with weights stored in a dictionary. The simulations shown
@@ -202,10 +193,10 @@ The four main functions for computing mutation routes are:
 
 \texttt{\_calculate\_order\_of\_LJ\_mutations:} naive DFS 
 
-\texttt{\_calculate\_order\_of\_LJ\_mutations\_new:} BFS/djikstra-algorithm
+\texttt{\_calculate\_order\_of\_LJ\_mutations\_new:} BFS/Dijkstra-algorithm
 applied once for route
 
-\texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter:} BFS/djikstra-algorithm
+\texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter:} BFS/Dijkstra-algorithm
 applied iteratively, i.e. after each removal of an atom 
 
 \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change:}
@@ -311,15 +302,48 @@ chain which is processed subsequently, whereas BFS starts at carbon
 
 \subsection{Processing of hydrogen atoms}
 
+\begin{figure}
+	
+	\includegraphics[scale=0.35]{hydrogens_plus_minus}
+	\caption{These examples demonstrate that the addition of hydrogens can influence the construction of the common core; left: molecule 1; middle: common core; right: molecule 2; in the representations of the full molecule, the common cores are marked in red; the first
+		and the last two rows show the same molecules, in the upper row without,
+		in the lower with hydrogens, in case of the lower molecule combination
+		the common core changes when hydrogens are added to the Rdkit-molecule
+		representation }
+		\label{fig:hydrogen_effect}
+	\end{figure}
 
-As fig. 4.1 indicates, the presence of hydrogens can influence the common core generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e. non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). Hence it is crucial to determine the common core for molecule representations without hydrogens. Since hydrogen atoms are turned off in an extra step en bloc during the Transformato workflow, the mutation route algorithm should not take hydrogens into account nor must the common core be generated for a molecule representation containing hydrogens.
+
+As fig. \ref{fig:hydrogen_effect} indicates, the presence of hydrogens can influence the common core generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e. non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). Hence it is crucial to determine the common core for molecule representations without hydrogens. Since hydrogen atoms are turned off in an extra step en bloc during the Transformato workflow, the mutation route algorithm should not take hydrogens into account nor must the common core be generated for a molecule representation containing hydrogens.
 Nonetheless, it is necessary that the molecule representations processed in Tranformato contain all hydrogens in explicit form because the indices of these atoms in the underlying data structures are used in some steps, e.g. for scaling the van-der-Waals interactions of the hydrogen atoms to zero.
 This problem was solved by removing and adding hydrogens appropriately.
 In a first step, the Transformato function determining the common core (\texttt{\_find\_mcs} in mutate.py) had to be modified. To obtain the desired common core but retain the Transformato workflow, the following scheme was implemented:
 A deep copy of both molecules is created. The hydrogens of these copies are removed and afterwards their common core is computed. For both molecules, the indices of the atoms corresponding to the common core are determined. Finally, it is checked for each common core atom of both molecules whether hydrogen atoms are in its neighbourhood. If such hydrogens are found, their indices are added to the lists of common core atoms. These lists of atoms including hydrogens are stored for both molecules and the function returns the maximum common substructure (determined for the molecules without hydrogens).
 Thus the procedure yields the necessary output for further processing in Transformato: The molecule representations and lists of common core atoms for both of the molecules include hydrogens, but the maximum common substructure giving rise to the common core is computed only for the heavy atoms.
-Similarly, the functions for computing the mutation routes had to be adapted for input molecules containing hydrogens. By default, a helper function removes the hydrogens from the graph representation as well as the corresponding indices from the list with the atoms of the dummy regions before the mutation algorithms are applied. 
+Similarly, the functions for computing the mutation routes had to be adapted for input molecules containing hydrogens. By default, a helper function removes the hydrogens from the graph representation as well as the corresponding indices from the list with the atoms of the dummy regions before the mutation algorithms are applied. Afterwards, the hydrogen atoms adjacent to common core heavy atoms are added to the common core.
+A special problem occurs for molecule pairs with switching 'X'-atom; fig. \ref{fig:pyrrolidinindole} shows 2-/7-pyrrolidinindole as example. It is necessary that a further dummy region emerges which consists solely of one hydrogen atom because otherwise the common cores would have a different number of atoms. It depicts a correct common core for both molecules; one should note the hydrogen atom which is not part of the common core. If, however, the common core is generated without hydrogens, the information which of the hydrogens turns into a dummy region is lost.
+It has to be stressed again that the presence of these hydrogen dummy regions does not affect the mutation steps, but is nonetheless crucial for the internal Transformato workflow. However, there is a straightforward way to circumvent this problem: From the substructure matches the mapping between the common core atoms of each molecule can be read off. It is counted for each heavy common core atom how many hydrogens are connected to it. Finally, the minimum number of hydrogens is added to the common core. (In the case of 2-/7-pyrrolidinindole, this means that for each common core atom one hydrogen is added, except for the 2- and 7- position, because for these positions in one molecule no hydrogen is connected).
+In this context, also the difficulty that there are possibly many substructure matches has to be mentioned.
+It is even possible that substructure matches differ solely with respect to hydrogens. For this case, a parameter was added to the function which searches for the maximum common substructure. If \texttt{iterate\_over\_matches} is set to true, one of the substructure matches with most hydrogens, i.e. the biggest possible substructure, is selected. Fig. \ref{fig:neopentan} shows two common cores only differing in the number of hydrogens.
 
+
+
+\begin{figure}
+	\includegraphics[scale=0.8]{pyrrolidinindole}
+	
+	\caption{
+		left: 2-pyrrolidinindole; right: 7-pyrrolidinindole; 
+		one of the hydrogens - exactly this hydrogen which becomes the junction 'X'-atom - is not part of the common core}
+	\label{fig:pyrrolidinindole}
+\end{figure}
+
+
+\begin{figure}
+	\includegraphics[scale=1.0]{neopentan}
+	
+	\caption{neopentan/methane common cores; upper row: common cores maximizing the number of atoms including hydrogens; lower row: common cores without considering hydrogens}
+		\label{fig:neopentan}
+\end{figure}
 
 
 
@@ -334,13 +358,13 @@ a chain or a ring at once (if possible) before switching to other
 parts of the molecule}
 \end{figure}
 
-In the current version of Transformato, one suboptimal route finding algorithm using DFS and several versions based on BFS are implemented.
-For single rings, BFS (Dijkstra) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root (fig 4.4).
+In the current version of Transformato, one suboptimal route finding algorithm using DFS and several new versions based on BFS are implemented.
+For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root (fig 4.4).
 In more complex molecules, the systematic exploration of chains in
 depth first search inevitably leads to big local gaps in processing
 of the molecules. Fig. 4.6 shows this problem for a benzol ring which
 is directly attached to the common core. As DFS goes along one path
-until the end, i.e. a leaf node is reached, only four atoms of the
+until the end, i.e. until a leaf node is reached, only four atoms of the
 ring are visited at the beginning, whereas the remaining two are explored
 last. Therefore, these two atoms are turned off first, but then the
 algorithm continues at a wholly different location and the remaining
