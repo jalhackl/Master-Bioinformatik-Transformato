@@ -48,14 +48,14 @@ common core. In particular, the maximum common substructure must not
 encompass partial rings (which would imply that dummy regions are
 connected via multiple bonds). (In general, such transformations can pose intricate problems, because ring breakage can lead to fast changes in free energy
 and cause significant estimation error \cite{Liu.2015}.)
-To meet this requirements, adjusting of the parameters and algorithms for finding the common core is important. For facilitating the construction of appropriate common cores, it was also necessary to improve the processing of the hydrogen atoms. Before the common core construction is carried out, hydrogens have to be
+To meet these requirements, adjusting of the parameters and algorithms for finding the common core is important. For facilitating the construction of appropriate common cores, it was also necessary to improve the processing of the hydrogen atoms. As hydrogens are turned off beforehand in one step and not via serial atom insertion like the heavy atoms, it would be  detrimental to consider them in the common core generation (see section 'Processing of hydrogen atoms' in the next chapter). In previous versions of Transformato, hydrogens were included in the common core generation steps which led to small or in many cases even totally infeasible common cores. Before the common core construction is carried out, hydrogens have to be
 removed from the molecule representation. This is an important step
 because the presence of hydrogen atoms can lead to a different common
 core (which is created, using default settings, by maximizing the
 number of corresponding atoms) and subsequently a flawed mutation
-route. For the workflow of Transformato, inclusion of hydrogens in
-the mutation algorithms would be detrimental because these atoms are
-already turned off beforehand and because they often led to a unfeasible common core (see section 'Processing of hydrogen atoms' in the next chapter).
+route. 
+
+
 
 
 \section{Transformato workflow}
@@ -64,6 +64,6 @@ already turned off beforehand and because they often led to a unfeasible common 
 During the mutation process, the contributions of the non-CC atoms are turned off gradually; five stages can be discerned \cite{Karwounopoulos.2022}:  In the first step, the electrostatic interactions of dummy atoms are gradually attenuated. Next, all hydrogen atoms outside the common core are turned off. This can be carried out in a single step.
 In the third stage, the LJ-interactions are processed. One atom per step is turned off following the serial atomic insertion approach. (Possibly, a small bunch of atoms can be turned off in one step, but is not recommended to process more than two atoms at once to ensure sufficient overlap between the states.)
 The atom which connects common core and dummy region is  called junction atom and indicated as 'X' \cite{Karwounopoulos.2022} (In the plots in the next chapters, for simplicity it is sometimes omitted. However, it should be stressed that, e.g., a transformation to a methane common core means a methane-X common core.). This dummy atom which is directly connected to the common core needs special treatment. In contrast to the other atoms of a dummy region, not all LJ interactions are turned off, but its partial charge has to be zero.
-\cite{Karwounopoulos.2022} This junction atom ensures that that the double free energy differences are not influenced by contributions of dummy atoms. \cite{Fleck.2021}
+\cite{Karwounopoulos.2022} This junction atom ensures that that the double free energy differences are not influenced by contributions of dummy atoms.\cite{Fleck.2021}
 In the last step, it has to be ensured that both common cores are identical, e.g. differences in charge distribution have to be adjusted and the bond between junction atom and the common core atom has to be identical.
 

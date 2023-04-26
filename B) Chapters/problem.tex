@@ -36,7 +36,7 @@ To obtain a reliable test set of molecules, sdf-files of ligands were downloaded
 broad range in size, complexity and potentially intricate compounds,
 like polycyclic structures and highly branched chains.
 
-\subsection{Used algorithms and software packages}
+\section{Used algorithms and software packages}
 
 The Transformato package is written in Python. Therefore, Python packages
 also were used for molecule processing and graph representations.
@@ -55,10 +55,8 @@ serve as common core for Transformato) via the \texttt{rdFMCS.FindMCS}-function.
 Per default, the objective is to maximize the number of atoms, albeit
 different settings, like maximize the number of bonds or ignoring
 or equalizing specific atom types are available. At the moment, for
-Transformato maximization of atoms and atom identity is used. If the
-data comprises hydrogens, these are excluded before the common core
-is calculated. As stated above, the presence of hydrogens can influence
-the maximum common substructure heavily (fig. 4.1) because the number of atoms is modified and this quantity is maximized for the maximal common substructure.
+Transformato maximization of atoms and atom identity is used. As stated above, the presence of hydrogens can influence
+the maximum common substructure heavily (fig. 4.1) because the number of atoms is modified and this quantity is maximized for the maximal common substructure. 
 
 
 Settings concerning the allowed involvement of ring structures in
@@ -108,7 +106,7 @@ After generating a common core with standard parameters, it is checked if the ad
 
 \caption{'Strict fusion' can affect the construction of the common core drastically; first and second column: Common core of two molecules (cholesterol
 and cortisol) without strict fusion; third and fourth column: Common
-core of two molecules with strict fusion; in the images of the full molecule graph common cores are marked in red. In this case, none of the settings yield a valid common core, the iterative approach would be necessary to obtain one }
+core of two molecules with strict fusion; in the images of the full molecule graph common cores are marked in red. In this case, none of the settings yield a valid common core, the iterative approach explained in the main text would be necessary to obtain one. }
 
 \end{figure}
 
