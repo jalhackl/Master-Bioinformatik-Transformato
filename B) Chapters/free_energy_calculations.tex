@@ -93,34 +93,36 @@ see \cite{Bruckner.2011} and \cite{Ruiter.2013}).
 \subsection{Thermodynamic Integration (TI)}
 
 In Thermodynamic Integration, the free energy difference between two
-states is computed by evaluating the integral over the free energy
-between the final states. TI computes intermediate
+states is computed by evaluating the integral over the derivative of the free energy
+between the initial and the final state of the transformation/process studied. TI computes intermediate
 states depending on the coupling parameter $\lambda$. $\lambda=0$
 and $\lambda=1$ represent the physical, initial / final states of
-the system. Scaling between those two values, i.e. using values $0>\lambda<1$,
+the system. Scaling between those two values, i.e., using values $0\le\lambda\le1$,
 gives rise to the nonphysical, 'alchemical' intermediate states.
 
 Taking the derivative of the free energy, one gets $\frac{dF}{d\lambda}=\frac{d}{d\lambda}\int e^{-\beta U dr}=\left\langle \frac{dU\left(r,\lambda\right)}{d\lambda}\right\rangle _{\lambda}$\cite{Shirts.2013}, 
-, where the angular brackets indicate the ensemble average .
+where the angular brackets indicate the ensemble average.
 The free energy difference is then given as the integral from $\lambda=0$ to $\lambda=1$:
 \[
-\Delta F=\intop_{\lambda=0}^{\lambda=1}\frac{dF\left(\lambda\right)}{d\lambda}d\lambda.
+\Delta F=
+\intop_{\lambda=0}^{\lambda=1}\frac{dF\left(\lambda\right)}{d\lambda}d\lambda=
+\intop_{\lambda=0}^{\lambda=1}\left\langle\frac{\partial U\left(\lambda\right)}{\partial\lambda}\right\rangle_\lambda d\lambda
+.
 \]
-
-This integral can be approximated using numerical integration, $\Delta F=\sum_{i}w_{i}\left\langle \frac{dU\left(r,\lambda\right)}{d\lambda}\right\rangle _{\lambda_{i}}$.
-The weights $w_{i}$ depend on the numerical scheme chosen for approximation.
-A popular and simple choice is the trapezoidal rule which uses equal
-spacings between states and approximates the integral by $\intop_{\lambda=j}^{\lambda=i}\frac{dF\left(\lambda\right)}{d\lambda}d\lambda\approx\frac{i-j}{2}\left(f_{i}+f_{j}\right)$.
+This integral has to be approximated using numerical integration, i.e., $\Delta F\approx\sum_{i}w_{i}\left\langle \frac{dU\left(r,\lambda\right)}{d\lambda}\right\rangle _{\lambda_{i}}$.
+The weights $w_{i}$ depend on the choice of the numerical quadrature scheme.
+A popular and simple choice is the trapezoidal rule, which uses equal
+spacing between states and approximates the integral by $\intop_{\lambda=j}^{\lambda=i}\frac{dF\left(\lambda\right)}{d\lambda}d\lambda\approx\frac{i-j}{2}\left(f_{i}+f_{j}\right)$.
 The integration scheme and the amount of intermediate steps has to
 be chosen in such a way that the introduced bias is below the statistical
 noise\cite{Shirts.2013}. (For a comparison of various numerical quadrature
-schemes, e.g. trapezoidal rule and Simpson's rule, see \cite{Bruckner.2011b}). 
+schemes, e.g., the trapezoidal rule and Simpson's rule, see \cite{Bruckner.2011b}). 
 
 \subsection{Free Energy Perturbation / Zwanzig Relation}
 
 Free energy perturbation relies on the Zwanzig relation (or exponential
-formula). For each configuration of state A the energy difference
-between this state and the corresponding state B is calculated. So the
+formula). For each configuration of state A, the energy difference
+between this state and the corresponding state B is calculated. So, the
 free energy difference is given by 
 \[
 \Delta F_{A\rightarrow B}=F_{B}-F_{A}=-\frac{1}{\beta}\ln\frac{Q_{B}}{Q_{A}}=-k_{b}T\ln\left\langle \exp\left(\frac{-\Delta U_{A\rightarrow B}}{k_{B}T}\right)\right\rangle _{A}
