@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.7.2)  26 APR 2023 02:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.7.2)  5 MAY 2023 09:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1294,7 +1294,7 @@ l.1 \chapter
 ]
 chapter 2.
 [3]
-<cycle1.png, id=132, 309.3156pt x 243.309pt>
+<cycle1.png, id=133, 309.3156pt x 243.309pt>
 File: cycle1.png Graphic file (type png)
 <use cycle1.png>
 Package pdftex.def Info: cycle1.png  used on input line 63.
@@ -1311,27 +1311,32 @@ l.93
 
 ]
 chapter 3.
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11])
+ [11]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 61.
+)
 (./B) Chapters/problem.tex [12] [13] [14
 
 
 ]
 chapter 4.
 [15] [16]
-<sterols_wo_strictfusion.png, id=254, 452.892pt x 186.588pt>
+<sterols_wo_strictfusion.png, id=257, 452.892pt x 186.588pt>
 File: sterols_wo_strictfusion.png Graphic file (type png)
 <use sterols_wo_strictfusion.png>
 Package pdftex.def Info: sterols_wo_strictfusion.png  used on input line 105.
 (pdftex.def)             Requested size: 203.79951pt x 83.9638pt.
-<sterols_w_strictfusion.png, id=256, 450.045pt x 207.612pt>
+<sterols_w_strictfusion.png, id=259, 450.045pt x 207.612pt>
 File: sterols_w_strictfusion.png Graphic file (type png)
 <use sterols_w_strictfusion.png>
 Package pdftex.def Info: sterols_w_strictfusion.png  used on input line 105.
 (pdftex.def)             Requested size: 180.0148pt x 83.04332pt.
-<cholesterol_pryenepropanoic_acid.png, id=257, 687.222pt x 377.775pt>
+<cholesterol_pryenepropanoic_acid.png, id=260, 687.222pt x 377.775pt>
 File: cholesterol_pryenepropanoic_acid.png Graphic file (type png)
 <use cholesterol_pryenepropanoic_acid.png>
 Package pdftex.def Info: cholesterol_pryenepropanoic_acid.png  used on input li
@@ -1351,7 +1356,7 @@ een already used, duplicate ignored
                                                   
 l.148 
        <./cholesterol_pryenepropanoic_acid.png>]
-<dfs_bfs_dijkstra_comp1.png, id=274, 990.099pt x 237.5274pt>
+<dfs_bfs_dijkstra_comp1.png, id=277, 990.099pt x 237.5274pt>
 File: dfs_bfs_dijkstra_comp1.png Graphic file (type png)
 <use dfs_bfs_dijkstra_comp1.png>
 Package pdftex.def Info: dfs_bfs_dijkstra_comp1.png  used on input line 151.
@@ -1374,7 +1379,7 @@ checks which atoms par-ti-cip-ate in how many cycles/rings
  []
 
 [20]
-<simple_ring_exampledfs.png, id=286, 350.4pt x 134.247pt>
+<simple_ring_exampledfs.png, id=289, 350.4pt x 134.247pt>
 File: simple_ring_exampledfs.png Graphic file (type png)
 <use simple_ring_exampledfs.png>
 Package pdftex.def Info: simple_ring_exampledfs.png  used on input line 290.
@@ -1384,7 +1389,7 @@ Overfull \hbox (72.30293pt too wide) in paragraph at lines 290--291
 [][] 
  []
 
-<hydrogens_plus_minus.png, id=287, 1090.401pt x 565.896pt>
+<hydrogens_plus_minus.png, id=290, 1090.401pt x 565.896pt>
 File: hydrogens_plus_minus.png Graphic file (type png)
 <use hydrogens_plus_minus.png>
 Package pdftex.def Info: hydrogens_plus_minus.png  used on input line 305.
@@ -1406,7 +1411,7 @@ red
                                                   
 l.326 
        <./hydrogens_plus_minus.png>]
-<pyrrolidinindole.png, id=309, 539.397pt x 103.149pt>
+<pyrrolidinindole.png, id=312, 539.397pt x 103.149pt>
 File: pyrrolidinindole.png Graphic file (type png)
 <use pyrrolidinindole.png>
 Package pdftex.def Info: pyrrolidinindole.png  used on input line 330.
@@ -1416,12 +1421,12 @@ Overfull \hbox (13.26445pt too wide) in paragraph at lines 330--331
 [][] 
  []
 
-<neopentan.png, id=310, 325.653pt x 268.056pt>
+<neopentan.png, id=313, 325.653pt x 268.056pt>
 File: neopentan.png Graphic file (type png)
 <use neopentan.png>
 Package pdftex.def Info: neopentan.png  used on input line 340.
 (pdftex.def)             Requested size: 325.6522pt x 268.05534pt.
-<iter_iter_change_1a5g_1.png, id=311, 964.695pt x 322.149pt>
+<iter_iter_change_1a5g_1.png, id=314, 964.695pt x 322.149pt>
 File: iter_iter_change_1a5g_1.png Graphic file (type png)
 <use iter_iter_change_1a5g_1.png>
 Package pdftex.def Info: iter_iter_change_1a5g_1.png  used on input line 351.
@@ -1453,7 +1458,7 @@ l.371
                                                   
 l.371 
        <./neopentan.png> <./iter_iter_change_1a5g_1.png>]
-<simple_ring_exampledfs2.png, id=326, 350.4pt x 71.832pt>
+<simple_ring_exampledfs2.png, id=329, 350.4pt x 71.832pt>
 File: simple_ring_exampledfs2.png Graphic file (type png)
 <use simple_ring_exampledfs2.png>
 Package pdftex.def Info: simple_ring_exampledfs2.png  used on input line 388.
@@ -1463,7 +1468,7 @@ Overfull \hbox (107.34499pt too wide) in paragraph at lines 388--389
 [][][] 
  []
 
-<simple_ring_exampledfs3.png, id=327, 350.4pt x 158.337pt>
+<simple_ring_exampledfs3.png, id=330, 350.4pt x 158.337pt>
 File: simple_ring_exampledfs3.png Graphic file (type png)
 <use simple_ring_exampledfs3.png>
 Package pdftex.def Info: simple_ring_exampledfs3.png  used on input line 394.
@@ -1473,7 +1478,7 @@ Overfull \hbox (37.26622pt too wide) in paragraph at lines 394--396
 [][][] 
  []
 
-<simple_ring_exampledfs4.png, id=328, 963.6pt x 375.585pt>
+<simple_ring_exampledfs4.png, id=331, 963.6pt x 375.585pt>
 File: simple_ring_exampledfs4.png Graphic file (type png)
 <use simple_ring_exampledfs4.png>
 Package pdftex.def Info: simple_ring_exampledfs4.png  used on input line 401.
@@ -1483,7 +1488,7 @@ Overfull \hbox (63.5451pt too wide) in paragraph at lines 401--402
 [][][] 
  []
 
-<2ring_example.png, id=329, 963.6pt x 244.623pt>
+<2ring_example.png, id=332, 963.6pt x 244.623pt>
 File: 2ring_example.png Graphic file (type png)
 <use 2ring_example.png>
 Package pdftex.def Info: 2ring_example.png  used on input line 408.
@@ -1493,7 +1498,7 @@ Overfull \hbox (63.5451pt too wide) in paragraph at lines 408--409
 [][][] 
  []
 
-<2ring_example2.png, id=330, 963.6pt x 233.673pt>
+<2ring_example2.png, id=333, 963.6pt x 233.673pt>
 File: 2ring_example2.png Graphic file (type png)
 <use 2ring_example2.png>
 Package pdftex.def Info: 2ring_example2.png  used on input line 415.
@@ -1537,7 +1542,7 @@ r (name{figure.4.13}) has been already used, duplicate ignored
 l.1 \chapter
             {Results} <./2ring_example.png> <./2ring_example2.png>]
 chapter 5.
-<trafo_py3d_1verkleinert.png, id=354, 1279.78125pt x 476.53032pt>
+<trafo_py3d_1verkleinert.png, id=357, 1279.78125pt x 476.53032pt>
 File: trafo_py3d_1verkleinert.png Graphic file (type png)
 <use trafo_py3d_1verkleinert.png>
 Package pdftex.def Info: trafo_py3d_1verkleinert.png  used on input line 27.
@@ -1551,12 +1556,12 @@ Overfull \hbox (29.67642pt too wide) in paragraph at lines 27--28
 
 
 ]
-<betweenness_mean_all.png, id=360, 294.34969pt x 201.00093pt>
+<betweenness_mean_all.png, id=363, 294.34969pt x 201.00093pt>
 File: betweenness_mean_all.png Graphic file (type png)
 <use betweenness_mean_all.png>
 Package pdftex.def Info: betweenness_mean_all.png  used on input line 54.
 (pdftex.def)             Requested size: 235.48006pt x 160.80095pt.
-<betweenness_max_all.png, id=361, 289.08pt x 201.00093pt>
+<betweenness_max_all.png, id=364, 289.08pt x 201.00093pt>
 File: betweenness_max_all.png Graphic file (type png)
 <use betweenness_max_all.png>
 Package pdftex.def Info: betweenness_max_all.png  used on input line 54.
@@ -1576,17 +1581,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
                                                   
 l.57 
       <./trafo_py3d_1verkleinert.png>]
-<closeness_slope_all.png, id=370, 299.61937pt x 199.49532pt>
+<closeness_slope_all.png, id=373, 299.61937pt x 199.49532pt>
 File: closeness_slope_all.png Graphic file (type png)
 <use closeness_slope_all.png>
 Package pdftex.def Info: closeness_slope_all.png  used on input line 81.
 (pdftex.def)             Requested size: 299.61864pt x 199.49481pt.
-<closeness_spearman.png, id=371, 284.56313pt x 199.49532pt>
+<closeness_spearman.png, id=374, 284.56313pt x 199.49532pt>
 File: closeness_spearman.png Graphic file (type png)
 <use closeness_spearman.png>
 Package pdftex.def Info: closeness_spearman.png  used on input line 83.
 (pdftex.def)             Requested size: 284.56242pt x 199.49481pt.
-<closeness_kendall.png, id=372, 292.09125pt x 201.75375pt>
+<closeness_kendall.png, id=375, 292.09125pt x 201.75375pt>
 File: closeness_kendall.png Graphic file (type png)
 <use closeness_kendall.png>
 Package pdftex.def Info: closeness_kendall.png  used on input line 85.
@@ -1613,12 +1618,12 @@ Overfull \vbox (38.89264pt too high) has occurred while \output is active []
 l.88 
       <./closeness_slope_all.png (PNG copy)> <./closeness_spearman.png (PNG cop
 y)> <./closeness_kendall.png (PNG copy)>]
-<mean_ass_beginn_bfs.png, id=383, 283.81032pt x 201.75375pt>
+<mean_ass_beginn_bfs.png, id=386, 283.81032pt x 201.75375pt>
 File: mean_ass_beginn_bfs.png Graphic file (type png)
 <use mean_ass_beginn_bfs.png>
 Package pdftex.def Info: mean_ass_beginn_bfs.png  used on input line 133.
 (pdftex.def)             Requested size: 227.04855pt x 161.40321pt.
-<mean_ass_total_onlyiter.png, id=384, 292.09125pt x 199.49532pt>
+<mean_ass_total_onlyiter.png, id=387, 292.09125pt x 199.49532pt>
 File: mean_ass_total_onlyiter.png Graphic file (type png)
 <use mean_ass_total_onlyiter.png>
 Package pdftex.def Info: mean_ass_total_onlyiter.png  used on input line 133.
@@ -1628,12 +1633,12 @@ Overfull \hbox (42.46812pt too wide) in paragraph at lines 133--134
 [][][] 
  []
 
-<mean_open_rings_all.png, id=385, 292.09125pt x 199.49532pt>
+<mean_open_rings_all.png, id=388, 292.09125pt x 199.49532pt>
 File: mean_open_rings_all.png Graphic file (type png)
 <use mean_open_rings_all.png>
 Package pdftex.def Info: mean_open_rings_all.png  used on input line 135.
 (pdftex.def)             Requested size: 233.6733pt x 159.59645pt.
-<mean_processing_all.png, id=386, 296.60812pt x 199.49532pt>
+<mean_processing_all.png, id=389, 296.60812pt x 199.49532pt>
 File: mean_processing_all.png Graphic file (type png)
 <use mean_processing_all.png>
 Package pdftex.def Info: mean_processing_all.png  used on input line 135.
@@ -1659,7 +1664,7 @@ l.146 \section
               {Results for selected molecule pairs} <./mean_ass_beginn_bfs.png 
 (PNG copy)> <./mean_ass_total_onlyiter.png (PNG copy)> <./mean_open_rings_all.p
 ng (PNG copy)> <./mean_processing_all.png (PNG copy)>]
-<results_3pairs1.png, id=403, 483.114pt x 887.607pt>
+<results_3pairs1.png, id=406, 483.114pt x 887.607pt>
 File: results_3pairs1.png Graphic file (type png)
 <use results_3pairs1.png>
 Package pdftex.def Info: results_3pairs1.png  used on input line 158.
@@ -1668,25 +1673,25 @@ Package pdftex.def Info: results_3pairs1.png  used on input line 158.
 
 LaTeX Warning: Float too large for page by 13.08748pt on input line 161.
 
-<overlap_vacuum_toluene_old_v2.png, id=409, 758.835pt x 794.97pt>
+<overlap_vacuum_toluene_old_v2.png, id=412, 758.835pt x 794.97pt>
 File: overlap_vacuum_toluene_old_v2.png Graphic file (type png)
 <use overlap_vacuum_toluene_old_v2.png>
 Package pdftex.def Info: overlap_vacuum_toluene_old_v2.png  used on input line 
 194.
 (pdftex.def)             Requested size: 209.12686pt x 219.08444pt.
-<overlap_vacuum_toluene_new_v2.png, id=410, 758.835pt x 794.97pt>
+<overlap_vacuum_toluene_new_v2.png, id=413, 758.835pt x 794.97pt>
 File: overlap_vacuum_toluene_new_v2.png Graphic file (type png)
 <use overlap_vacuum_toluene_new_v2.png>
 Package pdftex.def Info: overlap_vacuum_toluene_new_v2.png  used on input line 
 198.
 (pdftex.def)             Requested size: 209.12686pt x 219.08444pt.
-<overlap_waterbox_toluene_old_v2.png, id=411, 758.835pt x 794.97pt>
+<overlap_waterbox_toluene_old_v2.png, id=414, 758.835pt x 794.97pt>
 File: overlap_waterbox_toluene_old_v2.png Graphic file (type png)
 <use overlap_waterbox_toluene_old_v2.png>
 Package pdftex.def Info: overlap_waterbox_toluene_old_v2.png  used on input lin
 e 203.
 (pdftex.def)             Requested size: 209.12686pt x 219.08444pt.
-<overlap_waterbox_toluene_new_v2.png, id=412, 758.835pt x 794.97pt>
+<overlap_waterbox_toluene_new_v2.png, id=415, 758.835pt x 794.97pt>
 File: overlap_waterbox_toluene_new_v2.png Graphic file (type png)
 <use overlap_waterbox_toluene_new_v2.png>
 Package pdftex.def Info: overlap_waterbox_toluene_new_v2.png  used on input lin
@@ -1695,25 +1700,25 @@ e 207.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<states_toluene_vacuum_old_v2.png, id=413, 378.41376pt x 249.93375pt>
+<states_toluene_vacuum_old_v2.png, id=416, 378.41376pt x 249.93375pt>
 File: states_toluene_vacuum_old_v2.png Graphic file (type png)
 <use states_toluene_vacuum_old_v2.png>
 Package pdftex.def Info: states_toluene_vacuum_old_v2.png  used on input line 2
 19.
 (pdftex.def)             Requested size: 230.04082pt x 151.93689pt.
-<states_toluene_vacuum_new_v2.png, id=414, 378.41376pt x 249.93375pt>
+<states_toluene_vacuum_new_v2.png, id=417, 378.41376pt x 249.93375pt>
 File: states_toluene_vacuum_new_v2.png Graphic file (type png)
 <use states_toluene_vacuum_new_v2.png>
 Package pdftex.def Info: states_toluene_vacuum_new_v2.png  used on input line 2
 23.
 (pdftex.def)             Requested size: 230.04082pt x 151.93689pt.
-<states_toluene_water_old_v2.png, id=415, 378.41376pt x 248.93pt>
+<states_toluene_water_old_v2.png, id=418, 378.41376pt x 248.93pt>
 File: states_toluene_water_old_v2.png Graphic file (type png)
 <use states_toluene_water_old_v2.png>
 Package pdftex.def Info: states_toluene_water_old_v2.png  used on input line 22
 8.
 (pdftex.def)             Requested size: 230.04082pt x 151.32669pt.
-<states_toluene_water_new_v2.png, id=416, 378.41376pt x 248.93pt>
+<states_toluene_water_new_v2.png, id=419, 378.41376pt x 248.93pt>
 File: states_toluene_water_new_v2.png Graphic file (type png)
 <use states_toluene_water_new_v2.png>
 Package pdftex.def Info: states_toluene_water_new_v2.png  used on input line 23
@@ -1725,25 +1730,25 @@ LaTeX Warning: Float too large for page by 140.9947pt on input line 236.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<overlap_vacuum_methylindole_old_v2.png, id=417, 758.835pt x 794.97pt>
+<overlap_vacuum_methylindole_old_v2.png, id=420, 758.835pt x 794.97pt>
 File: overlap_vacuum_methylindole_old_v2.png Graphic file (type png)
 <use overlap_vacuum_methylindole_old_v2.png>
 Package pdftex.def Info: overlap_vacuum_methylindole_old_v2.png  used on input 
 line 243.
 (pdftex.def)             Requested size: 209.12686pt x 219.08444pt.
-<overlap_vacuum_methylindole_new_v2.png, id=418, 758.835pt x 794.97pt>
+<overlap_vacuum_methylindole_new_v2.png, id=421, 758.835pt x 794.97pt>
 File: overlap_vacuum_methylindole_new_v2.png Graphic file (type png)
 <use overlap_vacuum_methylindole_new_v2.png>
 Package pdftex.def Info: overlap_vacuum_methylindole_new_v2.png  used on input 
 line 247.
 (pdftex.def)             Requested size: 209.12686pt x 219.08444pt.
-<overlap_waterbox_methylindole_old_v2.png, id=419, 758.835pt x 794.97pt>
+<overlap_waterbox_methylindole_old_v2.png, id=422, 758.835pt x 794.97pt>
 File: overlap_waterbox_methylindole_old_v2.png Graphic file (type png)
 <use overlap_waterbox_methylindole_old_v2.png>
 Package pdftex.def Info: overlap_waterbox_methylindole_old_v2.png  used on inpu
 t line 252.
 (pdftex.def)             Requested size: 209.12686pt x 219.08444pt.
-<overlap_waterbox_methylindole_new_v2.png, id=420, 758.835pt x 794.97pt>
+<overlap_waterbox_methylindole_new_v2.png, id=423, 758.835pt x 794.97pt>
 File: overlap_waterbox_methylindole_new_v2.png Graphic file (type png)
 <use overlap_waterbox_methylindole_new_v2.png>
 Package pdftex.def Info: overlap_waterbox_methylindole_new_v2.png  used on inpu
@@ -1758,42 +1763,42 @@ e.5.5}) has been already used, duplicate ignored
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
 l.263 \section
-              {Routes for molecules from Transformato paper} <./results_3pairs1
-.png>] [37pdfTeX warning (ext4): destination with the same identifier (name{tab
-le.5.2}) has been already used, duplicate ignored
+              {Routes for molecules from {\trafo} paper} <./results_3pairs1.png
+>] [37pdfTeX warning (ext4): destination with the same identifier (name{table.5
+.2}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
 l.263 \section
-              {Routes for molecules from Transformato paper}] [38pdfTeX warning
- (ext4): destination with the same identifier (name{figure.5.6}) has been alrea
-dy used, duplicate ignored
+              {Routes for molecules from {\trafo} paper}] [38pdfTeX warning (ex
+t4): destination with the same identifier (name{figure.5.6}) has been already u
+sed, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
 l.263 \section
-              {Routes for molecules from Transformato paper} <./overlap_vacuum_
-toluene_old_v2.png> <./overlap_vacuum_toluene_new_v2.png> <./overlap_waterbox_t
-oluene_old_v2.png> <./overlap_waterbox_toluene_new_v2.png>] [39pdfTeX warning (
-ext4): destination with the same identifier (name{figure.5.7}) has been already
- used, duplicate ignored
+              {Routes for molecules from {\trafo} paper} <./overlap_vacuum_tolu
+ene_old_v2.png> <./overlap_vacuum_toluene_new_v2.png> <./overlap_waterbox_tolue
+ne_old_v2.png> <./overlap_waterbox_toluene_new_v2.png>] [39pdfTeX warning (ext4
+): destination with the same identifier (name{figure.5.7}) has been already use
+d, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
 l.263 \section
-              {Routes for molecules from Transformato paper} <./states_toluene_
-vacuum_old_v2.png> <./states_toluene_vacuum_new_v2.png> <./states_toluene_water
-_old_v2.png> <./states_toluene_water_new_v2.png>] [40pdfTeX warning (ext4): des
-tination with the same identifier (name{figure.5.8}) has been already used, dup
-licate ignored
+              {Routes for molecules from {\trafo} paper} <./states_toluene_vacu
+um_old_v2.png> <./states_toluene_vacuum_new_v2.png> <./states_toluene_water_old
+_v2.png> <./states_toluene_water_new_v2.png>] [40pdfTeX warning (ext4): destina
+tion with the same identifier (name{figure.5.8}) has been already used, duplica
+te ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
 l.263 \section
-              {Routes for molecules from Transformato paper} <./overlap_vacuum_
-methylindole_old_v2.png> <./overlap_vacuum_methylindole_new_v2.png> <./overlap_
-waterbox_methylindole_old_v2.png> <./overlap_waterbox_methylindole_new_v2.png>]
-<paper_routes1a.png, id=480, 571.59pt x 509.394pt>
+              {Routes for molecules from {\trafo} paper} <./overlap_vacuum_meth
+ylindole_old_v2.png> <./overlap_vacuum_methylindole_new_v2.png> <./overlap_wate
+rbox_methylindole_old_v2.png> <./overlap_waterbox_methylindole_new_v2.png>]
+<paper_routes1a.png, id=483, 571.59pt x 509.394pt>
 File: paper_routes1a.png Graphic file (type png)
 <use paper_routes1a.png>
 Package pdftex.def Info: paper_routes1a.png  used on input line 267.
@@ -1803,7 +1808,7 @@ Overfull \hbox (10.43771pt too wide) in paragraph at lines 267--267
 [][][] 
  []
 
-<paper_routes1b.png, id=481, 818.622pt x 450.921pt>
+<paper_routes1b.png, id=484, 818.622pt x 450.921pt>
 File: paper_routes1b.png Graphic file (type png)
 <use paper_routes1b.png>
 Package pdftex.def Info: paper_routes1b.png  used on input line 274.
@@ -1822,7 +1827,7 @@ has been already used, duplicate ignored
                                                   
 l.283 
        <./paper_routes1a.png>]
-<toluene_short.png, id=493, 502.167pt x 537.426pt>
+<toluene_short.png, id=496, 502.167pt x 537.426pt>
 File: toluene_short.png Graphic file (type png)
 <use toluene_short.png>
 Package pdftex.def Info: toluene_short.png  used on input line 288.
@@ -1832,7 +1837,7 @@ Overfull \hbox (33.69241pt too wide) in paragraph at lines 288--288
 [][][] 
  []
 
-<methylfuran_short.png, id=494, 491.217pt x 537.207pt>
+<methylfuran_short.png, id=497, 491.217pt x 537.207pt>
 File: methylfuran_short.png Graphic file (type png)
 <use methylfuran_short.png>
 Package pdftex.def Info: methylfuran_short.png  used on input line 294.
@@ -1842,7 +1847,7 @@ Overfull \hbox (23.83748pt too wide) in paragraph at lines 294--294
 [][][] 
  []
 
-<methylindole_short.png, id=495, 504.576pt x 534.579pt>
+<methylindole_short.png, id=498, 504.576pt x 534.579pt>
 File: methylindole_short.png Graphic file (type png)
 <use methylindole_short.png>
 Package pdftex.def Info: methylindole_short.png  used on input line 301.
@@ -1852,7 +1857,7 @@ Overfull \hbox (35.86047pt too wide) in paragraph at lines 301--301
 [][][] 
  []
 
-<cpi_short.png, id=496, 495.159pt x 534.798pt>
+<cpi_short.png, id=499, 495.159pt x 534.798pt>
 File: cpi_short.png Graphic file (type png)
 <use cpi_short.png>
 Package pdftex.def Info: cpi_short.png  used on input line 307.
@@ -1960,11 +1965,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
  ) 
 Here is how much of TeX's memory you used:
- 27184 strings out of 480471
- 428241 string characters out of 5903301
- 912225 words of memory out of 5000000
- 42400 multiletter control sequences out of 15000+600000
- 573722 words of font info for 134 fonts, out of 8000000 for 9000
+ 27193 strings out of 480471
+ 428383 string characters out of 5903301
+ 913234 words of memory out of 5000000
+ 42407 multiletter control sequences out of 15000+600000
+ 574350 words of font info for 136 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,11n,76p,10100b,2353s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/texl
@@ -1979,16 +1984,19 @@ cmmi8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 ts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2020/texmf-dist/fonts/type1/p
 ublic/cm-super/sfrm0900.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-s
 uper/sfrm1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsl1
-095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><d
-:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><d:/texlive/
-2020/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><d:/texlive/2020/texmf
--dist/fonts/type1/public/cm-super/sfsx2074.pfb><d:/texlive/2020/texmf-dist/font
-s/type1/public/cm-super/sfti1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/pu
-blic/cm-super/sftt1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic
-/uhvb8a.pfb><d:/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (59 pages, 19100770 bytes).
+095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfst1095.pfb><d
+:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><d:/texlive/
+2020/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><d:/texlive/2020/texmf
+-dist/fonts/type1/public/cm-super/sfsx1440.pfb><d:/texlive/2020/texmf-dist/font
+s/type1/public/cm-super/sfsx2074.pfb><d:/texlive/2020/texmf-dist/fonts/type1/pu
+blic/cm-super/sfti1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-su
+per/sftt1095.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sftt14
+40.pfb><d:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sftt2074.pfb><d:
+/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/texlive/2020/t
+exmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on main.pdf (59 pages, 19161192 bytes).
 PDF statistics:
- 863 PDF objects out of 1000 (max. 8388607)
+ 878 PDF objects out of 1000 (max. 8388607)
  163 named destinations out of 1000 (max. 500000)
- 21974 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 22998 words of extra memory for PDF output out of 24883 (max. 10000000)
 

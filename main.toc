@@ -9,9 +9,9 @@
 \contentsline {section}{\numberline {2.3}Soft-core potentials}{7}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Dummy atoms, Single/Dual topology}{8}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Serial atom insertion}{8}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Transformato}{11}{chapter.3}%
+\contentsline {chapter}{\numberline {3}\texttt {transformato}\xspace }{11}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Common core approach}{12}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Transformato workflow}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.2}{\texttt {transformato}\xspace } workflow}{12}{section.3.2}%
 \contentsline {chapter}{\numberline {4}Problem description}{15}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Used algorithms and software packages}{15}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Assessment of common core settings}{16}{section.4.2}%
@@ -24,7 +24,7 @@
 \contentsline {section}{\numberline {5.1}Visualizations}{29}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Scoring schemes}{30}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Results for selected molecule pairs}{35}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Routes for molecules from Transformato paper}{41}{section.5.4}%
+\contentsline {section}{\numberline {5.4}Routes for molecules from {\texttt {transformato}\xspace } paper}{41}{section.5.4}%
 \contentsline {chapter}{\numberline {6}Conclusion}{47}{chapter.6}%
 \contentsline {chapter}{\nonumberline List of Figures}{49}{chapter*.2}%
 \contentsline {chapter}{\nonumberline Bibliography}{53}{chapter*.3}%
