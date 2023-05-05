@@ -122,59 +122,56 @@ schemes, e.g., the trapezoidal rule and Simpson's rule, see \cite{Bruckner.2011b
 
 Free energy perturbation relies on the Zwanzig relation (or exponential
 formula). For each configuration of state A, the energy difference
-between this state and the corresponding state B is calculated. So, the
-free energy difference is given by 
+between this state and the corresponding state B is calculated, which is then used to compute the free energy difference between A and B according to \cite{Gapsys.2015}
 \[
-\Delta F_{A\rightarrow B}=F_{B}-F_{A}=-\frac{1}{\beta}\ln\frac{Q_{B}}{Q_{A}}=-k_{b}T\ln\left\langle \exp\left(\frac{-\Delta U_{A\rightarrow B}}{k_{B}T}\right)\right\rangle _{A}
-\]\cite{Gapsys.2015}. 
+\Delta F_{A\rightarrow B}=F_{B}-F_{A}=-\frac{1}{\beta}\ln\frac{Q_{B}}{Q_{A}}=-k_{b}T\ln\left\langle \exp\left(\frac{-\Delta U_{A\rightarrow B}}{k_{B}T}\right)\right\rangle _{A}.
+\]
 
 Several variants of the formula exist: For instance, one can either
 calculate forward or backward perturbations (either $\Delta F\left(A\rightarrow B\right)$ or
-$-\Delta F\left(B\rightarrow A\right)$ is computed), or, as it is
+$-\Delta F\left(B\rightarrow A\right)$), or, as it is
 usually the case, use double-wide sampling where energy differences
 from both directions are processed \cite{Bruckner.2011}.
 
 As for thermodynamic integration, usually it is necessary to
 introduce intermediate states. The free energy between the final states
-0 and 1 is calculated as sum of the differences between all adjacent
+0 and 1 is calculated as the sum of the differences between all adjacent
 intermediate states; in the case of n states: $\Delta F_{0\rightarrow1}=\sum_{i=0}^{n-1}\left(F\left(i+1\right)-F\left(i\right)\right)$.
-There has to be a sufficient number of intermediate states - i.e.
-overlap must be quite big -, otherwise convergence is extremely bad.
-However, there are still use cases when other methods are not feasible\cite{Boresch.2017}
+There has to be a sufficient number of intermediate states --- there must be significant overlap between the two states --- otherwise convergence is poor.
+However, there are still use cases when other methods are not feasible\cite{Boresch.2017},
 and there exists an extension to non-equilibrium work (Jarzynski's
-equation)\cite{Boresch.2017}, but usually it should be only used
-if one knows that the difference between the samples is very small\cite{Shirts.2013}.
+equation)\cite{Boresch.2017}. In general, however, it should be only used
+if the difference between the two states are tiny\cite{Shirts.2013}.
 
 \subsection{Bennett Acceptance Ratio (BAR)}
 
-An extension of perturbation for computing the free energy difference between
-two states is the usage of Bennett's Acceptance Ratio\cite{Bennett.1976}. 
+An extension of the perturbation approach for computing the free energy difference between
+two states is Bennett's Acceptance Ratio\cite{Bennett.1976}. 
 
 Expansion of the denominator and numerator of the ratio of the canonical
-partition functions of both states yields: 
+partition functions of both states leads to: 
 \[
 \frac{Q_{0}}{Q_{1}}=\frac{Q_{0}\int W\exp\left(-U_{0}-U_{1}\right)dq^{N}}{Q_{1}\int W\exp\left(-U_{0}-U_{1}\right)dq^{N}}=\frac{\left\langle W\exp\left(-U_{0}\right)\right\rangle _{1}}{\left\langle W\exp\left(-U_{1}\right)\right\rangle _{0}}
 \]
-
 where W denotes a (for now arbitrary) weighting function. Assuming
 a Gaussian distribution of the estimation error in the limit of large
 samples, the optimal W can be determined as $W\left(q_{1}...q_{n}\right)=c\left(\frac{Q_{0}}{n_{0}}\exp\left(-U_{1}\right)+\frac{Q_{1}}{n_{1}}\exp\left(-U_{0}\right)\right)^{-1}$\cite{Bennett.1976}. 
 
 To use Bennett's acceptance ratio method, two simulations have
 to be carried out. One starts at $\lambda=0$, the other one at $\lambda=1$.
-Forward and backward simulation are processed simultaneously. 
+Forward and backward simulations are processed simultaneously. 
 
-For two $\lambda$-states, the free energy difference can be expressed
+The free energy difference between two $\lambda$-states can be expressed as
 \[
 \bigtriangleup F\left(\lambda_{i}\rightarrow\lambda_{j}\right)=\beta^{-1}\left(\ln\frac{\left\langle f\left(U_{\lambda_{i}}-U_{\lambda_{j}}+C\right)\right\rangle _{\lambda_{j}}}{\left\langle f\left(U_{\lambda_{j}}-U_{\lambda_{i}}+C\right)\right\rangle _{\lambda_{i}}}\right)+C
 \]
 with the Fermi function $f\left(x\right)=\frac{1}{1+\exp\left(\beta x\right)}$
 \cite{Bruckner.2011,Gapsys.2015}.
 
-To obtain the value of the optimum shift constant
+To obtain the value of the optimum shift constant,
 \[
-C=\beta^{-1}\ln\frac{Q_{i}N_{j}}{Q_{j}N_{i}}
-\],
+C=\beta^{-1}\ln\frac{Q_{i}N_{j}}{Q_{j}N_{i}},
+\]
 a self-consistency
 problem has to be solved iteratively\cite{Gapsys.2015}.
 
@@ -185,15 +182,15 @@ state j and i, respectively.
 BAR gives a minimal variance free energy estimate. There is also an
 alternative derivation for the formula. It can be shown that the
 Bennett acceptance ratio method works as a maximum likelihood estimator.
-Using BAR, one obtains the asymptotically unbiased (i.e. for an infinite
-number of measurements it yields an unbiased estimation) estimation
-with lowest variance\cite{Shirts.2003}. 
+Using BAR, one obtains the asymptotically unbiased estimation (i.e., for an infinite
+number of measurements it yields an unbiased estimation) 
+with the lowest variance\cite{Shirts.2003}. 
 
 Using variational calculus to minimize the variance, $\Delta F$ can
 be expressed implicitly as:$\frac{\partial\ln L\left(\Delta F\right)}{\partial\Delta F}=\sum\frac{1}{1+\exp\left(\beta\left(M+W_{i}-\Delta F\right)\right)}-\sum\frac{1}{1+\exp\left(\beta\left(M-W_{j}-\Delta F\right)\right)}=0$
 , where M denotes $M=\beta^{-1}\ln\frac{N_{j}}{N_{i}}$ \cite{Shirts.2003}.
 
-Also BAR depends on the overlap between the states, however it is
+BAR also depends on the overlap between the states; however, it is
 more robust and reliable in cases of rather poor overlap \cite{Ruiter.2013}
 (especially when compared to FEP). (Whether BAR outperforms thermodynamic
 integration crucially depends on the smoothness of the integrand.
