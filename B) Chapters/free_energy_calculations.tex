@@ -2,7 +2,7 @@
 
 \section{Basics}
 
-In the last years, the accuracy and feasibility of free energy calculations
+In the last few years, the accuracy and feasibility of free energy calculations
 improved significantly \cite{King.2021}. The main reasons are developments
 in the accuracy of force fields\cite{Cournia.2017}, the increase
 in computational resources and, in particular, the usage of graphics
@@ -12,10 +12,10 @@ for alchemical free energy calculations which facilitates the set-up
 of such simulations. 
 
 Possible applications can be found in rational drug design and drug
-discovery; e.g. during lead optimization, the binding free energy differences
-between compounds are of interest.\cite{Cournia.2017}As free energy
-provides information about the thermodynamic favorability of a specific
-process, it can help to find ligands that bind to a biomolecule of
+discovery; e.g., during lead optimization, the binding free energy differences
+between compounds are of interest.\cite{Cournia.2017} As the free energy difference
+ provides information about the thermodynamic favorability of a specific
+process, it can help to find ligands that bind most tightly to a biomolecule of
 interest.
 
 One can distinguish between absolute and relative free energy calculations:
@@ -25,7 +25,7 @@ with the free energy of an unrelated compound)\cite{Boresch.2003,Jorgensen.1988}
 whereas the latter approach computes the free energy difference between,
 e.g., two ligands, which usually are related to each other. For many
 practical problems, such knowledge is sufficient, for instance, when
-the comparison of properties like bind binding affinity of two ligands
+the comparison of properties like binding affinity of two ligands
 is sought. The relative free energy differences between two ligands
 can provide information to predict protein-ligand binding affinities
 and to select specific ligands, drugs etc. for optimizing binding
@@ -33,21 +33,20 @@ affinity. Knowledge of binding affinities can be harnessed for tasks
 like protein engineering \cite{King.2021}.
 
 Relative free energy calculations harness the concept of a thermodynamic
-cycle \cite{Kollman.}(fig. 2.1): The horizontal arrows indicate the
+cycle \cite{Kollman.}; see Fig.~\ref{fig:cycle}: The horizontal arrows indicate the
 paths from the unbound to the bound state of each of the two ligands,
 the vertical arrows indicate the transformation from one molecule
-to the other one. According to the 2nd law of thermodynamics, both paths
-in the figure from the unbound state of ligand A to the bound state
-of ligand B must exhibit the same free energy difference. These paths
-are closed and so the energy difference has to be zero, i.e., 
+to the other one. According to the 2nd law of thermodynamics, the free energy differences along both paths
+in the figure leading from the unbound state of ligand A to the bound state
+of ligand B must be identical. In other words, we have
 \[
 \Delta G_{A}+\Delta G_{2}=\Delta G_{1}+\Delta G_{B}.
 \]
-From this one sees that the relative binding free energy difference between the two ligands can be expressed as:
+From this one sees that the relative binding free energy difference between the two ligands can be expressed as \cite{Cournia.2017}:
 \[
-\Delta\Delta G=\Delta G_{2}-\Delta G_{1}=\Delta G_{B}-\Delta G_{A}
+\Delta\Delta G=\Delta G_{2}-\Delta G_{1}=\Delta G_{B}-\Delta G_{A}.
 \]
-\cite{Cournia.2017}. To obtain knowledge about $\Delta\Delta G=\Delta G_{B}-\Delta G_{A}$,
+To obtain knowledge about $\Delta\Delta G=\Delta G_{B}-\Delta G_{A}$,
 the evaluation of the alchemical transformations $\Delta G_{1}$and
 $\Delta G_{2}$ suffices. (In practice, the determination
 of $\Delta G_{A}$ or $\Delta G_{B}$ usually requires an experimental
@@ -56,27 +55,27 @@ or at least indicate if, e.g., a certain ligand is a promising candidate.)
 
 The vertical part of the depicted thermodynamic cycle is easier 
 to compute because the change between both states is much smaller
-(depending on the molecules of interest, only some atoms change and hence less annihilation or creation steps are ) and thus, in general, fewer intermediate steps
+(depending on the molecules of interest, only some atoms change and hence there are fewer annihilation or creation steps) and, thus, in general, fewer intermediate steps
 are necessary; however it involves 'alchemical' transformations, i.e.,
-non-physical intermediates have to be used. 
+nonphysical intermediates have to be used. 
 \begin{figure}
 \includegraphics[scale=0.8]{cycle1}\caption{Thermodynamic cycle; red arrows indicate transitions between two states
-(unbound - bound) of each ligand, blue arrows indicate 'alchemical'
-transformations (Ligand A - Ligand B)}
+(unbound--bound) of each ligand, blue arrows indicate 'alchemical'
+transformations (Ligand~A--Ligand~B)\label{fig:cycle}}
 
 \end{figure}
 
 In general, the free energy is given by $F=-k_{B}T\ln Q$, where Q denotes the partition function $Q=\int dr\exp\left(-\beta U\right)$
-with $\beta=\frac{1}{k_{B}T}$. Hence the free energy difference between
-states i and j can be described as:
+with $\beta=\frac{1}{k_{B}T}$. Hence, the free energy difference between
+states i and j can be described as \cite{Shirts.2013}:
 
 \[
-\bigtriangleup F_{ij}=-\frac{1}{\beta}\ln\frac{Z_{j}}{Z_{i}}
-\] \cite{Shirts.2013}. 
+\bigtriangleup F_{ij}=-\frac{1}{\beta}\ln\frac{Z_{j}}{Z_{i}}.
+\]
 
 To compute the free energy differences between two states, various
 methods exist. Usually, it is not possible to simply compute the difference
-between the two endstates; hence intermediate states have to be taken
+between the two end states; hence, intermediate states have to be taken
 into account. The difference between the final states can be expressed
 as the sum of the difference between these intermediate states: $\Delta F=F_{1}-F_{0}=\sum_{n}\Delta F_{n}$
 \cite{Mey.2020}.
@@ -84,11 +83,11 @@ as the sum of the difference between these intermediate states: $\Delta F=F_{1}-
 \section{Methods for evaluating free energy differences}
 
 Various approaches for calculating free energy differences exist,
-e.g. thermodynamic integration and perturbation. Implementations of the latter approach use
+e.g., thermodynamic integration and perturbation. Implementations of the latter approach use
 the Zwanzig formula or Bennett's acceptance ratio method (which is
 used in the {\trafo} package described below). In the following,
 these three approaches will be briefly outlined. (For a more
-comprehensive comparison and estimation of performance differences
+comprehensive comparison and estimation of performance differences,
 see \cite{Bruckner.2011} and \cite{Ruiter.2013}).
 
 \subsection{Thermodynamic Integration (TI)}
@@ -99,7 +98,7 @@ between the final states. TI computes intermediate
 states depending on the coupling parameter $\lambda$. $\lambda=0$
 and $\lambda=1$ represent the physical, initial / final states of
 the system. Scaling between those two values, i.e. using values $0>\lambda<1$,
-gives rise to the unphysical, 'alchemical' intermediate states.
+gives rise to the nonphysical, 'alchemical' intermediate states.
 
 Taking the derivative of the free energy, one gets $\frac{dF}{d\lambda}=\frac{d}{d\lambda}\int e^{-\beta U dr}=\left\langle \frac{dU\left(r,\lambda\right)}{d\lambda}\right\rangle _{\lambda}$\cite{Shirts.2013}, 
 , where the angular brackets indicate the ensemble average .
