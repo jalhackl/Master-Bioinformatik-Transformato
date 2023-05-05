@@ -21,7 +21,7 @@ interest.
 One can distinguish between absolute and relative free energy calculations:
 Absolute free energy differences are, for instance, solvation or binding
 free energy differences of one compound (these results can be compared
-with the free energy of an unrelated compound)\cite{Boresch.2003}\cite{Jorgensen.1988},
+with the free energy of an unrelated compound)\cite{Boresch.2003,Jorgensen.1988},
 whereas the latter approach computes the free energy difference between,
 e.g., two ligands, which usually are related to each other. For many
 practical problems, such knowledge is sufficient, for instance, when
@@ -86,7 +86,7 @@ as the sum of the difference between these intermediate states: $\Delta F=F_{1}-
 Various approaches for calculating free energy differences exist,
 e.g. thermodynamic integration and perturbation. Implementations of the latter approach use
 the Zwanzig formula or Bennett's acceptance ratio method (which is
-used in the Transformato package described below). In the following,
+used in the {\trafo} package described below). In the following,
 these three approaches will be briefly outlined. (For a more
 comprehensive comparison and estimation of performance differences
 see \cite{Bruckner.2011} and \cite{Ruiter.2013}).
@@ -168,7 +168,7 @@ For two $\lambda$-states, the free energy difference can be expressed
 \bigtriangleup F\left(\lambda_{i}\rightarrow\lambda_{j}\right)=\beta^{-1}\left(\ln\frac{\left\langle f\left(U_{\lambda_{i}}-U_{\lambda_{j}}+C\right)\right\rangle _{\lambda_{j}}}{\left\langle f\left(U_{\lambda_{j}}-U_{\lambda_{i}}+C\right)\right\rangle _{\lambda_{i}}}\right)+C
 \]
 with the Fermi function $f\left(x\right)=\frac{1}{1+\exp\left(\beta x\right)}$
-\cite{Bruckner.2011}\cite{Gapsys.2015}.
+\cite{Bruckner.2011,Gapsys.2015}.
 
 To obtain the value of the optimum shift constant
 \[

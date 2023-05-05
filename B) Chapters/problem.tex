@@ -1,13 +1,13 @@
 \chapter{Problem description }
 
 The main objective was the assessment and improvement of some routines
-used in the free energy package Transformato. A further goal was to
+used in the free energy package {\trafo}. A further goal was to
 minimize the necessity of additional adjustments by the user, i.e.
 reasonable mutation routes have to be generated automatically. The
-proposed route should be directly usable for the further Transformato
+proposed route should be directly usable for the further {\trafo}
 workflow.
 
-In a first step, the reliability of the current Transformato workflow
+In a first step, the reliability of the current {\trafo} workflow
 had to be assessed, for instance the quality of the proposed common
 cores. Different settings for the construction of the maximum common
 substructure were compared. 
@@ -29,7 +29,7 @@ disconnected components emerge under any circumstances.
 Using a graph representation of the involved molecules, the construction
 of the intermediates between the final states was optimized.
 New algorithms have been written in Python and subsequently integrated
-into the existing Transformato package. Finally, the effect of different
+into the existing {\trafo} package. Finally, the effect of different
 algorithms on the efficiency of the free energy calculations was validated by means of molecular dynamics simulations. 
 
 To obtain a reliable test set of molecules, sdf-files of ligands were downloaded from the PDBbind-CN database. These test molecules should cover a
@@ -38,7 +38,7 @@ like polycyclic structures and highly branched chains.
 
 \section{Used algorithms and software packages}
 
-The Transformato package is written in Python. Therefore, Python packages
+The {\trafo} package is written in Python. Therefore, Python packages
 also were used for molecule processing and graph representations.
 The creation of molecule objects and the determination of the maximum
 common substructure is done via Rdkit\cite{key-3}. NetworkX\cite{AricA.Hagberg.2008}
@@ -51,11 +51,11 @@ like breadth-first and depth-first search can be easily implemented
 \section{Assessment of common core settings}
 
 Rdkit allows the search for a maximal common substructure (which can
-serve as common core for Transformato) via the \texttt{rdFMCS.FindMCS}-function.
+serve as common core for {\trafo}) via the \texttt{rdFMCS.FindMCS}-function.
 Per default, the objective is to maximize the number of atoms, albeit
 different settings, like maximize the number of bonds or ignoring
 or equalizing specific atom types are available. At the moment, for
-Transformato maximization of atoms and atom identity is used. As stated above, the presence of hydrogens can influence
+{\trafo} maximization of atoms and atom identity is used. As stated above, the presence of hydrogens can influence
 the maximum common substructure heavily (fig. 4.1) because the number of atoms is modified and this quantity is maximized for the maximal common substructure. 
 
 
@@ -63,12 +63,12 @@ Settings concerning the allowed involvement of ring structures in
 the common core are of crucial importance. Firstly, these parameters
 can influence the common core construction drastically and, secondly, they
 can even be decisive whether the generated common core is valid for the
-Transformato workflow.
+{\trafo} workflow.
 Especially for the generation of common cores for polycyclic molecules, e.g. sterols, these parameters are of utmost importance.  
 Important ring-related settings are \texttt{ringMatchesRingOnly}, \texttt{completeRingsOnly}
 and the \texttt{ringCompare-parameter}. 
 
-To obtain valid common cores of molecules involving cyclic structures for the processing of Transformato, \texttt{ringMatchesRingOnly}
+To obtain valid common cores of molecules involving cyclic structures for the processing of {\trafo}, \texttt{ringMatchesRingOnly}
 and \texttt{completeRingsOnly} must be set to True: The former argument indicates
 that ring atoms of one molecule are only matched against ring atoms
 of the other molecule, the latter ensures that no partial rings are
@@ -82,16 +82,16 @@ It imposes that in case of multiple rings aromaticity is properly
 taken into account. Fig. 4.2 illustrates the effect of the parameters
 on the common core of two cyclic example molecules. However, enforcing
 of \texttt{StrictRingFusion} can still lead to maximum common substructures
-that are not valid Transformato common cores in case of a dummy region
+that are not valid {\trafo} common cores in case of a dummy region
 which is connected via multiple ring atoms of the same ring with the common
 core. 
-When an invalid common core is generated, it seems to be advisable to warn the user in this case that the common core does not fit the expectations of the Transformato workflow. 
-The mutation algorithms presented below can deal with such invalid common cores. A helper function arbitrarily chooses one of the connections between common core and dummy region and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current Transformato workflow is not adapted to deal with such common cores in a proper way. Therefore it makes only sense for test purposes and is not a reasonable input for the regular workflow.
+When an invalid common core is generated, it seems to be advisable to warn the user in this case that the common core does not fit the expectations of the {\trafo} workflow. 
+The mutation algorithms presented below can deal with such invalid common cores. A helper function arbitrarily chooses one of the connections between common core and dummy region and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current {\trafo} workflow is not adapted to deal with such common cores in a proper way. Therefore it makes only sense for test purposes and is not a reasonable input for the regular workflow.
 Alternatively, one could check after the creation if the common core is valid. If
 it is not, one could for instance search for a new common core encompassing fewer
 atoms until a valid common core is found (see below). A further option would be to prohibit the involvement of ring atoms for this particular molecule combination.
 
-These problems occur because the requirements for a valid Transformato common core are more strict than the constraints imposed by rdkit  (even when all ring-related parameters are applied, i.e. \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For Transformato, is not only indispensable that the common core solely comprises complete rings, but also the molecule fragment consisting of the non-common core atoms (which implies that there is a unique connection between dummy region and common core).
+These problems occur because the requirements for a valid {\trafo} common core are more strict than the constraints imposed by rdkit  (even when all ring-related parameters are applied, i.e. \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, is not only indispensable that the common core solely comprises complete rings, but also the molecule fragment consisting of the non-common core atoms (which implies that there is a unique connection between dummy region and common core).
 An efficient and straightforward solution for this problem, which always yields the best - i.e. largest - valid common core if one exists, has been implemented:
 The basic observation is that if common core atoms within a cyclic region give rise to a invalid common core, it is impossible that any atoms within this region could participate in a valid one (if this would be the case, the whole cyclic region would be already in the generated common core).
 After generating a common core with standard parameters, it is checked if the additional requirements concerning the ring structure hold, i.e. if the non-common core atoms (as well as the common core atoms) of both molecules do not participate in a partial cycle.
@@ -116,7 +116,7 @@ core of two molecules with strict fusion; in the images of the full molecule gra
 \begin{figure}
 	\includegraphics[scale=0.6]{cholesterol_pryenepropanoic_acid.png}
 	
-	\caption{common cores of cholesterol (left) and 1-pyrenepropanoic acid (right); upper row: CompleteRingsOnly = False; middle row: CompleteRingsOnly = True; lower row: iterative approach to obtain a valid Transformato common core}
+	\caption{common cores of cholesterol (left) and 1-pyrenepropanoic acid (right); upper row: CompleteRingsOnly = False; middle row: CompleteRingsOnly = True; lower row: iterative approach to obtain a valid {\trafo} common core}
 	\label{fig:pyrene}
 \end{figure}
 
@@ -200,7 +200,7 @@ applied iteratively, i.e. after each removal of an atom
 \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change:}
 works iteratively, i.e. after each removal of an atom, the algorithm/routine for the next step is chosen depending on current state
 
-\texttt{\_calculate\_order\_of\_LJ\_mutations }was already present in Transformato, but computes defective mutation routes and hence
+\texttt{\_calculate\_order\_of\_LJ\_mutations }was already present in {\trafo}, but computes defective mutation routes and hence
 should only be used for test purposes. The other three algorithms
 are new and, in any case, resolve most of the problems of the earlier
 algorithm (especially isolated removal of ring atoms).
@@ -312,15 +312,15 @@ chain which is processed subsequently, whereas BFS starts at carbon
 	\end{figure}
 
 
-As fig. \ref{fig:hydrogen_effect} indicates, the presence of hydrogens can influence the common core generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e. non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). Hence it is crucial to determine the common core for molecule representations without hydrogens. Since hydrogen atoms are turned off in an extra step en bloc during the Transformato workflow, the mutation route algorithm should not take hydrogens into account nor must the common core be generated for a molecule representation containing hydrogens.
+As fig. \ref{fig:hydrogen_effect} indicates, the presence of hydrogens can influence the common core generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e. non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). Hence it is crucial to determine the common core for molecule representations without hydrogens. Since hydrogen atoms are turned off in an extra step en bloc during the {\trafo} workflow, the mutation route algorithm should not take hydrogens into account nor must the common core be generated for a molecule representation containing hydrogens.
 Nonetheless, it is necessary that the molecule representations processed in Tranformato contain all hydrogens in explicit form because the indices of these atoms in the underlying data structures are used in some steps, e.g. for scaling the van-der-Waals interactions of the hydrogen atoms to zero.
 This problem was solved by removing and adding hydrogens appropriately.
-In a first step, the Transformato function determining the common core (\texttt{\_find\_mcs} in mutate.py) had to be modified. To obtain the desired common core but retain the Transformato workflow, the following scheme was implemented:
+In a first step, the {\trafo} function determining the common core (\texttt{\_find\_mcs} in mutate.py) had to be modified. To obtain the desired common core but retain the {\trafo} workflow, the following scheme was implemented:
 A deep copy of both molecules is created. The hydrogens of these copies are removed and afterwards their common core is computed. For both molecules, the indices of the atoms corresponding to the common core are determined. Finally, it is checked for each common core atom of both molecules whether hydrogen atoms are in its neighbourhood. If such hydrogens are found, their indices are added to the lists of common core atoms. These lists of atoms including hydrogens are stored for both molecules and the function returns the maximum common substructure (determined for the molecules without hydrogens).
-Thus the procedure yields the necessary output for further processing in Transformato: The molecule representations and lists of common core atoms for both of the molecules include hydrogens, but the maximum common substructure giving rise to the common core is computed only for the heavy atoms.
+Thus the procedure yields the necessary output for further processing in {\trafo}: The molecule representations and lists of common core atoms for both of the molecules include hydrogens, but the maximum common substructure giving rise to the common core is computed only for the heavy atoms.
 Similarly, the functions for computing the mutation routes had to be adapted for input molecules containing hydrogens. By default, a helper function removes the hydrogens from the graph representation as well as the corresponding indices from the list with the atoms of the dummy regions before the mutation algorithms are applied. Afterwards, the hydrogen atoms adjacent to common core heavy atoms are added to the common core.
 A special problem occurs for molecule pairs with switching 'X'-atom; fig. \ref{fig:pyrrolidinindole} shows 2-/7-pyrrolidinindole as example. It is necessary that a further dummy region emerges which consists solely of one hydrogen atom because otherwise the common cores would have a different number of atoms. It depicts a correct common core for both molecules; one should note the hydrogen atom which is not part of the common core. If, however, the common core is generated without hydrogens, the information which of the hydrogens turns into a dummy region is lost.
-It has to be stressed again that the presence of these hydrogen dummy regions does not affect the mutation steps, but is nonetheless crucial for the internal Transformato workflow. However, there is a straightforward way to circumvent this problem: From the substructure matches the mapping between the common core atoms of each molecule can be read off. It is counted for each heavy common core atom how many hydrogens are connected to it. Finally, the minimum number of hydrogens is added to the common core. (In the case of 2-/7-pyrrolidinindole, this means that for each common core atom one hydrogen is added, except for the 2- and 7- position, because for these positions in one molecule no hydrogen is connected).
+It has to be stressed again that the presence of these hydrogen dummy regions does not affect the mutation steps, but is nonetheless crucial for the internal {\trafo} workflow. However, there is a straightforward way to circumvent this problem: From the substructure matches the mapping between the common core atoms of each molecule can be read off. It is counted for each heavy common core atom how many hydrogens are connected to it. Finally, the minimum number of hydrogens is added to the common core. (In the case of 2-/7-pyrrolidinindole, this means that for each common core atom one hydrogen is added, except for the 2- and 7- position, because for these positions in one molecule no hydrogen is connected).
 In this context, also the difficulty that there are possibly many substructure matches has to be mentioned.
 It is even possible that substructure matches differ solely with respect to hydrogens. For this case, a parameter was added to the function which searches for the maximum common substructure. If \texttt{iterate\_over\_matches} is set to true, one of the substructure matches with most hydrogens, i.e. the biggest possible substructure, is selected. Fig. \ref{fig:neopentan} shows two common cores only differing in the number of hydrogens.
 
@@ -356,7 +356,7 @@ a chain or a ring at once (if possible) before switching to other
 parts of the molecule}
 \end{figure}
 
-In the current version of Transformato, one suboptimal route finding algorithm using DFS and several new versions based on BFS are implemented.
+In the current version of {\trafo}, one suboptimal route finding algorithm using DFS and several new versions based on BFS are implemented.
 For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root (fig 4.4).
 In more complex molecules, the systematic exploration of chains in
 depth first search inevitably leads to big local gaps in processing
