@@ -13,3 +13,5 @@ main.pdf
 *.lof
 *.lot
 *.out
+*.ist
+pdfa.xmpi
