@@ -1,0 +1,15 @@
+*.synctex.gz
+trash
+main*.pdf
+*.aux
+*.bbl
+*.bak
+*.blg
+*.log
+*.toc
+main.pdf
+*.sav
+*~
+*.lof
+*.lot
+*.out
