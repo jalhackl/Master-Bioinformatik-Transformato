@@ -298,33 +298,32 @@ dummy atom contributions cancel out exactly. \cite{Fleck.2021}
 
 As an alternative to modifying the coupling parameter, one can
 try to create new states by turning off atoms in one step without
-intermediate values. In \cite{Boresch.2011}, this approach is called
-Serial atom insertion. Atoms are turned off serially (one after one
+intermediate values. This approach, called serial atom insertion, was introduced In \cite{Boresch.2011}. Atoms are turned off serially (one after one
 or in small batches). There is no gradual damping of the interactions; the
-LJ-interactions of a molecule are either present ( $\lambda=1$) or
-turned off ( $\lambda=0$).
+LJ-interactions of a molecule are either present ($\lambda=1$) or
+turned off ($\lambda=0$).
 
-A sufficient overlap of neighboring states in phase space is crucial
-for any alchemical free energy calculation. So the question arises
-if turning off of one atom in one step is in agreement with this prerequisite. The feasibility of this approach relies on Bennett's acceptance
-ratio which was shown to work with neighboring states created
+A sufficient phase space overlap between neighboring states is crucial
+for any alchemical free energy calculation. So, the question arises
+whether turning off one atom in one step is in agreement with this prerequisite. The feasibility of this approach relies on Bennett's acceptance
+ratio, which was shown to work with neighboring states created
 by serial atomic insertion \cite{Boresch.2011}.
 
-In particular, Serial atom insertion has the advantage that it works
-even for MD algorithms which lack explicit support for free energy
+In particular, serial atom insertion has the advantage that it works
+even for MD programs which lack explicit support for free energy
 simulations and soft-core potentials are not needed (because the coupling
 parameter takes only the values 0 and 1). The free energy differences
 between states can be assembled from 'normal' simulations.
 
-The most severe restriction due to the van der Waals Endpoint
-problem is the instability of the integrator near the endstate where an atom has almost vanished (i.e.,  $\lambda=0$ or  $\lambda=1$). As such states
-are not used in Serial atom insertion, this problem is automatically
+The most severe restriction due to the van der Waals endpoint
+problem is the instability of the integrator near the end state where an atom has almost vanished (i.e.,  $\lambda=0$ or  $\lambda=1$). As such states
+are not used in serial atom insertion, this problem is automatically
 avoided.
 
 The feasibility of this approach depends on the sufficient overlap
 between the states. Using BAR, no intermediate steps are necessary
 and atoms can be turned off one by one. Contrariwise, thermodynamic
-integration cannot be used because it is exactly the scaling of the
+integration cannot be used because it is precisely the scaling of the
 interaction parameter between 0 and 1 which is avoided. This also
 implies that the singularity risk of the derivative due to the van
 der Waals endpoint problem can be neglected (as this part of the problem
