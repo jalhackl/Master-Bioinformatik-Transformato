@@ -38,7 +38,7 @@ Input can be created via CHARMM-GUI\cite{Jo.2008}. The solution builder of the w
 \section{Common core approach}
 
 The main condition for the common core of two molecules is the existence
-of a one-to-one correspondence of atoms, i.e. the existence of a graph
+of a one-to-one correspondence of atoms, i.e., the existence of a graph
 isomorphism. The {\trafo} workflow imposes some further conditions
 on the properties of the common core:
 
@@ -48,7 +48,7 @@ common core. In particular, the maximum common substructure must not
 encompass partial rings (which would imply that dummy regions are
 connected via multiple bonds). (In general, such transformations can pose intricate problems because ring breakage can lead to fast changes in free energy
 and cause significant estimation error \cite{Liu.2015}.)
-To meet these requirements, adjusting of the parameters and algorithms for finding the common core is important. For facilitating the construction of appropriate common cores, it was also necessary to improve the processing of the hydrogen atoms. As hydrogens are turned off beforehand in one step and not via serial atom insertion like the heavy atoms, it would be  detrimental to consider them in the common core generation (see section 'Processing of hydrogen atoms' in the next chapter). In previous versions of {\trafo}, hydrogens were included in the common core generation steps which led to small or in many cases even totally infeasible common cores. Before the common core construction is carried out, hydrogens have to be
+To meet these requirements, adjusting of the parameters and algorithms for finding the common core is important. For facilitating the construction of appropriate common cores, it was also necessary to improve the processing of the hydrogen atoms. As hydrogens are turned off beforehand in one step and not via serial atom insertion like the heavy atoms, it would be  detrimental to consider them in the common core generation (see section 'Processing of hydrogen atoms' in the next chapter). In previous versions of {\trafo}, hydrogens were included in the common core generation steps, which led to small or often even completely infeasible common cores. Before the common core construction is carried out, hydrogens have to be
 removed from the molecule representation. This is an important step
 because the presence of hydrogen atoms can lead to a different common
 core (which is created, using default settings, by maximizing the

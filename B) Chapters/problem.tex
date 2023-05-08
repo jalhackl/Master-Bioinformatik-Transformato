@@ -2,8 +2,8 @@
 
 The main objective was the assessment and improvement of some routines
 used in the free energy package {\trafo}. A further goal was to
-minimize the necessity of additional adjustments by the user, i.e.
-reasonable mutation routes have to be generated automatically. The
+minimize the necessity of manual adjustments by the user, i.e.,
+reasonable mutation routes should be generated automatically. The
 proposed route should be directly usable for the further {\trafo}
 workflow.
 
@@ -17,29 +17,28 @@ for the case of more complex mutation routes which occur for connected
 dummy regions involving ring structures, multiple chains or different
 atom types. 
 
-Particularly intricate problems occur for ring structures. In contrast to a chain, which usually has only one possible mutation order without leading to disconnected components, multiple possible orders exist. (Because of this fact, the evaluation of the mutation algorithms in the following sections will focus on such transformations.) Neither should
-the mutation of atoms generate vacancies in the inner part of the
-molecule nor should opened rings remain longer than necessary and
-a sufficiently systematic and - especially concerning rings - symmetric
+Particularly intricate problems occur for ring structures. In contrast to a chain, which usually has only one possible mutation order without leading to disconnected components, multiple possibilities  exist for rings. (Because of this, the evaluation of the mutation algorithms in the following sections will focus on such transformations.) The mutation of atoms should neither generate vacancies in the inner part of the
+molecule nor should rings remain opened longer than necessary, and
+a sufficiently systematic and --- especially concerning rings --- symmetric
 processing of the nodes has to be performed. These rules have to be
 implemented by maintaining the crucial constraint that no atoms are
-detached from the main part encompassing the common core, i.e. no
-disconnected components emerge under any circumstances.
+detached from the main part encompassing the common core, i.e., no
+disconnected components must emerge under any circumstances.
 
 Using a graph representation of the involved molecules, the construction
 of the intermediates between the final states was optimized.
-New algorithms have been written in Python and subsequently integrated
+New algorithms were written in Python and subsequently integrated
 into the existing {\trafo} package. Finally, the effect of different
-algorithms on the efficiency of the free energy calculations was validated by means of molecular dynamics simulations. 
+algorithms on the efficiency of the free energy calculations was validated through molecular dynamics simulations. 
 
-To obtain a reliable test set of molecules, sdf-files of ligands were downloaded from the PDBbind-CN database. These test molecules should cover a
+To obtain a reliable test set of molecules, sdf-files of ligands were downloaded from the PDBbind-CN database. These test molecules cover a
 broad range in size, complexity and potentially intricate compounds,
 like polycyclic structures and highly branched chains.
 
-\section{Used algorithms and software packages}
+\section{Overview of algorithms and software packages used}
 
 The {\trafo} package is written in Python. Therefore, Python packages
-also were used for molecule processing and graph representations.
+were also used for molecule processing and graph representations.
 The creation of molecule objects and the determination of the maximum
 common substructure is done via Rdkit\cite{key-3}. NetworkX\cite{AricA.Hagberg.2008}
 provides functions for graph visualization and analysis. It is easy to convert molecules created using Rdkit into NetworkX graph-objects
@@ -51,20 +50,19 @@ like breadth-first and depth-first search can be easily implemented
 \section{Assessment of common core settings}
 
 Rdkit allows the search for a maximal common substructure (which can
-serve as common core for {\trafo}) via the \texttt{rdFMCS.FindMCS}-function.
+serve as the common core for {\trafo}) via the \texttt{rdFMCS.FindMCS}-function.
 Per default, the objective is to maximize the number of atoms, albeit
-different settings, like maximize the number of bonds or ignoring
-or equalizing specific atom types are available. At the moment, for
+different settings, like maximizing the number of bonds or ignoring
+or equalizing specific atom types are available. Currently, for
 {\trafo} maximization of atoms and atom identity is used. As stated above, the presence of hydrogens can influence
-the maximum common substructure heavily (fig. 4.1) because the number of atoms is modified and this quantity is maximized for the maximal common substructure. 
-
+the maximum common substructure heavily (fig. 4.1) because the number of atoms is modified, and this quantity is maximized for the maximal common substructure. 
 
 Settings concerning the allowed involvement of ring structures in
 the common core are of crucial importance. Firstly, these parameters
 can influence the common core construction drastically and, secondly, they
 can even be decisive whether the generated common core is valid for the
 {\trafo} workflow.
-Especially for the generation of common cores for polycyclic molecules, e.g. sterols, these parameters are of utmost importance.  
+Especially for the generation of common cores for polycyclic molecules, e.g., sterols, these parameters are of utmost importance.  
 Important ring-related settings are \texttt{ringMatchesRingOnly}, \texttt{completeRingsOnly}
 and the \texttt{ringCompare-parameter}. 
 
@@ -72,30 +70,30 @@ To obtain valid common cores of molecules involving cyclic structures for the pr
 and \texttt{completeRingsOnly} must be set to True: The former argument indicates
 that ring atoms of one molecule are only matched against ring atoms
 of the other molecule, the latter ensures that no partial rings are
-involved in the common core. Especially the latter constraint is a
+involved in the common core. Especially, the latter constraint is a
 necessary condition for a valid common core. (Otherwise, if partial
 rings take part of the common core, dummy regions will be inevitably
 connected to the common core via multiple bonds.)
 
 The \texttt{ringCompare}-parameter parameter accepts the \texttt{StrictRingFusion}-argument.
-It imposes that in case of multiple rings aromaticity is properly
-taken into account. Fig. 4.2 illustrates the effect of the parameters
-on the common core of two cyclic example molecules. However, enforcing
+It imposes that in the case of multiple rings, aromaticity is properly
+considered. Fig. 4.2 illustrates the effect of the parameters
+on the common core of two cyclic example molecules. However, as shown in the bottom row of Fig.~4.2, enforcing
 of \texttt{StrictRingFusion} can still lead to maximum common substructures
 that are not valid {\trafo} common cores in case of a dummy region
 which is connected via multiple ring atoms of the same ring with the common
 core. 
-When an invalid common core is generated, it seems to be advisable to warn the user in this case that the common core does not fit the expectations of the {\trafo} workflow. 
-The mutation algorithms presented below can deal with such invalid common cores. A helper function arbitrarily chooses one of the connections between common core and dummy region and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current {\trafo} workflow is not adapted to deal with such common cores in a proper way. Therefore it makes only sense for test purposes and is not a reasonable input for the regular workflow.
+When an invalid common core is generated, it appears to be advisable to warn the user in this case that the common core does not fit the expectations of the {\trafo} workflow. 
+The mutation algorithms presented below can deal with such invalid common cores. A helper function arbitrarily chooses one of the connections between the common core and the dummy region, and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current {\trafo} workflow is not adapted to deal with such common cores properly. Therefore, it only makes sense for test purposes and may not provide a reasonable input for the regular workflow.
 Alternatively, one could check after the creation if the common core is valid. If
 it is not, one could for instance search for a new common core encompassing fewer
 atoms until a valid common core is found (see below). A further option would be to prohibit the involvement of ring atoms for this particular molecule combination.
 
-These problems occur because the requirements for a valid {\trafo} common core are more strict than the constraints imposed by rdkit  (even when all ring-related parameters are applied, i.e. \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, is not only indispensable that the common core solely comprises complete rings, but also the molecule fragment consisting of the non-common core atoms (which implies that there is a unique connection between dummy region and common core).
-An efficient and straightforward solution for this problem, which always yields the best - i.e. largest - valid common core if one exists, has been implemented:
-The basic observation is that if common core atoms within a cyclic region give rise to a invalid common core, it is impossible that any atoms within this region could participate in a valid one (if this would be the case, the whole cyclic region would be already in the generated common core).
-After generating a common core with standard parameters, it is checked if the additional requirements concerning the ring structure hold, i.e. if the non-common core atoms (as well as the common core atoms) of both molecules do not participate in a partial cycle.
-(Alternatively, one could check if a path between the non-common core atoms adjacent to the common core, i.e. the X-atoms, exists. If this is the case, the common core obviously is not valid, since no unique atom which connects common core and a specific dummy region is present.)
+These problems occur because the requirements for a valid {\trafo} common core are stricter than the constraints imposed by rdkit  (even when all ring-related parameters are applied, i.e., \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, is not only indispensable that the common core solely comprises complete rings, but also the molecule fragment consisting of the non-common core atoms (which implies that there is a unique connection between dummy region and common core).
+An efficient and straightforward solution for this problem, which always yields the best --- i.e., largest --- valid common core if one exists, has been implemented:
+The basic observation is that if common core atoms within a cyclic region give rise to an invalid common core, it is impossible that any atoms within this region could participate in a valid one (if this would be the case, the whole cyclic region would be already in the generated common core).
+After generating a common core with standard parameters, it is checked if the additional requirements concerning the ring structure hold, i.e., if the non-common core atoms (as well as the common core atoms) of both molecules do not participate in a partial cycle.
+(Alternatively, one could check if a path between the non-common core atoms adjacent to the common core, i.e., the X-atoms, exists. If this is the case, the common core obviously is not valid, since no unique atom which connects the common core and a specific dummy region is present.)
 
 
 
@@ -104,9 +102,8 @@ After generating a common core with standard parameters, it is checked if the ad
 \begin{figure}
 \includegraphics[scale=0.45]{sterols_wo_strictfusion}\includegraphics[scale=0.4]{sterols_w_strictfusion}
 
-\caption{'Strict fusion' can affect the construction of the common core drastically; first and second column: Common core of two molecules (cholesterol
-and cortisol) without strict fusion; third and fourth column: Common
-core of two molecules with strict fusion; in the images of the full molecule graph common cores are marked in red. In this case, none of the settings yield a valid common core, the iterative approach explained in the main text would be necessary to obtain one. }
+\caption{'Strict fusion' can affect the construction of the common core drastically, illustrated for cholesterol (top row) and cortisol (bottom row). First and second columns: common core of the two molecules without strict fusion; third and fourth column: common
+core of the two molecules with strict fusion. In the images of the full molecule graph (first and third column), common cores are marked in red. In the example shown, none of the settings yield a valid common core for \trafo; the iterative approach explained in the main text would be necessary to obtain one. }
 
 \end{figure}
 
@@ -116,13 +113,13 @@ core of two molecules with strict fusion; in the images of the full molecule gra
 \begin{figure}
 	\includegraphics[scale=0.6]{cholesterol_pryenepropanoic_acid.png}
 	
-	\caption{common cores of cholesterol (left) and 1-pyrenepropanoic acid (right); upper row: CompleteRingsOnly = False; middle row: CompleteRingsOnly = True; lower row: iterative approach to obtain a valid {\trafo} common core}
+	\caption{Common cores of cholesterol (left) and 1-pyrenepropanoic acid (right); top row: CompleteRingsOnly = False; middle row: CompleteRingsOnly = True; bottom row: iterative approach to obtain a valid {\trafo} common core}
 	\label{fig:pyrene}
 \end{figure}
 
-If this is not the case, the rings that contain atoms which participate in the partial ring causing the invalid common core are removed from the representation used for creating the maximum common substructure and afterwards a new search for a valid common core is started. This procedure is repeated iteratively until a valid common core is found.
-Of course, in the worst scenario, i.e. if both (non-identical) molecules only consist of ring-participating atoms, no valid common core is conceivable (and, given the total size of the molecules, the valid size can be very small). In general, if at least one of the molecules solely consists of a polycyclic compound without any functional groups etc., and the other one does not have exactly the same compound, no valid common core can exist. 
-An – maybe rather contrived – example for such a pair of molecules and the construction of valid common core via the iterative approach is given in Fig. ~\ref{fig:pyrene}. One sees that even the usage of the ring-related parameters of Rdkit doesn't yield a valid common core, whereas the iterative approach gives the desired result.
+If this is not the case, the rings that contain atoms which participate in the partial ring causing the invalid common core are removed from the representation used for creating the maximum common substructure and afterward a new search for a valid common core is started. This procedure is repeated iteratively until a valid common core is found.
+Of course, in the worst scenario, i.e., if both (non-identical) molecules only consist of ring-participating atoms, no valid common core is conceivable (and, given the total size of the molecules, the valid size can be tiny). In general, if at least one of the molecules solely consists of a polycyclic compound without any functional groups etc., and the other one does not have the same compound, no valid common core can exist. 
+An --- maybe rather contrived --- example of such a pair of molecules and the construction of a valid common core via the iterative approach is given in Fig.~\ref{fig:pyrene}. One sees that even the usage of the ring-related parameters of Rdkit doesn't yield a valid common core, whereas the iterative approach gives the desired result.
 
 
 
