@@ -263,11 +263,11 @@ supported.
 
 \section{Dummy atoms, Single/Dual topology}
 
-Usually, the number of atoms of both molecules of interest, i.e. the
+Usually, the number of atoms of both molecules of interest, i.e., of the
 two end states of an alchemical free energy calculation, is not
 the same. However, the atom number has to stay constant (as the simulation
 takes place in the canonical ensemble). Because of that constraint,
-so-called dummy atoms are necessary. \cite{Fleck.2021} These dummy
+so-called dummy atoms are necessary \cite{Fleck.2021}. These dummy
 atoms do not participate in any non-bonded interactions, but they
 have to be connected via bonded interactions to the rest of the molecule
 they belong to so that they do not get detached and float through
@@ -275,23 +275,23 @@ the simulation box.
 
 There are two main approaches for setting up alchemical mutations, both involving dummy atoms: 
 
-In single topology, during the mutation process physical atoms are
-transformed into dummy atoms which belong only to the start state.
-As the alchemical transformation proceeds, dummy atoms are re-transformed
-in atoms of the second molecule.
+In single topology, during the mutation process, physical atoms, which belong only to the start state, are
+transformed into dummy atoms at the end state. Conversely, 
+as the alchemical transformation proceeds, dummy atoms present at the initial state are re-transformed
+into physical atoms of the second molecule.
 
 In dual topology, no direct mutation of real atoms into dummy atoms
-occur. However, both physical molecules are extended with all dummy
-atoms of the other one (hence there is no state during the simulation
-without dummy atoms). Thus the number of dummy atoms equals the number
+occurs. However, both physical molecules are augmented with all dummy
+atoms of the respective other state (hence, there is no state during the simulation
+without dummy atoms). Thus, the number of dummy atoms equals the number
 of atoms which have no direct correspondence in the other molecule.
-Usually, in total even more dummy atoms are present in the system
-as in single topology. \cite{Fleck.2021}
+Usually, in total, even more dummy atoms are present in the system
+as in a single topology setup \cite{Fleck.2021}.
 
 The implementation of such dummy atoms, however, is not without pitfalls.
-Using single topology, errors can arise if too many bonded interactions are kept. The order in which interactions are turned off has to be constrained
+In single topology, errors can arise if too many bonded interactions are kept. The order in which interactions are turned off has to be constrained
 by specific rules to ensure that the contributions exactly cancel
-out each other and attention has to be paid under which conditions
+out each other, and attention has to be paid to under which conditions
 dummy atom contributions cancel out exactly. \cite{Fleck.2021}
 
 \section{Serial atom insertion}
