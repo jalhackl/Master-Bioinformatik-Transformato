@@ -1,30 +1,30 @@
 \chapter{{\trafo} }
 
-{\trafo} uses a common core scaffold which contains the subset of atoms which are present in both molecules (i.e., a one-to-one-correspondence between
-atoms of both molecules which in the test cases shown below is always
+{\trafo} uses a common core scaffold which contains the subset of atoms which are present in both molecules (i.e., a one-to-one correspondence between
+atoms of both molecules, which in the test cases shown below is always
 based on atom identity). Both initial states of the alchemical transformations initialized by {\trafo} do not contain any dummy atoms, but consist solely of the physical atoms of the respective molecules. However, dummy atoms are generated via two separate alchemical paths leading to the common core. Starting from the initial states, physical atoms are successively turned into dummy atoms until the common core structure is reached. 
 
-In each transformation step one physical atom (or, if phase space
+In each transformation step, one physical atom (or, if phase space
 overlap is sufficient, a batch of adjacent atoms) is changed into
 a dummy atom (until the common core is attained).
 
-The common core architecture circumvents some of the potential problems
+The common core architecture circumvents some potential problems
 associated with the single and double topology approaches for dummy
-atoms. The physical endstates of the molecules are mutated until the
+atoms. The physical end states of the molecules are mutated until the
 common core structure is attained. This implies that both starting states
 do not contain any dummy atoms (these states are identical to the
 physical molecules of interest). Therefore, it is ambiguous if the
 alchemical transformations implemented in {\trafo} rather belong
 to the single or the dual topology paradigm: As in the latter, different
-dummy atoms are generated for each molecules along the path to the
-common core, but - in contrast to the usual dual topology approach
-- the final states are free of any dummy atoms. 
+dummy atoms are generated for each molecule along the path to the
+common core, but --- in contrast to the usual dual topology approach
+--- the final states are free of any dummy atoms. 
 
-The 'removal' of atoms, i.e. the mutation into dummy atoms, is performed
-according to the serial atom insertion described above; hence, {\trafo}
-does not rely on the use of softcore potentials. The computation
+The 'removal' of atoms, i.e., the mutation into dummy atoms, is performed
+using the serial atom insertion approach described above; hence, {\trafo}
+does not rely on the use of soft core potentials. The computation
 of the resulting energy differences is based on Bennett's acceptance
-ratio described above.
+ratio method described above.
 
 Therefore, by setting up the mutation path between two molecules across
 the connecting common core and using serial atom
@@ -33,26 +33,26 @@ molecular dynamics package and of the availability of explicit free energy
 calculation code. In principle, {\trafo} can work on top of every
 molecular dynamics simulation package.
 
-Input can be created via CHARMM-GUI\cite{Jo.2008}. The solution builder of the website generates appropriate files to run MD simulations for the systems for which free energy differences shall be determined (e.g. for relative solvation free energy differences, input files for both molecules in a water box and in vacuum).\cite{Braunsfeld., Karwounopoulos.2022}.
+Input can be created via CHARMM-GUI\cite{Jo.2008}. The solution builder of the website generates appropriate files to run MD simulations for the systems for which free energy differences shall be determined (e.g., for relative solvation free energy differences, input files for both molecules in a water box and in vacuum).\cite{Braunsfeld., Karwounopoulos.2022}.
 
 \section{Common core approach}
 
 The main condition for the common core of two molecules is the existence
-of a one to one correspondence of atoms, i.e. the existence of a graph
+of a one-to-one correspondence of atoms, i.e. the existence of a graph
 isomorphism. The {\trafo} workflow imposes some further conditions
 on the properties of the common core:
 
-The junction between common core and dummy region has to be unique;
-only one dummy region is only allowed to be connected via one bond to the
+The junction between the common core and dummy region has to be unique;
+only one dummy region is allowed to be connected via one bond to the
 common core. In particular, the maximum common substructure must not
 encompass partial rings (which would imply that dummy regions are
-connected via multiple bonds). (In general, such transformations can pose intricate problems, because ring breakage can lead to fast changes in free energy
+connected via multiple bonds). (In general, such transformations can pose intricate problems because ring breakage can lead to fast changes in free energy
 and cause significant estimation error \cite{Liu.2015}.)
 To meet these requirements, adjusting of the parameters and algorithms for finding the common core is important. For facilitating the construction of appropriate common cores, it was also necessary to improve the processing of the hydrogen atoms. As hydrogens are turned off beforehand in one step and not via serial atom insertion like the heavy atoms, it would be  detrimental to consider them in the common core generation (see section 'Processing of hydrogen atoms' in the next chapter). In previous versions of {\trafo}, hydrogens were included in the common core generation steps which led to small or in many cases even totally infeasible common cores. Before the common core construction is carried out, hydrogens have to be
 removed from the molecule representation. This is an important step
 because the presence of hydrogen atoms can lead to a different common
 core (which is created, using default settings, by maximizing the
-number of corresponding atoms) and subsequently a flawed mutation
+number of corresponding atoms) and subsequently a suboptimal mutation
 route. 
 
 
@@ -61,8 +61,8 @@ route.
 \section{{\trafo} workflow}
 
 
-During the mutation process, the contributions of the non-CC atoms are turned off gradually; five stages can be discerned \cite{Karwounopoulos.2022}:  In the first step, the electrostatic interactions of dummy atoms are gradually attenuated. Next, all hydrogen atoms outside the common core are turned off. This can be carried out in a single step.
-In the third stage, the LJ-interactions are processed. One atom per step is turned off following the serial atomic insertion approach. (Possibly, a small bunch of atoms can be turned off in one step, but is not recommended to process more than two atoms at once to ensure sufficient overlap between the states.)
-The atom which connects common core and dummy region is  called junction atom and indicated as 'X' \cite{Karwounopoulos.2022} (In the plots in the next chapters, for simplicity the indication of the junction atom is sometimes omitted. However, it should be stressed that, e.g., a transformation to a methane common core yields in fact a methane-X common core.). This dummy atom which is directly connected to the common core needs special treatment. In contrast to the other atoms of a dummy region, not all LJ interactions are turned off, but its partial charge has to be zero.\cite{Karwounopoulos.2022} This junction atom ensures that that the double free energy differences are not influenced by contributions of dummy atoms.\cite{Fleck.2021}
-In the last step, it has to be ensured that both common cores are identical, e.g. differences in charge distribution have to be adjusted and the bond between junction atom and the common core atom has to be identical.
+During the mutation process, the contributions of the non-CC atoms are turned off gradually; five stages can be discerned \cite{Karwounopoulos.2022}:  In the first step, the electrostatic interactions of dummy atoms are gradually turned off. Next, Lennard-Jones interactions of all hydrogen atoms outside the common core are removed. This can be carried out in a single step.
+During the third stage, the LJ-interactions of the non-CC non-hydrogen atoms are processed. One atom per step is turned off following the serial atomic insertion approach. (Possibly, a small group of atoms could be turned off in one step, but it is not recommended to process more than two atoms at once to ensure sufficient phase space overlap between the states.)
+The atom which connects the common core and the dummy region is  called the junction atom and indicated as 'X' \cite{Karwounopoulos.2022} (In the plots in the next chapters, for simplicity, the indication of the junction atom is sometimes omitted. However, it should be stressed that, e.g., a transformation to a methane common core yields, in fact, a $\mathrm{CH_3X}$ common core.). This dummy atom which is directly connected to the common core needs special treatment. In contrast to the other atoms of a dummy region, its LJ interactions are not turned off completely, though its partial charge has to be zero.\cite{Karwounopoulos.2022} This junction atom ensures that the double free energy differences are not influenced by contributions of dummy atoms.\cite{Fleck.2021}
+In the last step, it has to be ensured that both common cores are identical, e.g., differences in charge distribution have to be adjusted and the bond between junction atom and the common core atom has to be identical.
 
