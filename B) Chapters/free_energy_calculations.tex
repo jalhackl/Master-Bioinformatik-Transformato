@@ -199,59 +199,58 @@ states, BAR seems to be superior\cite{Shirts.2013}.)
 
 \section{Soft-core potentials}
 
-Usually, alchemical transformations rely on a coupling parameter which
-is used to gradually modify interactions. For example, the scaling of the coupling parameter can lead to a weakening of the interaction and complete removal for the final state. (In the simplest case,
-there are only two states corresponding, e.g. to an atom present in
+Alchemical transformations rely on a coupling parameter $\lambda$ which
+is used to gradually modify interactions. For example, by scaling $\lambda$, one can weaken the interaction with one part of the system and remove them completely at the final state. (In the simplest case,
+there are only two states corresponding, e.g., to an atom present in
 one of the two molecules but not in the other one. If the two molecules
-have greater differences, for each atom which has to be transformed
-into a dummy atom this annihilation process has to be carried out.)
+have more considerable differences, this annihilation process has to be carried out for each atom, which has to be transformed
+into a dummy atom.)
 The term 'van der Waals endpoint problem' (or even 'catastrophe') denotes
-several problems which can occur when a particle is removed (i.e.
-turned into a dummy atom by turning off the intermolecular interactions).
+several problems which can occur when a particle is removed (i.e.,
+turned into a dummy atom by turning off its intermolecular interactions).
 \cite{Boresch.2011}
 
-The occurrence of this problem can be easily illustrated for the case
+We illustrate the types of problems, which can arise, for the case
 of a linear dependence of the coupling parameter,
 i.e.
 
 \[
-U\left(\lambda\right)=U_{o}+\lambda\sum_{1\leq i\leq N-1}u_{i,N}
+U\left(\lambda\right)=U_{o}+\lambda\sum_{1\leq i\leq N-1}u_{i,N}.
 \]
-.
+
 
 (Of course, the equal spacing of the coupling parameter does not imply
 equal phase-space overlap between the states \cite{Shirts.2013};
-thus for many simulations this simple set-up is certainly not the
+thus, for many simulations this simple set-up is certainly not the
 optimal solution.) For $\lambda=0$ and $\lambda\approx0$ various
 issues emerge. If $\lambda=0$, there are no interactions (and hence
 no repulsion) and the non-interacting dummy particle can be located
 at the exact position of another particle. This could give rise to
-errors pertaining division by zero. (In contrast to the next two scenarios,
-this seems to be a minor problem avoidable by efficient coding, i.e.
-implementing an additional clause for this condition to do not carry
-out the division by zero. In practice, it seems that all common MD
+errors resulting from divisions by zero. (In contrast to the next two scenarios,
+this seems to be a minor problem avoidable by efficient coding, i.e.,
+implementing an additional clause for this condition to avoid the division by zero. In fact, it appears that all common MD
 simulations packages manage this case automatically\cite{Boresch.2011}).
 
 For $\lambda\rightarrow0$, numerical instabilities can occur because
 even within a small time-step the interactions can become highly repulsive.
-It should be noted, that this problem emerges at values $\lambda\approx0$,
-but not at $\lambda=0$ (i.e. when the particles are completely decoupled).
+It should be noted that this problem emerges at values $\lambda\approx0$,
+but not at $\lambda=0$ (i.e., when the particles are completely decoupled).
 
 If thermodynamic integration is used, a related problem occurs because
 $\left\langle \frac{\partial U}{\partial\lambda}\right\rangle _{\lambda}$can
 become singular. This is obvious for the example using a linear pathway:
 $\frac{\partial U\left(\lambda\right)}{\partial\lambda}=\sum_{1\leq i\leq N-1}u_{i,N}$.
 As for the problem leading to a division by zero, the fact that one of the
-still interacting particles can be located at exactly the same place
+still interacting particles can be located at the same place
 in the simulation box as the dummy atom causes this quantity to change
-in an unpredictable way and, in the worst case, become singular \cite{Boresch.2011}.
+unpredictably and, in the worst case, become singular \cite{Boresch.2011}.
 
-The common way to avoid such problems is the usage of soft-core potentials \cite{Steinbrecher.2011}.
+The established way to avoid such problems is the usage of soft-core potentials \cite{Steinbrecher.2011}.
 An additional term is added to the particle-particle distance in the Lennard-Jones potential so that
 no division by 0 occurs and the corresponding derivative does not
 become singular. The usual Lennard-Jones potential is replaced by
 a slightly modified potential which ensures that at $r=0,\lambda>\text{0}$
-the divisor is greater than 0 and hence the infinity is smoothed out:
+the divisor is never 0 and the division by zero is avoided:
 
 \[
 U_{LJ}\left(r,\lambda\right)=\left(1-\lambda\right)\left(\frac{A}{\left(r^{2}+\lambda\delta\right)^{6}}-\frac{B}{\left(r^{2}+\lambda\delta\right)^{3}}\right)
