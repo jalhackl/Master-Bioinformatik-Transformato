@@ -128,34 +128,33 @@ An --- maybe rather contrived --- example of such a pair of molecules and the co
 Using NetworkX and Rdkit, the molecules and their common core are
 represented as graphs (in which nodes indicate atoms and edges bonds
 between them). The selection of the optimal mutation route can be
-understood as a graph traversal problem in which the constraints mentioned
-above are either implemented via the weights of the edges or sorting.
-Hence the main task was to find suitable algorithms and graph initializations
+understood as a graph traversal problem, in which the constraints mentioned
+above are either implemented via the weights of the edges or by sorting.
+Hence, the main task was to find suitable algorithms and graph initializations
 to ensure an optimal processing of the mutation path.
 
 Depth First Search (DFS) follows each chain of the graph as long as
-possible, i.e. until a leaf node is reached. In contrast, Breadth
+possible, i.e., until a leaf node is reached. In contrast, Breadth
 First Search (BFS) explores all chains simultaneously.\cite{Even.2012}
-(Problems and differences of both algorithms are illustrated using
-several examples below.)
+Problems and differences of both algorithms are illustrated using
+several examples below.
 
-In each of the algorithms implemented, the graph traversal starts
-with the node which connects dummy region and common core as the root.
-Shortest paths to all nodes of the dummy region are determined.
+In each of the algorithms implemented, the root of the graph traversal is the node which connects the dummy region and the common core.
+The shortest paths to all nodes of the dummy region are determined.
 
 \begin{figure}
 
-\includegraphics[scale=0.45]{dfs_bfs_dijkstra_comp1}\caption{Comparison of different graph traversal algorithms; green nodes represent the root atom, blue atoms (in the figure shown right) have increased weights; left: depth first
-search; middle: breadth first search; right: Dijkstra algorithm, the
+\includegraphics[scale=0.45]{dfs_bfs_dijkstra_comp1}\caption{Comparison of different graph traversal algorithms. Green nodes represent the root atom; left: depth first
+search (DFS); middle: breadth first search (BFS); right: Dijkstra algorithm. In the Dijkstra algorithm, blue atoms have increased weights;  the
 edges connecting blue colored nodes have increased weights leading
 to a mutation route differing from BFS; the final processing of the
 nodes happens in reversed order}
 
 \end{figure}
 
-As the longest shortest path pertains to the node which has the greatest
-distance from the root (i.e. the atom with greatest distance from
-the common core), the last element of the list returned by the search algorithm indicates the atoam which has to be removed first; hence, the list of mutations orders finally has to be reversed.
+The longest of these shortest path identifies the node which has the greatest
+distance from the root (i.e., the atom with the greatest distance from
+the common core). Therefore, the last element of the list returned by the search algorithm indicates the atom which has to be removed first; hence, the list of mutations orders has to be reversed.
 
 If weighted graphs are used, the Dijkstra algorithm can be applied.
 It finds the shortest path between two nodes or between a root node
@@ -163,9 +162,9 @@ and all other nodes of the weighted graph (the weights indicate the
 edge length from one node to the other one). For unweighted graphs
 (or, equivalently, graphs with uniform weights), the Dijkstra algorithm
 reduces to BFS. Fig. 4.3 shows the different routes for modified weights.
-(In the test cases presented below, all graphs are initialized with uniformly weights.)
+In the test cases presented below, all graphs are initialized with uniform weights.
 
-\section{Added functionality}
+\section{New functionality added}
 
 \subsection{Functions for creating mutation paths}
 
