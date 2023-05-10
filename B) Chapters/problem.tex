@@ -170,20 +170,18 @@ In the test cases presented below, all graphs are initialized with uniform weigh
 
 To use the newly implemented mutation algorithms, initially the graph
 is given with weights stored in a dictionary. The simulations shown
-below use uniform weights, however it is possible to modify these to
+below use uniform weights; however, it is possible to modify these to
 enforce a specific mutation route (e.g., accelerating or postponing
 the exclusion of heteroatoms). 
 
 The Dijkstra algorithm is implemented via the \texttt{single\_source\_dijkstra}-function
 of NetworkX.
 
+\sbnote{Ich organisiere hier etwas um, weil mir der Text zu sehr "springt".}
 The core functionality is given by the mutation processing functions.
-At the moment, three such functions are implemented, in addition to
-the simple DFS-approach, which leads to undesired outcomes, in particular because often heavy atoms in neighborhood to the common core atoms are processed at the first steps of the graph algorithm as well as rings are opened early, but finally processed at a later stage (in a rather 'asymmetric' manner). These functions
-can be further modified by passing arguments which activate some helper
-functions (see below).
-
-The four main functions for computing mutation routes are: 
+Currently, three new functions are implemented, in addition to
+the simple, existing DFS-approach.
+These four main functions for computing mutation routes are: \sbnote{Why not use a list environment?}
 
 \texttt{\_calculate\_order\_of\_LJ\_mutations:} naive DFS 
 
@@ -191,28 +189,35 @@ The four main functions for computing mutation routes are:
 applied once for route
 
 \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter:} BFS/Dijkstra-algorithm
-applied iteratively, i.e. after each removal of an atom 
+applied iteratively, i.e., after each removal of an atom 
 
 \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change:}
-works iteratively, i.e. after each removal of an atom, the algorithm/routine for the next step is chosen depending on current state
+works iteratively; i.e., after each removal of an atom, the algorithm/routine for the next step is chosen depending on the current state
 
-\texttt{\_calculate\_order\_of\_LJ\_mutations }was already present in {\trafo}, but computes defective mutation routes and hence
+These functions
+can be further modified by passing arguments which activate some helper
+functions (see below).
+
+\sbnote{, which leads to undesired outcomes, in particular because often heavy atoms in neighborhood to the common core atoms are processed at the first steps of the graph algorithm as well as rings are opened early, but completely processed at a later stage (in a rather 'asymmetric' manner).{\em Stoert die Praesentation und gehoerte mit Fig. 4.4 gemeinsam diskutiert. Entweder muss das schon vorher als Problem kommen, oder die Details muessen hier weggelassen werden, und auf die Result verweisen!!}}
+
+\texttt{\_calculate\_order\_of\_LJ\_mutations } is the original mutation processing function of \trafo, but it may lead to  defective mutation routes and hence
 should only be used for test purposes. The other three algorithms
-are new and, in any case, resolve most of the problems of the earlier
+are new, and all of them resolve most of the problems of the earlier
 algorithm (especially isolated removal of ring atoms).
 
 Helper functions like cycle\_checks carry out tasks to ensure the
-desired mutation route, e.g. count the number of cycles an atom participates
-in. Further features of all algorithms are 'preferential removal',
-i.e. if two atoms would have the same priority (given by the current
+desired mutation route, e.g., count the number of cycles an atom participates
+in. Further features of all algorithms are 'preferential removal';
+i.e., if two atoms have the same priority (given by the current
 weight) for the next mutation step, the weight of the atom which is
 next to an already removed atom is updated so that this atom is excluded
 next.
 
+\sbnote{What is (G)? Ich nehme an ein Graph(objekt) Argument. 1) Definieren! 2) Generell klarer machen, dass hier Funktionen und ihre Argumente beschrieben werden, auch auf Typesetting achten!}
 \texttt{cycle\_checks(G)}: this function checks which atoms participate
 in how many cycles/rings and returns a dictionary with the atoms as
 key and the number of rings the atom is participating in as value
-and a dictionary with the degree (i.e. number of edges) of each atom
+and a dictionary with the degree (i.e., number of edges) of each atom
 node. It is currently used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new}
 (via the \texttt{change\_route\_cycles}-function).
 
@@ -220,10 +225,10 @@ node. It is currently used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new
 G): this function is used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new}
 and sorts nodes according to degree, cycle participation and information
 about the nodes which have been removed immediately before. The preliminary mutation
-path is sorted using cycle and degree dictionary. If nodes have same
-weight (i.e. distance from root), the node participating in more cycles
-is removed later if nodes have same the weight (i.e. distance from root)
-and same cycle participation number, the node which has more neighbours
+path is sorted using a cycle and degree dictionary. If nodes have the same
+weight (i.e., distance from root), the node participating in more cycles
+is removed later. If nodes have the same weight (i.e., distance from root)
+and same cycle participation number, the node which has more neighbors
 already removed is removed earlier
 
 \texttt{cycle\_checks\_nx}(G): This function modifies the weight of
@@ -245,14 +250,14 @@ processing of ring structures is one of the central goals, this argument
 should always be set to True, except for comparison and test purposes).
 If in the case of \texttt{\_calculate\_order\_of\_LJ\_mutations\_new
 and \_calculate\_order\_of\_LJ\_mutations\_new\_iter} also ordercycles
-or ordercheck, respectively, is set to True, weight updating according
-to preferential removal decides that the node in which neighbourhood
-nodes already have been turned off is removed next if there is no
-possibility to decide between two nodes - i.e. the weight of both
-would be exactly the same.
+or ordercheck, respectively, are set to True, weight updating according
+to preferential removal decides that the node in which neighborhood
+nodes have already been turned off is removed next if there is no
+possibility to decide between two nodes --- i.e., the weight of both
+would be the same.
 
-In each algorithm, all nodes of the graph (i.e. atoms) are usually
-initialized with the same weight (e.g. 5). Alternatively, the user
+In each algorithm, all nodes of the graph (i.e., atoms) are usually
+initialized with the same weight (e.g., 5). Alternatively, the user
 could also pass an individual dictionary with different weights for
 each atom type.
 
@@ -262,21 +267,21 @@ which determines the path length of all dummy nodes to the root.
 
 The main difference between these algorithms is that in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter}
 and \texttt{...\_iter\_change} the graph traversal part performed
-using the Dijkstra algorithm is applied after each exclusion step; i.e. $n!$ atoms are visited instead of $n$; even for large molecules the additional computational cost is negligible, in particular in comparison
+using the Dijkstra algorithm is applied after each exclusion step; i.e., $n!$ atoms are visited instead of $n$; even for large molecules the additional computational cost is negligible, in particular in comparison
 to the computational time needed for the search of the common core.
-The advantage of the iterated version is that after each mutation step weights can be
+The advantage of the iterated version is that after each mutation step, weights can be
 updated or even the search algorithm can be modified. 
 
 This feature allows for different mutation strategies depending
 on the current state. Such an approach is demonstrated in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change}.
 In contrast to the other algorithms, the algorithm processes information
 if the last removed node was part of a chain or a cycle. Depending
-on the state, the chain or cycle is processed fully before the algorithm
-moves on to other parts of the molecule. Fig. 4.5 demonstrates the difference between the two versions of the iterated algorithm.
+on the state, the chain, or cycle, is processed fully before the algorithm
+moves on to other parts of the molecule. \sbnote{1. Keine absoluten Verweise auf Figuren! 2. Fig. 4.4 wurde noch nirgends besprochen!} Fig. 4.5 demonstrates the difference between the two versions of the iterated algorithm.
 Whereas in the non-iterated algorithm the found mutation route has to be reversed (since the atom node with the highest distance from the root is the first which has to be turned off), in the iterated versions at each iteration the node with the highest distance is added to an array which determines the final mutation route.
 
 The computed mutation routes can be visualized directly via Rdkit. 
-The route is represented by a colour gradient used for the atoms involved
+The route is represented by a color gradient used for the atoms involved
 in the mutation process (\texttt{\_show\_common\_core\_gradient}). By default, the color spectrum ranges from red to green; the first atom to be removed is colored red, the last green.
 
 Furthermore, an animated 3D-visualization of the mutation process
@@ -288,7 +293,7 @@ is implemented using py3Dmol (\texttt{animated\_visualization\_3d\_v2})\cite{key
 \caption{comparison of typical DFS- and BFS-mutation route for a single ring structure; left: DFS-algorithm; right: BFS-algorithm; in all depictions of mutation routes the common core is shown in dark, the color gradient starts at red indicating the atom first to be removed and ends at green; DFS
 starts at carbon 22 and thus ring breakage gives rise to one long
 chain which is processed subsequently, whereas BFS starts at carbon
-22 and the two emerging chains are processed in a symmetric fashion
+22 and the two emerging chains are processed in a symmetric fashion \sbnote{Figur ist entweder falsch positioniert oder gehoert frueher besprochen, referenziert}
 }
 
 \end{figure}
@@ -303,22 +308,22 @@ chain which is processed subsequently, whereas BFS starts at carbon
 		and the last two rows show the same molecules, in the upper row without,
 		in the lower with hydrogens, in case of the lower molecule combination
 		the common core changes when hydrogens are added to the Rdkit-molecule
-		representation }
+		representation \sbnote{Eine Nummerierung der horizontalen Reihen von 1--4 waere hilfreich. Die gelbliche(?) Farbe in Reihen 3 + 4 ist kaum sichtbar.}}
 		\label{fig:hydrogen_effect}
 	\end{figure}
 
 
-As fig. \ref{fig:hydrogen_effect} indicates, the presence of hydrogens can influence the common core generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e. non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). Hence it is crucial to determine the common core for molecule representations without hydrogens. Since hydrogen atoms are turned off in an extra step en bloc during the {\trafo} workflow, the mutation route algorithm should not take hydrogens into account nor must the common core be generated for a molecule representation containing hydrogens.
-Nonetheless, it is necessary that the molecule representations processed in Tranformato contain all hydrogens in explicit form because the indices of these atoms in the underlying data structures are used in some steps, e.g. for scaling the van-der-Waals interactions of the hydrogen atoms to zero.
+As fig. \ref{fig:hydrogen_effect} indicates, the presence of hydrogens can influence the common core generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e., non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). Hence, it is crucial to determine the common core for molecule representations without hydrogens. Since hydrogen atoms are turned off in an extra step en bloc during the {\trafo} workflow, the mutation route algorithm should not take hydrogens into account, nor must the common core be generated for a molecule representation containing hydrogens.
+Nonetheless, it is necessary that the molecule representations processed by \trafo contain all hydrogens in explicit form because the indices of these atoms in the underlying data structures are used in some steps, e.g., for scaling the van der Waals interactions of the hydrogen atoms to zero.
 This problem was solved by removing and adding hydrogens appropriately.
 In a first step, the {\trafo} function determining the common core (\texttt{\_find\_mcs} in mutate.py) had to be modified. To obtain the desired common core but retain the {\trafo} workflow, the following scheme was implemented:
-A deep copy of both molecules is created. The hydrogens of these copies are removed and afterwards their common core is computed. For both molecules, the indices of the atoms corresponding to the common core are determined. Finally, it is checked for each common core atom of both molecules whether hydrogen atoms are in its neighbourhood. If such hydrogens are found, their indices are added to the lists of common core atoms. These lists of atoms including hydrogens are stored for both molecules and the function returns the maximum common substructure (determined for the molecules without hydrogens).
-Thus the procedure yields the necessary output for further processing in {\trafo}: The molecule representations and lists of common core atoms for both of the molecules include hydrogens, but the maximum common substructure giving rise to the common core is computed only for the heavy atoms.
-Similarly, the functions for computing the mutation routes had to be adapted for input molecules containing hydrogens. By default, a helper function removes the hydrogens from the graph representation as well as the corresponding indices from the list with the atoms of the dummy regions before the mutation algorithms are applied. Afterwards, the hydrogen atoms adjacent to common core heavy atoms are added to the common core.
-A special problem occurs for molecule pairs with switching 'X'-atom; fig. \ref{fig:pyrrolidinindole} shows 2-/7-pyrrolidinindole as example. It is necessary that a further dummy region emerges which consists solely of one hydrogen atom because otherwise the common cores would have a different number of atoms. It depicts a correct common core for both molecules; one should note the hydrogen atom which is not part of the common core. If, however, the common core is generated without hydrogens, the information which of the hydrogens turns into a dummy region is lost.
-It has to be stressed again that the presence of these hydrogen dummy regions does not affect the mutation steps, but is nonetheless crucial for the internal {\trafo} workflow. However, there is a straightforward way to circumvent this problem: From the substructure matches the mapping between the common core atoms of each molecule can be read off. It is counted for each heavy common core atom how many hydrogens are connected to it. Finally, the minimum number of hydrogens is added to the common core. (In the case of 2-/7-pyrrolidinindole, this means that for each common core atom one hydrogen is added, except for the 2- and 7- position, because for these positions in one molecule no hydrogen is connected).
+A deep copy of both molecules is created. The hydrogens of these copies are removed; then their common core is computed. For both molecules, the indices of the atoms corresponding to the common core are determined. Finally, it is checked for each common core atom of both molecules whether hydrogen atoms are in its neighborhood. If such hydrogens are found, their indices are added to the lists of common core atoms. These lists of atoms, including hydrogens, are stored for both molecules and the function returns the maximum common substructure (determined for the molecules without hydrogens).
+Thus, the procedure yields the necessary output for further processing in {\trafo}: The molecule representations and lists of common core atoms for both of the molecules include hydrogens, but the maximum common substructure giving rise to the common core is computed only for the heavy atoms.
+Similarly, the functions for computing the mutation routes had to be adapted for input molecules containing hydrogens. By default, a helper function removes the hydrogens from the graph representation as well as the corresponding indices from the list with the atoms of the dummy regions before the mutation algorithms are applied. Afterward, the hydrogen atoms adjacent to common core heavy atoms are added to the common core.
+A special problem occurs for molecule pairs with switching 'X'-atom; fig. \ref{fig:pyrrolidinindole} shows 2-/7-pyrrolidinindole as an example. It is necessary that a further dummy region emerges which consists solely of one hydrogen atom because otherwise the common cores would have a different number of atoms. It depicts a correct common core for both molecules; one should note the hydrogen atom, which is not part of the common core. If, however, the common core is generated without hydrogens, the information which of the hydrogens turns into a dummy region is lost.
+It has to be stressed again that the presence of these hydrogen dummy regions does not affect the mutation steps, but is nonetheless crucial for the internal {\trafo} workflow. However, there is a straightforward way to circumvent this problem: From the substructure matches, the mapping between the common core atoms of each molecule can be read off. It is counted for each heavy common core atom how many hydrogens are connected to it. Finally, the minimum number of hydrogens is added to the common core. (In the case of 2-/7-pyrrolidinindole, this means that for each common core atom one hydrogen is added, except for the 2- and 7- position because for these positions in one molecule no hydrogen is connected).
 In this context, also the difficulty that there are possibly many substructure matches has to be mentioned.
-It is even possible that substructure matches differ solely with respect to hydrogens. For this case, a parameter was added to the function which searches for the maximum common substructure. If \texttt{iterate\_over\_matches} is set to true, one of the substructure matches with most hydrogens, i.e. the biggest possible substructure, is selected. Fig. \ref{fig:neopentan} shows two common cores only differing in the number of hydrogens.
+It is even possible that substructure matches differ solely regarding hydrogens. For this case, a parameter was added to the function which searches for the maximum common substructure. If \texttt{iterate\_over\_matches} is set to true, one of the substructure matches with most hydrogens, i.e., the biggest possible substructure, is selected. Fig. \ref{fig:neopentan} shows two common cores, only differing in the number of hydrogens.
 
 
 
@@ -327,7 +332,7 @@ It is even possible that substructure matches differ solely with respect to hydr
 	
 	\caption{
 		left: 2-pyrrolidinindole; right: 7-pyrrolidinindole; 
-		one of the hydrogens - exactly this hydrogen which becomes the junction 'X'-atom - is not part of the common core}
+		one of the hydrogens --- exactly this hydrogen which becomes the junction 'X'-atom --- is not part of the common core}
 	\label{fig:pyrrolidinindole}
 \end{figure}
 
@@ -335,7 +340,7 @@ It is even possible that substructure matches differ solely with respect to hydr
 \begin{figure}
 	\includegraphics[scale=1.0]{neopentan}
 	
-	\caption{neopentan/methane common cores; upper row: common cores maximizing the number of atoms including hydrogens; lower row: common cores without considering hydrogens}
+	\caption{neopentane/methane common cores; upper row: common cores maximizing the number of atoms including hydrogens; lower row: common cores without considering hydrogens \sbnote{In der Figur ueberlappen die Atombezeichnungen.}}
 		\label{fig:neopentan}
 \end{figure}
 
@@ -356,9 +361,9 @@ In the current version of {\trafo}, one suboptimal route finding algorithm using
 For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root (fig 4.4).
 In more complex molecules, the systematic exploration of chains in
 depth first search inevitably leads to big local gaps in processing
-of the molecules. Fig. 4.6 shows this problem for a benzol ring which
+of the molecules. Fig. 4.6 shows this problem for a benzene ring which
 is directly attached to the common core. As DFS goes along one path
-until the end, i.e. until a leaf node is reached, only four atoms of the
+until the end; i.e., until a leaf node is reached, only four atoms of the
 ring are visited at the beginning, whereas the remaining two are explored
 last. Therefore, these two atoms are turned off first, but then the
 algorithm continues at a wholly different location and the remaining
@@ -368,7 +373,7 @@ In this case, BFS automatically produces the desired result.
 Similarly, in fig. 4.7 one atom of the ring (marked by the red circle)
 is omitted in the first exploration using DFS.
 
-More complex ring structures exacerbate the problems. Fig. 4.8 shows that also the processing of substituents is affected.
+More complex ring structures exacerbate the problems. Fig. 4.8 shows that also the processing of the substituents is affected.
 
 Multiple rings pose special difficulties for the mutation algorithms because
 the processing of one of the rings can easily led to gaps in the adjacent
@@ -382,7 +387,7 @@ rings is turned off first (fig. 4.10).
 
 \begin{figure}
 \includegraphics[scale=1.5]{simple_ring_exampledfs2}\caption{left: DFS-algorithm; right: BFS-algorithm; common core in dark; the
-red arrow indicates the undesired processing of the ring atoms}
+red arrow indicates the undesired processing of the ring atoms \sbnote{Die rechte Figure ist abgeschnitten, CC nicht sichtbar!}}
 
 \end{figure}
 
