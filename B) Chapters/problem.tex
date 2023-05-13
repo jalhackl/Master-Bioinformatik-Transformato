@@ -361,14 +361,14 @@ In the current version of {\trafo}, one suboptimal route finding algorithm using
 For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root (fig 4.4).
 In more complex molecules, the systematic exploration of chains in
 depth first search inevitably leads to big local gaps in processing
-of the molecules. Fig. 4.6 shows this problem for a benzene ring which
+of the molecules. Fig.~4.6 shows this problem for a benzene ring which
 is directly attached to the common core. As DFS goes along one path
-until the end; i.e., until a leaf node is reached, only four atoms of the
-ring are visited at the beginning, whereas the remaining two are explored
+until the end; i.e., until a leaf node is reached, four atoms of the
+ring are visited first, whereas the remaining two are explored
 last. Therefore, these two atoms are turned off first, but then the
 algorithm continues at a wholly different location and the remaining
 ring atoms persist in the system until the end of the mutation process.
-In this case, BFS automatically produces the desired result. 
+By contrast, BFS automatically produces the desired result for this system. 
 
 Similarly, in fig. 4.7 one atom of the ring (marked by the red circle)
 is omitted in the first exploration using DFS.
@@ -376,12 +376,11 @@ is omitted in the first exploration using DFS.
 More complex ring structures exacerbate the problems. Fig. 4.8 shows that also the processing of the substituents is affected.
 
 Multiple rings pose special difficulties for the mutation algorithms because
-the processing of one of the rings can easily led to gaps in the adjacent
-ones. Fig. 4.9 and 4.10 show that using DFS aggravated problems occur.
+the processing of one of the rings can easily lead to gaps in the adjacent
+ones. Fig. 4.9 and 4.10 illustrate that severe problems may occur when using DFS.
 As in the case of one ring, the exploration route implies that one
-of the rings is opened in a way that it gives rise to a lengthy chain.
-However, it can even happen that the atom explored atom participates
-even in two or multiple rings, so that both ring structures are opened
+of the rings is opened in such a way that it gives rise to a lengthy chain.
+Furthermore, it may happen that the atom explored atom belongs to two or more rings, so that both ring structures are opened
 and teared apart (fig. 4.9). Alternatively, one half of each of the
 rings is turned off first (fig. 4.10). 
 

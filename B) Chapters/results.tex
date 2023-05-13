@@ -1,14 +1,13 @@
 \chapter{Results}
 
-A set of twenty ligands from the PDBbind-CN database has been downloaded and used for testing
+A set of twenty ligands from the PDBbind-CN database were downloaded and used for testing
 purposes (common core construction as well as mutation routes). It
 should be noted, however, that the common core of pairs of these ligands
-in some cases violate the rules of {\trafo} concerning a valid
-maximum common substructure, i.e. dummy regions are connected by more
+in some cases violate the rules of {\trafo} concerning a valid; i.e., dummy regions are connected by more
 than one atom to the common core (which basically implies that the
 atom is part of a ring structure). 
 
-In the current implementation of the mutation algorithm this problem
+In the current implementation of the mutation algorithm, this problem
 is solved by a helper function which chooses one of the possible connections
 between one of the atoms to the common core. For the following processing
 of the mutation algorithm, this connection is arbitrarily distinguished
@@ -17,18 +16,17 @@ and the other ones removed.
 
 \section{Visualizations}
 
-The mutation route can be visualized using a color gradient (additionally
-to numbering, see figures above).
-
+The mutation route is visualized using a color gradient, in addition
+to numbering, see the earlier figures.
 Py3dMol is used for a 3D-animation of the mutation process. Fig. 5.1
 shows two molecules and their shared common core.
 
 \begin{figure}
 \includegraphics[scale=0.35]{trafo_py3d_1verkleinert}
 
-\caption{Visualization of the mutation route using Py3dmol; upper row: Rdkit-representations
+\caption{Visualization of the mutation route using Py3Dmol; upper row: Rdkit representations
 of both molecules and the common core; lower row: Py3Dmol visualizations;
-left and right: molecules; middle: common core of both molecules}
+left and right: molecules; middle: common core of both molecules \sbnote{Was sieht man links/Mitte/rechts?}}
 
 \end{figure}
 
@@ -38,40 +36,40 @@ left and right: molecules; middle: common core of both molecules}
 Several scoring schemes have been implemented to assess and compare
 the mutation routes proposed by the new algorithms.\\
 1) Betweenness centrality: Betweenness centrality measures the number
-of shortest paths going through a specific node\cite{Newman.2010}. More central atoms
-will have a higher centrality coefficient, whereas atoms remote from
-the common core will have a lower (e.g., the last atom of a chain
+of shortest paths going through a specific node \cite{Newman.2010}. More central atoms
+will have a higher, atoms remote from
+the common core will have a lower centrality coefficient. In particular, the last atom of a chain
 has a coefficient of 0 because no path between two other atoms visits
-the representing node). After each step, the node is removed from
+the representing node. After each step, the node is removed from
 the graph.
 For avoiding undesired mutations, the maximum betweenness centrality
-of all mutation steps is more decisive; hence the average of the mean
+of all mutation steps is more decisive; hence, the average of the mean
 as well as the maximum betweenness centrality of all removed nodes
 is shown below.
 
 \begin{figure}[H]
 	
-	\includegraphics[scale=0.8]{betweenness_mean_all}\includegraphics[scale=0.8]{betweenness_max_all}\caption{Betweenness centrality}
+	\includegraphics[scale=0.8]{betweenness_mean_all}\includegraphics[scale=0.8]{betweenness_max_all}\caption{Betweenness centrality \sbnote{Ist dieser Plot (wie auch die folgenden) fuer die angesprochenen 20 Testverbindungen berechnet worden? Das muss irgendwo klarer gesagt werden. Die Farben der Histogramme sind erklaert, aber was ist die blaue und die rote Kurve?}}
 	
 \end{figure}
 
 2) Closeness centrality: Closeness centrality of a specific node is
 given by the inverted distances between this node and all other nodes
-of the graph\cite{Newman.2010}. Atoms more distant from the common core have a lower
+of the graph \cite{Newman.2010}. Atoms more distant from the common core have a lower
 closeness centrality.
-For using this centrality measure as scoring function for the mutation
-algorithms, the dummy region with the greatest number of atoms (simply
+For using this centrality measure as a scoring function for the mutation
+algorithms, the dummy region with the highest number of atoms (simply
 because this is probably the most \textquoteleft interesting\textquoteright{}
 one, it would also be possible to take the average of all dummy regions
 etc.) is selected. The closeness centrality of each removed node for
-the full graph (i.e. all atoms, including already removed ones) is
+the full graph (i.e., all atoms, including already removed ones) is
 computed. A 'good' mutation route should show an increase in closeness
 centrality because at the beginning the atoms with a high distance
 from the other atoms (and hence the common core atoms) are removed.
 To evaluate this relation, linear regression of the computed centrality
 values is performed. A higher slope indicates a 'better' mutation
 route. Furthermore, correlation coefficients (Spearman, Kendall's
-Tau) have been computed. Again, a higher correlation shows that the
+Tau) were computed. Again, a higher correlation shows that the
 closeness centrality of the atoms removed is increasing. Correlation
 coefficients as well as regression coefficients are reported in the
 tables below.
@@ -82,7 +80,7 @@ tables below.
 	
 	\includegraphics{closeness_spearman}
 	
-	\includegraphics{closeness_kendall}\caption{Closeness centrality}
+	\includegraphics{closeness_kendall}\caption{Closeness centrality \sbnote{Wie in der Figur zuvor? Es ist nicht wirklich klar, wie diese Abbildung(en) zu verstehen ist (sind)!}}
 	
 \end{figure}
 
@@ -91,28 +89,28 @@ tables below.
 is of crucial importance and pronounced differences between DFS and
 BFS occur. Four properties were calculated: The mean asymmetry at
 ring opening was measured: After the first atom of a ring structure
-is removed, usually two chains emerge. The length difference (i.e.
+is removed, usually two chains emerge. The length difference (i.e.,
 the difference in atom number) of these two chains was measured. If
 both chains are equally long, the asymmetry is 0. 
 
-The 'asymmetry during ring disassemby'-score does not only evaluate
+The 'asymmetry during ring disassembly'-score does not only evaluate
 the first atom removed from a ring, but checks at each mutation step
 involving a ring atom if asymmetric chains emerge.
 
 The 'mean number of open rings' indicates how many ring structures
-are opened on average and the 'mean processing time of rings' determines
-how many mutation steps it takes to completely process a ring (until
+are opened on average, and the 'mean processing time of rings' determines
+how many mutation steps it takes to process a ring completely (until
 only one atom of the former ring structure is present).
 
-It should be noted that even using the new algorithms it is possible
-that a \textquoteleft broken\textquoteright{} ring stays for a while
-in the system because atoms from other areas of the dummy region (e.g.,
-a longer chain) are processed meanwhile. However, in contrast to DFS,
+It is possible even using the new algorithms
+that a \textquoteleft broken\textquoteright{} ring exists for a several mutation steps
+ because atoms from other areas of the dummy region (e.g.,
+a longer chain) are processed before the ring continues to be processed. However, in contrast to DFS,
 it should not happen that a ring near to the common core is opened
 initially and hence the mean and maximum time should be significantly
 shorter. 
 
-In general, calculation of the scoring functions for the selection of ligands from the PDBbind data set (statistics are presented in table 1) match the expectations. 
+In general, calculation of the scoring functions for the selection of ligands from the PDBbind data set (statistics are presented in table 1) match the expectations. \sbnote{Wie schon in einer Caption angemerkt, bitte klarer beschreiben, wie die statistischen Daten gewonnern wurden und auch beschreiben, was man in den betweenness/closeness centrality plots erkennen kann!}
 
 
 \begin{table}
@@ -124,7 +122,7 @@ In general, calculation of the scoring functions for the selection of ligands fr
 		378 & 26.97 & 16.30 & 1.66 & 30.16\tabularnewline
 		\hline 
 	
-	\end{tabular}\caption{statistics of PDBbind selection; number of processed routes: total number of computed routes for a specific combination of two molecules; dummy atoms (mean): average number of total dummy atoms in the computed mutation routes; atoms/dummy region (mean): number of total dummy atoms divided by the number of dummy regions; number of cycles (mean): average number of cycles in all mutation routes; polycyclic: percentage of mutation routes which involve polycyclic structures, i.e. there are atoms present that participate in multiple cycles }
+	\end{tabular}\caption{statistics of the PDBbind selection; number of processed routes: total number of computed routes for a specific combination of two molecules; dummy atoms (mean): average number of total dummy atoms in the computed mutation routes; atoms/dummy region (mean): number of total dummy atoms divided by the number of dummy regions; number of cycles (mean): average number of cycles in all mutation routes; polycyclic: percentage of mutation routes which involve polycyclic structures, i.e., there are atoms present that participate in multiple cycles \sbnote{Tabelle haengt etwas in der Luft; vielleicht an den Anfang des Kapitels?? PDBfind oder PDBfind-CN?}}
 \end{table}
 
 
@@ -134,21 +132,21 @@ In general, calculation of the scoring functions for the selection of ligands fr
 	
 	\includegraphics[scale=0.8]{mean_open_rings_all}\includegraphics[scale=0.8]{mean_processing_all}
 	
-	\caption{Ring-related scores}
+	\caption{Ring-related scores. \sbnote{Bitte im Text (ein wenig) erklaeren, was man sieht!!}}
 	
 \end{figure}
 
 In the plots presenting the scoring-functions, all molecule combinations
 from the PDBbind data set are used. It could be insightful to use
-only a subset (e.g. only molecules with dummy regions involving multiple
-ring structures ore a minimum number of dummy atoms) or to try even a larger selection from the PDBbind database.
+only a subset (e.g., only molecules with dummy regions involving multiple
+ring structures or a minimum number of dummy atoms) or to try even a larger selection from the PDBbind database.
 
 \section{Results for selected molecule pairs}
 
-For a selection of small molecules taken from \cite{Loeffler.2018, Wieder.2022}, the relative solvation free energy differences have been determined using {\trafo} with the old mutation route algorithms and the new ones. These molecules are toluene, 2-methylfuran and 2-methylindole.
-Furthermore, the mutation between 2-cyclopentyl-indole and 7-cyclopentyl-indole (2-/7-CPI) has been computed. In this case, only the free energy differences for the new algorithms have been determined, but there are previous results relying on the old algorithms which can be used for comparison. In this case, the old common core generation (which searched for the common core with hydrogens without the improvements reported in 'Processing of hydrogen atoms') generated a smaller common core. Thus it can be assumed that for this example differences should be especially pronounced.
-Although these molecules are rather small and simple, they encompass some of the most interesting features like rings. For instance, the mutation route for toluene is fundamentally different depending on the algorithm: the old algorithm starts next to the atom of the phenyl group that is connected to the methyl substituent - which serves as common core - and processes the rest of the atoms in a chain-like manner, whereas the new one starts at the atom with maximum distance from the substituent and proceeds in a symmetric way until the common core is attained
-An overview of the molecules and the corresponding mutation routes is shown in fig. \ref{fig:all_paper_molecules}  \ref{fig:cpi_paper_molecule}.
+For a selection of small molecules taken from \cite{Loeffler.2018, Wieder.2022}, the relative solvation free energy differences were determined with the old and the new mutation route algorithms  using {\trafo}. These molecules are toluene, 2-methylfuran and 2-methylindole.
+Furthermore, the mutation between 2-cyclopentyl-indole and 7-cyclopentyl-indole (2-/7-CPI) was computed. In this case, only the free energy differences for the new algorithms were determined, but there are previous results relying on the old algorithms which can be used for comparison. In this case, the old common core generation (which searched for the common core with hydrogens without the improvements reported in 'Processing of hydrogen atoms') generated a smaller common core. Thus, it can be assumed that for this example, differences should be especially pronounced.
+Although these molecules are rather small and simple, they encompass some of the most interesting features, like rings. For instance, the mutation route for toluene is fundamentally different depending on the algorithm: the old algorithm starts next to the atom of the phenyl group that is connected to the methyl substituent --- which serves as the common core --- and processes the rest of the atoms in a chain-like manner, whereas the new one starts at the atom with maximum distance from the substituent and proceeds in a symmetric way until the common core is attained
+An overview of the molecules and the corresponding mutation routes is shown in figs. \ref{fig:all_paper_molecules}  \ref{fig:cpi_paper_molecule}.
 The simulation results are averaged over four runs (except 2-CPI/7-CPI, for which only three runs were performed). 
 For all these examples, the standard deviation is smaller using the new route finding algorithm and adapted settings for the generation of the common core (fig. \ref{fig:boxplot_small}).
 
@@ -156,16 +154,16 @@ For all these examples, the standard deviation is smaller using the new route fi
 \begin{figure}
 	
 	\includegraphics[scale=0.65]{results_3pairs1}
-	\caption{comparison of results for 2-methylindole, toluene and 2-methylfuran}
+	\caption{comparison of results for mutating 2-methylindole, toluene and 2-methylfuran to methane.}
 	\label{fig:boxplot_small}
 \end{figure}
 
 
-For the 2-/7-CPI-transformation, a relative free energy difference of -1.55 $ \pm $ 0.1 kcal/mol is computed using the common core and the route proposed by the new algorithms. In \cite{Fleck.2021}, for this transformation -1.43 $ \pm $ 0.3 kcal/mol was determined with the smaller cyclopentane-X common core. It can be assumed that the differences between old and new mutation route are even more pronounced, because in \cite{Fleck.2021} the calculations were repeated five times and averaged in contrast to only three replicates for the run with the new mutation route. 
-Of course, a direct comparison with the same number of replicates would be advantageous to quantify the improvement, but in any case the change in standard deviation is remarkable.
-Calculation of the absolute free energy differences of both molecules yield -1.58 $ \pm $ 0.3. This indicates that the new route not only provides a smaller error, but also leads to a more accurate result.
-However, probably the greatest advantage is that the mutation route for the new, bigger common core needs less states (only five in contrast to nine heavy atoms have to be mutated). 
-Fig. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylindole_overlaps} show overlap plots and the change of free energy difference of one run between the states for toluene -> methane and overlap plots for 2-methyl-1H-indole. In the case of 2-methyl-1H-indole (the mutation involves processing of a double ring),  significant differences for the water box between old and new algorithm are discernible.
+For the 2-/7-CPI-transformation, a relative free energy difference of $-1.55 \pm  0.10$ kcal/mol is computed using the common core and the route proposed by the new algorithms. In \cite{Fleck.2021}, for this transformation, $-1.43  \pm $ 0.30 kcal/mol was determined with the smaller cyclopentane-X common core. It can be assumed that the differences between the old and new mutation route are even more pronounced because in \cite{Fleck.2021} the calculations were repeated five times and averaged, in contrast to only three replicates for the run with the new mutation route. 
+Of course, a direct comparison with the same number of replicates would be advantageous to quantify the improvement, but in any case, the change in standard deviation is remarkable.
+Calculation of the absolute free energy differences of both molecules yield $-1.58  \pm  0.30$~kcal/mol. This indicates that the new route not only provides a smaller error, but also leads to a more accurate result.
+However, probably the greatest advantage is that the mutation route for the new, bigger common core needs fewer states (only five in contrast to nine heavy atoms have to be mutated). 
+Figs. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylindole_overlaps} show overlap plots and the change of free energy difference of one run between the states for toluene $\mathrm{\rightarrow}$ methane and overlap plots for 2-methyl-1H-indole. In the case of 2-methyl-1H-indole (the mutation involves processing of a double ring),  significant differences for the water box between the old and new algorithm are discernible.
 
 \begin{table}
 	
@@ -206,7 +204,7 @@ Fig. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylin
 		\label{fig:w_toluene_new}%
 	}
 	
-	\caption{Overlap plots for toluene -> methane: upper row: vacuum, lower row: waterbox; left: old mutation algorithm, right: new mutation algorithm}
+	\caption{Overlap plots for toluene $\mathrm{\rightarrow}$ methane: upper row: vacuum, lower row: water box; left: old mutation algorithm, right: new mutation algorithm}
 	\label{fig:toluene_overlaps}
 \end{figure}
 
@@ -231,7 +229,7 @@ Fig. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylin
 		\label{fig:w_toluene_new_state}%
 	}
 	
-	\caption{free energy differences per state for toluene -> methane}
+	\caption{free energy differences per state for toluene $\mathrm{\rightarrow}$ methane}
 	\label{fig:toluene_states}
 \end{figure}
 
@@ -255,7 +253,7 @@ Fig. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylin
 		\label{fig:w_methylindole_new}%
 	}
 	
-	\caption{Overlap plots for 2-methyl-1H-indole -> methane: upper row: vacuum, lower row: waterbox; left: old mutation algorithm, right: new mutation algorithm}
+	\caption{Overlap plots for 2-methyl-1H-indole $\mathrm{\rightarrow}$ methane: upper row: vacuum, lower row: water box; left: old mutation algorithm, right: new mutation algorithm}
 	\label{fig:methylindole_overlaps}
 \end{figure}
 
@@ -276,34 +274,34 @@ Fig. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylin
 \end{figure}
 
 
-A further path for detecting differences between the outcome of the mutation algorithms is to compare runs of different sampling length. 
-The results of the MD runs set up with {\trafo} can be evaluated using the functions of the MBAR class of pymbar \cite{Shirts.2008}. Python scripts have been written to evaluate the computed free energy differences for different simulation lengths. There are two crucial parameters: the reduced potential energy of a uncorrelated configuration n at a specific state k (\texttt{u\_kn}) and the number of uncorrelated snapshots n (\texttt{N\_k}). By removing the same number of configurations at each state k and adjusting (\texttt{N\_k}) accordingly, shorter simulations have been 'generated'.
-In \ref{fig:neopentan}, \ref{fig:neopentan} and \ref{fig:neopentan}, a comparison between old and new route for molecule pairs consisting of toluene, 2-methylfuran, 2-methyl-1H-indole and methane is presented. The mean of the calculated free energy differences as well as the standard deviation is shown. In \ref{fig:cpi_short}, free energy differences for the 2-CPI-mutations at the two conditions (waterbox and vacuum) are visualized. 
-As expected, for longer simulation lengths standard deviation decreases, very short simulation lengths (i.e. a very small number of configuration snapshots as in put for the MBAR computations using pymbar) give rise to unreliable results. However, looking at the evolution of the free energy difference mean value and standard deviation, it is difficult to confirm the superiority of one of the mutation routes for these three transformations or to indicate a sufficient minimum simulation length.
+An additional means for detecting differences between the outcome of the mutation algorithms is to compare runs of different sampling length. 
+The results of the MD runs set up with {\trafo} can be evaluated using the functions of the MBAR class of \texttt{pymbar} \cite{Shirts.2008}. Python scripts were written to evaluate the computed free energy differences for different simulation lengths. There are two crucial parameters: the reduced potential energy of an uncorrelated configuration $n$ at a specific state $k$ (\texttt{u\_kn}) and the number of uncorrelated snapshots $n$ (\texttt{N\_k}). By removing the same number of configurations at each state k and adjusting (\texttt{N\_k}) accordingly, shorter simulations were generated artificially.
+In \ref{fig:neopentan}, \ref{fig:neopentan} and \ref{fig:neopentan}, a comparison between old and new route for molecule pairs consisting of toluene, 2-methylfuran, 2-methyl-1H-indole and methane is presented. The mean of the calculated free energy differences as well as the standard deviation is shown. In \ref{fig:cpi_short}, free energy differences for the 2-CPI-mutations at the two conditions (water box and vacuum) are visualized. 
+As expected, for longer simulation lengths the standard deviation decreases, very short simulation lengths (i.e., a very low number of configuration snapshots as input for the MBAR computations using \tttext{pymbar}) leads to unreliable results. However, looking at the evolution of the free energy difference mean value and standard deviation, it is difficult to confirm the superiority of one of the mutation routes for these three transformations or to indicate a sufficient minimum simulation length.
 
 
 
 \begin{figure}[!htb]
 	
-	\includegraphics[scale=0.9]{toluene_short}\caption{toluene -> methane; left: waterbox; right: vacuum; mutation routes for toluene/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full length simulation (i.e. the last value is zero)}
+	\includegraphics[scale=0.9]{toluene_short}\caption{toluene $\mathrm{\rightarrow}$ methane; left: water box; right: vacuum; mutation routes for toluene/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full-length simulation (i.e., the last value is zero)}
 		\label{fig:toluene_short}
 \end{figure}
 
 \begin{figure}[!htb]
 	
-	\includegraphics[scale=0.9]{methylfuran_short}\caption{2-methylfuran/methane; left: waterbox; right: vacuum;  mutation routes for 2-methylfuran/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full length simulation (i.e. the last value is zero)}
+	\includegraphics[scale=0.9]{methylfuran_short}\caption{2-methylfuran/methane; left: water box; right: vacuum;  mutation routes for 2-methylfuran/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full-length simulation (i.e., the last value is zero)}
 	\label{fig:methylfuran_short}
 \end{figure}
 
 
 \begin{figure}[!htb]
 	
-	\includegraphics[scale=0.9]{methylindole_short}\caption{2-methylindole/methane; left: waterbox; right: vacuum; mutation routes for 2-methylindole/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full length simulation (i.e. the last value is zero)}
+	\includegraphics[scale=0.9]{methylindole_short}\caption{2-methylindole/methane; left: water box; right: vacuum; mutation routes for 2-methylindole/methane; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full-length simulation (i.e., the last value is zero)}
 	\label{fig:methylindole_short}
 \end{figure}
 
 \begin{figure}[!htb]
 	
-	\includegraphics[scale=0.9]{cpi_short}\caption{left: 2-CPI -> ccore for 2-/7-CPI; left: 7-CPI -> ccore for 2-/7-CPI; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full length simulation (i.e. the last value is zero)}
+	\includegraphics[scale=0.9]{cpi_short}\caption{left: 2-CPI $\mathrm{\rightarrow}$ CC for 2-/7-CPI; left: 7-CPI $\mathrm{\rightarrow}$ CC for 2-/7-CPI; first row: mean value, bars indicate standard deviation; middle row: standard deviation; third row: difference to full-length simulation (i.e., the last value is zero)}
 	\label{fig:cpi_short}
 \end{figure}
