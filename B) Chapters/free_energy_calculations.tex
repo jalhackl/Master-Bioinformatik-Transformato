@@ -200,11 +200,12 @@ integration crucially depends on the smoothness of the integrand.
 For more pronounced changes in molecular properties between the computed
 states, BAR seems to be superior\cite{Shirts.2013}.)
 
-MBAR, which is used in the {\trafo} package to estimate the free energy differences, is a further improvement of the BAR method. BAR combines information of one forward and one backward simulation.
-In contrast to BAR, MBAR does not only consider samples two states, but data from all states is used.
-Weights have to be determined for all state combinations. Again, the emerging equations give rise to a self-consistency problem which can be solved, e.g., via iteration methods or a Newton-Raphson solver. For state i, an estimation of free energy can be computed as \begin{equation}F_{i}=-\beta^{-1}\ln\mathop{\sum}_{j=1}^{K}\sum_{n=1}^{N_{j}}\frac{\exp\left(-\beta u_{i}\right)}{\sum_{k=1}^{K}N_{k}\left(\beta F_{k}-\beta u_{k}\right)}\end{equation}. 
-The estimate depends on all samples K, in the case of only two states, MBAR reduces to BAR. Although this formula gives the estimation for state i, it is determined only up to an additive constant. Thus, only energy differences, \bigtriangleup $F_{ij}=F_{j}-F_{i}$ are meaningful. \cite{Shirts.2008} 
-MBAR is also related to another technique for evaluating free energy differences, the weighted histogram analysis method (WHAM)\cite{Kumar.1992}. As in MBAR, data from all samples is used simultaneously, but the data is partitioned into bins which are used to generate histograms of the probabilities. Here MBAR equals the limiting case for a bin width of zero.\cite{Shirts.2008, Klimovich.2015} 
+MBAR, which is used in the {\trafo} package to estimate the free energy differences, is a further improvement of the BAR method. BAR combines information from one forward and one backward simulation.
+In contrast to BAR, MBAR does not only consider samples of two states, but data from all states is used.
+Weights have to be determined for all state combinations. Again, the emerging equations give rise to a self-consistency problem which can be solved, e.g., via iteration methods or a Newton-Raphson solver. For state i, an estimation of free energy can be computed as \begin{equation}F_{i}=-\beta^{-1}\ln\mathop{\sum}_{j=1}^{K}\sum_{n=1}^{N_{j}}\frac{\exp\left(-\beta u_{i}\right)}{\sum_{k=1}^{K}N_{k}\left(\beta F_{k}-\beta u_{k}\right)}.\end{equation} 
+The estimate depends on all samples K, in the case of only two states, MBAR reduces to BAR. Although this formula gives the estimation for state i, it is determined only up to an additive constant. Thus, only free energy differences, $\Delta F_{ij}=F_{j}-F_{i}$ are meaningful. \cite{Shirts.2008} 
+
+MBAR is also related to another technique for evaluating free energy differences, the weighted histogram analysis method (WHAM)\cite{Kumar.1992}. As in MBAR, data from all samples is used simultaneously, but the data is partitioned into bins which are used to generate histograms of the probabilities. Here, MBAR equals the limiting case for a bin width of zero.\cite{Shirts.2008, Klimovich.2015} 
 
 \section{Soft-core potentials}
 
@@ -219,20 +220,21 @@ several problems which can occur when a particle is removed (i.e.,
 turned into a dummy atom by turning off its intermolecular interactions).
 \cite{Boresch.2011}
 
-We illustrate the types of problems, which can arise, for the case
+We illustrate the types of problems, which can arise, in the case
 of a linear dependence of the coupling parameter,
 i.e.
 
-\begin{equation}
+\begin{equation}\label{eq:softspheres}
 U\left(\lambda\right)=U_{o}+\lambda\sum_{1\leq i\leq N-1}u_{i,N}.
 \end{equation}
-
-
-(Of course, the equal spacing of the coupling parameter does not imply
-equal phase-space overlap between the states \cite{Shirts.2013};
-thus, for many simulations this simple set-up is certainly not the
-optimal solution.) For $\lambda=0$ and $\lambda\approx0$ various
-issues emerge. If $\lambda=0$, there are no interactions (and hence
+%(Of course, the equal spacing of the coupling parameter does not imply
+%equal phase-space overlap between the states \cite{Shirts.2013};
+%thus, for many simulations, this simple set-up is certainly not the
+%optimal solution.) 
+Eq.~\ref{eq:softspheres} represents a system of $N$ interacting particles. $N-1$ interact normally throughout (this is represented by the constant term $U_0$), but the interaction between the $N$\textsuperscript{th} particle and its siblings is scaled by $\lambda$.
+For $\lambda=0$ and $\lambda\approx0$ various
+issues emerge. 
+If $\lambda=0$, there are no interactions (and hence
 no repulsion) and the non-interacting dummy particle can be located
 at the exact position of another particle. This could give rise to
 errors resulting from divisions by zero. (In contrast to the next two scenarios,
@@ -241,7 +243,7 @@ implementing an additional clause for this condition to avoid the division by ze
 simulations packages manage this case automatically\cite{Boresch.2011}).
 
 For $\lambda\rightarrow0$, numerical instabilities can occur because
-even within a small time-step the interactions can become highly repulsive.
+even within a small time-step, the interactions abruptly can become highly repulsive.
 It should be noted that this problem emerges at values $\lambda\approx0$,
 but not at $\lambda=0$ (i.e., when the particles are completely decoupled).
 
