@@ -49,7 +49,7 @@ From this one sees that the relative binding free energy difference between the 
 To obtain knowledge about $\Delta\Delta G=\Delta G_{2}-\Delta G_{1}$,
 the evaluation of the alchemical transformations $\Delta G_{A}$ and
 $\Delta G_{B}$ suffices. In practice, the determination
-of $\Delta G_{2}$ or $\Delta G_{1}$ usually is much more computationally expensive, because the states are vastly different (e.g., in the case of ligand binding, water environment vs. protein, and under the assumption that the ligands exhibit a similar structure) and often requires an experimental
+of $\Delta G_{2}$ or $\Delta G_{1}$ is usually much more computationally expensive because the states are vastly different (e.g., in the case of ligand binding, water environment vs. protein, and under the assumption that the ligands exhibit a similar structure) and often requires an experimental
 set-up; thus, the alchemical calculation can substitute this step
 or at least indicate if, e.g., a certain ligand is a promising candidate.
 
@@ -109,12 +109,12 @@ The free energy difference is then given as the integral from $\lambda=0$ to $\l
 \intop_{\lambda=0}^{\lambda=1}\left\langle\frac{\partial U\left(\lambda\right)}{\partial\lambda}\right\rangle_\lambda d\lambda
 .
 \end{equation}
-This integral has to be approximated using numerical integration, i.e., $\Delta F\approx\sum_{i}w_{i}\left\langle \frac{dU\left(r,\lambda\right)}{d\lambda}\right\rangle _{\lambda_{i}}$.
+\begin{sloppypar}This integral has to be approximated using numerical integration, i.e., $\Delta F\approx\sum_{i}w_{i}\left\langle \frac{dU\left(r,\lambda\right)}{d\lambda}\right\rangle _{\lambda_{i}}$.
 The weights $w_{i}$ depend on the choice of the numerical quadrature scheme.
 A popular and simple choice is the trapezoidal rule, which in its most basic form uses equal
 spacing between states and approximates the integral by $\intop_{\lambda=j}^{\lambda=i}\frac{dF\left(\lambda\right)}{d\lambda}d\lambda\approx\frac{i-j}{2}\left(f_{i}+f_{j}\right)$.
 More efficient schemes can lower the number of necessary ${\lambda}$-states, e.g., Simpson's rule, Gauss-Legendre Quadrature, cubic spline interpolation  or Clenshaw-Curtis integration. Furthermore, usage of non-equidistant spacing, which can be easily be applied for the trapezoidal rule, but also for Simpson's rule, can improve efficiency.
-For alchemical free energy simulations, it seems advisable to include the endpoints since those are the only physical states of the simulations (e,g, in Gauss-Legendre quadrature the endpoints are not included). \cite{Bruckner.2011, Bruckner.2011b} 
+For alchemical free energy simulations, it seems advisable to include the endpoints since those are the only physical states of the simulations (e.g., in Gauss-Legendre quadrature the endpoints are not included). \cite{Bruckner.2011, Bruckner.2011b} \end{sloppypar}
 
 In any case, the integration scheme and the amount of intermediate steps has to
 be chosen in such a way that the introduced bias is below the statistical
@@ -123,7 +123,7 @@ schemes, e.g., the trapezoidal rule and Simpson's rule, see \cite{Bruckner.2011b
 
 \subsection{Free Energy Perturbation / Zwanzig Relation}
 
-Free energy perturbation relies on the Zwanzig relation (or exponential
+Free energy perturbation relies on the Zwanzig relation (sometimes called exponential
 formula). For each configuration of state A, the energy difference
 between this state and the corresponding state B is calculated, which is then used to compute the free energy difference between A and B according to \cite{Zwanzig.1954,Gapsys.2015}
 \begin{equation}
