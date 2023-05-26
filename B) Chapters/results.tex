@@ -1,8 +1,8 @@
 \chapter{Results}
 
 A set of twenty ligands from the PDBbind-CN database were downloaded and used for testing
-purposes (CC construction as well as mutation routes). It
-should be noted, however, that the CC pertaining to pairs of these ligands
+CC construction, as well as mutation routes. It
+should be noted, however, that the CC for some of these ligand pairs
 in some cases violate the rules of {\trafo} concerning a valid; i.e., dummy regions are connected by more
 than one atom to the CC (which basically implies that the
 atom is part of a ring structure). 
@@ -111,7 +111,7 @@ To compare the mutation algorithms, calculation of the scoring functions for the
 
 In general, the computed statistics match the expectations. The range of betweenness centrality scores is much lower for BFS, suggesting that central nodes, i.e., atoms in a ring next to the common core, are processed last, whereas isolated ones, i.e., atoms at the final position of a chain, are processed preferably.
 Likewise, closeness centrality scores are higher for BFS-based approaches because atoms distant from the common core are visited only at the final iterations of the algorithms and so there is a stronger positive correlation between closeness centrality and  mutation order. 
-All scoring functions show that the BFS-based algorithms tend to prune the molecule graph at positions more distant from the CC at the beginning of the processing and rings are processed in a more systematic and 'symmetric' manner.
+All scoring functions show that the BFS-based algorithms tend to prune the molecule graph at positions more distant from the CC at the beginning of the processing, and rings are processed in a more systematic and 'symmetric' manner.
 
 However, in the plots presenting the scoring-functions, all molecule combinations
 from the PDBbind data set are used. Thus, the selection is rather diverse and many  'trivial' structures are over-represented. It could be insightful to use
@@ -139,7 +139,7 @@ ring structures or a minimum number of dummy atoms) or to try even a larger sele
 	
 	\includegraphics[scale=0.8]{mean_open_rings_all}\includegraphics[scale=0.8]{mean_processing_all}
 	
-	\caption{Ring-related scores for the PDBbind-CN test set. upper row: left: difference in number of atoms in the emerging chains after first removal of a ring atom, 0 means symmetric processing; right: difference in number of atoms in the emerging chains after removal of a ring atom, lower score mean more symmetric processing; lower row: left: mean number of open rings in the test molecules after each processing step, lower score means that rings are processed sequentially and not in parallel; right: mean number of mutation steps until a ring is totally processed. Curves are density estimations of the emerging distributions.}
+	\caption{Ring-related scores for the PDBbind-CN test set. upper row: left: difference in number of atoms in the emerging chains after first removal of a ring atom, 0 means symmetric processing; right: difference in number of atoms in the emerging chains after removal of a ring atom, lower score means more symmetric processing; lower row: left: mean number of open rings in the test molecules after each processing step, lower score means that rings are processed sequentially and not in parallel; right: mean number of mutation steps until a ring is totally processed. Curves are density estimations of the emerging distributions.}
 	
 \end{figure}
 
@@ -148,9 +148,9 @@ ring structures or a minimum number of dummy atoms) or to try even a larger sele
 \section{Results for selected molecule pairs}
 
 For a selection of small molecules taken from \cite{Loeffler.2018, Wieder.2022}, the relative solvation free energy differences were determined with the old and the new mutation route algorithms  using {\trafo}. These molecules are toluene, 2-methylfuran and 2-methylindole.
-Furthermore, the mutation between 2-cyclopentyl-indole and 7-cyclopentyl-indole (2-/7-CPI) was computed. In this case, only the free energy differences for the new algorithms were determined, but there are previous results relying on the old algorithms which can be used for comparison. This is one of the most interesting examples, because the old CC generation (which searched for the CC with hydrogens without the improvements reported in 'Processing of hydrogen atoms') generated a smaller CC. Thus, it can be assumed that for this example, differences should be especially pronounced.
+Furthermore, the mutation between 2-cyclopentyl-indole and 7-cyclopentyl-indole (2-/7-CPI) was computed. In this case, only the free energy differences for the new algorithms were determined, but there are previous results relying on the old algorithms which can be used for comparison. This is one of the most interesting examples because the old CC generation (which searched for the CC with hydrogens without the improvements reported in 'Processing of hydrogen atoms') generated a smaller CC. Thus, it can be assumed that for this example, differences should be especially pronounced.
 
-Although these molecules are rather small and simple, they encompass some of the most interesting features, like rings. For instance, the mutation route for toluene is fundamentally different depending on the algorithm: the old algorithm starts next to the atom of the phenyl group that is connected to the methyl substituent --- which serves as the CC --- and processes the rest of the atoms in a chain-like manner, whereas the new one starts at the atom with maximum distance from the substituent and proceeds in a symmetric way until the CC is attained
+Although these molecules are rather small and simple, they encompass some of the most interesting features, like rings. For instance, the mutation route for toluene is fundamentally different depending on the algorithm: the old algorithm starts next to the atom of the phenyl group that is connected to the methyl substituent --- which serves as the CC --- and processes the rest of the atoms in a chain-like manner, whereas the new one starts at the atom with maximum distance from the substituent and proceeds symmetrically until the CC is attained
 An overview of the molecules and the corresponding mutation routes is shown in figs. \ref{fig:all_paper_molecules} and \ref{fig:cpi_paper_molecule}.
 The simulation results are averaged over four runs (except 2-CPI/7-CPI, for which only three runs were performed). 
 For all these examples, the standard deviation is smaller using the new route finding algorithm and adapted settings for the generation of the CC (fig. \ref{fig:boxplot_small}).
