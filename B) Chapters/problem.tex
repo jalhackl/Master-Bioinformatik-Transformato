@@ -1,6 +1,6 @@
 \chapter{Problem description }
 
-The main objective was the assessment and improvement of some routines
+The main objective of this work was the assessment and improvement of some routines
 used in the free energy package {\trafo}. A further goal was to
 minimize the necessity of manual adjustments by the user, i.e.,
 reasonable mutation routes should be generated automatically. The
@@ -31,7 +31,7 @@ New algorithms were written in Python and subsequently integrated
 into the existing {\trafo} package. Finally, the effect of different
 algorithms on the efficiency of the free energy calculations was validated through molecular dynamics simulations. 
 
-To obtain a reliable test set of molecules, SDF(Structure Data File)-files containing positional information of suitable ligands were downloaded from the PDBbind-CN \cite{Wang.2004} database. These test molecules cover a
+To obtain a reliable test set of molecules, SDF (Structure Data File)-files containing positional information about suitable ligands were downloaded from the PDBbind-CN \cite{Wang.2004} database. These test molecules cover a
 broad range in size, complexity and potentially intricate compounds,
 like polycyclic structures and highly branched chains.
 
@@ -78,9 +78,9 @@ connected to the CC via multiple bonds.)
 The \texttt{ringCompare}-parameter parameter accepts the \texttt{StrictRingFusion}-argument.
 It imposes that in the case of multiple rings, aromaticity is properly
 considered. Fig. \ref{fig:strictfusion} illustrates the effect of the parameters
-on the CC of two cyclic molecules, cholesterol and cortisol. However, as shown in the bottom row of fig. \ref{fig:strictfusion}, enforcing
+on the CC of two cyclic molecules, cholesterol, and cortisol. However, as shown in the bottom row of fig. \ref{fig:strictfusion}, enforcing
 of \texttt{StrictRingFusion} can still lead to maximum common substructures
-that are not valid {\trafo} common cores in case of a dummy region
+that are not valid {\trafo} common cores in the case of a dummy region
 which is connected via multiple ring atoms of the same ring with the common
 core. 
 When an invalid CC is generated, it appears to be advisable to warn the user in this case that the CC does not fit the expectations of the {\trafo} workflow. 
@@ -120,7 +120,7 @@ core of the two molecules with strict fusion. In the images of the full molecule
 
 If this is not the case, the rings that contain atoms which participate in the partial ring causing the invalid CC are removed from the representation used for creating the maximum common substructure and afterward a new search for a valid CC is started. This procedure is repeated iteratively until a valid CC is found.
 Of course, in the worst scenario, i.e., if both (non-identical) molecules only consist of ring-participating atoms, no valid CC is conceivable. Similarly, given the total size of the molecules, the size of the valid CC can be tiny. In general, if at least one of the molecules solely consists of a polycyclic compound without any functional groups etc., and the other one does not have the same compound, no valid CC can exist. 
-An --- maybe rather contrived --- example of such a pair of molecules and the construction of a valid CC via the iterative approach is given in fig.~\ref{fig:pyrene}. One sees that even the activation of the ring-related parameters of Rdkit is not sufficient to yield a valid CC, whereas the iterative approach gives the desired result. Nonetheless, this valid CC (which has the maximally possible size) is very small regarding the total molecule size and the apparent similarity between both structures.
+An --- maybe rather contrived --- example of such a pair of molecules and the construction of a valid CC via the iterative approach is given in fig.~\ref{fig:pyrene}. One sees that even the activation of the ring-related parameters of Rdkit is not sufficient to yield a valid CC, whereas the iterative approach gives the desired result. Nonetheless, this valid CC (which has the maximally possible size) is small compared to the total molecule size and the apparent similarity between both structures.
 
 
 
@@ -171,7 +171,7 @@ In the test cases presented below, all graphs are initialized with uniform weigh
 
 To use the newly implemented mutation algorithms, initially the graph object
 is created with weights according to the atom type stored in a dictionary. The simulations shown
-below use uniform weights, hence all atom types are treated equally; however, it is possible to modify these to
+below use uniform weights; hence all atom types are treated equally; however, it is possible to modify these to
 enforce a specific mutation route (e.g., accelerating or postponing
 the exclusion of heteroatoms). 
 
@@ -181,7 +181,7 @@ the simple, existing DFS-approach.
 These four main functions for computing mutation routes are:
 
 \begin{enumerate}
-\item \texttt{\_calculate\_order\_of\_LJ\_mutations:} this function performs the DFS algorithm which has been used previously in {\trafo}. It may lead to  defective mutation routes (various examples are shown below and compared to the routes created by improved algorithms) and hence
+\item \texttt{\_calculate\_order\_of\_LJ\_mutations:} this function performs the DFS algorithm, which has been used previously in {\trafo}. It may lead to  defective mutation routes (various examples are shown below and compared to the routes created by improved algorithms) and hence
 should only be used for test purposes. The other three algorithms
 are new, and all of them resolve most of the problems of the earlier
 algorithm (especially isolated removal of ring atoms).
@@ -194,7 +194,7 @@ applied once for creating a mutation route.
 applied iteratively, i.e., after each removal of an atom until all atoms of the dummy regions are processed.
 
 \item \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change:}
-similar to the last function, this approach works iteratively iIn contrast to \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter:}, after each removal of an atom, the algorithm/routine for the next step is chosen depending on the current state, e.g., if the last processed atom belongs to a cycle or a chain.
+similarly to the last function, this approach works iteratively. In contrast to \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter:}, after each removal of an atom, the algorithm/routine for the next step is chosen depending on the current state, e.g., if the last processed atom belongs to a cycle or a chain.
 \end{enumerate}
 
 These functions
@@ -235,7 +235,7 @@ with updated weights (according to cycle participation of the atom).
 
 \item \texttt{order\_checks\_nx(G, removearray, G\_total)}: This function
 performs the 'preferential removal', if a node is connected to the
-node removed in the last step, its weight get a small increase so
+node removed in the last step, its weight gets a small increase so
 that the removal of this node is prioritized. It is currently used
 in\texttt{ \_calculate\_order\_of\_LJ\_mutations\_new\_iter} and returns
 a nx-graph-object with updated weights.
@@ -326,7 +326,7 @@ It is even possible that substructure matches differ solely regarding hydrogens.
 	
 	\caption{
 		left: 2-pyrrolidinindole; right: 7-pyrrolidinindole; 
-		one of the hydrogens --- exactly this hydrogen which is placed at the position of the junction 'X'-atom in the other molecule --- is not part of the CC (otherwise, the CC would not be valid anymore)}
+		one of the hydrogens --- exactly the hydrogen atom which is placed at the position of the junction 'X'-atom at the other end state --- is not part of the CC (otherwise, the CC would be invalid)}
 	\label{fig:pyrrolidinindole}
 \end{figure}
 
@@ -345,15 +345,15 @@ It is even possible that substructure matches differ solely regarding hydrogens.
 \begin{figure}
 \includegraphics[scale=0.25]{iter_iter_change_1a5g_1_two_rows}
 
-\caption{Example for the differences between \texttt{iter-} and \texttt{iter\_change}-algorithm;
-above: \texttt{iter}; below: \texttt{iter-change}; \texttt{iter-change }processes all atoms within
+\caption{Example of the differences between the \texttt{iter-} and \texttt{iter\_change}-algorithms;
+Top: \texttt{iter}; Bottom: \texttt{iter-change}; \texttt{iter-change }processes all atoms within
 a chain or a ring at once (if possible) before switching to other
 parts of the molecule}
 \label{fig:iter_iter_change_comparison}
 \end{figure}
 
 As outlined above, in the current version of {\trafo}, one suboptimal route finding algorithm using DFS and several new versions based on BFS are implemented.
-For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root), whereas DFS gives rise to a long chain. Fig. \ref{fig:comparison_dfs_bfs} illustrates this difference.
+For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root), whereas DFS gives rise to a long chain. Fig.~\ref{fig:comparison_dfs_bfs} illustrates this difference.
 In more complex molecules, the systematic exploration of chains in
 depth first search inevitably leads to big local gaps in processing
 of the molecules. Fig. \ref{fig:simple_ring_exampledfs2} shows this problem for a benzene ring which
@@ -378,7 +378,7 @@ chain which is processed subsequently, whereas BFS starts at the ring position m
 
 
 
-Similarly, in fig. \ref{fig:simple_ring_exampledfs3} one atom of the ring (marked by the red circle), adjacent to the X-junction, is omitted in the first exploration using DFS and only visited at last. Hence, it is first processed, whereas the other atoms of the ring are removed much later.
+Similarly, in fig.~\ref{fig:simple_ring_exampledfs3} one atom of the ring (marked by the red circle), adjacent to the X-junction, is omitted in the first exploration using DFS and only visited at last. Hence, it is first processed, whereas the other atoms of the ring are removed much later.
 
 More complex ring structures exacerbate the problems. Fig. \ref{fig:simple_ring_exampledfs4} shows that also the processing of the substituents is affected.
 
@@ -387,7 +387,7 @@ the processing of one of the rings can easily lead to gaps in the adjacent
 ones. Figs. \ref{fig:2ring_example} and  \ref{fig:2ring_example2} illustrate that severe problems may occur when using DFS.
 As in the case of one ring, the exploration route implies that one
 of the rings is opened in such a way that it gives rise to a lengthy chain.
-Furthermore, it may happen that an atom belonging to two or more rings is visited early, whereas other atoms of the ring are explored much later, so that both ring structures are opened
+Furthermore, an atom may belong to two or more rings is visited early, whereas other atoms of the ring are explored much later, so that both ring structures are opened
 and teared apart (fig. \ref{fig:2ring_example}). Likewise, one half of each of the
 rings is turned off many steps before the processing of the remaining ring atoms is done (fig. \ref{fig:2ring_example2}). 
 
