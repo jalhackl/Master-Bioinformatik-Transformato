@@ -2,7 +2,7 @@
 
 The main objective of this work was the assessment and improvement of some routines
 used in the free energy package {\trafo}. A further goal was to
-minimize the necessity of manual adjustments by the user, i.e.,
+minimize the necessity of manual adjustments by the user; i.e.,
 reasonable mutation routes should be generated automatically. The
 proposed route should be directly usable for the further {\trafo}
 workflow.
@@ -17,7 +17,7 @@ for the case of more complex mutation routes which occur for connected
 dummy regions involving ring structures, multiple chains or different
 atom types. 
 
-Particularly intricate problems occur for ring structures. In contrast to a chain, which usually has only one possible mutation order without leading to disconnected components, multiple possibilities  exist for rings. (Because of this, the evaluation of the mutation algorithms in the following sections will focus on such transformations.) The mutation of atoms should neither generate vacancies in the inner part of the
+Particularly intricate problems occur for ring structures. In contrast to a chain, which usually has only one possible mutation order without leading to disconnected components, multiple possibilities  exist for rings. Because of this, the evaluation of the mutation algorithms in the following sections will focus on such transformations. The mutation of atoms should neither generate vacancies in the inner part of the
 molecule nor should rings remain opened longer than necessary, and
 a sufficiently systematic and --- especially concerning rings --- symmetric
 processing of the nodes has to be performed. These rules have to be
@@ -43,7 +43,7 @@ The creation of molecule objects and the determination of the maximum
 common substructure is done via Rdkit\cite{key-3}. NetworkX\cite{AricA.Hagberg.2008}
 provides functions for graph visualization and analysis. It is easy to convert molecules created using Rdkit into NetworkX graph-objects
 and hence utilize the functions of NetworkX for the molecules and
-common cores constructed. Particularly, graph traversal algorithms
+CCs constructed. Particularly, graph traversal algorithms
 like breadth-first and depth-first search can be easily implemented
 (see below).
 
@@ -62,34 +62,34 @@ the CC are of crucial importance. Firstly, these parameters
 can influence the CC construction drastically and, secondly, they
 can even be decisive whether the generated CC is valid for the
 {\trafo} workflow.
-Especially for the generation of common cores for polycyclic molecules, e.g., sterols, these parameters are of utmost importance.  
+Especially for the generation of CCs for polycyclic molecules, e.g., sterols, these parameters are of utmost importance.  
 Important ring-related settings are \texttt{ringMatchesRingOnly}, \texttt{completeRingsOnly}
 and the \texttt{ringCompare-parameter}. 
 
-To obtain valid common cores of molecules involving cyclic structures for the processing of {\trafo}, \texttt{ringMatchesRingOnly}
+To obtain valid CCs of molecules involving cyclic structures for the processing of {\trafo}, \texttt{ringMatchesRingOnly}
 and \texttt{completeRingsOnly} must be set to True: The former argument indicates
 that ring atoms of one molecule are only matched against ring atoms
 of the other molecule, the latter ensures that no partial rings are
 involved in the CC. Especially, the latter constraint is a
-necessary condition for a valid CC. (Otherwise, if partial
+necessary condition for a valid CC. Otherwise, if partial
 rings take part of the CC, dummy regions will be inevitably
-connected to the CC via multiple bonds.)
+connected to the CC via multiple bonds.
 
 The \texttt{ringCompare}-parameter parameter accepts the \texttt{StrictRingFusion}-argument.
 It imposes that in the case of multiple rings, aromaticity is properly
 considered. Fig. \ref{fig:strictfusion} illustrates the effect of the parameters
 on the CC of two cyclic molecules, cholesterol, and cortisol. However, as shown in the bottom row of fig. \ref{fig:strictfusion}, enforcing
-of \texttt{StrictRingFusion} can still lead to maximum common substructures
-that are not valid {\trafo} common cores in the case of a dummy region
+\texttt{StrictRingFusion} can still lead to maximum common substructures
+that are not valid {\trafo} CCs in the case of a dummy region
 which is connected via multiple ring atoms of the same ring with the common
 core. 
 When an invalid CC is generated, it appears to be advisable to warn the user in this case that the CC does not fit the expectations of the {\trafo} workflow. 
-The mutation algorithms presented below can deal with such invalid common cores. A helper function arbitrarily chooses one of the connections between the CC and the dummy region, and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current {\trafo} workflow is not adapted to deal with such common cores properly. Therefore, it only makes sense for test purposes and may not provide a reasonable input for the regular workflow.
+The mutation algorithms presented below can deal with such invalid CCs. A helper function arbitrarily chooses one of the connections between the CC and the dummy region, and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current {\trafo} workflow is not adapted to deal with such CCs properly. Therefore, it only makes sense for test purposes and may not provide a reasonable input for the regular workflow.
 Alternatively, one could check after the creation if the CC is valid. If
 it is not, one could for instance search for a new CC encompassing fewer
 atoms until a valid CC is found (see below). A further option would be to prohibit the involvement of ring atoms for this particular molecule combination.
 
-These problems occur because the requirements for a valid {\trafo} CC are stricter than the constraints imposed by Rdkit  (even when all ring-related parameters are applied, i.e., \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, it is not only indispensable that the CC solely comprises complete rings, but also the dummy regions consisting of the non-CC atoms must not contain parts of a ring structure (which implies that there has to be a unique connection between dummy region and CC). This is due to the aforementioned constraints on the junction atom X: When it is connected to the common core via one single atom (and, as the CC consists of a single connected component, thus is not part of a cyclic structure), it is guaranteed that the contributions from dummy atoms cancel out and do not influence the calculation of the double free energy differences \cite{Karwounopoulos.2022}.
+These problems occur because the requirements for a valid {\trafo} CC are stricter than the constraints imposed by Rdkit  (even when all ring-related parameters are applied, i.e., \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, it is not only indispensable that the CC solely comprises complete rings, but also the dummy regions consisting of the non-CC atoms must not contain parts of a ring structure (which implies that there has to be a unique connection between dummy region and CC). This is due to the aforementioned constraints on the junction atom X: When it is connected to the CC via one single atom (and, as the CC consists of a single connected component, thus is not part of a cyclic structure), it is guaranteed that the contributions from dummy atoms cancel out and do not influence the calculation of the double free energy differences \cite{Karwounopoulos.2022}.
 
 An efficient and straightforward solution for this problem, which always yields the best --- i.e., largest --- valid CC if one exists, has been implemented:
 The basic observation is that if CC atoms within a cyclic region give rise to an invalid CC, it is impossible that any atoms within this region could participate in a valid one (if this would be the case, the whole cyclic region would be already in the generated CC).
@@ -104,7 +104,7 @@ After generating a CC with standard parameters, it is checked if the additional 
 \includegraphics[scale=0.45]{sterols_wo_strictfusion}\includegraphics[scale=0.4]{sterols_w_strictfusion}
 
 \caption{'Strict fusion' can affect the construction of the CC drastically, illustrated for cholesterol (top row) and cortisol (bottom row). First and second columns: CC of the two molecules without strict fusion; third and fourth column: common
-core of the two molecules with strict fusion. In the images of the full molecule graph (first and third column), common cores are marked in red. In the example shown, none of the settings yield a valid CC for \trafo; the iterative approach explained in the main text would be necessary to obtain one. }
+core of the two molecules with strict fusion. In the images of the full molecule graph (first and third column), CCs are marked in red. In the example shown, none of the settings yield a valid CC for \trafo; the iterative approach explained in the main text would be necessary to obtain one. }
 \label{fig:strictfusion}
 \end{figure}
 
@@ -114,7 +114,7 @@ core of the two molecules with strict fusion. In the images of the full molecule
 \begin{figure}
 	\includegraphics[scale=0.6]{cholesterol_pryenepropanoic_acid.png}
 	
-	\caption{Common cores of cholesterol (left) and 1-propylpyrene (right); top row: CompleteRingsOnly = False; middle row: CompleteRingsOnly = True; bottom row: iterative approach to obtain a valid {\trafo} CC}
+	\caption{CCs of cholesterol (left) and 1-propylpyrene (right); top row: CompleteRingsOnly = False; middle row: CompleteRingsOnly = True; bottom row: iterative approach to obtain a valid {\trafo} CC}
 	\label{fig:pyrene}
 \end{figure}
 
@@ -301,19 +301,19 @@ Thus, the procedure yields the necessary output for further processing in {\traf
 
 Similarly, the functions for computing the mutation routes had to be adapted for input molecules containing hydrogens. By default, a helper function removes the hydrogens from the graph representation as well as the corresponding indices from the list with the atoms of the dummy regions before the mutation algorithms are applied. Afterward, the hydrogen atoms adjacent to CC heavy atoms are added to the CC.
 
-A special problem occurs for molecule pairs with switching 'X'-atom; fig. \ref{fig:pyrrolidinindole} shows 2-/7-pyrrolidinindole as an example. The red highlighting shows a correct CC for both molecules; in each of them one should note the hydrogen atom, which is directly bond to one of the CC-carbon atoms, but itself is not part of the CC. If the hydrogens were added, the CC would not be valid anymore: It is necessary that a further dummy region emerges which consists solely of one hydrogen atom because otherwise the CCs would have a different number of atoms and would not be isomorphic anymore. If, however, the CC is generated without hydrogens, the information which of the hydrogens turns into a dummy region is lost and the construction of a valid CC cannot be assured.
+A special problem occurs for molecule pairs with switching 'X'-atom; fig. \ref{fig:pyrrolidinindole} shows 2-/7-pyrrolidinindole as an example. The red highlighting shows a correct CC for both molecules; in each of them one should note the hydrogen atom, which is directly bonded to one of the CC-carbon atoms, but itself is not part of the CC. If the hydrogens were added, the CC would not be valid anymore: It is necessary that a further dummy region emerges which consists solely of one hydrogen atom because otherwise the CCs would have a different number of atoms and would not be isomorphic anymore. If, however, the CC is generated without hydrogens, the information which of the hydrogens turns into a dummy region is lost and the construction of a valid CC cannot be assured.
 It has to be stressed again that the presence of these hydrogen dummy regions does not affect the mutation steps, but is nonetheless crucial for the internal {\trafo} workflow. 
 
 However, there is a straightforward way to circumvent this problem: From the substructure matches, the mapping between the CC atoms of each molecule can be read off. It is counted for each heavy CC atom how many hydrogens are connected to it. Finally, the minimum number of hydrogens is added to the CC. (In the case of 2-/7-pyrrolidinindole, this means that for each CC atom one hydrogen is added, except for the 2- and 7- position because for these positions in one molecule no hydrogen is connected).
 In this context, also the difficulty that there are possibly many substructure matches has to be mentioned.
 
-It is even possible that substructure matches differ solely regarding hydrogens. For this case, a parameter was added to the function which searches for the maximum common substructure. If \texttt{iterate\_over\_matches} is set to true, one of the substructure matches with most hydrogens, i.e., the biggest possible substructure, is selected. Fig. \ref{fig:neopentan} shows two common cores, only differing in the number of hydrogens.
+It is even possible that substructure matches differ solely regarding hydrogens. For this case, a parameter was added to the function which searches for the maximum common substructure. If \texttt{iterate\_over\_matches} is set to true, one of the substructure matches with most hydrogens, i.e., the biggest possible substructure, is selected. Fig. \ref{fig:neopentan} shows two CCs, only differing in the number of hydrogens.
 
 
 \begin{figure}
 	
 	\includegraphics[scale=0.13]{hydrogens_plus_minus_v2.png}
-	\caption{These examples demonstrate that the addition of hydrogens can influence the construction of the CC; left: molecule 1; middle: CC; right: molecule 2; in the representations of the full molecule, the common cores are marked in red; row 1)-2) and row 3)-4) show the same molecules, in the respective upper row without,
+	\caption{These examples demonstrate that the addition of hydrogens can influence the construction of the CC; left: molecule 1; middle: CC; right: molecule 2; in the representations of the full molecule, the CCs are marked in red; row 1)-2) and row 3)-4) show the same molecules, in the respective upper row without,
 		in the lower with hydrogens; the CC of the molecule in row 3) and 4)  changes when hydrogens are added to the Rdkit-molecule
 		representation}
 		\label{fig:hydrogen_effect}
@@ -334,7 +334,7 @@ It is even possible that substructure matches differ solely regarding hydrogens.
 \begin{figure}
 	\includegraphics[scale=0.55]{neopentan_new}
 	
-	\caption{neopentane/methane common cores; upper row: common cores maximizing the number of atoms including hydrogens; lower row: common cores without considering hydrogens }
+	\caption{neopentane/methane CCs; upper row: CCs maximizing the number of atoms including hydrogens; lower row: CCs without considering hydrogens }
 		\label{fig:neopentan}
 \end{figure}
 
