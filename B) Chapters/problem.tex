@@ -83,18 +83,18 @@ on the CC of two cyclic molecules, cholesterol, and cortisol. However, as shown 
 that are not valid {\trafo} CCs in the case of a dummy region
 which is connected via multiple ring atoms of the same ring with the common
 core. 
-When an invalid CC is generated, it appears to be advisable to warn the user in this case that the CC does not fit the expectations of the {\trafo} workflow. 
-The mutation algorithms presented below can deal with such invalid CCs. A helper function arbitrarily chooses one of the connections between the CC and the dummy region, and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current {\trafo} workflow is not adapted to deal with such CCs properly. Therefore, it only makes sense for test purposes and may not provide a reasonable input for the regular workflow.
+When an invalid CC is generated, it appears to be advisable to warn the user that the generated CC does not fit the expectations of the {\trafo} workflow. 
+The new mutation algorithms presented below can deal with such invalid CCs. A helper function arbitrarily chooses one of the connections between the CC and the dummy region, and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current {\trafo} workflow is not adapted to deal with such CCs properly. Therefore, it only makes sense for test purposes and may not provide a reasonable input for the regular workflow.
 Alternatively, one could check after the creation if the CC is valid. If
 it is not, one could for instance search for a new CC encompassing fewer
 atoms until a valid CC is found (see below). A further option would be to prohibit the involvement of ring atoms for this particular molecule combination.
 
-These problems occur because the requirements for a valid {\trafo} CC are stricter than the constraints imposed by Rdkit  (even when all ring-related parameters are applied, i.e., \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, it is not only indispensable that the CC solely comprises complete rings, but also the dummy regions consisting of the non-CC atoms must not contain parts of a ring structure (which implies that there has to be a unique connection between dummy region and CC). This is due to the aforementioned constraints on the junction atom X: When it is connected to the CC via one single atom (and, as the CC consists of a single connected component, thus is not part of a cyclic structure), it is guaranteed that the contributions from dummy atoms cancel out and do not influence the calculation of the double free energy differences \cite{Karwounopoulos.2022}.
+These problems occur because the requirements for a valid {\trafo} CC are stricter than the constraints imposed by Rdkit  (even when all ring-related parameters are applied, i.e., \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, it is not only indispensable that the CC solely comprises complete rings, but also the dummy regions consisting of the non-CC atoms must not contain parts of a ring structure (which implies that there has to be a unique connection between dummy region and CC). This is due to the aforementioned constraints on the junction atom X: When it is connected to the CC via one single atom (and, as the CC consists of a single connected component, it, therefore, is not part of a cyclic structure), it is guaranteed that the contributions from dummy atoms cancel out and do not influence the calculation of the double free energy differences \cite{Karwounopoulos.2022}.
 
 An efficient and straightforward solution for this problem, which always yields the best --- i.e., largest --- valid CC if one exists, has been implemented:
 The basic observation is that if CC atoms within a cyclic region give rise to an invalid CC, it is impossible that any atoms within this region could participate in a valid one (if this would be the case, the whole cyclic region would be already in the generated CC).
 After generating a CC with standard parameters, it is checked if the additional requirements concerning the ring structure hold, i.e., if the non-CC atoms (as well as the CC atoms) of both molecules do not participate in a partial cycle.
-(Alternatively, one could check if a path between the non-CC atoms adjacent to the CC, i.e., the X-atoms, exists. If this is the case, the CC obviously is not valid, since no unique atom which connects the CC and a specific dummy region is present.)
+(Alternatively, one could check if a path between the non-CC atoms adjacent to the CC, i.e., the X-atoms, exists. If this is the case, the CC obviously is not valid, since no unique atom which connects the CC and a specific dummy region is present.) If this is not the case, the rings that contain atoms which participate in the partial ring causing the invalid CC are removed from the representation used for creating the maximum common substructure and afterward a new search for a valid CC is started. This procedure is repeated iteratively until a valid CC is found.
 
 
 
@@ -118,9 +118,9 @@ core of the two molecules with strict fusion. In the images of the full molecule
 	\label{fig:pyrene}
 \end{figure}
 
-If this is not the case, the rings that contain atoms which participate in the partial ring causing the invalid CC are removed from the representation used for creating the maximum common substructure and afterward a new search for a valid CC is started. This procedure is repeated iteratively until a valid CC is found.
-Of course, in the worst scenario, i.e., if both (non-identical) molecules only consist of ring-participating atoms, no valid CC is conceivable. Similarly, given the total size of the molecules, the size of the valid CC can be tiny. In general, if at least one of the molecules solely consists of a polycyclic compound without any functional groups etc., and the other one does not have the same compound, no valid CC can exist. 
-An --- maybe rather contrived --- example of such a pair of molecules and the construction of a valid CC via the iterative approach is given in fig.~\ref{fig:pyrene}. One sees that even the activation of the ring-related parameters of Rdkit is not sufficient to yield a valid CC, whereas the iterative approach gives the desired result. Nonetheless, this valid CC (which has the maximally possible size) is small compared to the total molecule size and the apparent similarity between both structures.
+
+Of course, in the worst scenario, i.e., if both (non-identical) molecules only consist of ring-participating atoms, no valid CC for \trafo may exist. Similarly, the size of the valid CC may be tiny compared to that of the physical end states, which may make the CC approach as implemented in \trafo very inefficient.  In general, if at least one of the molecules solely consists of a polycyclic compound without any functional groups etc., and the other one does not have the same compound, no valid CC can exist. 
+A --- maybe rather contrived --- example of such a pair of molecules and the construction of a valid CC via the iterative approach is given in fig.~\ref{fig:pyrene}. One sees that even the activation of the ring-related parameters of Rdkit is not sufficient to yield a valid CC, whereas the iterative approach gives the desired result. However, the resulting valid CC (which has the maximally possible size) is small compared to the original size of the molecules, despite the apparent similarity between both structures.
 
 
 
@@ -136,9 +136,9 @@ to ensure an optimal processing of the mutation path.
 
 Depth First Search (DFS) follows each chain of the graph as long as
 possible, i.e., until a leaf node is reached. In contrast, Breadth
-First Search (BFS) explores all chains simultaneously.\cite{Even.2012}
+First Search (BFS) explores all chains simultaneously \cite{Even.2012}.
 Problems and differences of both algorithms are illustrated using
-several examples below. As will be discussed in more detail, the main problem of DFS is that it produces undesired outcomes, in particular because often heavy atoms in neighborhood to the CC atoms are processed at the first steps of the graph algorithm as well as rings are opened early, but completely processed at a later stage (in a rather 'asymmetric' manner).   
+several examples below. As will be discussed in more detail, the main problem of DFS is that it produces undesired outcomes. Often, heavy atoms near or next to the CC atoms are processed during the first steps of the graph algorithm, which may lead to an early opening of rings. Processing is completed only at a (much) later stage. Phrased differently, atoms are turned into dummy atoms in a highly 'asymmetric' manner.   
 
 In each of the algorithms implemented, the root of the graph traversal is the node which connects the dummy region and the CC, i.e., the junction atom 'X'.
 The shortest paths to all nodes of the dummy region are determined.
@@ -149,7 +149,7 @@ The shortest paths to all nodes of the dummy region are determined.
 search (DFS); middle: breadth first search (BFS); right: Dijkstra algorithm. In the Dijkstra algorithm, blue atoms have increased weights;  the
 edges connecting blue colored nodes have increased weights leading
 to a mutation route differing from BFS; in the \trafo workflow, the final processing of the
-nodes happens in reversed order, i.e., the atom first visited is removed last}
+nodes happens in reversed order; i.e., the atom first visited is removed last}
 
 \end{figure}
 
