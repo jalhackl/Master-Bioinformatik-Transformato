@@ -348,11 +348,12 @@ It is even possible that substructure matches differ solely regarding hydrogens.
 
 \subsection{Examples of processing molecules}
 
-As outlined above, in the current version of {\trafo}, one suboptimal route finding algorithm using DFS and several new versions based on BFS are implemented.
-For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root), whereas DFS gives rise to a long chain. Fig.~\ref{fig:comparison_dfs_bfs} illustrates this difference.
+As described above, the current version of {\trafo} implements one suboptimal route finding algorithm using DFS and several new versions based on BFS.
+For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way, starting at the atom with the highest distance from the root), whereas DFS gives rise to a long chain. Fig.~\ref{fig:comparison_dfs_bfs} illustrates this difference.
+
 In more complex molecules, the systematic exploration of chains in
 depth first search inevitably leads to big local gaps in processing
-of the molecules. Fig. \ref{fig:simple_ring_exampledfs2} shows this problem for a benzene ring which
+of the molecules. Fig. \ref{fig:simple_ring_exampledfs2} illustrates this problem for a benzene ring which
 is directly attached to the CC. As DFS goes along one path
 until the end; i.e., until a leaf node is reached, four atoms of the
 ring are visited first, whereas the remaining two are explored
@@ -364,58 +365,56 @@ By contrast, BFS automatically produces the desired result for this system.
 
 \begin{figure}
 \includegraphics[scale=1.4]{simple_ring_exampledfs.png}
-
-\caption{comparison of typical DFS- and BFS-mutation route for a single ring structure; left: DFS-algorithm; right: BFS-algorithm; in all depictions of mutation routes the CC is shown in dark, the color gradient starts at red indicating the atom first to be removed and ends at green; DFS
-starts at the ring atom adjacent to the carbon atom bonded to the oxygen and thus ring breakage gives rise to one long
-chain which is processed subsequently, whereas BFS starts at the ring position most distant from this carbon and the two emerging chains are processed in a symmetric fashion
+\caption{Comparison of typical DFS- (left) and BFS-mutation route (right) for a single ring structure. In all depictions of mutation routes, the CC is shown in dark, the color gradient starts at red, indicating the atom removed first, and ends at green. DFS
+starts at the ring atom adjacent to the carbon atom bonded to the oxygen, and, thus, ring breakage gives rise to one long
+chain which is processed subsequently. By contrast, BFS starts at the ring position most distant from this carbon and the two emerging chains are processed in a symmetric fashion.
 }
 \label{fig:comparison_dfs_bfs}
 \end{figure}
 
 
 
-Similarly, in fig.~\ref{fig:simple_ring_exampledfs3} one atom of the ring (marked by the red circle), adjacent to the X-junction, is omitted in the first exploration using DFS and only visited at last. Hence, it is first processed, whereas the other atoms of the ring are removed much later.
-
-More complex ring structures exacerbate the problems. Fig. \ref{fig:simple_ring_exampledfs4} shows that also the processing of the substituents is affected.
+A similar scenario is shown in fig.~\ref{fig:simple_ring_exampledfs3}. One ring atom (indicated by the red circle), which is adjacent to the X-junction atom, is processed last by  DFS. Hence, it is processed first in the resulting \trafo workflow, opening the ring, whereas the other atoms of the ring are removed much later.
+More complex ring structures exacerbate these problems. Fig. \ref{fig:simple_ring_exampledfs4} shows an example where also the processing of the substituents is affected.
 
 Multiple rings pose special difficulties for the mutation algorithms because
 the processing of one of the rings can easily lead to gaps in the adjacent
 ones. Figs. \ref{fig:2ring_example} and  \ref{fig:2ring_example2} illustrate that severe problems may occur when using DFS.
 As in the case of one ring, the exploration route implies that one
 of the rings is opened in such a way that it gives rise to a lengthy chain.
-Furthermore, an atom may belong to two or more rings is visited early, whereas other atoms of the ring are explored much later, so that both ring structures are opened
-and teared apart (fig. \ref{fig:2ring_example}). Likewise, one half of each of the
-rings is turned off many steps before the processing of the remaining ring atoms is done (fig. \ref{fig:2ring_example2}). 
+Furthermore, an atom belonging to two or more rings is visited early, whereas other atoms of the ring are explored much later, so that both ring structures are opened
+and torn apart (fig. \ref{fig:2ring_example}). Likewise, one half of each of the
+rings is turned off many steps before the remaining ring atoms are processed (fig. \ref{fig:2ring_example2}). 
 
 \begin{figure}
-\includegraphics[scale=0.75]{simple_ring_exampledfs2_two_rows}\caption{above: DFS-algorithm; below: BFS-algorithm; CC in dark; the
-red arrow indicates the undesired processing of the ring atoms}
+\includegraphics[scale=0.7]{simple_ring_exampledfs2_two_rows}\caption{Top: DFS-algorithm; Bottom: BFS-algorithm; CC in dark; the
+red arrow indicates the undesired processing of the ring atoms in the DFS case.}
 \label{fig:simple_ring_exampledfs2}
 \end{figure}
 
 \begin{figure}
-\includegraphics[scale=1.3]{simple_ring_exampledfs3}\caption{left: DFS-algorithm; right: BFS-algorithm; CC in dark; the
+\includegraphics[scale=1.3]{simple_ring_exampledfs3}\caption{Left: DFS-algorithm; Right: BFS-algorithm; CC in dark; the
 red arrow and circle indicates the undesired processing of the ring
-atoms}
+atoms in the DFS case}
 \label{fig:simple_ring_exampledfs3}
 \end{figure}
 \begin{figure}
 
-\includegraphics[scale=0.5]{simple_ring_exampledfs4}\caption{left: DFS-algorithm; right: BFS-algorithm; CC in dark; the
-red arrow indicates the undesired processing of the ring atoms}
+\includegraphics[scale=0.5]{simple_ring_exampledfs4}\caption{Left: DFS-algorithm; Right: BFS-algorithm; CC in dark; the
+red arrow indicates the undesired processing of the ring atoms in the DFS case}
 \label{fig:simple_ring_exampledfs4}
 \end{figure}
 
 \begin{figure}
 
-\includegraphics[scale=0.5]{2ring_example}\caption{left: DFS-algorithm; right: BFS-algorithm; CC in dark; the
-red arrow indicates the undesired processing of the ring atoms}
+\includegraphics[scale=0.45]{2ring_example}\caption{Left: DFS-algorithm; Right: BFS-algorithm; CC in dark; the
+red arrow indicates the undesired processing of the ring atoms in the DFS case}
 \label{fig:2ring_example}
 \end{figure}
 
 \begin{figure}
 
-\includegraphics[scale=0.5]{2ring_example2}\caption{left: DFS-algorithm; right: BFS-algorithm; CC in dark; the
-red arrow indicates the undesired processing of the ring atoms}
+\includegraphics[scale=0.4]{2ring_example2}\caption{Left: DFS-algorithm; Right: BFS-algorithm; CC in dark; the
+red arrow indicates the undesired processing of the ring atoms in the DFS case}
 \label{fig:2ring_example2}
 \end{figure}
