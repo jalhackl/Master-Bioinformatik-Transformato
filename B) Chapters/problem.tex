@@ -169,11 +169,11 @@ In the test cases presented below, all graphs are initialized with uniform weigh
 
 \subsection{Functions for creating mutation paths}
 
-To use the newly implemented mutation algorithms, initially the graph object
-is created with weights according to the atom type stored in a dictionary. The simulations shown
-below use uniform weights; hence all atom types are treated equally; however, it is possible to modify these to
+To use the newly implemented mutation algorithms, the graph object
+is initially created with weights according to the atom type stored in a dictionary. The simulations shown
+below use uniform weights; hence, all atom types are treated equally. However, it is possible to modify these to
 enforce a specific mutation route (e.g., accelerating or postponing
-the exclusion of heteroatoms). 
+the processing of heteroatoms). 
 
 The core functionality is given by the mutation processing functions.
 Currently, three new functions are implemented, in addition to
@@ -181,32 +181,31 @@ the simple, existing DFS-approach.
 These four main functions for computing mutation routes are:
 
 \begin{enumerate}
-\item \texttt{\_calculate\_order\_of\_LJ\_mutations:} this function performs the DFS algorithm, which has been used previously in {\trafo}. It may lead to  defective mutation routes (various examples are shown below and compared to the routes created by improved algorithms) and hence
+\item \texttt{\_calculate\_order\_of\_LJ\_mutations:} this function performs the DFS algorithm, and is the only one previously available in {\trafo}. It may lead to  defective mutation routes (various examples are shown below and compared to the routes created by the improved algorithms) and, hence,
 should only be used for test purposes. The other three algorithms
-are new, and all of them resolve most of the problems of the earlier
-algorithm (especially isolated removal of ring atoms).
+are new, and all of them resolve most of the problems of this existing earlier
+algorithm (especially issues related to the isolated removal of ring atoms).
 
 
 \item \texttt{\_calculate\_order\_of\_LJ\_mutations\_new:} the BFS/Dijkstra-algorithm is
 applied once for creating a mutation route.
 
 \item \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter:} the BFS/Dijkstra-algorithm is
-applied iteratively, i.e., after each removal of an atom until all atoms of the dummy regions are processed.
+applied iteratively, i.e., after each removal of an atom, until all atoms of the dummy regions are processed.
 
 \item \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change:}
-similarly to the last function, this approach works iteratively. In contrast to \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter:}, after each removal of an atom, the algorithm/routine for the next step is chosen depending on the current state, e.g., if the last processed atom belongs to a cycle or a chain.
+similarly to the last function, this approach works iteratively. In contrast to \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter}, after each removal of an atom, the algorithm/routine for the next step is chosen depending on the current state, e.g., if the last processed atom belongs to a cycle or a chain.
 \end{enumerate}
 
 These functions
 can be further modified by passing arguments which activate some helper
-functions.These functions like \texttt{cycle\_checks} carry out tasks to ensure the
-desired mutation route, e.g., count the number of cycles an atom participates
+functions.  Auxiliary functions carry out tasks to ensure the
+desired mutation route; e.g., the function \texttt{cycle\_checks} counts the number of cycles an atom participates
 in. Further features of all algorithms are 'preferential removal';
 i.e., if two atoms have the same priority (given by the current
 weight) for the next mutation step, the weight of the atom which is
 next to an already removed atom is updated so that this atom is excluded
-next.
-
+next. 
 In the following, the most important of these functions are shortly described:
 
 
@@ -218,14 +217,14 @@ and a dictionary with the degree (i.e., number of edges) of each atom
 node. It is currently used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new}
 (via the \texttt{change\_route\_cycles}-function).
 
-\item \texttt{change\_route\_cycles\string(route, cycledict, degreedict, weightdict,G\string)}: this function is used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new}
+\item \begin{sloppypar}\texttt{change\_route\_cycles\string(route, cycledict, degreedict, weightdict,G\string)}: this function is used in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new}
 and sorts nodes according to degree, cycle participation and information
 about the nodes which have been removed immediately before. The preliminary mutation
 path is sorted using a cycle and degree dictionary. If nodes have the same
 weight (i.e., distance from root), the node participating in more cycles
 is removed later. If nodes have the same weight (i.e., distance from root)
 and same cycle participation number, the node which has more neighbors
-already processed is removed earlier
+already processed is removed earlier.\end{sloppypar}
 
 \item \texttt{cycle\_checks\_nx(G)}: This function modifies the weight of
 the graph, nodes participating in many cycles get lower weight. It
@@ -234,8 +233,8 @@ is currently used in
 with updated weights (according to cycle participation of the atom).
 
 \item \texttt{order\_checks\_nx(G, removearray, G\_total)}: This function
-performs the 'preferential removal', if a node is connected to the
-node removed in the last step, its weight gets a small increase so
+performs the 'preferential removal'. If a node is connected to the
+node removed in the previous step, its weight gets a small increase so
 that the removal of this node is prioritized. It is currently used
 in\texttt{ \_calculate\_order\_of\_LJ\_mutations\_new\_iter} and returns
 a nx-graph-object with updated weights.
@@ -246,12 +245,21 @@ updates are updated according to cycle participation (as the systematic
 processing of ring structures is one of the central goals, this functionality
 should always be enabled, except for comparison and test purposes).
 If in the case of \texttt{\_calculate\_order\_of\_LJ\_mutations\_new
-and \_calculate\_order\_of\_LJ\_mutations\_new\_iter} also ordercycles
-or ordercheck, respectively, are set to True, weight updating according
+and \_calculate\_order\_of\_LJ\_mutations\_new\_iter} the options  ordercycles
+or ordercheck, respectively, are also set to True, weight updating according
 to preferential removal decides that the node in which neighborhood
 nodes have already been turned off is removed next if there is no
 possibility to decide between two nodes --- i.e., the weight of both
 would be the same.
+
+\begin{figure}
+\includegraphics[scale=0.25]{iter_iter_change_1a5g_1_two_rows}
+\caption{Example of the differences between the \texttt{iter-} and \texttt{iter\_change}-algorithms;
+Top: \texttt{iter}; Bottom: \texttt{iter-change}; \texttt{iter-change }processes all atoms within
+a chain or a ring at once (if possible) before switching to other
+parts of the molecule}
+\label{fig:iter_iter_change_comparison}
+\end{figure}
 
 In each algorithm, all nodes of the graph (i.e., atoms) are usually
 initialized with the same weight (e.g., 5). Alternatively, the user
@@ -264,60 +272,58 @@ which determines the path length of all dummy nodes to the root.
 
 The main difference between these algorithms is that in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter}
 and \texttt{...\_iter\_change} the graph traversal part performed
-using the Dijkstra algorithm is applied after each exclusion step; i.e., $n!$ atoms are visited instead of $n$; even for relatively large molecules the additional computational cost is negligible, in particular in comparison
+using the Dijkstra algorithm is applied after each exclusion step; i.e., $n!$ atoms are visited instead of $n$. Even for relatively large molecules, the additional computational cost is negligible, in particular in comparison
 to the computational time needed for the search of the CC.
 The advantage of the iterated version is that after each mutation step, weights can be
 updated or even the search algorithm can be modified. 
-
 This feature allows for different mutation strategies depending
 on the current state. Such an approach is demonstrated in \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change}.
-In contrast to the other algorithms, the algorithm processes information
-if the last removed node was part of a chain or a cycle. Depending
+This algorithm takes into account whether the last removed node was part of a chain or a cycle. Depending
 on the state, the chain, or cycle, is processed fully before the algorithm
-moves on to other parts of the molecule. Fig. \ref{fig:iter_iter_change_comparison} demonstrates the difference between the two versions of the iterated algorithm.
-Whereas in the non-iterated algorithm the found mutation route has to be reversed (since the atom node with the highest distance from the root is the first which has to be turned off), in the iterated versions at each iteration the node with the highest distance is added to an array which determines the final mutation route.
+moves on to other parts of the molecule. Fig. \ref{fig:iter_iter_change_comparison} demonstrates the difference between the two versions of the iterated algorithm. An additional, more practical difference should be kept in mind.
+Whereas in the non-iterated algorithm the mutation route has to be reversed (since the atom node with the highest distance from the root is the first which has to be turned off), in the iterated versions, at each iteration the node with the highest distance is added to an array which determines the final mutation route.
 
-The computed mutation routes can be visualized directly via Rdkit. 
+The mutation routes computed by the various algorithms can be visualized directly via Rdkit. 
 The route is represented by a color gradient used for the atoms involved
-in the mutation process (\texttt{\_show\_common\_core\_gradient}). By default, the color spectrum ranges from red to green; the first atom to be removed is colored red, the last green.
-
+in the mutation process (\texttt{\_show\_common\_core\_gradient}). By default, the color spectrum ranges from red to green; the first atom to be removed is colored red, the last in green. 
 Furthermore, an animated 3D-visualization of the mutation process
 is implemented using py3Dmol (\texttt{animated\_visualization\_3d\_v2})\cite{key-4}. 
 
-
+\clearpage
 
 \subsection{Processing of hydrogen atoms}
 
 
-As fig. \ref{fig:hydrogen_effect} indicates, the presence of hydrogens can influence the CC generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e., non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). Hence, it is crucial to determine the CC for molecule representations without hydrogens. 
-Since hydrogen atoms are turned off in an extra step en bloc during the {\trafo} workflow, the mutation route algorithm should not take hydrogens into account, nor must the CC be generated for a molecule representation containing hydrogens.
-Nonetheless, it is necessary that the molecule representations processed by \trafo contain all hydrogens in explicit form because the indices of these atoms in the underlying data structures are used in some steps, e.g., for scaling the van der Waals interactions of the hydrogen atoms to zero.
-This problem was solved by removing and adding hydrogens appropriately.
-In a first step, the {\trafo} function determining the CC (\texttt{\_find\_mcs} in mutate.py which is the Python file containing most {\trafo}-functions responsible for generating the CC and the mutation paths) had to be modified. 
+\begin{figure}
+	
+	\includegraphics[scale=0.13]{hydrogens_plus_minus_v2.png}
+	\caption{Examples demonstrating that the addition of hydrogens can influence the construction of the CC; left: initial state; middle: CC; right: final state. Rows 1)--2) and rows 3)--4) each show the same pair of molecules, in the respective upper row without,
+		in the lower with hydrogens. In the representations of the end states, the CCs are marked in red. While in the first example (rows 1)--2)), the inclusion of hydrogens does not affect the CC generation, the CCs generated in rows 3) and 4)  change when hydrogens are added to the Rdkit-molecule
+		representation}
+		\label{fig:hydrogen_effect}
+\end{figure}
 
+Fig. \ref{fig:hydrogen_effect} illustrates that the presence of hydrogens can influence the CC generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e., non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). 
+Since hydrogen atoms are turned off in a single step en bloc during the {\trafo} workflow, the mutation route algorithm should not take hydrogens into account. Therefore, the CC should be generated for a molecule representation without considering hydrogens.
+Nonetheless, it is necessary that the molecule representations processed by \trafo contain all hydrogens in explicit form because the indices of these atoms in the underlying data structures are used in some steps, e.g., for scaling the van der Waals interactions of the hydrogen atoms to zero.
+
+This problem was solved by removing and adding hydrogens appropriately.
+In a first step, the {\trafo} function determining the CC (\texttt{\_find\_mcs} in \texttt{mutate.py}, which is the Python file containing most {\trafo}-functions responsible for generating the CC and the mutation paths) had to be modified. 
 To obtain the desired CC but retain the {\trafo} workflow, the following scheme was implemented:
 A deep copy of both molecules is created. The hydrogens of these copies are removed; then their CC is computed. For both molecules, the indices of the atoms corresponding to the CC are determined. Finally, it is checked for each CC atom of both molecules whether hydrogen atoms are in its neighborhood. If such hydrogens are found, their indices are added to the lists of CC atoms. These lists of atoms, including hydrogens, are stored for both molecules and the function returns the maximum common substructure (determined for the molecules without hydrogens).
 Thus, the procedure yields the necessary output for further processing in {\trafo}: The molecule representations and lists of CC atoms for both of the molecules include hydrogens, but the maximum common substructure giving rise to the CC is computed only for the heavy atoms.
 
 Similarly, the functions for computing the mutation routes had to be adapted for input molecules containing hydrogens. By default, a helper function removes the hydrogens from the graph representation as well as the corresponding indices from the list with the atoms of the dummy regions before the mutation algorithms are applied. Afterward, the hydrogen atoms adjacent to CC heavy atoms are added to the CC.
 
-A special problem occurs for molecule pairs with switching 'X'-atom; fig. \ref{fig:pyrrolidinindole} shows 2-/7-pyrrolidinindole as an example. The red highlighting shows a correct CC for both molecules; in each of them one should note the hydrogen atom, which is directly bonded to one of the CC-carbon atoms, but itself is not part of the CC. If the hydrogens were added, the CC would not be valid anymore: It is necessary that a further dummy region emerges which consists solely of one hydrogen atom because otherwise the CCs would have a different number of atoms and would not be isomorphic anymore. If, however, the CC is generated without hydrogens, the information which of the hydrogens turns into a dummy region is lost and the construction of a valid CC cannot be assured.
+A special problem occurs for molecule pairs with switching 'X'-atom; fig. \ref{fig:pyrrolidinindole} shows 2-/7-pyrrolidinindole as an example. The red highlighting shows a correct CC for both molecules; in each of them one should note the hydrogen atom, which is directly bound to one of the CC-carbon atoms, but itself is not part of the CC. If the hydrogens were included, the resulting CC would not be valid anymore: It is necessary that a further dummy region emerges which consists solely of one hydrogen atom because otherwise the CCs would have a different number of atoms and would not be isomorphic anymore. If, however, the CC is generated without hydrogens, the information which of the hydrogens turns into a dummy region is lost and the construction of a valid CC cannot be assured.
 It has to be stressed again that the presence of these hydrogen dummy regions does not affect the mutation steps, but is nonetheless crucial for the internal {\trafo} workflow. 
 
-However, there is a straightforward way to circumvent this problem: From the substructure matches, the mapping between the CC atoms of each molecule can be read off. It is counted for each heavy CC atom how many hydrogens are connected to it. Finally, the minimum number of hydrogens is added to the CC. (In the case of 2-/7-pyrrolidinindole, this means that for each CC atom one hydrogen is added, except for the 2- and 7- position because for these positions in one molecule no hydrogen is connected).
+There is a straightforward way to circumvent this problem: From the substructure matches, the mapping between the CC atoms of each molecule can be read off. For each (non-hydrogen) CC atom, one counts how many hydrogens are connected to it. Finally, the minimum number of hydrogens is added to the CC. (In the case of 2-/7-pyrrolidinindole, this means that for each CC atom one hydrogen is added, except for the 2- and 7- position because for these positions in one molecule no hydrogen is connected).
 In this context, also the difficulty that there are possibly many substructure matches has to be mentioned.
 
-It is even possible that substructure matches differ solely regarding hydrogens. For this case, a parameter was added to the function which searches for the maximum common substructure. If \texttt{iterate\_over\_matches} is set to true, one of the substructure matches with most hydrogens, i.e., the biggest possible substructure, is selected. Fig. \ref{fig:neopentan} shows two CCs, only differing in the number of hydrogens.
+It is even possible that substructure matches differ solely regarding hydrogens. A parameter was added to the function which searches for the maximum common substructure to handle this case. If \texttt{iterate\_over\_matches} is set to true, one of the substructure matches with most hydrogens, i.e., the biggest possible substructure, is selected. Fig. \ref{fig:neopentan} shows two CCs, only differing in the number of hydrogens.
 
 
-\begin{figure}
-	
-	\includegraphics[scale=0.13]{hydrogens_plus_minus_v2.png}
-	\caption{These examples demonstrate that the addition of hydrogens can influence the construction of the CC; left: molecule 1; middle: CC; right: molecule 2; in the representations of the full molecule, the CCs are marked in red; row 1)-2) and row 3)-4) show the same molecules, in the respective upper row without,
-		in the lower with hydrogens; the CC of the molecule in row 3) and 4)  changes when hydrogens are added to the Rdkit-molecule
-		representation}
-		\label{fig:hydrogen_effect}
-\end{figure}
 
 
 
@@ -325,8 +331,8 @@ It is even possible that substructure matches differ solely regarding hydrogens.
 	\includegraphics[scale=1.0]{pyrrolidinindole_v2}
 	
 	\caption{
-		left: 2-pyrrolidinindole; right: 7-pyrrolidinindole; 
-		one of the hydrogens --- exactly the hydrogen atom which is placed at the position of the junction 'X'-atom at the other end state --- is not part of the CC (otherwise, the CC would be invalid)}
+		left: 2-pyrrolidinindole; right: 7-pyrrolidinindole. In each structure, 
+		one of the hydrogens indicated by the arrows --- exactly the hydrogen atom which is placed at the position of the junction 'X'-atom at the other end state --- must not be part of the CC (otherwise, the CC would be invalid)}
 	\label{fig:pyrrolidinindole}
 \end{figure}
 
@@ -340,17 +346,7 @@ It is even possible that substructure matches differ solely regarding hydrogens.
 
 
 
-\subsection{Examples for processing molecules}
-
-\begin{figure}
-\includegraphics[scale=0.25]{iter_iter_change_1a5g_1_two_rows}
-
-\caption{Example of the differences between the \texttt{iter-} and \texttt{iter\_change}-algorithms;
-Top: \texttt{iter}; Bottom: \texttt{iter-change}; \texttt{iter-change }processes all atoms within
-a chain or a ring at once (if possible) before switching to other
-parts of the molecule}
-\label{fig:iter_iter_change_comparison}
-\end{figure}
+\subsection{Examples of processing molecules}
 
 As outlined above, in the current version of {\trafo}, one suboptimal route finding algorithm using DFS and several new versions based on BFS are implemented.
 For single rings, BFS (or, in the case of different weights for various atom types, the Dijkstra algorithm) automatically processes the atoms in the most symmetric way starting at the atom with the highest distance from the root), whereas DFS gives rise to a long chain. Fig.~\ref{fig:comparison_dfs_bfs} illustrates this difference.
