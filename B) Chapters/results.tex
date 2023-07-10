@@ -8,7 +8,7 @@
 		378 & 26.97 & 16.30 & 1.66 & 30.16\tabularnewline
 		\hline 
 	
-	\end{tabular}\caption{Some statistics about the twenty ligands selected from the PDBbind-CN database and the calculations they were used for. Number of processed routes: total number of computed routes for a specific combination of two molecules; dummy atoms (mean): average number of total dummy atoms required for the computed mutation routes; atoms/dummy region (mean): number of total dummy atoms divided by the number of dummy regions; number of cycles (mean): average number of cycles in all mutation routes; polycyclic: percentage of mutation routes which involve polycyclic structures, i.e., there are atoms present that participate in multiple cycles }
+	\end{tabular}\caption{Some statistics about the twenty ligands selected from the PDBbind-CN database and the calculations they were used for. Number of processed routes: total number of computed routes for a specific combination of two molecules; dummy atoms (mean): average number of total dummy atoms required for the computed mutation routes; atoms/dummy region (mean): number of total dummy atoms divided by the number of dummy regions; number of cycles (mean): average number of cyclic structural elements in all mutation routes; polycyclic: percentage of mutation routes which involve polycyclic structures, i.e., there are atoms present that participate in multiple cyclic elements }
 \label{tab:general_information}
 \end{table}
 
@@ -30,12 +30,12 @@ and the other ones removed.
 
 The mutation route is visualized using a color gradient, in addition
 to numbering, see the earlier figures.
-Py3dMol is used for a 3D-animation of the mutation process. Fig. \ref{fig:py3dmol} shows two molecules and their shared CC.
+Py3dMol \cite{key-4} is used for a 3D-animation of the mutation process. Fig. \ref{fig:py3dmol} shows two molecules and their shared CC.
 
 \begin{figure}
 \includegraphics[scale=0.95]{trafo_py3d_2}
 
-\caption{Two Visualizations of the mutation route with Py3Dmol (left column) and Rdkit (right column). First and third row: Representation of the physical end states, left: spheres represent CC atoms, whereas non-CC atoms are shown in licorice representation; right: CC atoms are highlighted in red. Middle row: CC of the two end states.
+\caption{Two Visualizations of the mutation route with Py3Dmol (left column) and RDKit (right column). First and third row: Representation of the physical end states, left: spheres represent CC atoms, whereas non-CC atoms are shown in licorice representation; right: CC atoms are highlighted in red. Middle row: CC of the two end states.
 }
 \label{fig:py3dmol}
 \end{figure}
@@ -116,7 +116,7 @@ Likewise, the correlation between the order of mutation of an atom and its close
 All scoring functions show that the BFS-based algorithms tend to prune the molecule graph at positions more distant from the CC at the beginning of the processing, and rings are processed in a more systematic and 'symmetric' manner (fig. \ref{fig:ring_related}).
 
 In the plots presenting the scoring-functions, all molecule combinations
-from the PDBbind data set were used. Thus, the selection is rather diverse and many  'trivial' structures are over-represented. It could be insightful to use
+from the PDBbind-CN data set were used. Thus, the selection of molecule pairs gives rise to CCs and dummy regions with entirely different properties (e.g., number of atoms and presence of cyclic structures) and many  'trivial' structures are over-represented. It could be insightful to use
 only a subset (e.g., only molecules with dummy regions involving multiple
 ring structures or a minimum number of dummy atoms) or to try even a larger selection from the PDBbind-CN database.
 
@@ -138,7 +138,7 @@ ring structures or a minimum number of dummy atoms) or to try even a larger sele
 \section{Results for selected molecule pairs}
 
 For a selection of small molecules taken from \cite{Loeffler.2018, Wieder.2022}, the relative solvation free energy differences were calculated  using {\trafo} with the old and the new mutation route algorithms. In particular, we studied the three pairs toluene/methane, 2-methylfuran/methane, and 2-methylindole/methane, as well as the
-solvation free energy difference between 2-cyclopentyl-indole and 7-cyclopentyl-indole (2-/7-CPI). For the last case, the free energy differences were recomputed only for the new algorithms; however, earlier results using the old algorithm were used for comparison. This is one of the most interesting examples because the old CC generation, which searched for the CC including hydrogens without the improvements reported in 'Processing of hydrogen atoms', generated a smaller CC. Thus, one would expect that for this example, differences should be especially pronounced.
+solvation free energy difference between 2-cyclopentyl-indole and 7-cyclopentyl-indole (2-/7-CPI). For the last case, the free energy differences were recomputed only for the new algorithms; however, earlier results using the old algorithm were used for comparison. This is one of the most interesting examples because the old CC generation, which searched for the CC including hydrogens without the improvements reported in 'Processing of hydrogen atoms', generated a smaller CC (fig. \ref{fig:cpi_comparison}). Thus, one would expect that for this example, differences should be especially pronounced.
 
 Although these molecules are rather small and simple, they encompass some of the most interesting features, like rings. For instance, the mutation route for toluene is fundamentally different depending on the algorithm: the old algorithm starts next to the atom of the phenyl group that is connected to the methyl substituent --- which serves as the CC --- and processes the rest of the atoms in a chain-like manner. By contrast, the new one starts at the atom with maximum distance from the substituent and proceeds symmetrically until the CC is reached.
 An overview of the molecules and the corresponding mutation routes is shown in figs. \ref{fig:all_paper_molecules} and \ref{fig:cpi_paper_molecule}.
@@ -161,6 +161,12 @@ For all these examples, the standard deviation is smaller using the new route fi
  \label{tab:results_selection}
 \end{table}
 
+\begin{figure}
+	
+	\includegraphics[scale=0.50]{cpi_old_new}
+	\caption{mutation routes for 2-cyclopentylindole (upper row)/7-cyclopentylindole (lower row); left: small CC with DFS-algorithm; right: bigger CC with BFS-algorithm; CC in dark; the smaller CC is obtained when hydrogens are not removed before the computation of the maximum common substructure (it should be noted that in this case even further manual post-processing is necessary because one atom of the indole is also attached to the CC)}
+	\label{fig:cpi_comparison}
+\end{figure}
 
 
 
@@ -177,7 +183,6 @@ Of course, a direct comparison with the same number of replicates would be advan
 Calculation of the absolute free energy differences of both molecules yield $-1.58  \pm  0.30$~kcal/mol. This indicates that the new route not only provides a smaller error, but also leads to a more accurate result.
 
 However, probably the greatest advantage is that the mutation route for the new, bigger CC needs fewer states (only five in contrast to nine heavy atoms have to be mutated). 
-Figs. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylindole_overlaps} show overlap plots and the change of free energy difference of one run between the states for toluene $\mathrm{\rightarrow}$ methane and overlap plots for 2-methyl-1H-indole. In the case of 2-methyl-1H-indole (the mutation involves processing of a double ring),  significant differences for the water box between the old and new algorithm are discernible.
 
 
 
@@ -256,8 +261,6 @@ Figs. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methyli
 \end{figure}
 
 
-\section{Routes for molecules from {\trafo} paper}
-
 \begin{figure}[!htb]
 	
 	\includegraphics[scale=0.75]{paper_routes1a}\caption{left: DFS-algorithm; right: BFS-algorithm; CC in dark; from top to bottom row: mutation routes for toluene/methane, 2-methylfuran/methane, 2-methylindole/methane}
@@ -275,7 +278,8 @@ Figs. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methyli
 An additional means for detecting differences between the outcome of the mutation algorithms is to compare runs of different sampling length. 
 The results of the MD runs set up with {\trafo} can be evaluated using the functions of the MBAR class of \texttt{pymbar} \cite{Shirts.2008}. Python scripts were written to evaluate the computed free energy differences for different simulation lengths. There are two crucial parameters: the reduced potential energy of an uncorrelated configuration $n$ at a specific state $k$ (\texttt{u\_kn}) and the number of uncorrelated snapshots $n$ (\texttt{N\_k}). By removing the same number of configurations at each state k and adjusting (\texttt{N\_k}) accordingly, shorter simulations were generated artificially.
 In \ref{fig:toluene_short}, \ref{fig:methylfuran_short} and \ref{fig:methylindole_short}, a comparison between old and new route for molecule pairs consisting of toluene, 2-methylfuran, 2-methyl-1H-indole and methane is presented. The mean of the calculated free energy differences as well as the standard deviation is shown. In \ref{fig:cpi_short}, free energy differences for the 2-CPI-mutations at the two conditions (water box and vacuum) are visualized. 
-As expected, for longer simulation lengths the standard deviation decreases, very short simulation lengths (i.e., a very low number of configuration snapshots as input for the MBAR computations using \texttt{pymbar}) leads to unreliable results. However, looking at the evolution of the free energy difference mean value and standard deviation, it is difficult to confirm the superiority of one of the mutation routes for these three transformations or to indicate a sufficient minimum simulation length.
+As expected, for longer simulation lengths the standard deviation decreases, whereas very short simulation lengths (i.e., a very low number of configuration snapshots as input for the MBAR computations using \texttt{pymbar}) lead to unreliable results. However, looking at the evolution of the free energy difference mean value and standard deviation, it is difficult to confirm the superiority of one of the mutation routes for these three transformations or to indicate a sufficient minimum simulation length.
+Furthermore, the \texttt{pymbar}-package \cite{Shirts.2008} allows the computation of overlap plots. Figs. \ref{fig:toluene_overlaps}, \ref{fig:toluene_states}, and \ref{fig:methylindole_overlaps} show overlap plots and the change of free energy difference of one run between the states for toluene $\mathrm{\rightarrow}$ methane and overlap plots for 2-methyl-1H-indole. In the case of 2-methyl-1H-indole (the mutation involves processing of a double ring),  significant differences for the water box between the old and new algorithm are discernible.
 
 
 

@@ -40,8 +40,8 @@ like polycyclic structures and highly branched chains.
 The {\trafo} package is written in Python. Therefore, Python packages
 were also used for molecule processing and graph representations.
 The creation of molecule objects and the determination of the maximum
-common substructure is done via Rdkit\cite{key-3}. NetworkX\cite{AricA.Hagberg.2008}
-provides functions for graph visualization and analysis. It is easy to convert molecules created using Rdkit into NetworkX graph-objects
+common substructure is done via RDKit\cite{key-3}. NetworkX\cite{AricA.Hagberg.2008}
+provides functions for graph visualization and analysis. It is easy to convert molecules created using RDKit into NetworkX graph-objects
 and hence utilize the functions of NetworkX for the molecules and
 CCs constructed. Particularly, graph traversal algorithms
 like breadth-first and depth-first search can be easily implemented
@@ -49,7 +49,7 @@ like breadth-first and depth-first search can be easily implemented
 
 \section{Assessment of CC settings}
 
-Rdkit allows the search for a maximal common substructure (which can
+RDKit allows the search for a maximal common substructure (which can
 serve as the CC for {\trafo}) via the \texttt{rdFMCS.FindMCS}-function.
 Per default, the objective is to maximize the number of atoms, albeit
 different settings, like maximizing the number of bonds or ignoring
@@ -83,15 +83,18 @@ on the CC of two cyclic molecules, cholesterol, and cortisol. However, as shown 
 that are not valid {\trafo} CCs in the case of a dummy region
 which is connected via multiple ring atoms of the same ring with the common
 core. 
+
+These problems occur because the requirements for a valid {\trafo} CC are stricter than the constraints imposed by RDKit  (even when all ring-related parameters are applied, i.e., \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, it is not only indispensable that the CC solely comprises complete rings, but also the dummy regions consisting of the non-CC atoms must not contain parts of a ring structure (which implies that there has to be a unique connection between dummy region and CC). This is due to the aforementioned constraints on the junction atom X: When it is connected to the CC via one single atom (and, as the CC consists of a single connected component, it, therefore, is not part of a cyclic structure), it is guaranteed that the contributions from dummy atoms cancel out and do not influence the calculation of the double free energy differences \cite{Karwounopoulos.2022}.
+
 When an invalid CC is generated, it appears to be advisable to warn the user that the generated CC does not fit the expectations of the {\trafo} workflow. 
 The new mutation algorithms presented below can deal with such invalid CCs. A helper function arbitrarily chooses one of the connections between the CC and the dummy region, and the other ones are ignored for the mutation path. However, this only ensures that a mutation route is returned; the current {\trafo} workflow is not adapted to deal with such CCs properly. Therefore, it only makes sense for test purposes and may not provide a reasonable input for the regular workflow.
-Alternatively, one could check after the creation if the CC is valid. If
+
+Alternatively, one can check after the creation if the CC is valid. If
 it is not, one could for instance search for a new CC encompassing fewer
-atoms until a valid CC is found (see below). A further option would be to prohibit the involvement of ring atoms for this particular molecule combination.
+atoms until a valid CC is found (see below). A further option would be to prohibit the involvement of ring atoms for the CC of this particular pair of molecules.
 
-These problems occur because the requirements for a valid {\trafo} CC are stricter than the constraints imposed by Rdkit  (even when all ring-related parameters are applied, i.e., \texttt{ringMatchesRingOnly}, \texttt{completeringsonly} and \texttt{strictringfusion}): For {\trafo}, it is not only indispensable that the CC solely comprises complete rings, but also the dummy regions consisting of the non-CC atoms must not contain parts of a ring structure (which implies that there has to be a unique connection between dummy region and CC). This is due to the aforementioned constraints on the junction atom X: When it is connected to the CC via one single atom (and, as the CC consists of a single connected component, it, therefore, is not part of a cyclic structure), it is guaranteed that the contributions from dummy atoms cancel out and do not influence the calculation of the double free energy differences \cite{Karwounopoulos.2022}.
 
-An efficient and straightforward solution for this problem, which always yields the best --- i.e., largest --- valid CC if one exists, has been implemented:
+Furthermore, an efficient and straightforward solution for avoiding the generation of invalid CCs, which always yields the best --- i.e., largest --- valid CC if one exists, has been implemented:
 The basic observation is that if CC atoms within a cyclic region give rise to an invalid CC, it is impossible that any atoms within this region could participate in a valid one (if this would be the case, the whole cyclic region would be already in the generated CC).
 After generating a CC with standard parameters, it is checked if the additional requirements concerning the ring structure hold, i.e., if the non-CC atoms (as well as the CC atoms) of both molecules do not participate in a partial cycle.
 (Alternatively, one could check if a path between the non-CC atoms adjacent to the CC, i.e., the X-atoms, exists. If this is the case, the CC obviously is not valid, since no unique atom which connects the CC and a specific dummy region is present.) If this is not the case, the rings that contain atoms which participate in the partial ring causing the invalid CC are removed from the representation used for creating the maximum common substructure and afterward a new search for a valid CC is started. This procedure is repeated iteratively until a valid CC is found.
@@ -120,13 +123,13 @@ core of the two molecules with strict fusion. In the images of the full molecule
 
 
 Of course, in the worst scenario, i.e., if both (non-identical) molecules only consist of ring-participating atoms, no valid CC for \trafo may exist. Similarly, the size of the valid CC may be tiny compared to that of the physical end states, which may make the CC approach as implemented in \trafo very inefficient.  In general, if at least one of the molecules solely consists of a polycyclic compound without any functional groups etc., and the other one does not have the same compound, no valid CC can exist. 
-A --- maybe rather contrived --- example of such a pair of molecules and the construction of a valid CC via the iterative approach is given in fig.~\ref{fig:pyrene}. One sees that even the activation of the ring-related parameters of Rdkit is not sufficient to yield a valid CC, whereas the iterative approach gives the desired result. However, the resulting valid CC (which has the maximally possible size) is small compared to the original size of the molecules, despite the apparent similarity between both structures.
+A --- maybe rather contrived --- example of such a pair of molecules and the construction of a valid CC via the iterative approach is given in fig.~\ref{fig:pyrene}. One sees that even the activation of the ring-related parameters of RDKit is not sufficient to yield a valid CC, whereas the iterative approach gives the desired result. However, the resulting valid CC (which has the maximally possible size) is small compared to the original size of the molecules, despite the apparent similarity between both structures.
 
 
 
 \section{Graph algorithms}
 
-Using NetworkX and Rdkit, the molecules and their CC are
+Using NetworkX and RDKit, the molecules and their CC are
 represented as graphs (in which nodes indicate atoms and edges bonds
 between them). The selection of the optimal mutation route can be
 understood as a graph traversal problem, in which the constraints mentioned
@@ -194,7 +197,7 @@ applied once for creating a mutation route.
 applied iteratively, i.e., after each removal of an atom, until all atoms of the dummy regions are processed.
 
 \item \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter\_change:}
-similarly to the last function, this approach works iteratively. In contrast to \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter}, after each removal of an atom, the algorithm/routine for the next step is chosen depending on the current state, e.g., if the last processed atom belongs to a cycle or a chain.
+similarly to the last function, this approach works iteratively. In contrast to \texttt{\_calculate\_order\_of\_LJ\_mutations\_new\_iter}, after each removal of an atom, the algorithm/routine for the next step is chosen depending on the current state: If the last processed atom belongs to a cycle or a chain, the algorithm prioritizes the pruning of this cycle or chain before other parts of the molecule are processed.
 \end{enumerate}
 
 These functions
@@ -204,7 +207,7 @@ desired mutation route; e.g., the function \texttt{cycle\_checks} counts the num
 in. Further features of all algorithms are 'preferential removal';
 i.e., if two atoms have the same priority (given by the current
 weight) for the next mutation step, the weight of the atom which is
-next to an already removed atom is updated so that this atom is excluded
+next to an already removed atom is updated so that this atom is processed
 next. 
 In the following, the most important of these functions are shortly described:
 
@@ -245,12 +248,12 @@ updates are updated according to cycle participation (as the systematic
 processing of ring structures is one of the central goals, this functionality
 should always be enabled, except for comparison and test purposes).
 If in the case of \texttt{\_calculate\_order\_of\_LJ\_mutations\_new
-and \_calculate\_order\_of\_LJ\_mutations\_new\_iter} the options  ordercycles
-or ordercheck, respectively, are also set to True, weight updating according
+and \_calculate\_order\_of\_LJ\_mutations\_new\_iter} the options  \texttt{ordercycles}
+or \texttt{ordercheck}, respectively, are also set to True, weight updating according
 to preferential removal decides that the node in which neighborhood
 nodes have already been turned off is removed next if there is no
-possibility to decide between two nodes --- i.e., the weight of both
-would be the same.
+reason to prioritize one of the nodes (i.e., without preferential removal, the weight of the nodes
+would be the same).
 
 \begin{figure}
 \includegraphics[scale=0.25]{iter_iter_change_1a5g_1_two_rows}
@@ -283,7 +286,7 @@ on the state, the chain, or cycle, is processed fully before the algorithm
 moves on to other parts of the molecule. Fig. \ref{fig:iter_iter_change_comparison} demonstrates the difference between the two versions of the iterated algorithm. An additional, more practical difference should be kept in mind.
 Whereas in the non-iterated algorithm the mutation route has to be reversed (since the atom node with the highest distance from the root is the first which has to be turned off), in the iterated versions, at each iteration the node with the highest distance is added to an array which determines the final mutation route.
 
-The mutation routes computed by the various algorithms can be visualized directly via Rdkit. 
+The mutation routes computed by the various algorithms can be visualized directly via RDKit. 
 The route is represented by a color gradient used for the atoms involved
 in the mutation process (\texttt{\_show\_common\_core\_gradient}). By default, the color spectrum ranges from red to green; the first atom to be removed is colored red, the last in green. 
 Furthermore, an animated 3D-visualization of the mutation process
@@ -298,12 +301,12 @@ is implemented using py3Dmol (\texttt{animated\_visualization\_3d\_v2})\cite{key
 	
 	\includegraphics[scale=0.13]{hydrogens_plus_minus_v2.png}
 	\caption{Examples demonstrating that the addition of hydrogens can influence the construction of the CC; left: initial state; middle: CC; right: final state. Rows 1)--2) and rows 3)--4) each show the same pair of molecules, in the respective upper row without,
-		in the lower with hydrogens. In the representations of the end states, the CCs are marked in red. While in the first example (rows 1)--2)), the inclusion of hydrogens does not affect the CC generation, the CCs generated in rows 3) and 4)  change when hydrogens are added to the Rdkit-molecule
+		in the lower with hydrogens. In the representations of the end states, the CCs are marked in red. While in the first example (rows 1)--2)), the inclusion of hydrogens does not affect the CC generation, the CCs generated in rows 3) and 4)  change when hydrogens are added to the RDKit-molecule
 		representation}
 		\label{fig:hydrogen_effect}
 \end{figure}
 
-Fig. \ref{fig:hydrogen_effect} illustrates that the presence of hydrogens can influence the CC generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens can encompass less heavy, i.e., non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). 
+Fig. \ref{fig:hydrogen_effect} illustrates that the presence of hydrogens can influence the CC generation dramatically. In particular, the maximum common substructure for a molecule representation with hydrogens might contain fewer heavy, i.e., non-hydrogen, atoms than the substructure for a representation with hydrogens removed (although, including the hydrogens, the total number of atoms is higher in the first case). 
 Since hydrogen atoms are turned off in a single step en bloc during the {\trafo} workflow, the mutation route algorithm should not take hydrogens into account. Therefore, the CC should be generated for a molecule representation without considering hydrogens.
 Nonetheless, it is necessary that the molecule representations processed by \trafo contain all hydrogens in explicit form because the indices of these atoms in the underlying data structures are used in some steps, e.g., for scaling the van der Waals interactions of the hydrogen atoms to zero.
 
